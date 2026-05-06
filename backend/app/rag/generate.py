@@ -60,6 +60,19 @@ def build_user_prompt(question: str, chunks: list[dict]) -> str:
     return f"CONTEXT:\n{context_str}\n\nUSER QUESTION:\n{question}"
 
 
+#____________________________Output Simulation_____________________________________
+# CONTEXT:
+
+# [1] card_id=amex_gold | card_name=Amex Gold | issuer=Amex | section=rewards
+# Earn 5x points on groceries
+
+# [2] card_id=scotia_gold | card_name=Scotia Gold | issuer=Scotiabank | section=fees
+# Annual fee is $120
+
+# USER QUESTION:
+# What's the best grocery card?
+
+
 def parse_response(raw: str) -> AnswerResponse:
     """Parse the LLM's JSON output into a typed AnswerResponse."""
     raw = raw.strip()
@@ -95,3 +108,15 @@ async def generate_response(question: str, chunks: list[dict]) -> AnswerResponse
             response_id=str(uuid.uuid4()),
             timestamp=datetime.now(timezone.utc),
         )
+
+
+#_____________________________Overall Architecture___________________________
+# Retrieve relevant chunks
+#         ↓
+# Ground the LLM
+#         ↓
+# Generate structured answer
+#         ↓
+# Validate output
+#         ↓
+# Return typed response

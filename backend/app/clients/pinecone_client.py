@@ -1,8 +1,8 @@
 ﻿"""Pinecone client for vector storage and retrieval."""
 from pinecone import Pinecone, ServerlessSpec
 from tenacity import retry, stop_after_attempt, wait_exponential
-from app.config import get_settings
 
+from app.config import get_settings
 
 _pc: Pinecone | None = None
 _index = None

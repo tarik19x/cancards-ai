@@ -1,8 +1,8 @@
 ﻿"""OpenAI client for embeddings."""
 from openai import AsyncOpenAI
 from tenacity import retry, stop_after_attempt, wait_exponential
-from app.config import get_settings
 
+from app.config import get_settings
 
 _client: AsyncOpenAI | None = None
 

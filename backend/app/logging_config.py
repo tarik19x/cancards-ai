@@ -1,6 +1,7 @@
 ﻿"""Structured JSON logging configuration."""
 import logging
 import sys
+
 import structlog
 
 

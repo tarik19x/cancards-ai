@@ -1,8 +1,8 @@
 ﻿"""Anthropic client for Claude (LLM)."""
 from anthropic import AsyncAnthropic
 from tenacity import retry, stop_after_attempt, wait_exponential
-from app.config import get_settings
 
+from app.config import get_settings
 
 _client: AsyncAnthropic | None = None
 
