@@ -115,7 +115,7 @@ def card_to_chunks(card: Card) -> list[dict]:
 
 async def ingest_cards(cards_path: Path) -> int:
     """Read cards.json, chunk, embed, upsert to Pinecone. Returns count."""
-    raw = json.loads(cards_path.read_text(encoding="utf-8"))
+    raw = json.loads(cards_path.read_text(encoding="utf-8-sig"))
     cards = [Card.model_validate(item) for item in raw]
     log.info("loaded_cards", count=len(cards))
 

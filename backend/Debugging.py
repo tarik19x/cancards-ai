@@ -46,16 +46,43 @@
 
 #_________________________________________Testing Ingestion.py_______________________________________
 
-import json
-from pathlib import Path
+# import json
+# from pathlib import Path
 
-from app.models import Card
-from app.rag.ingest import card_to_chunks
+# from app.models import Card
+# from app.rag.ingest import card_to_chunks
 
-data = json.loads(Path("data/cards.json").read_text(encoding="utf-8-sig"))
-first_card = Card.model_validate(data[0])
-chunks = card_to_chunks(first_card)
+# data = json.loads(Path("data/cards.json").read_text(encoding="utf-8-sig"))
+# first_card = Card.model_validate(data[0])
+# chunks = card_to_chunks(first_card)
 
-print(f"Chunking OK — {first_card.name} produced {len(chunks)} chunks:")
-for chunk in chunks:
-    print(f"  [{chunk['section']}] {chunk['text'][:80]}...")
+# print(f"Chunking OK — {first_card.name} produced {len(chunks)} chunks:")
+# for chunk in chunks:
+#     print(f"  [{chunk['section']}] {chunk['text'][:80]}...")
+
+
+#__________________________________________Retrieving Data from Pinecone_______________________________
+# from app.clients.pinecone_client import get_index
+
+# index = get_index()
+# stats = index.describe_index_stats()
+# count = stats.total_vector_count
+# print(f"Pinecone vector count: {count}")
+# if count == 25:
+#     print("PASS — all 25 chunks are stored in Pinecone")
+# else:
+#     print(f"FAIL — expected 25, got {count}. Re-run: python -m scripts.ingest")
+
+
+#__________________________________Pinecone live retrieval__________________________________________
+import asyncio
+from app.rag.retrieve import retrieve_chunks
+
+async def test():
+    print("Querying Pinecone for 'Travel Insurance'...")
+    chunks = await retrieve_chunks("Travel Insurance", top_k=3)
+    print(f"Retrieved {len(chunks)} chunks:")
+    for c in chunks:
+        print(f"  Score: {c['score']:.3f} | {c['metadata']['card_name']} | section: {c['metadata']['section']}")
+
+asyncio.run(test())
