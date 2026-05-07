@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "card_id": "amex-cobalt",
     "name": "American Express Cobalt Card",
@@ -115,7 +115,7 @@
     "annual_fee_cad": 120.00,
     "monthly_fee_cad": null,
     "welcome_bonus_description": "Earn 35,000 Avion points upon approval (worth approximately $700 in travel value).",
-    "rewards_summary": "1.25x Avion points per $1 on travel, 1x on everything else. Avion points are flexible — book any flight with no blackout dates, transfer to airline partners (Aeroplan, British Airways, Cathay Pacific, WestJet), or redeem for merchandise/gift cards.",
+    "rewards_summary": "1.25x Avion points per $1 on travel, 1x on everything else. Avion points are flexible â€” book any flight with no blackout dates, transfer to airline partners (Aeroplan, British Airways, Cathay Pacific, WestJet), or redeem for merchandise/gift cards.",
     "rewards_detail": {
       "travel": {"rate": 1.25, "unit": "points_per_dollar"},
       "everything_else": {"rate": 1, "unit": "points_per_dollar"}

@@ -1,4 +1,4 @@
-﻿"""The /api/ask endpoint - main entry point for Q&A."""
+"""The /api/ask endpoint - main entry point for Q&A."""
 from fastapi import APIRouter, HTTPException
 from slowapi import Limiter
 from slowapi.util import get_remote_address

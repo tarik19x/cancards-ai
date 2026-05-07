@@ -1,4 +1,4 @@
-﻿"""One-shot script to ingest the card database into Pinecone.
+"""One-shot script to ingest the card database into Pinecone.
 
 Run with:  python -m scripts.ingest
 """

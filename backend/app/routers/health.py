@@ -1,4 +1,4 @@
-﻿"""Health check endpoints."""
+"""Health check endpoints."""
 from datetime import datetime, timezone
 from fastapi import APIRouter
 from app.models import HealthResponse

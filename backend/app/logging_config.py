@@ -1,4 +1,4 @@
-﻿"""Structured JSON logging configuration."""
+"""Structured JSON logging configuration."""
 import logging
 import sys
 

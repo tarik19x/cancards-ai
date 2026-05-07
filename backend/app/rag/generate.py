@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from app.clients.anthropic_client import generate_answer
 from app.logging_config import get_logger
 from app.models import AnswerResponse, CardRecommendation, Citation
+from langsmith import traceable
 
 log = get_logger(__name__)
 
@@ -90,7 +91,7 @@ def parse_response(raw: str) -> AnswerResponse:
         timestamp=datetime.now(timezone.utc),
     )
 
-
+@traceable(name="generate_response", run_type="chain")
 async def generate_response(question: str, chunks: list[dict]) -> AnswerResponse:
     """Full generation pipeline: prompt build, LLM call, parse."""
     user_prompt = build_user_prompt(question, chunks)
@@ -112,11 +113,11 @@ async def generate_response(question: str, chunks: list[dict]) -> AnswerResponse
 
 #_____________________________Overall Architecture___________________________
 # Retrieve relevant chunks
-#         ↓
+#         â†“
 # Ground the LLM
-#         ↓
+#         â†“
 # Generate structured answer
-#         ↓
+#         â†“
 # Validate output
-#         ↓
+#         â†“
 # Return typed response

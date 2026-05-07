@@ -1,4 +1,4 @@
-﻿"""Anthropic client for Claude (LLM)."""
+"""Anthropic client for Claude (LLM)."""
 from anthropic import AsyncAnthropic
 from tenacity import retry, stop_after_attempt, wait_exponential
 

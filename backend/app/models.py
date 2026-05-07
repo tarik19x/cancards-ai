@@ -1,4 +1,4 @@
-﻿"""Pydantic models for request/response shapes."""
+"""Pydantic models for request/response shapes."""
 from datetime import datetime
 from typing import Literal
 

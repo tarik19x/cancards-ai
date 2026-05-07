@@ -10,7 +10,7 @@
 # async def test():
 #     print("Calling OpenAI embeddings API...")
 #     vector = await embed_text("credit card with no foreign transaction fee")
-#     print(f"OpenAI OK — vector has {len(vector)} dimensions")
+#     print(f"OpenAI OK Ã¢â‚¬â€ vector has {len(vector)} dimensions")
 #     print(f"First 3 values: {vector[:3]}")
 
 # asyncio.run(test())
@@ -28,7 +28,7 @@
 #         user_prompt="Is this API working?",
 #         max_tokens=20
 #     )
-#     print(f"Anthropic OK — Claude replied: {answer}")
+#     print(f"Anthropic OK Ã¢â‚¬â€ Claude replied: {answer}")
 
 # asyncio.run(test())
 
@@ -40,9 +40,9 @@
 # print("Connecting to Pinecone...")
 # index = get_index()
 # stats = index.describe_index_stats()
-# print(f"Pinecone OK — connected to index")
+# print(f"Pinecone OK Ã¢â‚¬â€ connected to index")
 # print(f"Dimensions: {stats.dimension}")
-# print(f"Current vector count: {stats.total_vector_count} (0 is correct — ingestion hasn't run yet)")  # noqa: E501
+# print(f"Current vector count: {stats.total_vector_count} (0 is correct Ã¢â‚¬â€ ingestion hasn't run yet)")  # noqa: E501
 
 #_________________________________________Testing Ingestion.py_______________________________________
 
@@ -56,7 +56,7 @@
 # first_card = Card.model_validate(data[0])
 # chunks = card_to_chunks(first_card)
 
-# print(f"Chunking OK — {first_card.name} produced {len(chunks)} chunks:")
+# print(f"Chunking OK Ã¢â‚¬â€ {first_card.name} produced {len(chunks)} chunks:")
 # for chunk in chunks:
 #     print(f"  [{chunk['section']}] {chunk['text'][:80]}...")
 
@@ -69,9 +69,9 @@
 # count = stats.total_vector_count
 # print(f"Pinecone vector count: {count}")
 # if count == 25:
-#     print("PASS — all 25 chunks are stored in Pinecone")
+#     print("PASS Ã¢â‚¬â€ all 25 chunks are stored in Pinecone")
 # else:
-#     print(f"FAIL — expected 25, got {count}. Re-run: python -m scripts.ingest")
+#     print(f"FAIL Ã¢â‚¬â€ expected 25, got {count}. Re-run: python -m scripts.ingest")
 
 
 #__________________________________Pinecone live retrieval__________________________________________
