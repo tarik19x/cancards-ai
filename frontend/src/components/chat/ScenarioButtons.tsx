@@ -1,4 +1,4 @@
-﻿interface ScenarioButtonsProps {
+interface ScenarioButtonsProps {
   onSelect: (question: string) => void
   disabled?: boolean
 }
