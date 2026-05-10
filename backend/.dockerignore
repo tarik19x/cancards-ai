@@ -1,0 +1,35 @@
+﻿# Python virtual environment (large, not needed — Docker installs deps from requirements.txt)
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment files (secrets must NOT go into the image)
+.env
+.env.*
+*.env
+
+# Dev tools
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# Tests (not needed at runtime)
+tests/
+
+# Scripts (ingest is a one-time operation, not part of the server)
+scripts/
+
+# Documentation
+*.md
+
+# Git
+.git/
+.gitignore
+
+# uv lockfiles (not needed; requirements.txt handles deps)
+uv.lock
+.python-version

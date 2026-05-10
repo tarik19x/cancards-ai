@@ -21,12 +21,18 @@ anthropic==0.99.0
 anyio==4.13.0
     # via
     #   anthropic
+    #   claude-agent-sdk
     #   httpx
+    #   mcp
     #   openai
+    #   sse-starlette
     #   starlette
     #   watchfiles
 attrs==26.1.0
-    # via aiohttp
+    # via
+    #   aiohttp
+    #   jsonschema
+    #   referencing
 certifi==2026.4.22
     # via
     #   httpcore
@@ -34,8 +40,12 @@ certifi==2026.4.22
     #   pinecone
     #   pinecone-client
     #   requests
+cffi==2.0.0
+    # via cryptography
 charset-normalizer==3.4.7
     # via requests
+claude-agent-sdk==0.1.80
+    # via langsmith
 click==8.3.3
     # via uvicorn
 colorama==0.4.6
@@ -43,6 +53,8 @@ colorama==0.4.6
     #   click
     #   tqdm
     #   uvicorn
+cryptography==48.0.0
+    # via pyjwt
 deprecated==1.3.1
     # via limits
 distro==1.9.0
@@ -71,7 +83,10 @@ httpx==0.28.1
     #   langchain-pinecone
     #   langgraph-sdk
     #   langsmith
+    #   mcp
     #   openai
+httpx-sse==0.4.3
+    # via mcp
 idna==3.13
     # via
     #   anyio
@@ -86,6 +101,10 @@ jsonpatch==1.33
     # via langchain-core
 jsonpointer==3.1.1
     # via jsonpatch
+jsonschema==4.26.0
+    # via mcp
+jsonschema-specifications==2025.9.1
+    # via jsonschema
 langchain==1.2.17
     # via cancards-backend (pyproject.toml)
 langchain-anthropic==1.4.3
@@ -123,6 +142,12 @@ langsmith==0.8.0
     #   langchain-core
 limits==5.8.0
     # via slowapi
+markdown-it-py==4.2.0
+    # via rich
+mcp==1.27.1
+    # via claude-agent-sdk
+mdurl==0.1.2
+    # via markdown-it-py
 multidict==6.7.1
     # via
     #   aiohttp
@@ -146,7 +171,9 @@ packaging==24.2
     #   limits
     #   pinecone-plugin-assistant
 pinecone==7.3.0
-    # via langchain-pinecone
+    # via
+    #   cancards-backend (pyproject.toml)
+    #   langchain-pinecone
 pinecone-client==6.0.0
     # via cancards-backend (pyproject.toml)
 pinecone-plugin-assistant==1.8.0
@@ -159,6 +186,8 @@ propcache==0.4.1
     # via
     #   aiohttp
     #   yarl
+pycparser==3.0
+    # via cffi
 pydantic==2.13.3
     # via
     #   cancards-backend (pyproject.toml)
@@ -170,12 +199,19 @@ pydantic==2.13.3
     #   langchain-pinecone
     #   langgraph
     #   langsmith
+    #   mcp
     #   openai
     #   pydantic-settings
 pydantic-core==2.46.3
     # via pydantic
 pydantic-settings==2.14.0
-    # via cancards-backend (pyproject.toml)
+    # via
+    #   cancards-backend (pyproject.toml)
+    #   mcp
+pygments==2.20.0
+    # via rich
+pyjwt==2.12.1
+    # via mcp
 python-dateutil==2.9.0.post0
     # via
     #   pinecone
@@ -185,10 +221,18 @@ python-dotenv==1.2.2
     #   cancards-backend (pyproject.toml)
     #   pydantic-settings
     #   uvicorn
+python-multipart==0.0.27
+    # via mcp
+pywin32==311 ; sys_platform == "win32"
+    # via mcp
 pyyaml==6.0.3
     # via
     #   langchain-core
     #   uvicorn
+referencing==0.37.0
+    # via
+    #   jsonschema
+    #   jsonschema-specifications
 regex==2026.4.4
     # via tiktoken
 requests==2.33.1
@@ -199,6 +243,12 @@ requests==2.33.1
     #   tiktoken
 requests-toolbelt==1.0.0
     # via langsmith
+rich==15.0.0
+    # via cancards-backend (pyproject.toml)
+rpds-py==0.30.0
+    # via
+    #   jsonschema
+    #   referencing
 simsimd==6.5.16
     # via langchain-pinecone
 six==1.17.0
@@ -208,9 +258,15 @@ slowapi==0.1.9
 sniffio==1.3.1
     # via
     #   anthropic
+    #   claude-agent-sdk
     #   openai
+sse-starlette==3.4.2
+    # via mcp
 starlette==1.0.0
-    # via fastapi
+    # via
+    #   fastapi
+    #   mcp
+    #   sse-starlette
 structlog==25.5.0
     # via cancards-backend (pyproject.toml)
 tenacity==9.1.4
@@ -230,16 +286,19 @@ typing-extensions==4.15.0
     #   langchain-core
     #   langchain-protocol
     #   limits
+    #   mcp
     #   openai
     #   pinecone
     #   pinecone-client
     #   pydantic
     #   pydantic-core
+    #   referencing
     #   starlette
     #   typing-inspection
 typing-inspection==0.4.2
     # via
     #   fastapi
+    #   mcp
     #   pydantic
     #   pydantic-settings
 urllib3==2.6.3
@@ -252,7 +311,9 @@ uuid-utils==0.14.1
     #   langchain-core
     #   langsmith
 uvicorn==0.46.0
-    # via cancards-backend (pyproject.toml)
+    # via
+    #   cancards-backend (pyproject.toml)
+    #   mcp
 watchfiles==1.1.1
     # via uvicorn
 websockets==16.0

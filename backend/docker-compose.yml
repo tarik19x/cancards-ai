@@ -1,0 +1,37 @@
+﻿version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      # Build for linux/amd64 even on Windows/Mac so the image matches App Runner
+      platforms:
+        - linux/amd64
+    image: cancards-backend:local
+    ports:
+      - "8000:8000"
+    environment:
+      # All secrets injected at runtime from a .env file — never baked into the image
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - PINECONE_INDEX_NAME=${PINECONE_INDEX_NAME:-cancards-index}
+      - PINECONE_CLOUD=${PINECONE_CLOUD:-aws}
+      - PINECONE_REGION=${PINECONE_REGION:-us-east-1}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-text-embedding-3-small}
+      - LLM_MODEL=${LLM_MODEL:-claude-sonnet-4-6}
+      - LLM_PROVIDER=${LLM_PROVIDER:-anthropic}
+      - LANGSMITH_API_KEY=${LANGSMITH_API_KEY}
+      - LANGSMITH_PROJECT=${LANGSMITH_PROJECT:-cancards-ai}
+      - LANGSMITH_TRACING=${LANGSMITH_TRACING:-true}
+      - APP_ENV=production
+      - ALLOWED_ORIGINS=http://localhost:3000
+      - LOG_LEVEL=INFO
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
