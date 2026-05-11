@@ -43,3 +43,6 @@ coverage.xml
 
 # uv
 .python-version
+
+backend/containers.json
+backend/endpoint.json

@@ -1,5 +1,0 @@
-{
-  "containerName": "app",
-  "containerPort": 8000,
-  "healthCheck": {"path": "/health"}
-}
