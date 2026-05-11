@@ -46,3 +46,8 @@ coverage.xml
 
 backend/containers.json
 backend/endpoint.json
+.vercel
+.env*.local
+
+backend/containers.json
+backend/endpoint.json
