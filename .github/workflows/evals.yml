@@ -1,0 +1,53 @@
+name: RAG Quality Evals
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Number of questions (leave blank for all 30)"
+        required: false
+        default: ""
+
+jobs:
+  ragas-eval:
+    name: RAGAS Evaluation
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v4
+        with:
+          version: "0.5.x"
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install dependencies
+        run: uv sync --dev
+
+      - name: Run RAGAS evaluations
+        run: |
+          LIMIT="${{ github.event.inputs.limit }}"
+          if [ -n "$LIMIT" ]; then
+            uv run python tests/evals/run_evals.py --limit "$LIMIT"
+          else
+            uv run python tests/evals/run_evals.py
+          fi
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
+          PINECONE_INDEX_NAME: cancards-index
+          PINECONE_CLOUD: aws
+          PINECONE_REGION: us-east-1
+          EMBEDDING_MODEL: text-embedding-3-small
+          LLM_MODEL: claude-sonnet-4-6
+          LLM_PROVIDER: anthropic
+          LANGSMITH_API_KEY: ${{ secrets.LANGSMITH_API_KEY }}
+          LANGSMITH_TRACING: "false"
