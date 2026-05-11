@@ -1,5 +1,5 @@
 """
-RAGAS evaluation runner for CanCards AI. v2 - ragas 0.2.x API
+RAGAS evaluation runner for CanCards AI.
 
 Usage:
   python tests/evals/run_evals.py --save-baseline
@@ -30,12 +30,13 @@ REGRESSION_THRESHOLD = 0.05
 async def run_single(question: str) -> dict:
     chunks = await retrieve_chunks(question, top_k=12)
     if not chunks:
-        return {"question": question, "answer": "No relevant information found.", "contexts": []}
+        return {"question": question, "answer": "No relevant information found.", "contexts": [], "ground_truth": ""}
     response = await generate_response(question, chunks)
     return {
         "question": question,
         "answer": response.answer_markdown,
         "contexts": [c["metadata"]["text"] for c in chunks],
+        "ground_truth": "",
     }
 
 
@@ -53,27 +54,33 @@ async def run_eval(questions: list, limit: int | None = None) -> list:
 
 def compute_ragas_scores(results: list) -> dict:
     try:
-        from datasets import Dataset
-        from ragas import evaluate
-        from ragas.metrics.collections import (
-            context_precision,
-            faithfulness,
-        )
-        from ragas.llms import LangchainLLMWrapper
-        from langchain_openai import ChatOpenAI
-    except ImportError:
-        print("ERROR: RAGAS not installed. Run: uv add --dev ragas datasets")
+        from ragas import evaluate, EvaluationDataset, SingleTurnSample
+        from ragas.metrics import Faithfulness, ContextPrecision
+        from ragas.llms import llm_factory
+        from openai import OpenAI
+    except ImportError as e:
+        print(f"ERROR: Missing dependency: {e}")
         sys.exit(1)
 
-    # Explicitly configure LLM to avoid version mismatch issues
-    llm = LangchainLLMWrapper(ChatOpenAI(model="gpt-4o-mini", temperature=0))
-    faithfulness.llm = llm
-    context_precision.llm = llm
+    llm = llm_factory("gpt-4o-mini", client=OpenAI())
 
-    dataset = Dataset.from_list(results)
+    faithfulness_metric = Faithfulness(llm=llm)
+    context_precision_metric = ContextPrecision(llm=llm)
+
+    samples = [
+        SingleTurnSample(
+            user_input=r["question"],
+            response=r["answer"],
+            retrieved_contexts=r["contexts"],
+            reference=r["ground_truth"],
+        )
+        for r in results
+    ]
+    eval_dataset = EvaluationDataset(samples=samples)
+
     scores = evaluate(
-        dataset=dataset,
-        metrics=[faithfulness, context_precision],
+        dataset=eval_dataset,
+        metrics=[faithfulness_metric, context_precision_metric],
     )
 
     def safe_float(val: object) -> float:
