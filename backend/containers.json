@@ -1,0 +1,23 @@
+{
+  "app": {
+    "image": ":cancards-backend.app.1",
+    "ports": {"8000": "HTTP"},
+    "environment": {
+      "OPENAI_API_KEY": "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",
+      "ANTHROPIC_API_KEY": "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",
+      "PINECONE_API_KEY": "pcsk_dCqGh_HqnMfvi3QSPWTRMbZZHtVTNM26jjFWo6uMwMG8caVq3XT4HotCmE4aifEFKqc6W",
+      "PINECONE_INDEX_NAME": "cancards-index",
+      "PINECONE_CLOUD": "aws",
+      "PINECONE_REGION": "us-east-1",
+      "EMBEDDING_MODEL": "text-embedding-3-small",
+      "LLM_MODEL": "claude-sonnet-4-6",
+      "LLM_PROVIDER": "anthropic",
+      "LANGSMITH_API_KEY": "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",
+      "LANGSMITH_PROJECT": "cancards-ai",
+      "LANGSMITH_TRACING": "true",
+      "APP_ENV": "production",
+      "LOG_LEVEL": "INFO",
+      "ALLOWED_ORIGINS": "https://cancards-ai.vercel.app"
+    }
+  }
+}
