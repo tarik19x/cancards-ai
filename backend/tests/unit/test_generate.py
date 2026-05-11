@@ -1,4 +1,4 @@
-﻿"""Unit tests for parse_response and build_user_prompt."""
+"""Unit tests for parse_response and build_user_prompt."""
 
 import json
 from datetime import datetime

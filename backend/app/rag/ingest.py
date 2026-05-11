@@ -1,4 +1,4 @@
-﻿"""Ingest the card database into Pinecone.
+"""Ingest the card database into Pinecone.
 
 Each card becomes 5 chunks:
   - overview (name, issuer, fee, summary, best_for)

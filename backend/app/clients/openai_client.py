@@ -1,4 +1,4 @@
-﻿"""OpenAI client for embeddings."""
+"""OpenAI client for embeddings."""
 
 from openai import AsyncOpenAI
 from tenacity import retry, stop_after_attempt, wait_exponential

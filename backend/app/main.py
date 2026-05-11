@@ -1,4 +1,4 @@
-﻿"""FastAPI application entry point."""
+"""FastAPI application entry point."""
 
 import os
 
@@ -41,7 +41,7 @@ app.add_middleware(
 
 # Rate limiting handler
 app.state.limiter = ask.limiter
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler) # type: ignore[arg-type]
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)  # type: ignore[arg-type]
 
 # Routers
 app.include_router(health.router)

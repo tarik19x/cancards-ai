@@ -1,4 +1,4 @@
-﻿"""Application configuration loaded from environment variables."""
+"""Application configuration loaded from environment variables."""
 
 from functools import lru_cache
 

@@ -1,4 +1,4 @@
-﻿"""Generate cited answers from retrieved chunks using Claude."""
+"""Generate cited answers from retrieved chunks using Claude."""
 
 import json
 import uuid
