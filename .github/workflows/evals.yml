@@ -14,9 +14,6 @@ jobs:
   ragas-eval:
     name: RAGAS Evaluation
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: backend
 
     steps:
       - uses: actions/checkout@v4
@@ -29,15 +26,17 @@ jobs:
         run: uv python install 3.12
 
       - name: Install dependencies
+        working-directory: backend
         run: uv sync --dev
 
       - name: Run RAGAS evaluations
+        working-directory: backend
         run: |
           LIMIT="${{ github.event.inputs.limit }}"
           if [ -n "$LIMIT" ]; then
-            uv run python tests/evals/run_evals.py --limit "$LIMIT"
+            uv run python ../tests/evals/run_evals.py --limit "$LIMIT"
           else
-            uv run python tests/evals/run_evals.py
+            uv run python ../tests/evals/run_evals.py
           fi
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
