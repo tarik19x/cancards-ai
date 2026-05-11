@@ -55,25 +55,22 @@ def compute_ragas_scores(results: list) -> dict:
     try:
         from datasets import Dataset
         from ragas import evaluate
-        from ragas.metrics.collections import (
-            context_precision,
-            faithfulness,
-        )
-        from ragas.llms import LangchainLLMWrapper
-        from langchain_openai import ChatOpenAI
+        from ragas.metrics.collections import Faithfulness, ContextPrecision
+        from openai import OpenAI
+        from ragas.llms import llm_factory
     except ImportError:
         print("ERROR: RAGAS not installed. Run: uv add --dev ragas datasets")
         sys.exit(1)
 
-    # Explicitly configure LLM to avoid version mismatch issues
-    llm = LangchainLLMWrapper(ChatOpenAI(model="gpt-4o-mini", temperature=0))
-    faithfulness.llm = llm
-    context_precision.llm = llm
+    llm = llm_factory("gpt-4o-mini", client=OpenAI())
+
+    faithfulness_metric = Faithfulness(llm=llm)
+    context_precision_metric = ContextPrecision(llm=llm)
 
     dataset = Dataset.from_list(results)
     scores = evaluate(
         dataset=dataset,
-        metrics=[faithfulness, context_precision],
+        metrics=[faithfulness_metric, context_precision_metric],
     )
 
     def safe_float(val: object) -> float:
