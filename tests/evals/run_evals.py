@@ -1,5 +1,5 @@
 """
-RAGAS evaluation runner for CanCards AI.
+RAGAS evaluation runner for CanCards AI. v2 - ragas 0.2.x API
 
 Usage:
   python tests/evals/run_evals.py --save-baseline
@@ -55,22 +55,25 @@ def compute_ragas_scores(results: list) -> dict:
     try:
         from datasets import Dataset
         from ragas import evaluate
-        from ragas.metrics.collections import Faithfulness, ContextPrecision
-        from openai import OpenAI
-        from ragas.llms import llm_factory
+        from ragas.metrics.collections import (
+            context_precision,
+            faithfulness,
+        )
+        from ragas.llms import LangchainLLMWrapper
+        from langchain_openai import ChatOpenAI
     except ImportError:
         print("ERROR: RAGAS not installed. Run: uv add --dev ragas datasets")
         sys.exit(1)
 
-    llm = llm_factory("gpt-4o-mini", client=OpenAI())
-
-    faithfulness_metric = Faithfulness(llm=llm)
-    context_precision_metric = ContextPrecision(llm=llm)
+    # Explicitly configure LLM to avoid version mismatch issues
+    llm = LangchainLLMWrapper(ChatOpenAI(model="gpt-4o-mini", temperature=0))
+    faithfulness.llm = llm
+    context_precision.llm = llm
 
     dataset = Dataset.from_list(results)
     scores = evaluate(
         dataset=dataset,
-        metrics=[faithfulness_metric, context_precision_metric],
+        metrics=[faithfulness, context_precision],
     )
 
     def safe_float(val: object) -> float:

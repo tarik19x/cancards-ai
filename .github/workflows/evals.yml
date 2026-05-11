@@ -29,6 +29,29 @@ jobs:
         working-directory: backend
         run: uv sync --dev
 
+      - name: Check ragas version and API
+        working-directory: backend
+        run: |
+          uv run python -c "
+          import ragas
+          print('ragas version:', ragas.__version__)
+          try:
+              from ragas import EvaluationDataset, SingleTurnSample
+              print('EvaluationDataset: OK')
+          except ImportError as e:
+              print('EvaluationDataset: MISSING -', e)
+          try:
+              from ragas.metrics import Faithfulness, ContextPrecision
+              print('Faithfulness class: OK')
+          except ImportError as e:
+              print('Faithfulness class: MISSING -', e)
+          try:
+              from ragas.llms import llm_factory
+              print('llm_factory: OK')
+          except ImportError as e:
+              print('llm_factory: MISSING -', e)
+          "
+
       - name: Run RAGAS evaluations
         working-directory: backend
         run: |
