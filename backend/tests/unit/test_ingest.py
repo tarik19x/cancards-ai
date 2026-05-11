@@ -1,10 +1,12 @@
-﻿"""Unit tests for card_to_chunks — no API calls, no Pinecone."""
+"""Unit tests for card_to_chunks — no API calls, no Pinecone."""
+
 import json
 from pathlib import Path
+
 import pytest
+
 from app.models import Card
 from app.rag.ingest import card_to_chunks
-
 
 CARDS_PATH = Path(__file__).resolve().parents[2] / "data" / "cards.json"
 
@@ -44,7 +46,15 @@ def test_chunk_ids_include_card_id(amex_cobalt):
 
 def test_chunk_metadata_has_required_fields(amex_cobalt):
     chunks = card_to_chunks(amex_cobalt)
-    required_fields = {"card_id", "card_name", "issuer", "network", "annual_fee_cad", "section", "text"}
+    required_fields = {
+        "card_id",
+        "card_name",
+        "issuer",
+        "network",
+        "annual_fee_cad",
+        "section",
+        "text",
+    }
     for chunk in chunks:
         assert required_fields.issubset(chunk["metadata"].keys()), (
             f"Chunk {chunk['id']} missing fields: {required_fields - chunk['metadata'].keys()}"

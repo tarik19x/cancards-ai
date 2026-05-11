@@ -1,4 +1,5 @@
 """Pinecone client for vector storage and retrieval."""
+
 from pinecone import Pinecone, ServerlessSpec
 from tenacity import retry, stop_after_attempt, wait_exponential
 

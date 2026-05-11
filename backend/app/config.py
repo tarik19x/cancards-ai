@@ -1,4 +1,5 @@
-"""Application configuration loaded from environment variables."""
+﻿"""Application configuration loaded from environment variables."""
+
 from functools import lru_cache
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -45,4 +46,4 @@ class Settings(BaseSettings):
 @lru_cache
 def get_settings() -> Settings:
     """Cached settings instance â€” only reads .env once per process."""
-    return Settings()
+    return Settings()  # type: ignore[call-arg]

@@ -33,7 +33,7 @@
 # asyncio.run(test())
 
 
-#_____________________________________Pinecone client connects_______________________________________
+#_____________________________________Pinecone client connects___________________________________
 
 # from app.clients.pinecone_client import get_index
 
@@ -44,8 +44,7 @@
 # print(f"Dimensions: {stats.dimension}")
 # print(f"Current vector count: {stats.total_vector_count} (0 is correct Ã¢â‚¬â€ ingestion hasn't run yet)")  # noqa: E501
 
-#_________________________________________Testing Ingestion.py_______________________________________
-
+#_________________________________________Testing Ingestion.py__________________________________
 # import json
 # from pathlib import Path
 
@@ -61,7 +60,7 @@
 #     print(f"  [{chunk['section']}] {chunk['text'][:80]}...")
 
 
-#__________________________________________Retrieving Data from Pinecone_______________________________
+#__________________________________________Retrieving Data from Pinecone_______________________
 # from app.clients.pinecone_client import get_index
 
 # index = get_index()
@@ -76,13 +75,19 @@
 
 #__________________________________Pinecone live retrieval__________________________________________
 import asyncio
+
 from app.rag.retrieve import retrieve_chunks
+
 
 async def test():
     print("Querying Pinecone for 'Travel Insurance'...")
     chunks = await retrieve_chunks("Travel Insurance", top_k=3)
     print(f"Retrieved {len(chunks)} chunks:")
     for c in chunks:
-        print(f"  Score: {c['score']:.3f} | {c['metadata']['card_name']} | section: {c['metadata']['section']}")
+        print(
+        f"  Score: {c['score']:.3f} | "
+        f"{c['metadata']['card_name']} | "
+        f"section: {c['metadata']['section']}"
+        )
 
 asyncio.run(test())

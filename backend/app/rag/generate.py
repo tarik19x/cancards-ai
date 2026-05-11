@@ -1,19 +1,22 @@
 ﻿"""Generate cited answers from retrieved chunks using Claude."""
+
 import json
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
+
+from langsmith import traceable
 
 from app.clients.anthropic_client import generate_answer
 from app.logging_config import get_logger
 from app.models import AnswerResponse, CardRecommendation, Citation
-from langsmith import traceable
 
 log = get_logger(__name__)
 
 
 SYSTEM_PROMPT = """You are CanCards AI, an expert assistant on Canadian credit cards.
 
-Your job is to answer the user's question using ONLY the card information provided in the CONTEXT below. Never invent facts. If the context doesn't contain the answer, say so honestly.
+Your job is to answer the user's question using ONLY the card information provided in the CONTEXT below.
+Never invent facts. If the context doesn't contain the answer, say so honestly.
 
 Output a single JSON object matching this exact schema (no preamble, no code fences):
 {
@@ -42,9 +45,11 @@ Rules:
 - Recommend at most 3 cards, ranked best-first.
 - Every recommended card MUST also appear in citations.
 - Only mention cards that appear in the CONTEXT. Never make up cards.
-- If the user's question can't be answered from the context, return an empty recommended_cards list and explain in answer_markdown.
+- If the user's question can't be answered from the context,
+  return an empty recommended_cards list and explain in
+  answer_markdown.
 - Keep answer_markdown concise.
-"""
+"""  # noqa: E501
 
 
 def build_user_prompt(question: str, chunks: list[dict]) -> str:
@@ -61,7 +66,7 @@ def build_user_prompt(question: str, chunks: list[dict]) -> str:
     return f"CONTEXT:\n{context_str}\n\nUSER QUESTION:\n{question}"
 
 
-#____________________________Output Simulation_____________________________________
+# ____________________________Output Simulation_____________________________________
 # CONTEXT:
 
 # [1] card_id=amex_gold | card_name=Amex Gold | issuer=Amex | section=rewards
@@ -88,8 +93,9 @@ def parse_response(raw: str) -> AnswerResponse:
         citations=[Citation(**c) for c in data.get("citations", [])],
         confidence_notes=data.get("confidence_notes"),
         response_id=str(uuid.uuid4()),
-        timestamp=datetime.now(timezone.utc),
+        timestamp=datetime.now(UTC),
     )
+
 
 @traceable(name="generate_response", run_type="chain")
 async def generate_response(question: str, chunks: list[dict]) -> AnswerResponse:
@@ -107,11 +113,11 @@ async def generate_response(question: str, chunks: list[dict]) -> AnswerResponse
             citations=[],
             confidence_notes="Parse error - showing raw response.",
             response_id=str(uuid.uuid4()),
-            timestamp=datetime.now(timezone.utc),
+            timestamp=datetime.now(UTC),
         )
 
 
-#_____________________________Overall Architecture___________________________
+# _____________________________Overall Architecture___________________________
 # Retrieve relevant chunks
 #         â†“
 # Ground the LLM

@@ -1,4 +1,4 @@
-"""Ingest the card database into Pinecone.
+﻿"""Ingest the card database into Pinecone.
 
 Each card becomes 5 chunks:
   - overview (name, issuer, fee, summary, best_for)
@@ -7,8 +7,10 @@ Each card becomes 5 chunks:
   - insurance (full insurance breakdown)
   - eligibility (income, credit score)
 """
+
 import json
 from pathlib import Path
+from typing import Any
 
 from app.clients.openai_client import embed_batch
 from app.clients.pinecone_client import upsert_vectors
@@ -18,7 +20,7 @@ from app.models import Card
 log = get_logger(__name__)
 
 
-def card_to_chunks(card: Card) -> list[dict]:
+def card_to_chunks(card: Card) -> list[dict[str, Any]]:
     """Convert a Card into multiple text chunks with metadata."""
     base_meta = {
         "card_id": card.card_id,
@@ -29,7 +31,7 @@ def card_to_chunks(card: Card) -> list[dict]:
         "official_url": card.official_url,
     }
 
-    chunks = [
+    chunks: list[dict[str, Any]] = [
         {
             "id": f"{card.card_id}::overview",
             "text": (
@@ -68,7 +70,8 @@ def card_to_chunks(card: Card) -> list[dict]:
                 + (f" (or ${card.monthly_fee_cad}/month)." if card.monthly_fee_cad else ".")
                 + f" Foreign transaction fee: {card.foreign_transaction_fee_pct}%."
                 + (
-                    " This card has NO foreign transaction fee, making it strong for travel and online USD purchases."
+                    " This card has NO foreign transaction fee, "
+                    "making it strong for travel and online USD purchases."
                     if card.foreign_transaction_fee_pct == 0
                     else ""
                 )
@@ -124,7 +127,7 @@ async def ingest_cards(cards_path: Path) -> int:
         all_chunks.extend(card_to_chunks(card))
     log.info("built_chunks", count=len(all_chunks))
 
-    texts = [c["text"] for c in all_chunks]
+    texts = [str(c["text"]) for c in all_chunks]
     embeddings = []
     for i in range(0, len(texts), 100):
         batch = texts[i : i + 100]

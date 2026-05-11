@@ -1,10 +1,12 @@
 """Pydantic models for request/response shapes."""
+
 from datetime import datetime
 from typing import Literal
 
 from pydantic import BaseModel, Field
 
 # ============== Card Database Models ==============
+
 
 class RewardCategory(BaseModel):
     rate: float
@@ -49,6 +51,7 @@ class Card(BaseModel):
 
 
 # ============== API Request/Response Models ==============
+
 
 class AskRequest(BaseModel):
     question: str = Field(..., min_length=3, max_length=500)

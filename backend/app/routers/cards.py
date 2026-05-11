@@ -1,9 +1,11 @@
 """Endpoints for listing card data (used by frontend directory)."""
+
 import json
-from pathlib import Path
 from functools import lru_cache
+from pathlib import Path
 
 from fastapi import APIRouter, HTTPException
+
 from app.models import Card
 
 router = APIRouter(prefix="/api/cards", tags=["cards"])

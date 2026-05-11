@@ -1,4 +1,4 @@
-﻿"""The /api/ask endpoint - main entry point for Q&A."""
+"""The /api/ask endpoint - main entry point for Q&A."""
 
 # """
 # Frontend/User

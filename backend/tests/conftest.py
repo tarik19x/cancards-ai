@@ -1,6 +1,6 @@
-﻿"""Shared pytest configuration — sets dummy env vars so no real API keys are needed."""
+"""Shared pytest configuration — sets dummy env vars so no real API keys are needed."""
+
 import os
-import pytest
 
 # Set these before any app code imports (which triggers pydantic-settings validation)
 os.environ.setdefault("OPENAI_API_KEY", "sk-test-openai")

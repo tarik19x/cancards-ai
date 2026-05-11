@@ -1,8 +1,10 @@
 """Retrieve relevant card chunks from Pinecone given a user question."""
+
+from langsmith import traceable
+
 from app.clients.openai_client import embed_text
 from app.clients.pinecone_client import query_vectors
 from app.logging_config import get_logger
-from langsmith import traceable
 
 log = get_logger(__name__)
 

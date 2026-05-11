@@ -1,4 +1,5 @@
 """Anthropic client for Claude (LLM)."""
+
 from anthropic import AsyncAnthropic
 from tenacity import retry, stop_after_attempt, wait_exponential
 
@@ -30,9 +31,7 @@ async def generate_answer(
         system=system_prompt,
         messages=[{"role": "user", "content": user_prompt}],
     )
-    return "".join(
-        block.text for block in response.content if hasattr(block, "text")
-    )
+    return "".join(block.text for block in response.content if hasattr(block, "text"))
 
 
 async def stream_answer(

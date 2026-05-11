@@ -1,8 +1,9 @@
 ﻿"""OpenAI client for embeddings."""
+
 from openai import AsyncOpenAI
 from tenacity import retry, stop_after_attempt, wait_exponential
-from app.config import get_settings
 
+from app.config import get_settings
 
 _client: AsyncOpenAI | None = None
 
@@ -26,15 +27,22 @@ async def embed_text(text: str) -> list[float]:
     )
     return response.data[0].embedding
 
+
 # """
 # @retry(stop=stop_after_attempt(3), wait=wait_exponential(min=1, max=8))
-# This one line of code separates junior projects from senior-level engineering. We are using a library called Tenacity.
+# This one line of code separates junior projects from senior-level engineering.
+# We are using a library called Tenacity.
 
-# The internet is flaky. Sometimes a packet drops, or OpenAI's servers have a 1-second hiccup. If we didn't have this line, your app would instantly crash and show the user an ugly "500 Internal Server Error."
+# The internet is flaky. Sometimes a packet drops, or OpenAI's servers have a 1-second hiccup.
+# If we didn't have this line,
+# your app would instantly crash and show the user an ugly "500 Internal Server Error."
 
-# This decorator tells our app: "If OpenAI gives an error, don't crash. Wait 1 second and try again. If it fails again, wait 2 seconds. 
-# If it fails again, wait 4 seconds." This is called Exponential Backoff. It silently handles temporary network glitches behind the 
+# This decorator tells our app: "If OpenAI gives an error, don't crash. Wait 1 second and try again.
+# If it fails again, wait 2 seconds.
+# If it fails again, wait 4 seconds." This is called Exponential Backoff.
+# It silently handles temporary network glitches behind the
 # scenes so the user never even notices.
+
 
 # """
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(min=1, max=8))

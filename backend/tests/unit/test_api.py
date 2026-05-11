@@ -1,14 +1,16 @@
-﻿"""Integration tests for FastAPI endpoints using httpx (no real external calls)."""
-import json
-from datetime import datetime, timezone
-from unittest.mock import AsyncMock, patch, MagicMock
+"""Integration tests for FastAPI endpoints using httpx (no real external calls)."""
+
+from datetime import UTC, datetime
+from unittest.mock import AsyncMock, patch
+
 import pytest
-from httpx import AsyncClient, ASGITransport
+from httpx import ASGITransport, AsyncClient
+
 from app.main import app
 from app.models import AnswerResponse, CardRecommendation, Citation
 
-
 # ─── Fixtures ────────────────────────────────────────────────────────────────
+
 
 @pytest.fixture
 def mock_answer_response():
@@ -20,7 +22,7 @@ def mock_answer_response():
                 card_name="Scotiabank Passport Visa Infinite",
                 annual_fee_cad=150.0,
                 why="Zero FX fee.",
-                key_benefits=["0% FX fee"]
+                key_benefits=["0% FX fee"],
             )
         ],
         citations=[
@@ -28,16 +30,17 @@ def mock_answer_response():
                 card_id="scotia-passport-vi",
                 card_name="Scotiabank Passport Visa Infinite",
                 issuer="Scotiabank",
-                section="fees"
+                section="fees",
             )
         ],
         confidence_notes="Verified 2026-05-04",
         response_id="test-uuid",
-        timestamp=datetime.now(timezone.utc),
+        timestamp=datetime.now(UTC),
     )
 
 
 # ─── Health ───────────────────────────────────────────────────────────────────
+
 
 @pytest.mark.asyncio
 async def test_health_returns_ok():
@@ -51,6 +54,7 @@ async def test_health_returns_ok():
 
 
 # ─── Cards ───────────────────────────────────────────────────────────────────
+
 
 @pytest.mark.asyncio
 async def test_list_cards_returns_five():
@@ -80,6 +84,7 @@ async def test_get_unknown_card_returns_404():
 
 # ─── Ask ─────────────────────────────────────────────────────────────────────
 
+
 @pytest.mark.asyncio
 async def test_ask_returns_valid_response(mock_answer_response):
     with (
@@ -91,8 +96,7 @@ async def test_ask_returns_valid_response(mock_answer_response):
 
         async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
             response = await client.post(
-                "/api/ask",
-                json={"question": "Which card has no foreign transaction fee?"}
+                "/api/ask", json={"question": "Which card has no foreign transaction fee?"}
             )
 
     assert response.status_code == 200
@@ -117,8 +121,7 @@ async def test_ask_returns_404_when_no_chunks_found():
 
         async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
             response = await client.post(
-                "/api/ask",
-                json={"question": "What is the meaning of life?"}
+                "/api/ask", json={"question": "What is the meaning of life?"}
             )
 
     assert response.status_code == 404

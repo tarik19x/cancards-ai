@@ -1,8 +1,9 @@
 ﻿"""FastAPI application entry point."""
+
 import os
 
 from fastapi import FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware #Cross-Origin Resource Sharing (CORS)
+from fastapi.middleware.cors import CORSMiddleware  # Cross-Origin Resource Sharing (CORS)
 from fastapi.responses import JSONResponse
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
@@ -40,7 +41,7 @@ app.add_middleware(
 
 # Rate limiting handler
 app.state.limiter = ask.limiter
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler) # type: ignore[arg-type]
 
 # Routers
 app.include_router(health.router)
