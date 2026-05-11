@@ -1,10 +1,12 @@
 """
 RAGAS evaluation runner for CanCards AI.
 
-Usage:
-  python tests/evals/run_evals.py --save-baseline
-  python tests/evals/run_evals.py --limit 5
-  python tests/evals/run_evals.py
+IMPORTANT: This script runs in CI (GitHub Actions on Ubuntu) only.
+Do NOT run locally on Windows — RAGAS has an unfixable Windows bug in the dill package.
+
+Usage in CI (triggered via GitHub Actions):
+  --save-baseline  Save current scores as the new baseline
+  --limit N        Only run N questions (faster for testing)
 """
 import argparse
 import asyncio
@@ -13,6 +15,10 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+# Add backend/ to sys.path so we can import app modules
+# __file__ = tests/evals/run_evals.py
+# parents[2] = repo root (cancards-ai/)
+# parents[2] / "backend" = cancards-ai/backend/
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
 
 from app.logging_config import configure_logging, get_logger
@@ -30,13 +36,18 @@ REGRESSION_THRESHOLD = 0.05
 async def run_single(question: str) -> dict:
     chunks = await retrieve_chunks(question, top_k=12)
     if not chunks:
-        return {"question": question, "answer": "No relevant information found.", "contexts": [], "ground_truth": ""}
+        return {
+            "question": question,
+            "answer": "No relevant information found.",
+            "contexts": [],
+            "ground_truth": "",
+        }
     response = await generate_response(question, chunks)
     return {
         "question": question,
         "answer": response.answer_markdown,
         "contexts": [c["metadata"]["text"] for c in chunks],
-        "ground_truth": "",
+        "ground_truth": "",  # filled in by run_eval
     }
 
 
@@ -53,20 +64,34 @@ async def run_eval(questions: list, limit: int | None = None) -> list:
 
 
 def compute_ragas_scores(results: list) -> dict:
+    """
+    Uses ragas 0.2.x API.
+
+    Key changes from older ragas:
+    - EvaluationDataset + SingleTurnSample (not HuggingFace Dataset)
+    - llm_factory (not LangchainLLMWrapper — deprecated)
+    - Faithfulness, ContextPrecision as class instances (not module-level objects)
+    - Imports from ragas.metrics.collections (not ragas.metrics)
+    - answer_relevancy removed — causes embed_query timeout in this version combo
+    """
     try:
         from ragas import evaluate, EvaluationDataset, SingleTurnSample
-        from ragas.metrics import Faithfulness, ContextPrecision
+        from ragas.metrics.collections import Faithfulness, ContextPrecision
         from ragas.llms import llm_factory
         from openai import OpenAI
     except ImportError as e:
         print(f"ERROR: Missing dependency: {e}")
+        print("Make sure ragas is in pyproject.toml dev dependencies and uv.lock is up to date.")
         sys.exit(1)
 
+    # Configure LLM explicitly — prevents ragas from auto-detecting wrong versions
     llm = llm_factory("gpt-4o-mini", client=OpenAI())
 
+    # Instantiate metrics — passing uninstantiated classes causes TypeError
     faithfulness_metric = Faithfulness(llm=llm)
     context_precision_metric = ContextPrecision(llm=llm)
 
+    # Build ragas 0.2.x dataset — Dataset.from_list() no longer accepted
     samples = [
         SingleTurnSample(
             user_input=r["question"],
@@ -84,6 +109,7 @@ def compute_ragas_scores(results: list) -> dict:
     )
 
     def safe_float(val: object) -> float:
+        """Handle both float and list return types from ragas."""
         if isinstance(val, list):
             valid = [v for v in val if v is not None]
             return float(sum(valid) / len(valid)) if valid else 0.0
@@ -122,8 +148,10 @@ def print_scores(scores: dict, label: str = "Scores") -> None:
 
 async def main() -> None:
     parser = argparse.ArgumentParser(description="Run RAGAS evals for CanCards AI")
-    parser.add_argument("--save-baseline", action="store_true")
-    parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--save-baseline", action="store_true",
+                        help="Save current scores as the baseline")
+    parser.add_argument("--limit", type=int, default=None,
+                        help="Limit number of questions (faster for testing)")
     args = parser.parse_args()
 
     ground_truth = json.loads(GROUND_TRUTH_PATH.read_text(encoding="utf-8"))
@@ -146,6 +174,13 @@ async def main() -> None:
         return
 
     baseline = json.loads(BASELINE_PATH.read_text(encoding="utf-8"))
+
+    # Skip regression check if baseline is a placeholder
+    if baseline.get("question_count", 0) == 0:
+        print("Baseline is placeholder. Saving current scores as real baseline...")
+        BASELINE_PATH.write_text(json.dumps(scores, indent=2), encoding="utf-8")
+        return
+
     print_scores(baseline, label="Baseline Scores")
 
     regressions = check_regression(scores, baseline)
@@ -153,6 +188,8 @@ async def main() -> None:
         print("FAIL - Quality regression detected:")
         for msg in regressions:
             print(msg)
+        print("\nTo update the baseline if this regression is acceptable:")
+        print("  Trigger the eval workflow with save_baseline=yes")
         sys.exit(1)
     else:
         print("PASS - No regressions detected.")

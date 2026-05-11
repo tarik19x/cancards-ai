@@ -9,6 +9,10 @@ on:
         description: "Number of questions (leave blank for all 30)"
         required: false
         default: ""
+      save_baseline:
+        description: "Save scores as new baseline? (yes/no)"
+        required: false
+        default: "no"
 
 jobs:
   ragas-eval:
@@ -29,7 +33,7 @@ jobs:
         working-directory: backend
         run: uv sync --dev
 
-      - name: Check ragas version and API
+      - name: Check ragas version and imports
         working-directory: backend
         run: |
           uv run python -c "
@@ -41,7 +45,7 @@ jobs:
           except ImportError as e:
               print('EvaluationDataset: MISSING -', e)
           try:
-              from ragas.metrics import Faithfulness, ContextPrecision
+              from ragas.metrics.collections import Faithfulness, ContextPrecision
               print('Faithfulness class: OK')
           except ImportError as e:
               print('Faithfulness class: MISSING -', e)
@@ -56,11 +60,11 @@ jobs:
         working-directory: backend
         run: |
           LIMIT="${{ github.event.inputs.limit }}"
-          if [ -n "$LIMIT" ]; then
-            uv run python ../tests/evals/run_evals.py --limit "$LIMIT"
-          else
-            uv run python ../tests/evals/run_evals.py
-          fi
+          SAVE="${{ github.event.inputs.save_baseline }}"
+          CMD="uv run python ../tests/evals/run_evals.py"
+          if [ -n "$LIMIT" ]; then CMD="$CMD --limit $LIMIT"; fi
+          if [ "$SAVE" = "yes" ]; then CMD="$CMD --save-baseline"; fi
+          $CMD
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
