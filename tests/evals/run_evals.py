@@ -65,33 +65,30 @@ async def run_eval(questions: list, limit: int | None = None) -> list:
 
 def compute_ragas_scores(results: list) -> dict:
     """
-    Uses ragas 0.2.x API.
+    Uses ragas 0.4.x API.
 
-    Key changes from older ragas:
+    Key points:
     - EvaluationDataset + SingleTurnSample (not HuggingFace Dataset)
-    - llm_factory (not LangchainLLMWrapper — deprecated)
-    - Faithfulness, ContextPrecision as class instances (not module-level objects)
-    - Imports from ragas.metrics.collections (not ragas.metrics)
-    - answer_relevancy removed — causes embed_query timeout in this version combo
+    - Faithfulness() and ContextPrecision() instantiated with NO arguments
+    - ragas 0.4.x auto-configures LLM from OPENAI_API_KEY environment variable
+    - llm_factory removed — incompatible with 0.4.x metric constructors
+    - answer_relevancy removed — causes embed_query timeout
+    - Import from ragas.metrics directly (not ragas.metrics.collections)
     """
     try:
         from ragas import evaluate, EvaluationDataset, SingleTurnSample
-        from ragas.metrics.collections import Faithfulness, ContextPrecision
-        from ragas.llms import llm_factory
-        from openai import OpenAI
+        from ragas.metrics import Faithfulness, ContextPrecision
     except ImportError as e:
         print(f"ERROR: Missing dependency: {e}")
         print("Make sure ragas is in pyproject.toml dev dependencies and uv.lock is up to date.")
         sys.exit(1)
 
-    # Configure LLM explicitly — prevents ragas from auto-detecting wrong versions
-    llm = llm_factory("gpt-4o-mini", client=OpenAI())
+    # Instantiate with no arguments — ragas 0.4.x auto-configures
+    # LLM from OPENAI_API_KEY environment variable set in evals.yml
+    faithfulness_metric = Faithfulness()
+    context_precision_metric = ContextPrecision()
 
-    # Instantiate metrics — passing uninstantiated classes causes TypeError
-    faithfulness_metric = Faithfulness(llm=llm)
-    context_precision_metric = ContextPrecision(llm=llm)
-
-    # Build ragas 0.2.x dataset — Dataset.from_list() no longer accepted
+    # Build ragas 0.4.x dataset — Dataset.from_list() no longer accepted
     samples = [
         SingleTurnSample(
             user_input=r["question"],

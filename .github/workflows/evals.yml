@@ -45,15 +45,10 @@ jobs:
           except ImportError as e:
               print('EvaluationDataset: MISSING -', e)
           try:
-              from ragas.metrics.collections import Faithfulness, ContextPrecision
+              from ragas.metrics import Faithfulness, ContextPrecision
               print('Faithfulness class: OK')
           except ImportError as e:
               print('Faithfulness class: MISSING -', e)
-          try:
-              from ragas.llms import llm_factory
-              print('llm_factory: OK')
-          except ImportError as e:
-              print('llm_factory: MISSING -', e)
           "
 
       - name: Run RAGAS evaluations
