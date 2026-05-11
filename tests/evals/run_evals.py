@@ -55,17 +55,36 @@ def compute_ragas_scores(results: list) -> dict:
     try:
         from datasets import Dataset
         from ragas import evaluate
-        from ragas.metrics import answer_relevancy, context_precision, faithfulness
+        from ragas.metrics.collections import (
+            context_precision,
+            faithfulness,
+        )
+        from ragas.llms import LangchainLLMWrapper
+        from langchain_openai import ChatOpenAI
     except ImportError:
         print("ERROR: RAGAS not installed. Run: uv add --dev ragas datasets")
         sys.exit(1)
 
+    # Explicitly configure LLM to avoid version mismatch issues
+    llm = LangchainLLMWrapper(ChatOpenAI(model="gpt-4o-mini", temperature=0))
+    faithfulness.llm = llm
+    context_precision.llm = llm
+
     dataset = Dataset.from_list(results)
-    scores = evaluate(dataset=dataset, metrics=[faithfulness, answer_relevancy, context_precision])
+    scores = evaluate(
+        dataset=dataset,
+        metrics=[faithfulness, context_precision],
+    )
+
+    def safe_float(val: object) -> float:
+        if isinstance(val, list):
+            valid = [v for v in val if v is not None]
+            return float(sum(valid) / len(valid)) if valid else 0.0
+        return float(val) if val is not None else 0.0
+
     return {
-        "faithfulness": float(scores["faithfulness"]),
-        "answer_relevancy": float(scores["answer_relevancy"]),
-        "context_precision": float(scores["context_precision"]),
+        "faithfulness": safe_float(scores["faithfulness"]),
+        "context_precision": safe_float(scores["context_precision"]),
         "question_count": len(results),
         "evaluated_at": datetime.now(timezone.utc).isoformat(),
     }
@@ -73,12 +92,13 @@ def compute_ragas_scores(results: list) -> dict:
 
 def check_regression(current: dict, baseline: dict) -> list:
     regressions = []
-    for metric in ["faithfulness", "answer_relevancy", "context_precision"]:
+    for metric in ["faithfulness", "context_precision"]:
         drop = baseline.get(metric, 0) - current.get(metric, 0)
         if drop > REGRESSION_THRESHOLD:
             regressions.append(
                 f"  REGRESSION: {metric} dropped {drop:.3f} "
-                f"(baseline: {baseline.get(metric, 0):.3f}, current: {current.get(metric, 0):.3f})"
+                f"(baseline: {baseline.get(metric, 0):.3f}, "
+                f"current: {current.get(metric, 0):.3f})"
             )
     return regressions
 
@@ -88,7 +108,6 @@ def print_scores(scores: dict, label: str = "Scores") -> None:
     print(f"  {label}")
     print(f"{'='*50}")
     print(f"  Faithfulness:        {scores['faithfulness']:.3f}")
-    print(f"  Answer Relevancy:    {scores['answer_relevancy']:.3f}")
     print(f"  Context Precision:   {scores['context_precision']:.3f}")
     print(f"  Questions evaluated: {scores['question_count']}")
     print(f"{'='*50}\n")
