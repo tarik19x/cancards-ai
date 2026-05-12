@@ -1,1 +1,6 @@
-{"faithfulness": 0.0, "context_precision": 0.0, "question_count": 0, "evaluated_at": "pending-first-ci-run"}
+{
+  "faithfulness": 0.725,
+  "context_precision": 0.767,
+  "question_count": 30,
+  "evaluated_at": "2026-05-11T00:00:00+00:00"
+}
