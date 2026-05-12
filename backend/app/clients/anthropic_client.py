@@ -1,5 +1,7 @@
 """Anthropic client for Claude (LLM)."""
 
+from collections.abc import AsyncIterator
+
 from anthropic import AsyncAnthropic
 from tenacity import retry, stop_after_attempt, wait_exponential
 
@@ -38,7 +40,7 @@ async def stream_answer(
     system_prompt: str,
     user_prompt: str,
     max_tokens: int = 2000,
-):
+) -> AsyncIterator[str]:
     """Streaming generation. Yields text chunks as they arrive."""
     settings = get_settings()
     client = get_anthropic_client()
