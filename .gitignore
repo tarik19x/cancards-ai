@@ -1,53 +1,81 @@
-﻿# Python
+﻿# =========================
+# Python
+# =========================
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+
 .venv/
 venv/
 env/
+
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+
 *.egg-info/
 dist/
 build/
 
-# Node
+# =========================
+# Node / Next.js
+# =========================
 node_modules/
 .next/
 out/
 .turbo/
+
 *.log
 npm-debug.log*
 
-# Environment files (NEVER commit these)
+# =========================
+# Environment Files
+# NEVER commit secrets
+# =========================
 .env
 .env.local
 .env.*.local
 *.env
 
-# IDE
+# =========================
+# IDE / OS
+# =========================
 .vscode/
 .idea/
+
 *.swp
 *.swo
+
 .DS_Store
 Thumbs.db
 
-# Test outputs
+# =========================
+# Test Coverage
+# =========================
 htmlcov/
 .coverage
 coverage.xml
 
+# =========================
 # uv
+# =========================
 .python-version
 
-backend/containers.json
-backend/endpoint.json
-.vercel
-.env*.local
+# =========================
+# Deployment
+# =========================
+.vercel/
 
+# =========================
+# Backend Generated Files
+# =========================
 backend/containers.json
 backend/endpoint.json
+
+# =========================
+# AI Agent Instruction Files
+# =========================
+**/CLAUDE.md
+**/AGENTS.md
