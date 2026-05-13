@@ -57,7 +57,7 @@ CanCards AI is a smart credit card recommendation system designed for Canadian u
 ---
 
 ## System Architecture
-<img width="1536" height="1024" alt="ChatGPT Image May 12, 2026, 11_30_02 PM" src="https://github.com/user-attachments/assets/437a2fd0-2150-470b-be67-06cacec422a9" />
+<img width="1536" height="1024" alt="ChatGPT Image May 12, 2026, 11_30_02 PM" src="https://res.cloudinary.com/dolt8nnzc/image/upload/v1778656639/CanCards-AI/System%20Architecture.png" />
 
 
 ---
@@ -67,7 +67,7 @@ CanCards AI is a smart credit card recommendation system designed for Canadian u
 RAGAS runs in CI on a weekly schedule and on every manual trigger. GPT-4o-mini acts as an independent judge LLM, it has no knowledge of how the answer was generated, only the question, the retrieved context, and the answer. A score drop above 5% from baseline fails the build.
 
 
-<img width="1536" height="1024" alt="ChatGPT Image May 12, 2026, 11_34_00 PM" src="https://github.com/user-attachments/assets/4b0c8562-3e02-4fb4-af78-60e0d6d79c3f" />
+<img width="1536" height="1024" alt="ChatGPT Image May 12, 2026, 11_34_00 PM" src="https://res.cloudinary.com/dolt8nnzc/image/upload/v1778656645/CanCards-AI/Evaluation%20Flow.png" />
 
 
 
@@ -211,7 +211,7 @@ pytest tests/unit/ -v
 ## Development Lifecycle
 
 How the project was developed — from initial prototype to a continuously deployed production-ready system.
-<img width="1536" height="1024" alt="ChatGPT Image May 12, 2026, 11_41_25 PM" src="https://github.com/user-attachments/assets/dbcde1d7-eae9-42ac-aec8-b72bf4252148" />
+<img width="1536" height="1024" alt="ChatGPT Image May 12, 2026, 11_41_25 PM" src="https://res.cloudinary.com/dolt8nnzc/image/upload/v1778656653/CanCards-AI/Development%20Lifecycle.png" />
 
 ---
 
