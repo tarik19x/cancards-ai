@@ -1,27 +1,39 @@
-[
+﻿[
   {
     "card_id": "amex-cobalt",
     "name": "American Express Cobalt Card",
     "issuer": "American Express",
     "network": "Amex",
-    "annual_fee_cad": 156.00,
+    "annual_fee_cad": 155.88,
     "monthly_fee_cad": 12.99,
-    "welcome_bonus_description": "Earn 15,000 Membership Rewards points after spending $750 per month for the first 12 months.",
-    "rewards_summary": "5x points on eats and drinks (incl. groceries), 3x on streaming, 2x on transit and gas, 1x on everything else. Points worth approximately 2 cents each when redeemed for travel.",
+    "welcome_bonus_description": "Earn up to 30,000 Membership Rewards points: 5,000 MR points per month when you spend $500/month in months 1-3 (15,000 pts), plus 1,250 bonus MR points each month you spend $750 for 12 consecutive months (up to 15,000 additional pts).",
+    "rewards_summary": "5x MR points on eat and drink (restaurants, bars, cafes, food delivery, eligible grocery stores); 3x on eligible streaming subscriptions; 2x on travel, transit and gas; 1x on everything else. Points transferable to Aeroplan, British Airways Avios, Marriott Bonvoy, and other partners.",
     "rewards_detail": {
-      "eats_drinks_groceries": {"rate": 5, "unit": "points_per_dollar", "monthly_cap_cad": 30000},
-      "streaming": {"rate": 3, "unit": "points_per_dollar"},
-      "transit_gas": {"rate": 2, "unit": "points_per_dollar"},
-      "everything_else": {"rate": 1, "unit": "points_per_dollar"}
+      "eat_and_drink": {
+        "rate": 5,
+        "unit": "points_per_dollar"
+      },
+      "eligible_streaming": {
+        "rate": 3,
+        "unit": "points_per_dollar"
+      },
+      "travel_transit_gas": {
+        "rate": 2,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
     },
-    "estimated_point_value_cents": 2.0,
+    "estimated_point_value_cents": 1.0,
     "foreign_transaction_fee_pct": 2.5,
-    "insurance_summary": "Includes travel emergency medical (up to 15 days for under-65s), trip interruption, flight delay, baggage delay, hotel/motel burglary, car rental theft and damage, purchase protection (90 days), and buyer's assurance (extended warranty).",
+    "insurance_summary": "Emergency out-of-province/country medical (15 days), rental car collision/damage waiver (up to $85,000), trip cancellation (up to $1,500/person), trip interruption (up to $1,500/person), flight delay (4+ hr, up to $500), baggage delay/loss, purchase protection (90 days), extended warranty (doubles up to 1 yr). No lounge access.",
     "insurance_detail": {
       "travel_emergency_medical_days": 15,
       "rental_car_collision": true,
       "trip_interruption": true,
-      "trip_cancellation": false,
+      "trip_cancellation": true,
       "flight_delay": true,
       "baggage_insurance": true,
       "purchase_protection_days": 90,
@@ -31,28 +43,354 @@
     "min_credit_score_recommended": 700,
     "min_personal_income_cad": null,
     "min_household_income_cad": null,
-    "best_for": ["dining", "groceries", "young_professionals", "earning_points", "streaming"],
-    "not_great_for": ["foreign_travel_no_fx_fee", "low_spenders", "no_fee_seekers"],
-    "official_url": "https://www.americanexpress.com/ca/credit-cards/cobalt-card/",
-    "last_verified": "2026-05-04"
+    "best_for": [
+      "dining",
+      "food_delivery",
+      "streaming",
+      "travel",
+      "flexible_points"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "lounge_access",
+      "simple_flat_rate"
+    ],
+    "official_url": "https://www.americanexpress.com/en-ca/credit-cards/cobalt-card/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "amex-platinum",
+    "name": "American Express Platinum Card",
+    "issuer": "American Express",
+    "network": "Amex",
+    "annual_fee_cad": 799.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 100,000 Membership Rewards points: 80,000 MR points after spending $10,000 in the first 3 months, plus 20,000 MR points after making a purchase in month 14.",
+    "rewards_summary": "3x MR points on eligible travel booked through Amex Travel Online; 2x on dining and food delivery in Canada; 1x on all other eligible purchases. Includes $200 annual travel credit, $200 annual dining credit, unlimited Priority Pass lounge visits (Prestige membership), and Centurion Lounge access.",
+    "rewards_detail": {
+      "travel_via_amex_travel": {
+        "rate": 3,
+        "unit": "points_per_dollar"
+      },
+      "dining_food_delivery": {
+        "rate": 2,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.0,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-province/country medical (15 days under 65, 4 days 65+), rental car collision/damage waiver, trip cancellation, trip interruption, flight delay (4+ hr), baggage delay/loss, purchase protection (90 days), extended warranty (up to 1 yr). Priority Pass Prestige: unlimited lounge visits globally for cardholder + 1 guest.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 15,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 740,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "premium_travel",
+      "unlimited_lounge_access",
+      "hotel_perks",
+      "concierge",
+      "high_spenders"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "budget_travelers",
+      "everyday_spending"
+    ],
+    "official_url": "https://www.americanexpress.com/en-ca/credit-cards/platinum-card/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "amex-gold-rewards",
+    "name": "American Express Gold Rewards Card",
+    "issuer": "American Express",
+    "network": "Amex",
+    "annual_fee_cad": 250.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 25,000 Membership Rewards points: 10,000 MR points on approval, plus 15,000 MR points after spending $1,500 in the first 3 months. Includes $100 annual travel credit.",
+    "rewards_summary": "2x MR points on eligible travel purchases (flights, hotels, car rentals) and eligible foreign currency transactions; 1x MR point on all other eligible purchases. Points transferable to Aeroplan, British Airways Avios, Marriott Bonvoy, and other partners. Includes one complimentary supplementary card.",
+    "rewards_detail": {
+      "travel_and_foreign_currency": {
+        "rate": 2,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.0,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-province/country medical (15 days), rental car collision/damage waiver, purchase protection (90 days), extended warranty (up to 1 yr). No trip cancellation or interruption insurance. No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 15,
+      "rental_car_collision": true,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "travel_rewards",
+      "flexible_points",
+      "hotel_airline_transfers",
+      "foreign_currency"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "lounge_access",
+      "trip_cancellation_insurance"
+    ],
+    "official_url": "https://www.americanexpress.com/en-ca/credit-cards/gold-rewards-card/",
+    "last_verified": "2025-01-01"
+  },
+  {
+    "card_id": "amex-simplycash",
+    "name": "American Express SimplyCash Card",
+    "issuer": "American Express",
+    "network": "Amex",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 4% cashback on all eligible purchases for the first 6 months (up to $200 cashback), then 1.25% cashback permanently.",
+    "rewards_summary": "1.25% unlimited cashback on all eligible purchases with no annual fee, no category tracking, and no caps. Cashback paid annually in November as a statement credit. Best no-fee flat-rate cashback on the Amex network in Canada.",
+    "rewards_detail": {
+      "everything": {
+        "rate": 1.25,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Purchase protection (90 days against theft and damage), extended warranty (doubles manufacturer up to 1 additional year). No travel insurance of any kind. No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": null,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 650,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "no_annual_fee",
+      "flat_rate_cashback",
+      "simplicity",
+      "amex_access"
+    ],
+    "not_great_for": [
+      "travel_insurance",
+      "lounge_access",
+      "international_purchases",
+      "high_earners"
+    ],
+    "official_url": "https://www.americanexpress.com/en-ca/credit-cards/simplycash-card/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "amex-simplycash-preferred",
+    "name": "American Express SimplyCash Preferred Card",
+    "issuer": "American Express",
+    "network": "Amex",
+    "annual_fee_cad": 99.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 4% cashback on all eligible purchases for the first 6 months (up to $200 cashback), then 2% cashback on all eligible purchases permanently.",
+    "rewards_summary": "2% unlimited cashback on all eligible purchases — no categories, no caps, no tracking. Cashback paid annually in November as a statement credit. One of Canada's best flat-rate cashback cards for moderate-to-high everyday spenders.",
+    "rewards_detail": {
+      "everything": {
+        "rate": 2.0,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Purchase protection (90 days against theft and damage), extended warranty (doubles manufacturer up to 1 additional year). No travel insurance. No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": null,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 660,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "flat_rate_cashback",
+      "simplicity",
+      "high_everyday_spend",
+      "no_category_tracking"
+    ],
+    "not_great_for": [
+      "travel_insurance",
+      "lounge_access",
+      "international_purchases"
+    ],
+    "official_url": "https://www.americanexpress.com/en-ca/credit-cards/simplycash-preferred-card/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "amex-aeroplan-reserve",
+    "name": "American Express Aeroplan Reserve Card",
+    "issuer": "American Express",
+    "network": "Amex",
+    "annual_fee_cad": 599.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 85,000 Aeroplan points: 60,000 Aeroplan points after spending $7,500 in the first 3 months, plus 25,000 additional points after spending $2,500/month in months 4-6.",
+    "rewards_summary": "3x Aeroplan miles per $1 on eligible Air Canada purchases; 2x on dining and food delivery in Canada; 1.25x on all other eligible purchases. Air Canada Maple Leaf Lounge access when flying Air Canada, 6 complimentary DragonPass lounge visits/year, priority check-in and boarding, first checked bag free.",
+    "rewards_detail": {
+      "air_canada_purchases": {
+        "rate": 3,
+        "unit": "miles_per_dollar"
+      },
+      "dining_food_delivery": {
+        "rate": 2,
+        "unit": "miles_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1.25,
+        "unit": "miles_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.5,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-province/country medical (15 days under 65), rental car collision/damage waiver, trip cancellation (up to $2,500/person), trip interruption (up to $2,500/person), flight delay (4+ hr), baggage delay/loss, purchase protection (90 days), extended warranty (up to 1 yr). Air Canada Maple Leaf Lounge access + 6 DragonPass visits/year.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 15,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 740,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "air_canada_flyers",
+      "aeroplan_maximizers",
+      "lounge_access",
+      "premium_travel"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "non_air_canada_travelers",
+      "budget_travelers"
+    ],
+    "official_url": "https://www.americanexpress.com/en-ca/credit-cards/aeroplan-reserve-card/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "amex-marriott-bonvoy",
+    "name": "American Express Marriott Bonvoy Card",
+    "issuer": "American Express",
+    "network": "Amex",
+    "annual_fee_cad": 120.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 50,000 Marriott Bonvoy points after spending $1,500 in the first 3 months. Plus earn one annual free night award (up to 35,000-point value) each year upon renewal.",
+    "rewards_summary": "5x Marriott Bonvoy points per $1 at Marriott Bonvoy properties worldwide; 2x on eligible dining, food delivery, and travel purchases; 1x on all other eligible purchases. Includes automatic Marriott Bonvoy Silver Elite status and one annual free night award (up to 35,000-point category).",
+    "rewards_detail": {
+      "marriott_properties": {
+        "rate": 5,
+        "unit": "points_per_dollar"
+      },
+      "dining_and_travel": {
+        "rate": 2,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 0.8,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-province/country medical (15 days), rental car collision/damage waiver, purchase protection (90 days), extended warranty (up to 1 yr). No trip cancellation or interruption insurance. No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 15,
+      "rental_car_collision": true,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 680,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "marriott_loyalists",
+      "hotel_points",
+      "free_night_award",
+      "frequent_hotel_guests"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "lounge_access",
+      "non_marriott_travelers",
+      "maximum_travel_insurance"
+    ],
+    "official_url": "https://www.americanexpress.com/en-ca/credit-cards/marriott-bonvoy-card/",
+    "last_verified": "2025-09-01"
   },
   {
     "card_id": "scotia-passport-vi",
-    "name": "Scotiabank Passport Visa Infinite",
+    "name": "Scotiabank Passport Visa Infinite Card",
     "issuer": "Scotiabank",
     "network": "Visa",
-    "annual_fee_cad": 150.00,
+    "annual_fee_cad": 150.0,
     "monthly_fee_cad": null,
-    "welcome_bonus_description": "Earn up to 35,000 Scene+ points in the first year with qualifying purchases.",
-    "rewards_summary": "3x Scene+ points on grocery, dining, entertainment, and daily transit; 2x on select streaming services and rideshare; 1x on everything else. NO foreign transaction fee. Six complimentary airport lounge passes per year.",
+    "welcome_bonus_description": "Earn up to 30,000 Scene+ points: 25,000 Scene+ points after spending $1,000 in the first 3 months, plus 5,000 additional Scene+ points after renewing in year 2.",
+    "rewards_summary": "3x Scene+ points per $1 at eligible grocery stores; 2x at eligible restaurants, food delivery, entertainment venues, and daily transit; 1x everywhere else. NO foreign transaction fee. 6 complimentary Visa Airport Companion (DragonPass) lounge visits per year.",
     "rewards_detail": {
-      "grocery_dining_entertainment_transit": {"rate": 3, "unit": "points_per_dollar"},
-      "streaming_rideshare": {"rate": 2, "unit": "points_per_dollar"},
-      "everything_else": {"rate": 1, "unit": "points_per_dollar"}
+      "eligible_grocery_stores": {
+        "rate": 3,
+        "unit": "points_per_dollar"
+      },
+      "dining_entertainment_transit": {
+        "rate": 2,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
     },
     "estimated_point_value_cents": 1.0,
     "foreign_transaction_fee_pct": 0.0,
-    "insurance_summary": "Comprehensive travel package including travel emergency medical (up to 25 days under 65), trip cancellation, trip interruption, flight delay, baggage insurance, hotel burglary, rental car collision/loss damage. Mobile device insurance up to $1,000. Purchase security and extended warranty.",
+    "insurance_summary": "Emergency out-of-country medical (25 days under 65, 3 days 65+), rental car collision/damage waiver (up to $65,000 MSRP), trip cancellation (up to $1,500/person, max $10,000), trip interruption (up to $2,500/person, max $20,000), flight delay (4+ hr, up to $500/person), baggage delay/loss (up to $1,000/person), purchase protection (90 days), extended warranty (1 yr). 6 Visa Airport Companion DragonPass lounge visits/year.",
     "insurance_detail": {
       "travel_emergency_medical_days": 25,
       "rental_car_collision": true,
@@ -64,30 +402,158 @@
       "extended_warranty": true,
       "lounge_access": true
     },
-    "min_credit_score_recommended": 720,
-    "min_personal_income_cad": 60000,
-    "min_household_income_cad": 100000,
-    "best_for": ["foreign_travel", "no_fx_fee", "lounge_access", "comprehensive_insurance", "scene_points"],
-    "not_great_for": ["low_income", "high_cashback_seekers"],
-    "official_url": "https://www.scotiabank.com/ca/en/personal/credit-cards/visa-infinite/passport-visa-infinite-card.html",
-    "last_verified": "2026-05-04"
+    "min_credit_score_recommended": 725,
+    "min_personal_income_cad": 60000.0,
+    "min_household_income_cad": 100000.0,
+    "best_for": [
+      "no_fx_fee",
+      "international_travel",
+      "lounge_access",
+      "grocery_rewards",
+      "scene_plus"
+    ],
+    "not_great_for": [
+      "non_travelers",
+      "unlimited_lounge_access",
+      "very_high_point_earners"
+    ],
+    "official_url": "https://www.scotiabank.com/ca/en/personal/credit-cards/visa/passport-infinite-card.html",
+    "last_verified": "2025-09-01"
   },
   {
-    "card_id": "tangerine-money-back",
-    "name": "Tangerine Money-Back Credit Card",
-    "issuer": "Tangerine",
-    "network": "Mastercard",
-    "annual_fee_cad": 0.00,
+    "card_id": "scotia-gold-amex",
+    "name": "Scotiabank Gold American Express Card",
+    "issuer": "Scotiabank",
+    "network": "Amex",
+    "annual_fee_cad": 120.0,
     "monthly_fee_cad": null,
-    "welcome_bonus_description": "Earn an extra 10% back (up to $100) in the first 2 months on up to $1,000 in everyday purchases.",
-    "rewards_summary": "2% unlimited cashback in 2 categories you choose (3 if you deposit cashback into a Tangerine Savings account); 0.50% on everything else. Categories include groceries, gas, restaurants, hotels, recurring bills, drug store, entertainment, public transit, home improvement, and furniture.",
+    "welcome_bonus_description": "Earn up to 45,000 Scene+ points: 35,000 Scene+ points after spending $1,000 in the first 3 months, plus 10,000 additional Scene+ points after spending $10,000 in the first year.",
+    "rewards_summary": "6x Scene+ points per $1 at eligible Sobeys group stores (Sobeys, IGA, Safeway, Foodland, FreshCo, Wholesome Market, Lawton's); 5x at all other eligible grocery, dining, and food delivery; 3x on eligible gas and daily transit; 1x everywhere else. NO foreign transaction fee.",
     "rewards_detail": {
-      "chosen_categories": {"rate": 2, "unit": "percent_cashback"},
-      "everything_else": {"rate": 0.5, "unit": "percent_cashback"}
+      "sobeys_group_grocery": {
+        "rate": 6,
+        "unit": "points_per_dollar"
+      },
+      "other_grocery_dining_delivery": {
+        "rate": 5,
+        "unit": "points_per_dollar"
+      },
+      "gas_and_transit": {
+        "rate": 3,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.0,
+    "foreign_transaction_fee_pct": 0.0,
+    "insurance_summary": "Emergency out-of-country medical (25 days under 65, 3 days 65+), rental car collision/damage waiver (up to $65,000 MSRP), trip cancellation (up to $1,500/person), trip interruption (up to $2,500/person), flight delay (4+ hr, up to $500/person), baggage delay/loss (up to $1,000/person), purchase protection (90 days), extended warranty (1 yr). No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 25,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "no_fx_fee",
+      "sobeys_shoppers",
+      "grocery_rewards",
+      "dining_rewards",
+      "international_travel"
+    ],
+    "not_great_for": [
+      "lounge_access",
+      "non_grocery_spenders"
+    ],
+    "official_url": "https://www.scotiabank.com/ca/en/personal/credit-cards/american-express/gold-card.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "scotia-momentum-vi",
+    "name": "Scotiabank Momentum Visa Infinite Card",
+    "issuer": "Scotiabank",
+    "network": "Visa",
+    "annual_fee_cad": 120.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 10% cashback on all eligible purchases for the first 3 months (up to $2,000 spend = maximum $200 cashback). First year annual fee waived.",
+    "rewards_summary": "4% cashback on eligible grocery store purchases and recurring bill payments; 2% on eligible gas station purchases and public transit; 1% on all other eligible purchases. Annual cashback paid each November as a statement credit. One of the best cashback cards in Canada for groceries.",
+    "rewards_detail": {
+      "grocery_and_recurring_bills": {
+        "rate": 4,
+        "unit": "percent_cashback"
+      },
+      "gas_and_transit": {
+        "rate": 2,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "percent_cashback"
+      }
     },
     "estimated_point_value_cents": null,
     "foreign_transaction_fee_pct": 2.5,
-    "insurance_summary": "Includes purchase assurance (90 days against theft/damage) and extended warranty (doubles manufacturer warranty up to 1 year). NO travel insurance. Mobile device insurance up to $1,000 when bills are paid with this card.",
+    "insurance_summary": "Emergency out-of-country medical (25 days under 65, 3 days 65+), rental car collision/damage waiver (up to $65,000 MSRP), trip cancellation (up to $1,500/person), trip interruption (up to $2,500/person), flight delay (4+ hr, up to $500/person), baggage delay/loss (up to $1,000), purchase protection (90 days), extended warranty (1 yr). No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 25,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 725,
+    "min_personal_income_cad": 60000.0,
+    "min_household_income_cad": 100000.0,
+    "best_for": [
+      "grocery_cashback",
+      "recurring_bills",
+      "gas_cashback",
+      "straightforward_cashback"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "lounge_access",
+      "international_travel"
+    ],
+    "official_url": "https://www.scotiabank.com/ca/en/personal/credit-cards/visa/momentum-infinite-card.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "scotia-scene-plus-visa",
+    "name": "Scotiabank Scene+ Visa Card",
+    "issuer": "Scotiabank",
+    "network": "Visa",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 5,000 Scene+ points after spending $500 in the first 3 months.",
+    "rewards_summary": "2x Scene+ points per $1 at Cineplex theatres and concession stands; 1x Scene+ at eligible grocery stores (Sobeys, IGA, Safeway, FreshCo) and everywhere else. Points redeemable for free movies, dining, travel, and gift cards. No annual fee.",
+    "rewards_detail": {
+      "cineplex": {
+        "rate": 2,
+        "unit": "points_per_dollar"
+      },
+      "grocery_and_everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.0,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Purchase protection (90 days against theft and damage), extended warranty (doubles manufacturer up to 1 yr). No travel insurance. No lounge access.",
     "insurance_detail": {
       "travel_emergency_medical_days": null,
       "rental_car_collision": false,
@@ -99,30 +565,308 @@
       "extended_warranty": true,
       "lounge_access": false
     },
-    "min_credit_score_recommended": 660,
-    "min_personal_income_cad": 12000,
+    "min_credit_score_recommended": 620,
+    "min_personal_income_cad": null,
     "min_household_income_cad": null,
-    "best_for": ["no_fee", "everyday_cashback", "category_flexibility", "students", "first_card"],
-    "not_great_for": ["foreign_travel", "lounge_access", "premium_insurance"],
-    "official_url": "https://www.tangerine.ca/en/personal/spend/credit-cards/money-back-credit-card",
-    "last_verified": "2026-05-04"
+    "best_for": [
+      "no_annual_fee",
+      "cineplex_fans",
+      "scene_plus_members",
+      "beginners"
+    ],
+    "not_great_for": [
+      "travel_insurance",
+      "premium_rewards",
+      "international_travel",
+      "lounge_access"
+    ],
+    "official_url": "https://www.scotiabank.com/ca/en/personal/credit-cards/visa/scene-plus-card.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "scotia-platinum-amex",
+    "name": "Scotiabank Platinum American Express Card",
+    "issuer": "Scotiabank",
+    "network": "Amex",
+    "annual_fee_cad": 399.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 60,000 Scene+ points: 40,000 Scene+ points after spending $3,000 in first 3 months, plus 20,000 additional Scene+ points after spending $12,000 in the first year.",
+    "rewards_summary": "2x Scene+ points per $1 on all eligible purchases — flat earn rate on every dollar. NO foreign transaction fee. Unlimited Visa Airport Companion (DragonPass) lounge visits per year for primary cardholder. Concierge service included.",
+    "rewards_detail": {
+      "everything": {
+        "rate": 2,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.0,
+    "foreign_transaction_fee_pct": 0.0,
+    "insurance_summary": "Emergency out-of-country medical (31 days under 65, 10 days 65+), rental car collision/damage waiver (up to $65,000 MSRP), trip cancellation (up to $2,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr, up to $1,000/person), baggage delay/loss (up to $1,000/person), purchase protection (90 days), extended warranty (1 yr). Unlimited DragonPass lounge visits/year.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 31,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 740,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "unlimited_lounge_access",
+      "no_fx_fee",
+      "premium_travel",
+      "scene_plus_earners"
+    ],
+    "not_great_for": [
+      "budget_conscious",
+      "non_travelers",
+      "cashback_only_users"
+    ],
+    "official_url": "https://www.scotiabank.com/ca/en/personal/credit-cards/american-express/platinum-card.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "td-first-class-vi",
+    "name": "TD First Class Travel Visa Infinite Card",
+    "issuer": "TD Bank",
+    "network": "Visa",
+    "annual_fee_cad": 139.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 80,000 TD Rewards points: 20,000 points after first purchase, plus 60,000 points after spending $5,000 in the first 180 days. Annual fee rebated in first year.",
+    "rewards_summary": "8 TD Rewards points per $1 on Expedia for TD bookings; 6 pts per $1 on grocery and restaurant purchases; 4.5 pts per $1 on gas and pharmacy; 3 pts per $1 on all other eligible purchases. TD Points value: 200 pts = $1 when redeemed through Expedia for TD. Complimentary airport lounge access included.",
+    "rewards_detail": {
+      "expedia_for_td": {
+        "rate": 8,
+        "unit": "points_per_dollar"
+      },
+      "grocery_and_dining": {
+        "rate": 6,
+        "unit": "points_per_dollar"
+      },
+      "gas_and_pharmacy": {
+        "rate": 4.5,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 3,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 0.5,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (21 days under 65, 4 days 65+), rental car collision/damage waiver, trip cancellation (up to $1,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr, up to $500/person), baggage delay/loss (up to $1,000/person), purchase protection (90 days), extended warranty (1 yr). Complimentary airport lounge access via partner program.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 21,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 725,
+    "min_personal_income_cad": 60000.0,
+    "min_household_income_cad": 100000.0,
+    "best_for": [
+      "expedia_for_td",
+      "grocery_rewards",
+      "travel_rewards",
+      "td_customers",
+      "lounge_access"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "non_expedia_travel",
+      "cashback_preferences"
+    ],
+    "official_url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/travel/first-class-travel-visa-infinite-card/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "td-aeroplan-vi",
+    "name": "TD Aeroplan Visa Infinite Card",
+    "issuer": "TD Bank",
+    "network": "Visa",
+    "annual_fee_cad": 139.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 50,000 Aeroplan points: 10,000 Aeroplan points after first purchase, plus 40,000 Aeroplan points after spending $6,000 in the first 6 months. Annual fee rebated in year 1.",
+    "rewards_summary": "1.5 Aeroplan miles per $1 on eligible Air Canada purchases (flights, vacation packages); 1.5 Aeroplan miles per $1 at eligible grocery stores, gas stations, and drugstores; 1 Aeroplan mile per $1 on all other eligible purchases. 25% bonus Aeroplan miles when you fly Air Canada. Free first checked bag on Air Canada.",
+    "rewards_detail": {
+      "air_canada_purchases": {
+        "rate": 1.5,
+        "unit": "miles_per_dollar"
+      },
+      "grocery_gas_drugstore": {
+        "rate": 1.5,
+        "unit": "miles_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1.0,
+        "unit": "miles_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.5,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (21 days under 65, 4 days 65+), rental car collision/damage waiver, trip cancellation (up to $1,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr, up to $500/person), baggage delay/loss (up to $1,000/person), purchase protection (90 days), extended warranty (1 yr). No complimentary lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 21,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 725,
+    "min_personal_income_cad": 60000.0,
+    "min_household_income_cad": 100000.0,
+    "best_for": [
+      "aeroplan_collectors",
+      "air_canada_flyers",
+      "grocery_gas_rewards"
+    ],
+    "not_great_for": [
+      "lounge_access",
+      "no_fx_fee",
+      "non_air_canada_travelers"
+    ],
+    "official_url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/travel/aeroplan-visa-infinite-card/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "td-aeroplan-vi-privilege",
+    "name": "TD Aeroplan Visa Infinite Privilege Card",
+    "issuer": "TD Bank",
+    "network": "Visa",
+    "annual_fee_cad": 599.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 85,000 Aeroplan points: 50,000 Aeroplan points after spending $10,000 in the first 3 months, plus 35,000 additional Aeroplan points after 12 months of holding the card.",
+    "rewards_summary": "2 Aeroplan miles per $1 on eligible Air Canada purchases; 1.5 Aeroplan miles per $1 on eligible dining; 1.25 miles per $1 on all other eligible purchases. Air Canada Maple Leaf Lounge access when flying Air Canada, unlimited Visa Infinite Privilege airport lounge access, priority check-in and boarding, and first checked bag free.",
+    "rewards_detail": {
+      "air_canada_purchases": {
+        "rate": 2.0,
+        "unit": "miles_per_dollar"
+      },
+      "dining": {
+        "rate": 1.5,
+        "unit": "miles_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1.25,
+        "unit": "miles_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.5,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (31 days under 65, 10 days 65+), rental car collision/damage waiver, trip cancellation (up to $2,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr, up to $1,000/person), baggage delay/loss (up to $1,500/person), purchase protection (180 days), extended warranty (2 yrs). Air Canada Maple Leaf Lounge + unlimited Visa Infinite Privilege lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 31,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 180,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 760,
+    "min_personal_income_cad": 150000.0,
+    "min_household_income_cad": 200000.0,
+    "best_for": [
+      "air_canada_vip",
+      "aeroplan_power_users",
+      "premium_lounge_access",
+      "luxury_travel"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "budget_travelers",
+      "non_air_canada_flyers"
+    ],
+    "official_url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/travel/aeroplan-visa-infinite-privilege-card/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "td-cash-back-vi",
+    "name": "TD Cash Back Visa Infinite Card",
+    "issuer": "TD Bank",
+    "network": "Visa",
+    "annual_fee_cad": 139.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 10% cashback on all eligible purchases for the first 3 months (up to $3,500 spend = maximum $350 cashback). Annual fee waived in the first year.",
+    "rewards_summary": "3% cashback on eligible grocery store purchases, gas station purchases, and recurring bill payments; 1% cashback on all other eligible purchases. Cashback redeemable at any time in $25 increments through EasyWeb or TD app. One of the best 3-category cashback cards in Canada.",
+    "rewards_detail": {
+      "grocery_gas_recurring_bills": {
+        "rate": 3,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (21 days under 65, 4 days 65+), rental car collision/damage waiver, trip cancellation (up to $1,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr, up to $500/person), baggage delay/loss (up to $1,000/person), purchase protection (90 days), extended warranty (1 yr). No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 21,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 725,
+    "min_personal_income_cad": 60000.0,
+    "min_household_income_cad": 100000.0,
+    "best_for": [
+      "grocery_cashback",
+      "gas_cashback",
+      "recurring_bills",
+      "straightforward_cashback"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "lounge_access",
+      "travel_points"
+    ],
+    "official_url": "https://www.td.com/ca/en/personal-banking/products/credit-cards/cash-back/cash-back-visa-infinite-card/",
+    "last_verified": "2025-09-01"
   },
   {
     "card_id": "rbc-avion-vi",
-    "name": "RBC Avion Visa Infinite",
-    "issuer": "RBC",
+    "name": "RBC Avion Visa Infinite Card",
+    "issuer": "RBC Royal Bank",
     "network": "Visa",
-    "annual_fee_cad": 120.00,
+    "annual_fee_cad": 120.0,
     "monthly_fee_cad": null,
-    "welcome_bonus_description": "Earn 35,000 Avion points upon approval (worth approximately $700 in travel value).",
-    "rewards_summary": "1.25x Avion points per $1 on travel, 1x on everything else. Avion points are flexible â€” book any flight with no blackout dates, transfer to airline partners (Aeroplan, British Airways, Cathay Pacific, WestJet), or redeem for merchandise/gift cards.",
+    "welcome_bonus_description": "Earn 35,000 RBC Avion points after spending $3,000 in the first 3 months.",
+    "rewards_summary": "1.25 Avion Rewards points per $1 on all eligible travel purchases; 1 Avion Rewards point per $1 on all other eligible purchases. Points transferable to British Airways Avios, American Airlines AAdvantage, Cathay Pacific Asia Miles, and WestJet dollars. Flexible redemption for flights, hotels, merchandise, and more.",
     "rewards_detail": {
-      "travel": {"rate": 1.25, "unit": "points_per_dollar"},
-      "everything_else": {"rate": 1, "unit": "points_per_dollar"}
+      "eligible_travel": {
+        "rate": 1.25,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1.0,
+        "unit": "points_per_dollar"
+      }
     },
-    "estimated_point_value_cents": 2.0,
+    "estimated_point_value_cents": 1.0,
     "foreign_transaction_fee_pct": 2.5,
-    "insurance_summary": "Includes travel emergency medical (15 days for under 65), trip cancellation/interruption, flight delay, baggage delay/loss, auto rental collision/loss damage, hotel/motel burglary. Purchase security 90 days, extended warranty doubles manufacturer up to 1 year.",
+    "insurance_summary": "Emergency out-of-country medical (15 days under 65), rental car collision/damage waiver, trip cancellation (up to $1,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr), baggage delay/loss, purchase protection (90 days), extended warranty (1 yr). No lounge access.",
     "insurance_detail": {
       "travel_emergency_medical_days": 15,
       "rental_car_collision": true,
@@ -135,29 +879,895 @@
       "lounge_access": false
     },
     "min_credit_score_recommended": 700,
-    "min_personal_income_cad": 60000,
-    "min_household_income_cad": 100000,
-    "best_for": ["travel", "flexible_points", "aeroplan_transfer", "trip_cancellation_coverage"],
-    "not_great_for": ["foreign_transactions_no_fee", "high_grocery_spending", "no_fee_seekers"],
-    "official_url": "https://www.rbcroyalbank.com/credit-cards/travel/rbc-avion-visa-infinite.html",
-    "last_verified": "2026-05-04"
+    "min_personal_income_cad": 60000.0,
+    "min_household_income_cad": 100000.0,
+    "best_for": [
+      "rbc_customers",
+      "avion_points",
+      "airline_transfers",
+      "flexible_travel_rewards"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "lounge_access",
+      "high_earn_rates"
+    ],
+    "official_url": "https://www.rbc.com/personal/credit-cards/rbc-avion-visa-infinite-card.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "rbc-avion-vi-privilege",
+    "name": "RBC Avion Visa Infinite Privilege Card",
+    "issuer": "RBC Royal Bank",
+    "network": "Visa",
+    "annual_fee_cad": 399.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 35,000 RBC Avion points as a welcome bonus after spending $5,000 in the first 3 months.",
+    "rewards_summary": "1.25 Avion Rewards points per $1 on all eligible purchases — no category limits. Points transferable to British Airways Avios, American Airlines AAdvantage, Cathay Pacific Asia Miles, WestJet, and other partners. Includes Visa Infinite Privilege airport lounge access, concierge service, and enhanced insurance.",
+    "rewards_detail": {
+      "everything": {
+        "rate": 1.25,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.0,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (31 days under 65, 10 days 65+), rental car collision/damage waiver (up to $85,000 MSRP), trip cancellation (up to $2,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr, up to $1,000), baggage delay/loss, purchase protection (180 days), extended warranty (up to 2 yrs). 6 complimentary DragonPass lounge visits per year.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 31,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 180,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 740,
+    "min_personal_income_cad": 150000.0,
+    "min_household_income_cad": 200000.0,
+    "best_for": [
+      "premium_rbc_customers",
+      "avion_points",
+      "lounge_access",
+      "enhanced_insurance"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "high_earn_rates",
+      "non_rbc_customers"
+    ],
+    "official_url": "https://www.rbc.com/personal/credit-cards/rbc-avion-visa-infinite-privilege-card.html",
+    "last_verified": "2025-01-01"
+  },
+  {
+    "card_id": "rbc-westjet-world-elite",
+    "name": "WestJet RBC World Elite Mastercard",
+    "issuer": "RBC Royal Bank",
+    "network": "Mastercard",
+    "annual_fee_cad": 119.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 450 WestJet dollars on your first eligible purchase ($450 in WestJet travel value). Plus receive one annual round-trip companion voucher valid for any WestJet destination from $119 base fare.",
+    "rewards_summary": "2% WestJet dollars on all WestJet flight and vacation package purchases; 1.5% WestJet dollars on all other everyday eligible purchases. Annual round-trip companion voucher for any WestJet destination from $119 base fare. First checked bag free on WestJet flights for the primary cardholder and up to 8 travel companions.",
+    "rewards_detail": {
+      "westjet_purchases": {
+        "rate": 2,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 1.5,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (15 days under 65, 3 days 65+), rental car collision/damage waiver, trip cancellation (up to $1,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr), baggage delay/loss, purchase protection (90 days), extended warranty (1 yr). No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 15,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": 80000.0,
+    "min_household_income_cad": 150000.0,
+    "best_for": [
+      "westjet_frequent_flyers",
+      "companion_voucher",
+      "free_checked_bag",
+      "westjet_dollars"
+    ],
+    "not_great_for": [
+      "non_westjet_flyers",
+      "lounge_access",
+      "no_fx_fee",
+      "flexible_points"
+    ],
+    "official_url": "https://www.rbc.com/personal/credit-cards/westjet-rbc-world-elite-mastercard.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "rbc-westjet-mc",
+    "name": "WestJet RBC Mastercard",
+    "issuer": "RBC Royal Bank",
+    "network": "Mastercard",
+    "annual_fee_cad": 39.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 250 WestJet dollars after your first eligible purchase ($250 in WestJet travel value).",
+    "rewards_summary": "1.5% WestJet dollars on all WestJet flight and vacation package purchases; 0.5% WestJet dollars on all other everyday eligible purchases. WestJet dollars redeemable for WestJet flights and vacation packages. No minimum income requirement. Lower tier than the World Elite.",
+    "rewards_detail": {
+      "westjet_purchases": {
+        "rate": 1.5,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 0.5,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-province/country medical (10 days), purchase protection (90 days), extended warranty (1 yr). Basic travel medical coverage. No trip cancellation, rental car, or lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 10,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 640,
+    "min_personal_income_cad": 15000.0,
+    "min_household_income_cad": null,
+    "best_for": [
+      "westjet_occasional_flyers",
+      "entry_level_westjet_rewards",
+      "low_income_threshold"
+    ],
+    "not_great_for": [
+      "premium_insurance",
+      "lounge_access",
+      "no_fx_fee",
+      "non_westjet_travel"
+    ],
+    "official_url": "https://www.rbc.com/personal/credit-cards/westjet-rbc-mastercard.html",
+    "last_verified": "2025-01-01"
+  },
+  {
+    "card_id": "rbc-cashback-mc",
+    "name": "RBC Cash Back Mastercard",
+    "issuer": "RBC Royal Bank",
+    "network": "Mastercard",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "No formal welcome bonus. Earn cashback from your first purchase with no annual fee.",
+    "rewards_summary": "2% cashback at eligible grocery stores (up to $6,000/yr in grocery purchases, then 1%); 1% cashback on all other eligible purchases. Cashback redeemable at any time through RBC online banking. No annual fee and no minimum income requirement — a solid starter card.",
+    "rewards_detail": {
+      "eligible_grocery_stores": {
+        "rate": 2,
+        "unit": "percent_cashback",
+        "annual_cap_cad": 6000.0
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Purchase protection (90 days against theft and damage), extended warranty (doubles manufacturer up to 1 additional year). No travel insurance.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": null,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 620,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "no_annual_fee",
+      "grocery_cashback",
+      "beginners",
+      "simple_cashback"
+    ],
+    "not_great_for": [
+      "travel_insurance",
+      "lounge_access",
+      "international_purchases",
+      "premium_rewards"
+    ],
+    "official_url": "https://www.rbc.com/personal/credit-cards/rbc-cash-back-mastercard.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "bmo-ascend-world-elite",
+    "name": "BMO Ascend World Elite Mastercard",
+    "issuer": "BMO Bank of Montreal",
+    "network": "Mastercard",
+    "annual_fee_cad": 150.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 60,000 BMO Rewards points: 30,000 points after spending $3,000 in the first 3 months, plus 2,500 bonus points per month for 12 months when you spend $2,000/month. Annual fee rebated in year 1.",
+    "rewards_summary": "5 BMO Rewards points per $1 on eligible travel purchases (flights, hotels, car rentals, cruises); 3 pts per $1 on dining and entertainment; 2 pts per $1 on eligible grocery and recurring bill payments; 1 pt per $1 on all other eligible purchases. 4 complimentary Mastercard Travel Pass (DragonPass) airport lounge visits per year.",
+    "rewards_detail": {
+      "eligible_travel": {
+        "rate": 5,
+        "unit": "points_per_dollar"
+      },
+      "dining_and_entertainment": {
+        "rate": 3,
+        "unit": "points_per_dollar"
+      },
+      "grocery_and_recurring_bills": {
+        "rate": 2,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 0.67,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (21 days under 65, 3 days 65+), rental car collision/damage waiver, trip cancellation (up to $1,500/person), trip interruption (up to $2,000/person), flight delay (4+ hr), baggage delay/loss, purchase protection (90 days), extended warranty (1 yr). 4 complimentary Mastercard Travel Pass (DragonPass) lounge visits/year.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 21,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": 80000.0,
+    "min_household_income_cad": 150000.0,
+    "best_for": [
+      "travel_rewards",
+      "lounge_access",
+      "dining_rewards",
+      "grocery_rewards",
+      "bmo_customers"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "cashback_preferences",
+      "non_travel_spenders"
+    ],
+    "official_url": "https://www.bmo.com/en-ca/main/personal/credit-cards/bmo-ascend-world-elite-mastercard/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "bmo-cashback-world-elite",
+    "name": "BMO CashBack World Elite Mastercard",
+    "issuer": "BMO Bank of Montreal",
+    "network": "Mastercard",
+    "annual_fee_cad": 120.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 10% cashback on all eligible purchases for the first 3 months (up to $2,000 per category). Annual fee rebated in the first year.",
+    "rewards_summary": "5% cashback at eligible grocery stores (up to $500/month); 4% on transit and ride-sharing (up to $300/month); 4% on recurring bill payments (up to $500/month); 2% on eligible gas and EV charging (up to $400/month); 1% on all other eligible purchases. Cashback applied monthly. 4 DragonPass lounge visits/yr.",
+    "rewards_detail": {
+      "grocery_stores": {
+        "rate": 5,
+        "unit": "percent_cashback",
+        "monthly_cap_cad": 500.0
+      },
+      "transit_ride_sharing": {
+        "rate": 4,
+        "unit": "percent_cashback",
+        "monthly_cap_cad": 300.0
+      },
+      "recurring_bill_payments": {
+        "rate": 4,
+        "unit": "percent_cashback",
+        "monthly_cap_cad": 500.0
+      },
+      "gas_ev_charging": {
+        "rate": 2,
+        "unit": "percent_cashback",
+        "monthly_cap_cad": 400.0
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (21 days under 65, 3 days 65+), rental car collision/damage waiver, trip cancellation and interruption, flight delay, baggage delay/loss, purchase protection (90 days), extended warranty (1 yr). 4 complimentary DragonPass lounge visits per year.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 21,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": 80000.0,
+    "min_household_income_cad": 150000.0,
+    "best_for": [
+      "grocery_cashback",
+      "transit_cashback",
+      "recurring_bills",
+      "top_cashback_canada"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "travel_points",
+      "uncapped_rewards"
+    ],
+    "official_url": "https://www.bmo.com/en-ca/main/personal/credit-cards/bmo-cashback-world-elite-mastercard/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "bmo-eclipse-vi",
+    "name": "BMO eclipse Visa Infinite Card",
+    "issuer": "BMO Bank of Montreal",
+    "network": "Visa",
+    "annual_fee_cad": 120.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 60,000 BMO Rewards points: 40,000 points after spending $3,000 in the first 3 months, plus 20,000 points after spending $6,000 in the first year. Annual fee waived in year 1.",
+    "rewards_summary": "5 BMO Rewards points per $1 on eligible grocery, dining, gas, and pharmacy purchases (combined across all four categories); 1 BMO Rewards point per $1 on all other eligible purchases. Earn 10% more points when an authorized user is added. Points redeemable for travel, merchandise, and gift cards.",
+    "rewards_detail": {
+      "grocery_dining_gas_pharmacy": {
+        "rate": 5,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 0.67,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (21 days under 65, 3 days 65+), rental car collision/damage waiver, trip cancellation and interruption, flight delay, baggage delay/loss, purchase protection (90 days), extended warranty (1 yr). No complimentary lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 21,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": 60000.0,
+    "min_household_income_cad": 100000.0,
+    "best_for": [
+      "grocery_dining_gas_pharmacy_rewards",
+      "bmo_customers",
+      "multi_category_earners"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "lounge_access",
+      "travel_exclusive_rewards"
+    ],
+    "official_url": "https://www.bmo.com/en-ca/main/personal/credit-cards/bmo-eclipse-visa-infinite/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "bmo-airmiles-world-elite",
+    "name": "BMO Air Miles World Elite Mastercard",
+    "issuer": "BMO Bank of Montreal",
+    "network": "Mastercard",
+    "annual_fee_cad": 120.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 2,000 Air Miles Reward Miles as a welcome bonus after spending $3,000 in the first 3 months. Annual fee rebated in the first year.",
+    "rewards_summary": "3 Air Miles Reward Miles per $25 spent at eligible Air Miles partners (~0.12 miles/$1); 2 Air Miles per $25 at grocery stores and pharmacies (~0.08 miles/$1); 1 Air Mile per $25 everywhere else (~0.04 miles/$1). Earn both Cash Miles and Dream Miles. Includes Mastercard Travel Pass membership.",
+    "rewards_detail": {
+      "air_miles_partners": {
+        "rate": 0.12,
+        "unit": "miles_per_dollar"
+      },
+      "grocery_pharmacy": {
+        "rate": 0.08,
+        "unit": "miles_per_dollar"
+      },
+      "everything_else": {
+        "rate": 0.04,
+        "unit": "miles_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 10.5,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (21 days under 65, 3 days 65+), rental car collision/damage waiver, trip cancellation and interruption, flight delay, baggage delay/loss, purchase protection (90 days), extended warranty (1 yr). Includes Mastercard Travel Pass (DragonPass) membership with pay-per-visit lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 21,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": 80000.0,
+    "min_household_income_cad": 150000.0,
+    "best_for": [
+      "air_miles_collectors",
+      "bmo_airmiles_combo",
+      "grocery_rewards"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "non_air_miles_users",
+      "complimentary_lounge_access"
+    ],
+    "official_url": "https://www.bmo.com/en-ca/main/personal/credit-cards/bmo-air-miles-world-elite-mastercard/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "cibc-aeroplan-vi",
+    "name": "CIBC Aeroplan Visa Infinite Card",
+    "issuer": "CIBC",
+    "network": "Visa",
+    "annual_fee_cad": 139.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 50,000 Aeroplan points: 10,000 Aeroplan points after first eligible purchase, plus 40,000 Aeroplan points after spending $6,000 in the first 6 months. Annual fee rebated in year 1.",
+    "rewards_summary": "1.5 Aeroplan miles per $1 on eligible Air Canada purchases; 1.5 miles per $1 at eligible grocery stores, gas stations, and drugstores; 1 Aeroplan mile per $1 on all other eligible purchases. 25% bonus Aeroplan miles when flying Air Canada. First checked bag free for primary cardholder on Air Canada flights.",
+    "rewards_detail": {
+      "air_canada_purchases": {
+        "rate": 1.5,
+        "unit": "miles_per_dollar"
+      },
+      "grocery_gas_drugstore": {
+        "rate": 1.5,
+        "unit": "miles_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1.0,
+        "unit": "miles_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.5,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (15 days under 65, 4 days 65+), rental car collision/damage waiver, trip cancellation (up to $1,500/person), trip interruption (up to $3,000/person), flight delay (4+ hr), baggage delay/loss, purchase protection (90 days), extended warranty (1 yr). No complimentary lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 15,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 725,
+    "min_personal_income_cad": 60000.0,
+    "min_household_income_cad": 100000.0,
+    "best_for": [
+      "aeroplan_collectors",
+      "air_canada_flyers",
+      "grocery_gas_rewards"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "lounge_access",
+      "non_air_canada_flyers"
+    ],
+    "official_url": "https://www.cibc.com/en/personal-banking/credit-cards/travel/aeroplan-visa-infinite-card.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "cibc-aeroplan-vi-privilege",
+    "name": "CIBC Aeroplan Visa Infinite Privilege Card",
+    "issuer": "CIBC",
+    "network": "Visa",
+    "annual_fee_cad": 599.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 100,000 Aeroplan points: 50,000 Aeroplan points after spending $10,000 in the first 4 months, plus 50,000 additional points after spending $2,500/month in months 5-8.",
+    "rewards_summary": "2 Aeroplan miles per $1 on eligible Air Canada purchases; 1.5 miles per $1 at eligible grocery stores and drug stores; 1.25 Aeroplan miles per $1 on all other eligible purchases. Air Canada Maple Leaf Lounge access when flying Air Canada, Visa Infinite Privilege airport lounge access, priority check-in and boarding on Air Canada.",
+    "rewards_detail": {
+      "air_canada_purchases": {
+        "rate": 2.0,
+        "unit": "miles_per_dollar"
+      },
+      "grocery_and_drugstore": {
+        "rate": 1.5,
+        "unit": "miles_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1.25,
+        "unit": "miles_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.5,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (31 days under 65, 10 days 65+), rental car collision/damage waiver, trip cancellation (up to $2,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr, up to $1,000), baggage delay/loss (up to $1,500), purchase protection (180 days), extended warranty (2 yrs). Air Canada Maple Leaf Lounge access when flying AC.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 31,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 180,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 760,
+    "min_personal_income_cad": 150000.0,
+    "min_household_income_cad": 200000.0,
+    "best_for": [
+      "air_canada_vip",
+      "aeroplan_power_users",
+      "premium_lounge_access",
+      "luxury_travel"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "budget_travelers",
+      "non_air_canada_flyers"
+    ],
+    "official_url": "https://www.cibc.com/en/personal-banking/credit-cards/travel/aeroplan-visa-infinite-privilege-card.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "cibc-dividend-vi",
+    "name": "CIBC Dividend Visa Infinite Card",
+    "issuer": "CIBC",
+    "network": "Visa",
+    "annual_fee_cad": 99.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 10% cashback on all eligible purchases for the first 4 statement periods (up to $400 cashback). Annual fee waived in the first year.",
+    "rewards_summary": "4% cashback at eligible grocery stores and gas stations; 2% cashback on eligible dining, drugstore purchases, and recurring bill payments; 1% cashback on all other eligible purchases. Cashback applied monthly as a statement credit.",
+    "rewards_detail": {
+      "grocery_and_gas": {
+        "rate": 4,
+        "unit": "percent_cashback"
+      },
+      "dining_drugstore_recurring_bills": {
+        "rate": 2,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (15 days under 65, 4 days 65+), rental car collision/damage waiver (up to $65,000 MSRP), purchase protection (90 days), extended warranty (1 yr). No trip cancellation or interruption insurance at this tier.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 15,
+      "rental_car_collision": true,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": 60000.0,
+    "min_household_income_cad": 100000.0,
+    "best_for": [
+      "grocery_cashback",
+      "gas_cashback",
+      "everyday_cashback",
+      "recurring_bills"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "lounge_access",
+      "travel_points",
+      "trip_cancellation_insurance"
+    ],
+    "official_url": "https://www.cibc.com/en/personal-banking/credit-cards/cash-back/dividend-visa-infinite-card.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "cibc-aventura-vi",
+    "name": "CIBC Aventura Visa Infinite Card",
+    "issuer": "CIBC",
+    "network": "Visa",
+    "annual_fee_cad": 139.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 35,000 Aventura points: 15,000 Aventura points after first eligible purchase, plus 20,000 Aventura points after spending $3,000 in the first 4 months. Annual fee waived in year 1.",
+    "rewards_summary": "2 Aventura points per $1 on travel booked through the CIBC Rewards Centre; 1.5 points per $1 on eligible gas, grocery, transit, and drugstore purchases; 1 Aventura point per $1 on all other eligible purchases. 4 complimentary DragonPass airport lounge visits per year.",
+    "rewards_detail": {
+      "travel_via_cibc_rewards": {
+        "rate": 2,
+        "unit": "points_per_dollar"
+      },
+      "gas_grocery_transit_drugstore": {
+        "rate": 1.5,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.0,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (15 days under 65, 4 days 65+), rental car collision/damage waiver, trip cancellation (up to $1,500/person), trip interruption (up to $3,000/person), flight delay (4+ hr), baggage delay/loss, purchase protection (90 days), extended warranty (1 yr). 4 complimentary DragonPass airport lounge visits/year.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 15,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": 60000.0,
+    "min_household_income_cad": 100000.0,
+    "best_for": [
+      "cibc_rewards_travel",
+      "lounge_access",
+      "grocery_gas_rewards",
+      "flexible_travel_redemption"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "non_cibc_customers",
+      "cashback"
+    ],
+    "official_url": "https://www.cibc.com/en/personal-banking/credit-cards/travel/aventura-visa-infinite-card.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "nb-world-elite-mc",
+    "name": "National Bank World Elite Mastercard",
+    "issuer": "National Bank",
+    "network": "Mastercard",
+    "annual_fee_cad": 150.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 20,000 A la carte Rewards points as a welcome bonus after meeting spending requirements in the first 3 months. 1 point = 1 cent toward travel and merchandise redemptions.",
+    "rewards_summary": "5 A la carte Rewards points per $1 on groceries, restaurant meals, and entertainment; 2 pts per $1 on gas, recurring bills, and streaming services; 1 pt per $1 on all other eligible purchases. Award-winning travel insurance: up to 60 days of emergency medical coverage for travellers under 55. 4 complimentary airport lounge visits/yr.",
+    "rewards_detail": {
+      "grocery_dining_entertainment": {
+        "rate": 5,
+        "unit": "points_per_dollar"
+      },
+      "gas_recurring_streaming": {
+        "rate": 2,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.0,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (60 days for travellers under 55, 31 days for 55-64 years) — the longest emergency medical coverage of any Canadian credit card. Rental car collision/damage waiver, trip cancellation (up to $2,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr), baggage delay/loss, purchase protection (180 days), extended warranty (2 yrs). 4 complimentary airport lounge visits/year.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 60,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 180,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": 80000.0,
+    "min_household_income_cad": 150000.0,
+    "best_for": [
+      "best_travel_insurance",
+      "extended_medical_coverage",
+      "seniors_travel",
+      "grocery_dining_rewards"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "non_national_bank_customers",
+      "cashback_preferences"
+    ],
+    "official_url": "https://www.nbc.ca/personal/credit-cards/world-elite-mastercard.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "nb-syncro-mc",
+    "name": "National Bank Mastercard Syncro",
+    "issuer": "National Bank",
+    "network": "Mastercard",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "No traditional welcome bonus. The Syncro is a hybrid card: part standard credit and part revolving credit at a lower variable interest rate, designed to minimize interest on carried balances.",
+    "rewards_summary": "No traditional rewards program. The NB Syncro is a hybrid card: the revolving credit portion carries a variable interest rate lower than a standard credit card (prime + a spread), making it useful for cardholders who regularly carry a balance and want to reduce interest costs. The fixed-rate portion works like a standard credit card. Value proposition is interest savings, not earn rates.",
+    "rewards_detail": {
+      "no_rewards_low_interest": {
+        "rate": 0,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Purchase protection (90 days), extended warranty (1 yr). No travel insurance. Primarily a balance management card.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": null,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 620,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "balance_carriers",
+      "low_interest_hybrid",
+      "national_bank_customers"
+    ],
+    "not_great_for": [
+      "premium_rewards",
+      "travel_insurance",
+      "lounge_access",
+      "full_monthly_payers"
+    ],
+    "official_url": "https://www.nbc.ca/personal/credit-cards/syncro-mastercard.html",
+    "last_verified": "2025-01-01"
+  },
+  {
+    "card_id": "tangerine-money-back",
+    "name": "Tangerine Money-Back Credit Card",
+    "issuer": "Tangerine Bank",
+    "network": "Mastercard",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn an extra 10% cashback on up to $1,000 in qualifying purchases in your first 2 months (up to $100 extra cashback).",
+    "rewards_summary": "2% unlimited cashback on purchases in up to 2 chosen spending categories (choose from: grocery, restaurant, hotel/motel, gas station, recurring bill payments, drugstore, home improvement, entertainment, public transit, or parking). 0.5% cashback on all other eligible purchases. A 3rd category earns 2% with a Tangerine savings account. Cashback paid monthly. NO annual fee.",
+    "rewards_detail": {
+      "chosen_category_1": {
+        "rate": 2,
+        "unit": "percent_cashback"
+      },
+      "chosen_category_2": {
+        "rate": 2,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 0.5,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Purchase assurance (90 days against theft and damage), extended warranty (doubles manufacturer warranty up to 1 yr). No travel insurance. No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": null,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 640,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "no_annual_fee",
+      "customizable_cashback",
+      "grocery_cashback",
+      "beginners"
+    ],
+    "not_great_for": [
+      "travel_insurance",
+      "lounge_access",
+      "international_purchases",
+      "non_chosen_category_spending"
+    ],
+    "official_url": "https://www.tangerine.ca/en/products/spending/creditcard/money-back/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "tangerine-world-mc",
+    "name": "Tangerine World Mastercard",
+    "issuer": "Tangerine Bank",
+    "network": "Mastercard",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn an extra 10% cashback on up to $1,000 in qualifying purchases in your first 2 months (up to $100 extra cashback).",
+    "rewards_summary": "2% unlimited cashback on purchases in up to 2 chosen categories (same 10 categories as the Money-Back Card), plus optional 3rd category with a Tangerine savings account. 0.5% cashback on all other purchases. No annual fee. The World tier adds rental car collision insurance, mobile device insurance, and Mastercard Travel Pass (DragonPass) membership.",
+    "rewards_detail": {
+      "chosen_category_1": {
+        "rate": 2,
+        "unit": "percent_cashback"
+      },
+      "chosen_category_2": {
+        "rate": 2,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 0.5,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (8 days under 65), rental car collision/damage waiver, purchase protection (90 days), extended warranty (1 yr). Includes Mastercard Travel Pass (DragonPass) membership (pay-per-visit rates, not complimentary). Mobile device insurance included.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 8,
+      "rental_car_collision": true,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 660,
+    "min_personal_income_cad": 60000.0,
+    "min_household_income_cad": 100000.0,
+    "best_for": [
+      "no_annual_fee",
+      "customizable_cashback",
+      "rental_car_insurance",
+      "world_benefits_no_fee"
+    ],
+    "not_great_for": [
+      "premium_travel_insurance",
+      "complimentary_lounge_access",
+      "international_purchases"
+    ],
+    "official_url": "https://www.tangerine.ca/en/products/spending/creditcard/world-mastercard/",
+    "last_verified": "2025-09-01"
   },
   {
     "card_id": "rogers-red-mc",
     "name": "Rogers Red Mastercard",
     "issuer": "Rogers Bank",
     "network": "Mastercard",
-    "annual_fee_cad": 0.00,
+    "annual_fee_cad": 0.0,
     "monthly_fee_cad": null,
-    "welcome_bonus_description": "Earn $30 cashback after first purchase within 90 days.",
-    "rewards_summary": "1.5% unlimited cashback on all purchases in Canadian dollars; 3% cashback on purchases in US dollars. Cashback redeemed against any Rogers/Fido/Shaw bill, or as statement credit. NO annual fee.",
+    "welcome_bonus_description": "No welcome bonus. Earn unlimited cashback from day one with no annual fee.",
+    "rewards_summary": "3% unlimited cashback on all US dollar purchases (net advantage after 2.5% FX fee = +0.5% effective benefit vs the FX fee); 1.5% unlimited cashback on all other eligible purchases. Cashback redeemable against any Rogers, Fido, or Shaw bill or as a statement credit. NO annual fee.",
     "rewards_detail": {
-      "everything_cad": {"rate": 1.5, "unit": "percent_cashback"},
-      "us_dollar_purchases": {"rate": 3, "unit": "percent_cashback"}
+      "us_dollar_purchases": {
+        "rate": 3,
+        "unit": "percent_cashback"
+      },
+      "everything_else_cad": {
+        "rate": 1.5,
+        "unit": "percent_cashback"
+      }
     },
     "estimated_point_value_cents": null,
     "foreign_transaction_fee_pct": 2.5,
-    "insurance_summary": "Purchase assurance (90 days against theft/damage), extended warranty (doubles manufacturer up to 1 year). NO travel insurance. Mastercard zero liability for unauthorized use.",
+    "insurance_summary": "Purchase assurance (90 days against theft and damage), extended warranty (doubles manufacturer warranty up to 1 yr). No travel insurance. Mastercard Zero Liability for unauthorized use.",
     "insurance_detail": {
       "travel_emergency_medical_days": null,
       "rental_car_collision": false,
@@ -170,11 +1780,836 @@
       "lounge_access": false
     },
     "min_credit_score_recommended": 660,
-    "min_personal_income_cad": 15000,
+    "min_personal_income_cad": 15000.0,
     "min_household_income_cad": null,
-    "best_for": ["no_fee", "us_dollar_purchases", "rogers_customers", "everyday_cashback", "simple_rewards"],
-    "not_great_for": ["foreign_travel_no_fx_fee", "premium_insurance", "lounge_access"],
+    "best_for": [
+      "no_annual_fee",
+      "us_dollar_purchases",
+      "rogers_fido_shaw_customers",
+      "everyday_cashback"
+    ],
+    "not_great_for": [
+      "premium_insurance",
+      "lounge_access",
+      "international_travel_no_fx"
+    ],
     "official_url": "https://www.rogersbank.com/en/products_and_services_red_mastercard",
-    "last_verified": "2026-05-04"
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "pc-financial-world-elite",
+    "name": "PC Financial World Elite Mastercard",
+    "issuer": "PC Bank",
+    "network": "Mastercard",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 50,000 PC Optimum points as a welcome offer (10,000 PC Optimum points = $10 in free groceries).",
+    "rewards_summary": "45 PC Optimum points per $1 at Loblaw banner stores (Loblaws, Real Canadian Superstore, No Frills, Valu-Mart, Zehrs, FreshCo, and more — equivalent to 4.5% return); 30 pts per $1 at Shoppers Drug Mart/Pharmaprix and Esso/Mobil stations (3%); 30 pts per $1 on PC Travel purchases; 10 pts per $1 everywhere else (1%). NO annual fee.",
+    "rewards_detail": {
+      "loblaws_banner_stores": {
+        "rate": 4.5,
+        "unit": "percent_cashback"
+      },
+      "shoppers_esso_pc_travel": {
+        "rate": 3.0,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 1.0,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (10 days), rental car collision/damage waiver, trip cancellation (up to $1,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr), baggage delay/loss (up to $500/person), purchase protection (90 days), extended warranty (1 yr). No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 10,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 680,
+    "min_personal_income_cad": 80000.0,
+    "min_household_income_cad": 150000.0,
+    "best_for": [
+      "loblaws_shoppers_loyalty",
+      "pc_optimum_maximizers",
+      "no_annual_fee_with_travel_insurance",
+      "grocery_rewards"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "lounge_access",
+      "non_loblaws_shoppers"
+    ],
+    "official_url": "https://www.pcfinancial.ca/en/credit-cards/world-elite-mastercard/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "pc-financial-world-mc",
+    "name": "PC Financial World Mastercard",
+    "issuer": "PC Bank",
+    "network": "Mastercard",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 20,000 PC Optimum points as a welcome offer.",
+    "rewards_summary": "30 PC Optimum points per $1 at Loblaw banner stores (3% return); 25 pts per $1 at Shoppers Drug Mart/Pharmaprix and Esso/Mobil (2.5% return); 10 pts per $1 everywhere else (1% return). NO annual fee. Lower income threshold than the World Elite, making it accessible to more Canadians. 10,000 points = $10.",
+    "rewards_detail": {
+      "loblaws_banner_stores": {
+        "rate": 3.0,
+        "unit": "percent_cashback"
+      },
+      "shoppers_and_esso": {
+        "rate": 2.5,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 1.0,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (10 days), purchase protection (90 days), extended warranty (1 yr). Limited travel insurance versus the World Elite version — no trip cancellation or rental car coverage.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 10,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 640,
+    "min_personal_income_cad": 15000.0,
+    "min_household_income_cad": null,
+    "best_for": [
+      "loblaws_shoppers_loyalty",
+      "pc_optimum_earners",
+      "no_annual_fee",
+      "low_income_threshold"
+    ],
+    "not_great_for": [
+      "premium_insurance",
+      "lounge_access",
+      "non_loblaws_shoppers"
+    ],
+    "official_url": "https://www.pcfinancial.ca/en/credit-cards/world-mastercard/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "desjardins-odyssey-world-elite",
+    "name": "Desjardins Odyssey World Elite Mastercard",
+    "issuer": "Desjardins",
+    "network": "Mastercard",
+    "annual_fee_cad": 130.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 15,000 BONUSDOLLARS as a welcome offer after meeting spending requirements in the first 3 months. 1 BONUSDOLLAR = $1 in rewards.",
+    "rewards_summary": "3 BONUSDOLLARS per $100 spent on groceries, restaurant meals, and entertainment (3% return); 2 BONUSDOLLARS per $100 on all other eligible purchases (2% return). BONUSDOLLARS redeemable as statement credit. Best comprehensive travel insurance package in Canada. 4 complimentary DragonPass airport lounge visits per year.",
+    "rewards_detail": {
+      "grocery_dining_entertainment": {
+        "rate": 3,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 2,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (60 days for travellers under 55, 15 days for 55-64 years) — one of the longest in Canada. Rental car collision/damage waiver, trip cancellation (up to $2,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr, up to $500), baggage delay/loss, purchase protection (90 days), extended warranty (2 yrs). 4 complimentary DragonPass lounge visits/year.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 60,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": 80000.0,
+    "min_household_income_cad": 150000.0,
+    "best_for": [
+      "best_travel_insurance",
+      "extended_medical_seniors",
+      "lounge_access",
+      "grocery_dining_rewards",
+      "desjardins_members"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "non_desjardins_members",
+      "simple_flat_rate_cashback"
+    ],
+    "official_url": "https://www.desjardins.com/en/personal/accounts-services/credit-cards/odyssey-world-elite-mastercard.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "desjardins-cash-back-visa",
+    "name": "Desjardins Visa Card (Entry-Level)",
+    "issuer": "Desjardins",
+    "network": "Visa",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "No welcome bonus. Earn BONUSDOLLARS cashback from your first eligible purchase. Available to Desjardins caisse members.",
+    "rewards_summary": "Basic cashback equivalent of approximately 1% on eligible purchases via BONUSDOLLARS (1 BONUSDOLLAR per $100 spent = 1% return). BONUSDOLLARS redeemable as a statement credit. No annual fee. Available to Desjardins caisse members. Exact product name and earn structure may vary by caisse — consult desjardins.com for current offerings.",
+    "rewards_detail": {
+      "everything": {
+        "rate": 1,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Purchase protection (90 days), extended warranty (1 yr). No travel insurance. Best used as a no-fee everyday card for Desjardins caisse members.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": null,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 620,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "desjardins_members",
+      "no_annual_fee",
+      "simple_cashback",
+      "beginners"
+    ],
+    "not_great_for": [
+      "premium_rewards",
+      "travel_insurance",
+      "lounge_access",
+      "non_desjardins_members"
+    ],
+    "official_url": "https://www.desjardins.com/en/personal/accounts-services/credit-cards/",
+    "last_verified": "2025-01-01"
+  },
+  {
+    "card_id": "mbna-rewards-world-elite",
+    "name": "MBNA Rewards World Elite Mastercard",
+    "issuer": "MBNA",
+    "network": "Mastercard",
+    "annual_fee_cad": 120.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 30,000 MBNA Rewards points as a welcome bonus: 15,000 points after first eligible purchase, plus 15,000 points after spending $3,000 in the first 3 months. Annual fee waived in the first year.",
+    "rewards_summary": "5 MBNA Rewards points per $1 on eligible restaurant, grocery, digital media, and household utility purchases (combined, subject to annual spend cap); 1 MBNA Rewards point per $1 on all other eligible purchases. Points redeemable for travel, merchandise, cash back, and gift cards. 4 complimentary DragonPass airport lounge visits per year.",
+    "rewards_detail": {
+      "restaurant_grocery_digital_utility": {
+        "rate": 5,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 0.85,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (21 days under 65), rental car collision/damage waiver, trip cancellation and interruption, flight delay, baggage delay/loss, purchase protection (90 days), extended warranty (1 yr). 4 complimentary DragonPass airport lounge visits per year.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 21,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": 80000.0,
+    "min_household_income_cad": 150000.0,
+    "best_for": [
+      "restaurant_grocery_rewards",
+      "lounge_access",
+      "flexible_redemption",
+      "mbna_customers"
+    ],
+    "not_great_for": [
+      "no_fx_fee",
+      "premium_travel_brand"
+    ],
+    "official_url": "https://www.mbna.ca/en/credit-cards/mbna-rewards-world-elite-mastercard.html",
+    "last_verified": "2025-01-01"
+  },
+  {
+    "card_id": "mbna-true-line-mc",
+    "name": "MBNA True Line Mastercard",
+    "issuer": "MBNA",
+    "network": "Mastercard",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "No welcome bonus. This is a low-interest credit card at a 12.99% purchase interest rate (versus the standard 19.99%). Designed for balance management, not rewards.",
+    "rewards_summary": "No rewards program. This card offers a low purchase interest rate of 12.99% and a low cash advance rate. Ideal for Canadians who carry a balance monthly and want to minimize interest charges.",
+    "rewards_detail": {
+      "no_rewards_low_interest": {
+        "rate": 0,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Purchase protection (90 days), extended warranty (1 yr). Minimal insurance — no travel insurance included. Designed purely for interest cost management.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": null,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 620,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "balance_carriers",
+      "low_interest",
+      "debt_management",
+      "no_annual_fee"
+    ],
+    "not_great_for": [
+      "rewards_earners",
+      "travel_insurance",
+      "full_monthly_payers",
+      "lounge_access"
+    ],
+    "official_url": "https://www.mbna.ca/en/credit-cards/mbna-true-line-mastercard.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "brim-world-elite",
+    "name": "Brim World Elite Mastercard",
+    "issuer": "Brim Financial",
+    "network": "Mastercard",
+    "annual_fee_cad": 199.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to $200 in Brim Rewards as a welcome bonus when you meet spending thresholds in the first 3 months.",
+    "rewards_summary": "3% Brim Rewards on purchases at Brim partner merchants; 2% Brim Rewards on all other eligible purchases. NO foreign transaction fee. Unlimited airport lounge visits globally through DragonPass. $200 annual travel credit. A strong option for international travelers seeking no FX fees and lounge access.",
+    "rewards_detail": {
+      "brim_partner_merchants": {
+        "rate": 3,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 2,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 0.0,
+    "insurance_summary": "Emergency out-of-country medical (15 days), rental car collision/damage waiver, trip cancellation, trip interruption, flight delay, baggage delay/loss, purchase protection (90 days), extended warranty (1 yr). Unlimited airport lounge access globally through DragonPass.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 15,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": 80000.0,
+    "min_household_income_cad": 150000.0,
+    "best_for": [
+      "no_fx_fee",
+      "unlimited_lounge_access",
+      "fintech_rewards",
+      "international_travelers"
+    ],
+    "not_great_for": [
+      "traditional_bank_preference",
+      "specific_airline_rewards",
+      "non_brim_merchant_spending"
+    ],
+    "official_url": "https://www.brimfinancial.com/brim-world-elite",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "brim-world-mc",
+    "name": "Brim World Mastercard",
+    "issuer": "Brim Financial",
+    "network": "Mastercard",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to $25 in Brim Rewards as a welcome bonus.",
+    "rewards_summary": "1% Brim Rewards on all eligible purchases, up to 3% at select Brim partner merchants. NO foreign transaction fee — a rare feature for a no-fee card. Points redeemable as cashback or at Brim partner merchants at checkout. Ideal no-fee card for international shoppers and occasional travelers.",
+    "rewards_detail": {
+      "brim_partner_merchants": {
+        "rate": 3,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 0.0,
+    "insurance_summary": "Emergency out-of-country medical (10 days), purchase protection (90 days), extended warranty (1 yr). Basic travel insurance package. No lounge access at this tier.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 10,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 660,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "no_annual_fee",
+      "no_fx_fee",
+      "international_online_shopping",
+      "fintech_users"
+    ],
+    "not_great_for": [
+      "premium_travel_insurance",
+      "lounge_access",
+      "high_earn_rates"
+    ],
+    "official_url": "https://www.brimfinancial.com/brim-world",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "home-trust-preferred-visa",
+    "name": "Home Trust Preferred Visa Card",
+    "issuer": "Home Trust Company",
+    "network": "Visa",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "No formal welcome bonus. Earn 1% cashback on all eligible purchases from day one with no annual fee and no foreign transaction fee.",
+    "rewards_summary": "1% unlimited cashback on all eligible purchases. NO foreign transaction fee — the only no-fee Visa card in Canada with 0% FX fee. Ideal for international travel, online shopping in foreign currencies, and snowbirds spending in the US. Cashback paid annually as a statement credit.",
+    "rewards_detail": {
+      "everything": {
+        "rate": 1,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 0.0,
+    "insurance_summary": "Purchase protection (90 days against damage and theft), extended warranty (doubles manufacturer warranty up to 1 yr). No travel insurance. The card's value is the combination of 0% FX fee + 1% cashback + no annual fee.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": null,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 640,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "no_annual_fee",
+      "no_fx_fee",
+      "international_travel",
+      "snowbirds",
+      "simple_cashback"
+    ],
+    "not_great_for": [
+      "premium_rewards",
+      "travel_insurance",
+      "lounge_access",
+      "high_cashback_rates"
+    ],
+    "official_url": "https://www.hometrust.ca/personal-banking/credit-cards/preferred-visa/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "neo-mastercard",
+    "name": "Neo Mastercard",
+    "issuer": "Neo Financial",
+    "network": "Mastercard",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn an average of 15% cashback at Neo partner merchants in your first 90 days as a new cardholder.",
+    "rewards_summary": "Average 5% cashback at thousands of Neo partner merchants (local businesses and national brands across Canada); 0.5% cashback on all other eligible purchases. Cashback applied automatically to your balance. No annual fee. No minimum income requirement.",
+    "rewards_detail": {
+      "neo_partner_merchants": {
+        "rate": 5,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 0.5,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Purchase protection (90 days). No travel insurance. This is a fintech cashback card — the value is in the partner merchant cashback network, not travel perks.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": null,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": false,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 600,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "neo_partner_merchants",
+      "no_annual_fee",
+      "fintech_users",
+      "local_business_shoppers",
+      "credit_building"
+    ],
+    "not_great_for": [
+      "travel_insurance",
+      "lounge_access",
+      "no_fx_fee",
+      "non_neo_partner_spending"
+    ],
+    "official_url": "https://www.neo.ca/mastercard/",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "capital-one-costco-mc",
+    "name": "Capital One Costco Mastercard",
+    "issuer": "Capital One",
+    "network": "Mastercard",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "No formal welcome bonus. Note: A paid Costco membership ($65-$135/yr) is required to apply and use this card. Cashback is earned from day one.",
+    "rewards_summary": "3% cashback at eligible restaurants worldwide; 2% cashback at eligible gas stations worldwide (including Costco gas); 1% cashback at Costco warehouses, Costco.ca, and all other eligible purchases. Costco membership required separately. Annual cashback paid as a Costco Shopping Card in February.",
+    "rewards_detail": {
+      "restaurants_worldwide": {
+        "rate": 3,
+        "unit": "percent_cashback"
+      },
+      "gas_worldwide": {
+        "rate": 2,
+        "unit": "percent_cashback"
+      },
+      "costco_and_everything_else": {
+        "rate": 1,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-province/country medical (15 days), purchase protection (90 days), extended warranty (1 yr). Basic travel insurance. No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 15,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 660,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "costco_members",
+      "restaurant_cashback",
+      "gas_cashback",
+      "no_additional_card_fee"
+    ],
+    "not_great_for": [
+      "non_costco_members",
+      "lounge_access",
+      "no_fx_fee",
+      "premium_insurance"
+    ],
+    "official_url": "https://www.costco.ca/mastercard.html",
+    "last_verified": "2025-01-01"
+  },
+  {
+    "card_id": "simplii-cash-back-visa",
+    "name": "Simplii Financial Cash Back Visa Card",
+    "issuer": "Simplii Financial",
+    "network": "Visa",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn 10% cashback at eligible restaurants, bars, and coffee shops for the first 3 months (up to $500 spend = maximum $50 extra cashback).",
+    "rewards_summary": "4% cashback on eligible restaurant, bar, and coffee shop purchases (up to $5,000/yr, then 0.5%); 1.5% cashback on eligible gas, grocery, and drugstore purchases plus pre-authorized bill payments; 0.5% cashback on all other eligible purchases. Annual cashback paid in January as a statement credit. No annual fee.",
+    "rewards_detail": {
+      "restaurants_bars_coffee": {
+        "rate": 4,
+        "unit": "percent_cashback",
+        "annual_cap_cad": 5000.0
+      },
+      "gas_grocery_drugstore_bills": {
+        "rate": 1.5,
+        "unit": "percent_cashback"
+      },
+      "everything_else": {
+        "rate": 0.5,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (8 days), purchase protection (90 days), extended warranty (1 yr). Basic travel medical coverage. No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 8,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 640,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "no_annual_fee",
+      "restaurant_cashback",
+      "dining_rewards",
+      "simplii_customers"
+    ],
+    "not_great_for": [
+      "lounge_access",
+      "no_fx_fee",
+      "premium_travel_insurance",
+      "non_dining_spenders"
+    ],
+    "official_url": "https://www.simplii.com/en/credit-cards/cash-back-visa-card.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "cibc-select-visa",
+    "name": "CIBC Select Visa Card",
+    "issuer": "CIBC",
+    "network": "Visa",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "No rewards welcome bonus. This is a low-interest card with a 13.99% purchase interest rate. Balance transfer promotions may be offered periodically.",
+    "rewards_summary": "No rewards program. The CIBC Select Visa offers a low purchase interest rate of 13.99% versus the standard 19.99%. Designed for CIBC clients who carry a monthly balance and want to minimize interest costs rather than earn rewards. No annual fee.",
+    "rewards_detail": {
+      "no_rewards_low_interest": {
+        "rate": 0,
+        "unit": "percent_cashback"
+      }
+    },
+    "estimated_point_value_cents": null,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Purchase protection (90 days), extended warranty (1 yr). No travel insurance. This is a balance management card.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": null,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 600,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "balance_carriers",
+      "low_interest",
+      "cibc_customers",
+      "debt_management"
+    ],
+    "not_great_for": [
+      "rewards_earners",
+      "travel_insurance",
+      "full_monthly_payers",
+      "lounge_access"
+    ],
+    "official_url": "https://www.cibc.com/en/personal-banking/credit-cards/low-interest/select-visa-card.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "rbc-ion-visa",
+    "name": "RBC Ion Visa Card",
+    "issuer": "RBC Royal Bank",
+    "network": "Visa",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 10,000 Avion Rewards points in your first year as a welcome bonus.",
+    "rewards_summary": "3 Avion Rewards points per $1 spent on groceries, streaming services, ride-sharing, digital subscriptions, and gaming; 1 Avion Rewards point per $1 on all other eligible purchases. No annual fee. Points redeemable for travel, gift cards, and statement credits. Good entry-level Avion card.",
+    "rewards_detail": {
+      "grocery_streaming_rideshare_subscriptions": {
+        "rate": 3,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 0.5,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Purchase protection (90 days against theft and damage), extended warranty (doubles manufacturer up to 1 additional year). No travel insurance.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": null,
+      "rental_car_collision": false,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 640,
+    "min_personal_income_cad": null,
+    "min_household_income_cad": null,
+    "best_for": [
+      "no_annual_fee",
+      "grocery_streaming_rewards",
+      "rbc_customers",
+      "avion_entry_level"
+    ],
+    "not_great_for": [
+      "travel_insurance",
+      "lounge_access",
+      "no_fx_fee",
+      "premium_rewards"
+    ],
+    "official_url": "https://www.rbc.com/personal/credit-cards/rbc-ion-visa-card.html",
+    "last_verified": "2025-09-01"
+  },
+  {
+    "card_id": "atb-world-elite-mc",
+    "name": "ATB World Elite Mastercard",
+    "issuer": "ATB Financial",
+    "network": "Mastercard",
+    "annual_fee_cad": 120.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 15,000 ATB Rewards points as a welcome bonus after meeting spending requirements in the first 3 months. Available to Alberta residents with an ATB account only.",
+    "rewards_summary": "3 ATB Rewards points per $1 on eligible dining and entertainment purchases; 2 points per $1 on eligible grocery, gas, and transit purchases; 1 point per $1 on all other eligible purchases. Points redeemable for travel, merchandise, and statement credits. Available exclusively to Alberta residents.",
+    "rewards_detail": {
+      "dining_and_entertainment": {
+        "rate": 3,
+        "unit": "points_per_dollar"
+      },
+      "grocery_gas_transit": {
+        "rate": 2,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 1.0,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (21 days under 65), rental car collision/damage waiver, trip cancellation and interruption, flight delay, baggage delay/loss, purchase protection (90 days), extended warranty (1 yr). 4 complimentary DragonPass airport lounge visits per year.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 21,
+      "rental_car_collision": true,
+      "trip_interruption": true,
+      "trip_cancellation": true,
+      "flight_delay": true,
+      "baggage_insurance": true,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": true
+    },
+    "min_credit_score_recommended": 700,
+    "min_personal_income_cad": 80000.0,
+    "min_household_income_cad": 150000.0,
+    "best_for": [
+      "alberta_residents",
+      "atb_customers",
+      "dining_entertainment_rewards",
+      "lounge_access"
+    ],
+    "not_great_for": [
+      "non_albertans",
+      "no_fx_fee",
+      "cashback_preferences"
+    ],
+    "official_url": "https://www.atb.com/personal/accounts-and-cards/credit-cards/world-elite-mastercard/",
+    "last_verified": "2025-01-01"
+  },
+  {
+    "card_id": "bmo-eclipse-rise-vi",
+    "name": "BMO eclipse rise Visa Infinite Card",
+    "issuer": "BMO Bank of Montreal",
+    "network": "Visa",
+    "annual_fee_cad": 0.0,
+    "monthly_fee_cad": null,
+    "welcome_bonus_description": "Earn up to 25,000 BMO Rewards points as a welcome bonus: 20,000 points after spending $3,000 in the first 3 months, plus 5,000 bonus points after adding a first authorized user.",
+    "rewards_summary": "5 BMO Rewards points per $1 on eligible grocery, dining, gas, and pharmacy purchases; 1 BMO Rewards point per $1 on all other eligible purchases. No annual fee with Visa Infinite card benefits. Points redeemable for travel, merchandise, and gift cards. A no-fee card with strong accelerated earn on everyday categories.",
+    "rewards_detail": {
+      "grocery_dining_gas_pharmacy": {
+        "rate": 5,
+        "unit": "points_per_dollar"
+      },
+      "everything_else": {
+        "rate": 1,
+        "unit": "points_per_dollar"
+      }
+    },
+    "estimated_point_value_cents": 0.67,
+    "foreign_transaction_fee_pct": 2.5,
+    "insurance_summary": "Emergency out-of-country medical (15 days), rental car collision/damage waiver, purchase protection (90 days), extended warranty (1 yr). Basic Visa Infinite travel insurance package. No trip cancellation. No lounge access.",
+    "insurance_detail": {
+      "travel_emergency_medical_days": 15,
+      "rental_car_collision": true,
+      "trip_interruption": false,
+      "trip_cancellation": false,
+      "flight_delay": false,
+      "baggage_insurance": false,
+      "purchase_protection_days": 90,
+      "extended_warranty": true,
+      "lounge_access": false
+    },
+    "min_credit_score_recommended": 660,
+    "min_personal_income_cad": 60000.0,
+    "min_household_income_cad": 100000.0,
+    "best_for": [
+      "no_annual_fee",
+      "grocery_dining_gas_pharmacy_rewards",
+      "visa_infinite_no_fee",
+      "bmo_customers"
+    ],
+    "not_great_for": [
+      "lounge_access",
+      "no_fx_fee",
+      "premium_insurance",
+      "non_category_spenders"
+    ],
+    "official_url": "https://www.bmo.com/en-ca/main/personal/credit-cards/bmo-eclipse-rise-visa-infinite/",
+    "last_verified": "2025-01-01"
   }
 ]
