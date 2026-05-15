@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "card_id": "amex-cobalt",
     "name": "American Express Cobalt Card",
@@ -218,7 +218,7 @@
     "annual_fee_cad": 99.0,
     "monthly_fee_cad": null,
     "welcome_bonus_description": "Earn 4% cashback on all eligible purchases for the first 6 months (up to $200 cashback), then 2% cashback on all eligible purchases permanently.",
-    "rewards_summary": "2% unlimited cashback on all eligible purchases — no categories, no caps, no tracking. Cashback paid annually in November as a statement credit. One of Canada's best flat-rate cashback cards for moderate-to-high everyday spenders.",
+    "rewards_summary": "2% unlimited cashback on all eligible purchases ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â no categories, no caps, no tracking. Cashback paid annually in November as a statement credit. One of Canada's best flat-rate cashback cards for moderate-to-high everyday spenders.",
     "rewards_detail": {
       "everything": {
         "rate": 2.0,
@@ -591,7 +591,7 @@
     "annual_fee_cad": 399.0,
     "monthly_fee_cad": null,
     "welcome_bonus_description": "Earn up to 60,000 Scene+ points: 40,000 Scene+ points after spending $3,000 in first 3 months, plus 20,000 additional Scene+ points after spending $12,000 in the first year.",
-    "rewards_summary": "2x Scene+ points per $1 on all eligible purchases — flat earn rate on every dollar. NO foreign transaction fee. Unlimited Visa Airport Companion (DragonPass) lounge visits per year for primary cardholder. Concierge service included.",
+    "rewards_summary": "2x Scene+ points per $1 on all eligible purchases ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â flat earn rate on every dollar. NO foreign transaction fee. Unlimited Visa Airport Companion (DragonPass) lounge visits per year for primary cardholder. Concierge service included.",
     "rewards_detail": {
       "everything": {
         "rate": 2,
@@ -903,7 +903,7 @@
     "annual_fee_cad": 399.0,
     "monthly_fee_cad": null,
     "welcome_bonus_description": "Earn 35,000 RBC Avion points as a welcome bonus after spending $5,000 in the first 3 months.",
-    "rewards_summary": "1.25 Avion Rewards points per $1 on all eligible purchases — no category limits. Points transferable to British Airways Avios, American Airlines AAdvantage, Cathay Pacific Asia Miles, WestJet, and other partners. Includes Visa Infinite Privilege airport lounge access, concierge service, and enhanced insurance.",
+    "rewards_summary": "1.25 Avion Rewards points per $1 on all eligible purchases ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â no category limits. Points transferable to British Airways Avios, American Airlines AAdvantage, Cathay Pacific Asia Miles, WestJet, and other partners. Includes Visa Infinite Privilege airport lounge access, concierge service, and enhanced insurance.",
     "rewards_detail": {
       "everything": {
         "rate": 1.25,
@@ -1050,7 +1050,7 @@
     "annual_fee_cad": 0.0,
     "monthly_fee_cad": null,
     "welcome_bonus_description": "No formal welcome bonus. Earn cashback from your first purchase with no annual fee.",
-    "rewards_summary": "2% cashback at eligible grocery stores (up to $6,000/yr in grocery purchases, then 1%); 1% cashback on all other eligible purchases. Cashback redeemable at any time through RBC online banking. No annual fee and no minimum income requirement — a solid starter card.",
+    "rewards_summary": "2% cashback at eligible grocery stores (up to $6,000/yr in grocery purchases, then 1%); 1% cashback on all other eligible purchases. Cashback redeemable at any time through RBC online banking. No annual fee and no minimum income requirement ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â a solid starter card.",
     "rewards_detail": {
       "eligible_grocery_stores": {
         "rate": 2,
@@ -1562,7 +1562,7 @@
     },
     "estimated_point_value_cents": 1.0,
     "foreign_transaction_fee_pct": 2.5,
-    "insurance_summary": "Emergency out-of-country medical (60 days for travellers under 55, 31 days for 55-64 years) — the longest emergency medical coverage of any Canadian credit card. Rental car collision/damage waiver, trip cancellation (up to $2,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr), baggage delay/loss, purchase protection (180 days), extended warranty (2 yrs). 4 complimentary airport lounge visits/year.",
+    "insurance_summary": "Emergency out-of-country medical (60 days for travellers under 55, 31 days for 55-64 years) ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â the longest emergency medical coverage of any Canadian credit card. Rental car collision/damage waiver, trip cancellation (up to $2,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr), baggage delay/loss, purchase protection (180 days), extended warranty (2 yrs). 4 complimentary airport lounge visits/year.",
     "insurance_detail": {
       "travel_emergency_medical_days": 60,
       "rental_car_collision": true,
@@ -1804,7 +1804,7 @@
     "annual_fee_cad": 0.0,
     "monthly_fee_cad": null,
     "welcome_bonus_description": "Earn up to 50,000 PC Optimum points as a welcome offer (10,000 PC Optimum points = $10 in free groceries).",
-    "rewards_summary": "45 PC Optimum points per $1 at Loblaw banner stores (Loblaws, Real Canadian Superstore, No Frills, Valu-Mart, Zehrs, FreshCo, and more — equivalent to 4.5% return); 30 pts per $1 at Shoppers Drug Mart/Pharmaprix and Esso/Mobil stations (3%); 30 pts per $1 on PC Travel purchases; 10 pts per $1 everywhere else (1%). NO annual fee.",
+    "rewards_summary": "45 PC Optimum points per $1 at Loblaw banner stores (Loblaws, Real Canadian Superstore, No Frills, Valu-Mart, Zehrs, FreshCo, and more ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â equivalent to 4.5% return); 30 pts per $1 at Shoppers Drug Mart/Pharmaprix and Esso/Mobil stations (3%); 30 pts per $1 on PC Travel purchases; 10 pts per $1 everywhere else (1%). NO annual fee.",
     "rewards_detail": {
       "loblaws_banner_stores": {
         "rate": 4.5,
@@ -1875,7 +1875,7 @@
     },
     "estimated_point_value_cents": null,
     "foreign_transaction_fee_pct": 2.5,
-    "insurance_summary": "Emergency out-of-country medical (10 days), purchase protection (90 days), extended warranty (1 yr). Limited travel insurance versus the World Elite version — no trip cancellation or rental car coverage.",
+    "insurance_summary": "Emergency out-of-country medical (10 days), purchase protection (90 days), extended warranty (1 yr). Limited travel insurance versus the World Elite version ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â no trip cancellation or rental car coverage.",
     "insurance_detail": {
       "travel_emergency_medical_days": 10,
       "rental_car_collision": false,
@@ -1925,7 +1925,7 @@
     },
     "estimated_point_value_cents": null,
     "foreign_transaction_fee_pct": 2.5,
-    "insurance_summary": "Emergency out-of-country medical (60 days for travellers under 55, 15 days for 55-64 years) — one of the longest in Canada. Rental car collision/damage waiver, trip cancellation (up to $2,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr, up to $500), baggage delay/loss, purchase protection (90 days), extended warranty (2 yrs). 4 complimentary DragonPass lounge visits/year.",
+    "insurance_summary": "Emergency out-of-country medical (60 days for travellers under 55, 15 days for 55-64 years) ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â one of the longest in Canada. Rental car collision/damage waiver, trip cancellation (up to $2,500/person), trip interruption (up to $5,000/person), flight delay (4+ hr, up to $500), baggage delay/loss, purchase protection (90 days), extended warranty (2 yrs). 4 complimentary DragonPass lounge visits/year.",
     "insurance_detail": {
       "travel_emergency_medical_days": 60,
       "rental_car_collision": true,
@@ -1963,7 +1963,7 @@
     "annual_fee_cad": 0.0,
     "monthly_fee_cad": null,
     "welcome_bonus_description": "No welcome bonus. Earn BONUSDOLLARS cashback from your first eligible purchase. Available to Desjardins caisse members.",
-    "rewards_summary": "Basic cashback equivalent of approximately 1% on eligible purchases via BONUSDOLLARS (1 BONUSDOLLAR per $100 spent = 1% return). BONUSDOLLARS redeemable as a statement credit. No annual fee. Available to Desjardins caisse members. Exact product name and earn structure may vary by caisse — consult desjardins.com for current offerings.",
+    "rewards_summary": "Basic cashback equivalent of approximately 1% on eligible purchases via BONUSDOLLARS (1 BONUSDOLLAR per $100 spent = 1% return). BONUSDOLLARS redeemable as a statement credit. No annual fee. Available to Desjardins caisse members. Exact product name and earn structure may vary by caisse ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â consult desjardins.com for current offerings.",
     "rewards_detail": {
       "everything": {
         "rate": 1,
@@ -2068,7 +2068,7 @@
     },
     "estimated_point_value_cents": null,
     "foreign_transaction_fee_pct": 2.5,
-    "insurance_summary": "Purchase protection (90 days), extended warranty (1 yr). Minimal insurance — no travel insurance included. Designed purely for interest cost management.",
+    "insurance_summary": "Purchase protection (90 days), extended warranty (1 yr). Minimal insurance ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â no travel insurance included. Designed purely for interest cost management.",
     "insurance_detail": {
       "travel_emergency_medical_days": null,
       "rental_car_collision": false,
@@ -2156,7 +2156,7 @@
     "annual_fee_cad": 0.0,
     "monthly_fee_cad": null,
     "welcome_bonus_description": "Earn up to $25 in Brim Rewards as a welcome bonus.",
-    "rewards_summary": "1% Brim Rewards on all eligible purchases, up to 3% at select Brim partner merchants. NO foreign transaction fee — a rare feature for a no-fee card. Points redeemable as cashback or at Brim partner merchants at checkout. Ideal no-fee card for international shoppers and occasional travelers.",
+    "rewards_summary": "1% Brim Rewards on all eligible purchases, up to 3% at select Brim partner merchants. NO foreign transaction fee ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â a rare feature for a no-fee card. Points redeemable as cashback or at Brim partner merchants at checkout. Ideal no-fee card for international shoppers and occasional travelers.",
     "rewards_detail": {
       "brim_partner_merchants": {
         "rate": 3,
@@ -2206,7 +2206,7 @@
     "annual_fee_cad": 0.0,
     "monthly_fee_cad": null,
     "welcome_bonus_description": "No formal welcome bonus. Earn 1% cashback on all eligible purchases from day one with no annual fee and no foreign transaction fee.",
-    "rewards_summary": "1% unlimited cashback on all eligible purchases. NO foreign transaction fee — the only no-fee Visa card in Canada with 0% FX fee. Ideal for international travel, online shopping in foreign currencies, and snowbirds spending in the US. Cashback paid annually as a statement credit.",
+    "rewards_summary": "1% unlimited cashback on all eligible purchases. NO foreign transaction fee ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â the only no-fee Visa card in Canada with 0% FX fee. Ideal for international travel, online shopping in foreign currencies, and snowbirds spending in the US. Cashback paid annually as a statement credit.",
     "rewards_detail": {
       "everything": {
         "rate": 1,
@@ -2267,7 +2267,7 @@
     },
     "estimated_point_value_cents": null,
     "foreign_transaction_fee_pct": 2.5,
-    "insurance_summary": "Purchase protection (90 days). No travel insurance. This is a fintech cashback card — the value is in the partner merchant cashback network, not travel perks.",
+    "insurance_summary": "Purchase protection (90 days). No travel insurance. This is a fintech cashback card ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â the value is in the partner merchant cashback network, not travel perks.",
     "insurance_detail": {
       "travel_emergency_medical_days": null,
       "rental_car_collision": false,

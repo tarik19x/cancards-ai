@@ -62,7 +62,7 @@ async def test_list_cards_returns_five():
         response = await client.get("/api/cards")
     assert response.status_code == 200
     cards = response.json()
-    assert len(cards) == 5
+    assert len(cards) == 50
 
 
 @pytest.mark.asyncio
