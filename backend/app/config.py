@@ -1,4 +1,4 @@
-"""Application configuration loaded from environment variables."""
+﻿"""Application configuration loaded from environment variables."""
 
 from functools import lru_cache
 
@@ -45,5 +45,5 @@ class Settings(BaseSettings):
 
 @lru_cache
 def get_settings() -> Settings:
-    """Cached settings instance â€” only reads .env once per process."""
+    """Cached settings instance only reads .env once per process."""
     return Settings()  # type: ignore[call-arg]
