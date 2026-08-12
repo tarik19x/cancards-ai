@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react"
 import type { ChatMessage, AnswerResponse } from "@/types"
+import { usePanel } from "@/lib/panel-store"
 
 const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:8000"
 const CARDS_DELIMITER = "===CARDS==="
@@ -10,6 +11,8 @@ export function useStreamingChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  const { setAnswer, setIsStreaming } = usePanel()
 
   const sendMessage = useCallback(async (question: string) => {
     const trimmed = question.trim()
@@ -24,6 +27,8 @@ export function useStreamingChat() {
     }
     setMessages((prev) => [...prev, userMessage])
     setIsLoading(true)
+    setIsStreaming(true)
+    const startedAt = performance.now()
     setError(null)
 
     // Placeholder assistant message that we'll mutate as tokens arrive
@@ -61,37 +66,53 @@ export function useStreamingChat() {
           const jsonStr = line.slice("data: ".length).trim()
           if (!jsonStr) continue
 
+          // JSON.parse gets its own try — a malformed event at a chunk
+          // boundary is skippable, but a backend "error" event must NOT be
+          // swallowed by the same catch.
+          let event: { type?: string; content?: string; response?: unknown; message?: string; chunks_used?: unknown }
           try {
-            const event = JSON.parse(jsonStr)
-
-            if (event.type === "token") {
-              accumulated += event.content
-              // Show only the text portion — never the delimiter or JSON
-              const displayText = accumulated.includes(CARDS_DELIMITER)
-                ? accumulated.split(CARDS_DELIMITER)[0]
-                : accumulated
-              setMessages((prev) =>
-                prev.map((msg) => (msg.id === assistantId ? { ...msg, content: displayText } : msg))
-              )
-            } else if (event.type === "done" && event.response) {
-              const response = event.response as AnswerResponse
-              setMessages((prev) =>
-                prev.map((msg) =>
-                  msg.id === assistantId
-                    ? {
-                        ...msg,
-                        content: response.answer_markdown,
-                        response,
-                        timestamp: new Date(response.timestamp),
-                      }
-                    : msg
-                )
-              )
-            } else if (event.type === "error") {
-              throw new Error(event.message)
-            }
+            event = JSON.parse(jsonStr)
           } catch {
-            // Malformed events at chunk boundaries — skip and continue
+            continue
+          }
+
+          if (event.type === "token" && typeof event.content === "string") {
+            accumulated += event.content
+            // Show only the text portion — never the delimiter or JSON
+            const displayText = accumulated.includes(CARDS_DELIMITER)
+              ? accumulated.split(CARDS_DELIMITER)[0]
+              : accumulated
+            setMessages((prev) =>
+              prev.map((msg) => (msg.id === assistantId ? { ...msg, content: displayText } : msg))
+            )
+          } else if (event.type === "done" && event.response) {
+            const response = event.response as AnswerResponse
+            setMessages((prev) =>
+              prev.map((msg) =>
+                msg.id === assistantId
+                  ? {
+                      ...msg,
+                      content: response.answer_markdown,
+                      response,
+                      timestamp: new Date(response.timestamp),
+                    }
+                  : msg
+              )
+            )
+
+            // Feed the insight panel. Sources = distinct cited cards — a card
+            // cited five times is still one source.
+            const top = response.recommended_cards?.[0]
+            const uniqueCards = new Set((response.citations ?? []).map((c) => c.card_id))
+            setAnswer({
+              topCardId: top?.card_id ?? null,
+              topCardName: top?.card_name ?? null,
+              sources: uniqueCards.size,
+              chunks: typeof event.chunks_used === "number" ? event.chunks_used : null,
+              latencyMs: performance.now() - startedAt,
+            })
+          } else if (event.type === "error") {
+            throw new Error(event.message ?? "Stream error")
           }
         }
       }
@@ -103,13 +124,15 @@ export function useStreamingChat() {
       )
     } finally {
       setIsLoading(false)
+      setIsStreaming(false)
     }
-  }, [isLoading])
+  }, [isLoading, setAnswer, setIsStreaming])
 
   const clearMessages = useCallback(() => {
     setMessages([])
     setError(null)
-  }, [])
+    setAnswer(null)   // panel returns to its empty state with the thread
+  }, [setAnswer])
 
   return { messages, isLoading, error, sendMessage, clearMessages }
 }
