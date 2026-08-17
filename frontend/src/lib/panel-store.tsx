@@ -51,14 +51,17 @@ export function PanelProvider({ children }: { children: ReactNode }) {
 
   // Load saved spending after the page loads.
   // Must be in useEffect — localStorage does not exist on the server.
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY)
-      if (raw) setSpend(JSON.parse(raw))
-    } catch {
-      // bad data saved, just ignore it
+useEffect(() => {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+    if (raw) {
+      const parsed = JSON.parse(raw)
+      queueMicrotask(() => setSpend(parsed))
     }
-  }, [])
+  } catch {
+    // bad data saved, just ignore it
+  }
+}, [])
 
   const saveSpend = useCallback((s: SpendProfile) => {
     setSpend(s)

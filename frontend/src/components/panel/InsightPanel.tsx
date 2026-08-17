@@ -21,11 +21,13 @@ export default function InsightPanel() {
   const [fee, setFee] = useState(0)
 
   useEffect(() => {
-    if (!answer?.topCardId) {
+  if (!answer?.topCardId) {
+    queueMicrotask(() => {
       setRates([])
       setFee(0)
-      return
-    }
+    })
+    return
+  }
     let cancelled = false
 
     fetch(`${BACKEND}/api/cards/${answer.topCardId}`)

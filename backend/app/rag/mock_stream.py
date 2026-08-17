@@ -71,8 +71,18 @@ async def stream_mock_response(question: str) -> AsyncIterator[str]:
     ]
 
     citations = [
-        {"card_id": cards[0]["card_id"], "card_name": cards[0]["name"], "issuer": cards[0]["issuer"], "section": "rewards"},
-        {"card_id": cards[1]["card_id"], "card_name": cards[1]["name"], "issuer": cards[1]["issuer"], "section": "fees"},
+        {
+            "card_id": cards[0]["card_id"],
+            "card_name": cards[0]["name"],
+            "issuer": cards[0]["issuer"],
+            "section": "rewards",
+        },
+        {
+            "card_id": cards[1]["card_id"],
+            "card_name": cards[1]["name"],
+            "issuer": cards[1]["issuer"],
+            "section": "fees",
+        },
     ]
 
     response = {

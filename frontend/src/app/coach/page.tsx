@@ -207,7 +207,7 @@ export default function CoachPage() {
     // stage jump with incomplete answers
     return (
       <div className="flex h-full items-center justify-center px-4">
-        <p className="text-sm text-stone-500">Something's missing — let's start over.</p>
+        <p className="text-sm text-stone-500">Something&apos;s missing — let&apos;s start over.</p>
         <button onClick={restart} className="ml-2 text-sm text-[#A78BFA] underline">
           Restart
         </button>
@@ -245,7 +245,7 @@ export default function CoachPage() {
 
         <div className="panel-card p-[18px]">
           <h2 className="font-sans text-[15px] font-medium text-stone-100">
-            What's shaping the estimate
+            What&apos;s shaping the estimate
           </h2>
           <div className="mt-3.5 flex flex-col gap-3.5">
             {result.factors.map((f) => {

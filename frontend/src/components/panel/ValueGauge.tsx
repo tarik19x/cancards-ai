@@ -17,45 +17,44 @@ export default function ValueGauge({ value, streaming }: Props) {
   const raf = useRef<number>(0)
 
   useEffect(() => {
-    // Idle sweep during generation — signals work in progress, not
-    // actual progress. We can't know how far along the model is.
-    if (streaming) {
-      let t = 0
-      const id = setInterval(() => {
-        t += 0.06
-        const p = 0.3 + Math.sin(t) * 0.22
-        setPct(p)
-        setDisplay(Math.round((p * MAX) / 50) * 50)
-      }, 40)
-      return () => clearInterval(id)
-    }
+  if (streaming) {
+    let t = 0
+    const id = setInterval(() => {
+      t += 0.06
+      const p = 0.3 + Math.sin(t) * 0.22
+      setPct(p)
+      setDisplay(Math.round((p * MAX) / 50) * 50)
+    }, 40)
+    return () => clearInterval(id)
+  }
 
-    if (value === null) {
+  if (value === null) {
+    queueMicrotask(() => {
       setPct(0)
       setDisplay(0)
-      return
-    }
+    })
+    return
+  }
 
-    // Settle on the real figure.
-    const from = pct
-    const to = Math.min(Math.max(value, 0) / MAX, 1)
-    const start = performance.now()
+  const from = pct
+  const to = Math.min(Math.max(value, 0) / MAX, 1)
+  const start = performance.now()
 
-    const step = (now: number) => {
-      const k = Math.min((now - start) / 900, 1)
-      const eased = 1 - Math.pow(1 - k, 3)
-      const p = from + (to - from) * eased
-      setPct(p)
-      setDisplay(Math.round(p * MAX))
-      if (k < 1) raf.current = requestAnimationFrame(step)
-      else setDisplay(value)
-    }
-    raf.current = requestAnimationFrame(step)
-    return () => cancelAnimationFrame(raf.current)
-    // pct is intentionally omitted — including it restarts the tween
-    // on every frame.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, streaming])
+  const step = (now: number) => {
+    const k = Math.min((now - start) / 900, 1)
+    const eased = 1 - Math.pow(1 - k, 3)
+    const p = from + (to - from) * eased
+    setPct(p)
+    setDisplay(Math.round(p * MAX))
+    if (k < 1) raf.current = requestAnimationFrame(step)
+    else setDisplay(value)
+  }
+  raf.current = requestAnimationFrame(step)
+  return () => cancelAnimationFrame(raf.current)
+  // pct intentionally omitted from deps — it's read once to capture the
+  // tween's starting point, not something this effect should re-run for
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [value, streaming])
 
   return (
     <svg viewBox="0 0 200 160" className="w-full">

@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     llm_model: str = "claude-sonnet-4-6"
     llm_provider: str = "anthropic"
     use_mock_llm: bool = False
-    
+
     # Observability
     langsmith_api_key: str | None = None
     langsmith_project: str = "cancards-ai"

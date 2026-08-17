@@ -52,7 +52,9 @@ Rules:
 """  # noqa: E501
 
 
-# Where The "sliding the brochure across" is build_user_prompt() in generate.py — it formats the retrieved chunks into a numbered CONTEXT block ([1] card_id=... text=...) and staples question to the bottom. That assembled string is what Claude actually sees.
+# Where The "sliding the brochure across" is build_user_prompt() in generate.py
+# it formats the retrieved chunks into a numbered CONTEXT block ([1] card_id=... text=...)
+# staples question to the bottom. That assembled string is what Claude actually sees.
 
 def build_user_prompt(question: str, chunks: list[dict]) -> str:
     """Build the user message with the retrieved context."""

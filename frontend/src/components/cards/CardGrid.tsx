@@ -16,13 +16,6 @@ const FILTERS = [
   { label: "Amex", value: "amex" },
 ]
 
-// One accent per network — matches the coral/lavender/sky system used
-// for section colours elsewhere, not the bank's actual brand colour.
-const NETWORK_COLOR: Record<string, string> = {
-  Visa: "bg-[#7DD3FC]/10 text-[#7DD3FC]",
-  Mastercard: "bg-[#F0A58C]/10 text-[#F0A58C]",
-  Amex: "bg-[#A78BFA]/10 text-[#C4B5FD]",
-}
 
 function applyFilter(cards: Card[], filter: string, search: string): Card[] {
   let result = cards
