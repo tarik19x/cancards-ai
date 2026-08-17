@@ -6,15 +6,12 @@ import { usePanel } from "@/lib/panel-store"
 import InsightPanel from "@/components/panel/InsightPanel"
 
 export default function RightColumn() {
-  const { answer, panelOpen, setPanelOpen } = usePanel()
+  const { answer, isStreaming, panelOpen, setPanelOpen } = usePanel()
 
   useEffect(() => {
-    if (answer) setPanelOpen(true)
-  }, [answer, setPanelOpen])
+    if (answer || isStreaming) setPanelOpen(true)
+  }, [answer, isStreaming, setPanelOpen])
 
-  // Panel + rail is 404px of fixed chrome. Below 1280px that leaves the
-  // chat too little room, so the panel hides entirely rather than
-  // squeezing the conversation.
   if (!panelOpen) {
     return (
       <div className="hidden w-14 shrink-0 flex-col items-center border-l border-stone-900 py-5 xl:flex">

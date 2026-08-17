@@ -5,7 +5,7 @@ import ValueGauge from "@/components/panel/ValueGauge"
 import { Pencil, X } from "lucide-react"
 import { usePanel } from "@/lib/panel-store"
 import {
-  annualRewards, breakEvenSpend, money, netValue, parseEarnRates,
+  annualRewards, money, netValue, parseEarnRates,
   type EarnRate,
 } from "@/lib/value-calc"
 import SpendBars from "@/components/panel/SpendBars"
@@ -21,13 +21,13 @@ export default function InsightPanel() {
   const [fee, setFee] = useState(0)
 
   useEffect(() => {
-  if (!answer?.topCardId) {
-    queueMicrotask(() => {
-      setRates([])
-      setFee(0)
-    })
-    return
-  }
+    if (!answer?.topCardId) {
+      queueMicrotask(() => {
+        setRates([])
+        setFee(0)
+      })
+      return
+    }
     let cancelled = false
 
     fetch(`${BACKEND}/api/cards/${answer.topCardId}`)
@@ -37,9 +37,7 @@ export default function InsightPanel() {
         setRates(parseEarnRates(card))
         setFee(Number(card.annual_fee_cad ?? 0))
       })
-      .catch(() => {
-        // card lookup failed — panel just hides the breakdown
-      })
+      .catch(() => {})
 
     return () => {
       cancelled = true
@@ -49,7 +47,26 @@ export default function InsightPanel() {
   const hasRates = rates.length > 0
   const calc = spend && hasRates ? annualRewards(spend, rates) : null
   const net = calc ? netValue(calc.total, fee) : null
-  const breakEven = hasRates ? breakEvenSpend(fee, rates) : null
+
+  if (isStreaming && !answer) {
+    return (
+      <div
+        className="flex h-full flex-col overflow-y-auto py-5 pr-5"
+        data-testid="insight-panel"
+      >
+        <h2 className="panel-title">Working on it</h2>
+        <p className="panel-subtitle">The numbers will appear once the answer lands.</p>
+
+        <div className="panel-card mt-3.5 p-[18px]">
+          <div className="border-b border-[#221e1c] pb-[18px] text-center">
+            <ValueGauge value={null} streaming />
+          </div>
+        </div>
+
+        <MetricsStrip />
+      </div>
+    )
+  }
 
   return (
     <div
@@ -104,35 +121,37 @@ export default function InsightPanel() {
               <X className="h-[18px] w-[18px]" strokeWidth={1.5} />
             </button>
 
-            <h3 className="font-sans text-[15px] font-medium text-stone-200">
-              Earn rates
-            </h3>
-
-            <div className="mt-3.5 flex flex-col gap-3.5">
-              {rates.slice(0, 5).map((r) => (
-                <div key={r.category}>
-                  <div className="mb-1.5 flex items-baseline justify-between font-sans text-sm">
-                    <span className="capitalize text-stone-300">{r.category}</span>
-                    <span className="text-stone-50">{r.percent}%</span>
-                  </div>
-                  <div className="h-[9px] overflow-hidden rounded-full bg-[#221e1c]">
-                    <div
-                      className="bar-fill h-[9px] rounded-full bg-gradient-to-r from-[#F0A58C] to-[#A78BFA] shadow-[0_0_12px_rgba(167,139,250,0.4)]"
-                      style={{
-                        width: `${(r.percent / Math.max(...rates.map((x) => x.percent))) * 100}%`,
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
+            <div className="border-b border-[#221e1c] pb-[18px] text-center">
+              <ValueGauge value={null} streaming={false} idle />
+              <p className="mt-1 font-sans text-sm text-stone-500">
+                Add your spending to see this number
+              </p>
             </div>
 
-            {breakEven !== null && (
-              <p className="mt-4 border-t border-[#221e1c] pt-3.5 font-sans text-sm leading-relaxed text-stone-400">
-                Breaks even on the {money(fee)} fee at {money(breakEven)} of
-                yearly spend.
-              </p>
-            )}
+            <div className="pt-4">
+              <h3 className="font-sans text-[15px] font-medium text-stone-200">
+                Earn rates
+              </h3>
+
+              <div className="mt-3.5 flex flex-col gap-3.5">
+                {rates.slice(0, 5).map((r) => (
+                  <div key={r.category}>
+                    <div className="mb-1.5 flex items-baseline justify-between font-sans text-sm">
+                      <span className="capitalize text-stone-300">{r.category}</span>
+                      <span className="text-stone-50">{r.percent}%</span>
+                    </div>
+                    <div className="h-[9px] overflow-hidden rounded-full bg-[#221e1c]">
+                      <div
+                        className="bar-fill h-[9px] rounded-full bg-gradient-to-r from-[#F0A58C] to-[#A78BFA] shadow-[0_0_12px_rgba(167,139,250,0.4)]"
+                        style={{
+                          width: `${(r.percent / Math.max(...rates.map((x) => x.percent))) * 100}%`,
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="mt-3.5 rounded-2xl bg-gradient-to-br from-[#A78BFA]/[0.11] to-[#F0A58C]/[0.04] p-4 shadow-[inset_0_0_0_1px_rgba(167,139,250,0.22)]">
@@ -145,7 +164,7 @@ export default function InsightPanel() {
             </p>
             <button
               onClick={() => setEditing(true)}
-              className="cta-glow mt-3.5 inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-br from-[#F0A58C] to-[#A78BFA] px-4 py-2.5 font-sans text-sm font-semibold text-black"
+              className="mt-3.5 inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-br from-[#F0A58C] to-[#A78BFA] px-4 py-2.5 font-sans text-sm font-semibold text-black shadow-[0_0_20px_rgba(167,139,250,0.35)] transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(167,139,250,0.55)]"
             >
               <Pencil className="h-[15px] w-[15px]" strokeWidth={2} />
               Add your spending
@@ -193,7 +212,7 @@ export default function InsightPanel() {
             </p>
             <button
               onClick={() => setEditing(true)}
-              className="cta-glow mt-3.5 inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-br from-[#F0A58C] to-[#A78BFA] px-4 py-2.5 font-sans text-sm font-semibold text-black"
+              className="mt-3.5 inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-br from-[#F0A58C] to-[#A78BFA] px-4 py-2.5 font-sans text-sm font-semibold text-black shadow-[0_0_20px_rgba(167,139,250,0.35)] transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(167,139,250,0.55)]"
             >
               <Pencil className="h-[15px] w-[15px]" strokeWidth={2} />
               Edit spend
