@@ -7,14 +7,16 @@ export const metadata = {
 
 export default function CardsPage() {
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Browse Cards</h1>
-        <p className="mt-1 text-sm text-slate-500">
+    <div className="h-full overflow-x-hidden overflow-y-auto">
+      <div className="mx-auto max-w-[820px] px-7 py-8">
+        <h1 className="font-display text-[28px] text-stone-100">Browse cards</h1>
+        <p className="mt-1.5 text-sm text-stone-400">
           Explore all credit cards in our database. Click any card to see full details.
         </p>
+        <div className="mt-6">
+          <CardGrid />
+        </div>
       </div>
-      <CardGrid />
     </div>
   )
 }

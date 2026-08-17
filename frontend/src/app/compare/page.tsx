@@ -94,7 +94,7 @@ export default function ComparePage() {
             <select
               value={idA}
               onChange={(e) => setIdA(e.target.value)}
-              className="w-full rounded-lg border border-stone-800 bg-stone-900 px-3 py-2 text-sm text-stone-300 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+              className="w-full rounded-lg border border-stone-800 bg-stone-900 px-3 py-2 text-sm text-stone-300 focus:border-[#A78BFA] focus:outline-none focus:ring-1 focus:ring-[#A78BFA]"
             >
               {cards.map((c) => (
                 <option key={c.card_id} value={c.card_id} disabled={c.card_id === idB}>
@@ -110,7 +110,7 @@ export default function ComparePage() {
             <select
               value={idB}
               onChange={(e) => setIdB(e.target.value)}
-              className="w-full rounded-lg border border-stone-800 bg-stone-900 px-3 py-2 text-sm text-stone-300 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+              className="w-full rounded-lg border border-stone-800 bg-stone-900 px-3 py-2 text-sm text-stone-300 focus:border-[#A78BFA] focus:outline-none focus:ring-1 focus:ring-[#A78BFA]"
             >
               {cards.map((c) => (
                 <option key={c.card_id} value={c.card_id} disabled={c.card_id === idA}>
@@ -251,13 +251,13 @@ export default function ComparePage() {
               <span />
               <Link
                 href={`/cards/${cardA.card_id}`}
-                className="text-xs text-amber-400 underline underline-offset-2 hover:text-amber-300"
+                className="text-xs text-[#A78BFA] underline underline-offset-2 hover:text-[#C4B5FD]"
               >
                 Full {cardA.name} details →
               </Link>
               <Link
                 href={`/cards/${cardB.card_id}`}
-                className="text-xs text-amber-400 underline underline-offset-2 hover:text-amber-300"
+                className="text-xs text-[#A78BFA] underline underline-offset-2 hover:text-[#C4B5FD]"
               >
                 Full {cardB.name} details →
               </Link>
@@ -267,13 +267,13 @@ export default function ComparePage() {
           <p className="text-sm text-stone-500">Select two cards above to compare.</p>
         )}
 
-        <div className="rounded-xl bg-amber-500/[0.06] p-4 text-center shadow-[inset_0_0_0_1px_rgb(251_191_36_/_0.18)]">
-          <p className="text-sm text-[#d8c69a]">
+        <div className="rounded-xl bg-[#A78BFA]/[0.06] p-4 text-center shadow-[inset_0_0_0_1px_rgba(167,139,250,0.18)]">
+          <p className="text-sm text-stone-300">
             Still not sure which card to choose? Ask the AI.
           </p>
           <Link
             href="/"
-            className="mt-2 inline-block rounded-lg bg-[#fbbf24] px-4 py-2 text-sm font-medium text-[#1c1207] transition-opacity hover:opacity-90"
+            className="mt-2 inline-block rounded-lg bg-gradient-to-br from-[#F0A58C] to-[#A78BFA] px-4 py-2 text-sm font-medium text-black transition-opacity hover:opacity-90"
           >
             Ask CanCards AI →
           </Link>

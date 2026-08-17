@@ -10,7 +10,7 @@ export default function MessageBubble({ message }: { message: ChatMessage }) {
   if (isUser) {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[80%] rounded-2xl bg-stone-800 px-4 py-2.5 font-display text-[1.0625rem] text-stone-200">
+        <div className="max-w-[80%] rounded-2xl bg-stone-800 px-4 py-2.5 text-[0.9375rem] text-stone-200">
           {message.content}
         </div>
       </div>
@@ -24,7 +24,7 @@ export default function MessageBubble({ message }: { message: ChatMessage }) {
     // a document does. Only the user's words get a surface.
     <div className="space-y-5">
       <div
-        className={`font-display text-[1.0625rem] leading-[1.75] ${
+        className={`text-[0.9375rem] leading-[1.75] ${
           message.error ? "text-red-400" : "text-stone-200"
         }`}
       >
@@ -54,53 +54,27 @@ export default function MessageBubble({ message }: { message: ChatMessage }) {
           {res.recommended_cards.map((card, i) => (
             <div
               key={card.card_id}
-              // Top pick gets the amber edge; the rest stay quiet so the
-              // ranking reads without comparing numbers.
-              className={`rounded-xl bg-stone-900/40 p-4 ${
+              className={
                 i === 0
-                  ? "shadow-[inset_0_0_0_1px_#292524,inset_2px_0_0_#fbbf24]"
-                  : "shadow-[inset_0_0_0_1px_#292524]"
-              }`}
+                  ? "rounded-xl bg-[#0d0d10] py-4 pl-4 pr-4 shadow-[inset_2px_0_0_#A78BFA]"
+                  : "rounded-xl bg-[#0d0d10] p-4 shadow-[inset_0_0_0_1px_#1e1e24]"
+              }
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#fbbf24] text-[0.6875rem] font-semibold text-[#1c1207]">
-                      {i + 1}
-                    </span>
-                    <h3 className="truncate font-display text-[1.0625rem] text-stone-100">
-                      {card.card_name}
-                    </h3>
-                  </div>
-                  <p className="mt-1 pl-7 text-sm text-stone-500">
-                    {card.annual_fee_cad === 0
-                      ? "No annual fee"
-                      : `$${card.annual_fee_cad}/yr`}
+                  <h3 className="truncate text-[1.0625rem] text-stone-100">
+                    {card.card_name}
+                  </h3>
+                  <p className="mt-1 text-sm text-stone-500">
+                    {card.annual_fee_cad === 0 ? "No annual fee" : `$${card.annual_fee_cad}/yr`}
+                    {" · "}
+                    {card.why.split(".")[0]}
                   </p>
                 </div>
-
-                <Link
-                  href={`/cards/${card.card_id}`}
-                  className="shrink-0 rounded-lg px-2.5 py-1 text-sm text-stone-400 transition-colors hover:bg-stone-800/60 hover:text-stone-200"
-                >
-                  Details →
-                </Link>
+                <span className={i === 0 ? "shrink-0 text-[15px] text-[#A78BFA]" : "shrink-0 text-[15px] text-stone-500"}>
+                  ${/* net value goes here once wired to the calculator */ ""}
+                </span>
               </div>
-
-              <p className="mt-3 font-display text-[0.9375rem] leading-relaxed text-stone-300">
-                {card.why}
-              </p>
-
-              {card.key_benefits?.length > 0 && (
-                <ul className="mt-3 space-y-1.5">
-                  {card.key_benefits.map((benefit) => (
-                    <li key={benefit} className="flex gap-2 text-sm text-stone-400">
-                      <span className="text-amber-400">✓</span>
-                      <span>{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
             </div>
           ))}
         </div>
@@ -112,7 +86,7 @@ export default function MessageBubble({ message }: { message: ChatMessage }) {
           {res.citations.map((cite, i) => (
             <span
               key={`${cite.card_id}-${cite.section}-${i}`}
-              className="rounded-md bg-stone-800/60 px-2 py-0.5 text-[0.6875rem] text-stone-400"
+              className="rounded-md bg-stone-800/60 px-2 py-0.5 text-xs text-stone-400 transition-colors hover:bg-stone-800"
             >
               {cite.card_name} · {cite.section}
             </span>

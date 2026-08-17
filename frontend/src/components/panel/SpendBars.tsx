@@ -1,31 +1,28 @@
 import type { ValueRow } from "@/lib/value-calc"
 import { money } from "@/lib/value-calc"
 
-type Props = {
-  rows: ValueRow[]
-  amounts: Record<string, number>
-}
+type Props = { rows: ValueRow[]; amounts: Record<string, number> }
 
-export default function SpendBars({ rows, amounts }: Props) {
-  // Longest bar is 100%. The rest scale against it.
-  const values = rows.map((r) => amounts[r.key] ?? 0)
-  const max = Math.max(...values, 1)
-
+export default function SpendBars({ rows }: Props) {
+  const max = Math.max(...rows.map((r) => r.dollars), 1)
   return (
-    <div className="flex flex-col gap-2.5">
+    <div className="flex flex-col gap-3.5">
       {rows.map((row) => {
-        const value = amounts[row.key] ?? 0
-        const width = Math.max((value / max) * 100, 2)
-        const strong = row.percent >= 2 // amber when the card rewards it
+        const width = Math.max((row.dollars / max) * 100, 2)
+        const strong = row.percent >= 2
         return (
           <div key={row.key}>
-            <div className="flex justify-between text-[11px] text-stone-300">
-              <span>{row.label}</span>
-              <span className="text-stone-50">{money(value)}</span>
+            <div className="mb-1.5 flex items-baseline justify-between font-sans text-sm">
+              <span className="text-stone-300">{row.label}</span>
+              <span className="text-stone-50">
+                {money(row.dollars)}<span className="text-xs text-stone-500">/yr back</span>
+              </span>
             </div>
-            <div className="mt-1.5 h-[3px] rounded-sm bg-stone-800">
+            <div className="h-[9px] overflow-hidden rounded-full bg-[#221e1c]">
               <div
-                className={`h-[3px] rounded-sm ${strong ? "bg-amber-500" : "bg-stone-500"}`}
+                className={strong
+                  ? "bar-fill h-[9px] rounded-full bg-gradient-to-r from-[#F0A58C] to-[#A78BFA] shadow-[0_0_12px_rgba(167,139,250,0.4)]"
+                  : "bar-fill h-[9px] rounded-full bg-stone-600"}
                 style={{ width: `${width}%` }}
               />
             </div>

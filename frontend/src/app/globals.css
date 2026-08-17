@@ -4,133 +4,125 @@
   font-family: var(--font-display-src), Georgia, serif;
 }
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 174 72% 30%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 174 72% 30%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 174 72% 30%;
-    --radius: 0.5rem;
-  }
+:root, .dark {
+  --g-bg: #000000;
+  --g-panel: #0d0d10;
+  --g-panel-soft: #111014;
+  --g-line: #1e1e24;
+  --g-line-soft: #16161a;
+  --g-text: #f4f2fa;
+  --g-body: #c9c2e8;
+  --g-muted: #8b84ae;
+  --g-dim: #6b6478;
+
+  --g-primary: #a78bfa;       /* the one accent used in chat, buttons, focus */
+  --g-primary-soft: #c4b5fd;
+  --g-coral: #f0a58c;         /* gradient partner + Cards nav */
+  --g-good: #6ee7b7;
+  --g-bad: #fb7185;
+  --g-sky: #7dd3fc;
+
+  --background: 260 40% 3%;
+  --foreground: 260 20% 96%;
+  --card: 250 20% 6%;
+  --card-foreground: 260 20% 96%;
+  --primary: 258 90% 76%;
+  --primary-foreground: 260 40% 8%;
+  --border: 255 15% 12%;
+  --input: 255 15% 12%;
+  --ring: 258 90% 76%;
 }
 
 @layer base {
-  * {
-    border-color: hsl(var(--border));
-  }
-  body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-  }
-}
-
-/* ─── Graphite + amber theme ─────────────────────────────
-   Every shadcn component (Input, Button, Badge) reads these
-   variables. Changing them here darkens the whole app at once. */
-
-:root,
-.dark {
-  /* raw hex, used by our own components */
-  --g-bg: #0c0a09;        /* page background  (stone-950) */
-  --g-panel: #161311;     /* card / panel fill */
-  --g-line: #292524;      /* borders          (stone-800) */
-  --g-line-soft: #1f1b19; /* quieter divider */
-  --g-text: #fafaf9;      /* headings         (stone-50) */
-  --g-body: #d6d3d1;      /* body text        (stone-300) */
-  --g-muted: #a8a29e;     /* secondary text   (stone-400) */
-  --g-dim: #6b635e;       /* labels */
-  --g-accent: #f59e0b;    /* amber-500 — brand */
-  --g-accent-soft: #fbbf24; /* amber-400 — numbers */
-  --g-good: #34d399;      /* money gained */
-  --g-bad: #f87171;       /* errors */
-
-  /* shadcn variables, remapped to stone. HSL triplets, no hsl() wrapper. */
-  --background: 20 14% 4%;
-  --foreground: 60 9% 98%;
-  --card: 24 10% 8%;
-  --card-foreground: 60 9% 98%;
-  --popover: 24 10% 8%;
-  --popover-foreground: 60 9% 98%;
-  --primary: 38 92% 50%;
-  --primary-foreground: 26 83% 8%;
-  --secondary: 12 6% 15%;
-  --secondary-foreground: 60 9% 98%;
-  --muted: 12 6% 15%;
-  --muted-foreground: 24 5% 64%;
-  --accent: 12 6% 15%;
-  --accent-foreground: 60 9% 98%;
-  --destructive: 0 91% 71%;
-  --destructive-foreground: 60 9% 98%;
-  --border: 12 6% 15%;
-  --input: 12 6% 15%;
-  --ring: 38 92% 50%;
-}
-
-@layer base {
-  body {
-    background-color: var(--g-bg);
-    color: var(--g-body);
-  }
+  * { border-color: hsl(var(--border)); }
 }
 
 @layer components {
-  /* a standard panel box */
-.g-panel {
-  border-radius: 0.5rem;
-  border: 1px solid #292524;
-  background-color: rgb(28 25 23 / 0.4);
-  transition: colors 150ms;
-}
-.g-chip {
-  font-family: var(--font-display-src), Georgia, serif;
-  border-radius: 9999px;
-  background: rgb(251 191 36 / 0.06);
-  box-shadow: inset 0 0 0 1px rgb(251 191 36 / 0.18);
-  padding: 0.5rem 1.1rem;
-  font-size: 0.875rem;
-  color: #d8c69a;
-  transition: background-color 150ms, box-shadow 150ms, color 150ms;
-}
-.g-label {
-  font-size: 0.75rem;
-  letter-spacing: 0.025em;
-  color: #78716c;
-}
-.g-chip:hover {
-  background: rgb(251 191 36 / 0.11);
-  box-shadow: inset 0 0 0 1px rgb(251 191 36 / 0.3);
-  color: #f0e2bd;
-}
+  .g-panel {
+    border-radius: 0.5rem;
+    border: 1px solid var(--g-line);
+    background-color: var(--g-panel);
+    transition: background-color 150ms, border-color 150ms;
+  }
+  .g-panel:hover {
+    border-color: #2a2a32;
+  }
+  .panel-title {
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--g-text);
+  }
+  .panel-subtitle {
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-size: 0.875rem;
+    color: var(--g-muted);
+    margin-top: 0.25rem;
+  }
+  .panel-card {
+    border-radius: 1rem;
+    background: var(--g-panel);
+    box-shadow: inset 0 0 0 1px var(--g-line);
+  }
+  .g-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--g-dim);
+  }
+  .g-chip {
+    border-radius: 9999px;
+    background: rgba(167, 139, 250, 0.07);
+    box-shadow: inset 0 0 0 1px rgba(167, 139, 250, 0.2);
+    padding: 0.5rem 1.1rem;
+    font-size: 0.875rem;
+    color: var(--g-primary-soft);
+    transition: background-color 150ms, box-shadow 150ms, color 150ms;
+  }
+  .g-chip:hover {
+    background: rgba(167, 139, 250, 0.13);
+    box-shadow: inset 0 0 0 1px rgba(167, 139, 250, 0.35);
+    color: #ede9fe;
+  }
 }
 
-/* thin scrollbars so long chats do not get a fat grey bar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #44403c #0c0a09;
+  scrollbar-color: #2a2a32 #000;
 }
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: #0c0a09; }
-::-webkit-scrollbar-thumb { background: #44403c; border-radius: 4px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #2a2a32; border-radius: 4px; }
 
-html {
-  font-size: 115%;
+html, body {
+  background-color: var(--g-bg);
+  color: var(--g-body);
+  font-family: var(--font-display-src), Georgia, serif;
 }
-body {
-  background-color: #0c0a09;
-  color: #d6d3d1;
+
+@keyframes bar-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.bar-fill {
+  transform-origin: left;
+  animation: bar-grow 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(167, 139, 250, 0.3); }
+  50%      { box-shadow: 0 0 28px rgba(167, 139, 250, 0.5); }
+}
+.cta-glow {
+  animation: cta-pulse 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar-fill { animation: none; }
+  .cta-glow { animation: none; }
 }

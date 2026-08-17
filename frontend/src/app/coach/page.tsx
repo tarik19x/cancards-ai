@@ -13,7 +13,7 @@ export default function CoachPage() {
       </p>
       <Link
         href="/"
-        className="mt-6 inline-block w-fit rounded-lg bg-[#fbbf24] px-4 py-2 text-sm text-[#1c1207]"
+        className="mt-6 inline-block w-fit rounded-lg bg-gradient-to-br from-[#F0A58C] to-[#A78BFA] px-4 py-2 text-sm text-black"
       >
         Ask a question instead
       </Link>

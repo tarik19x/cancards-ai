@@ -20,18 +20,20 @@ export default function ChatInterface() {
 
   if (isEmpty) {
     return (
-      // Anchored ~20vh from the top rather than vertically centered —
-      // centering sinks the hero on short viewports.
       <div className="flex h-full flex-col items-center overflow-y-auto px-4 pt-[12vh] md:pt-[20vh]">
         <div className="flex w-full max-w-2xl flex-col gap-5">
           <h1
-            className="text-balance text-center font-display text-stone-100"
+            className="text-balance text-center text-stone-100"
             style={{
               fontSize: "clamp(2.125rem, 1.4rem + 2.2vw, 2.75rem)",
               lineHeight: 1.5,
             }}
           >
-            Which card is <span className="text-[#fbbf24]">worth it</span> for you?
+            Which credit card is{" "}
+            <span className="bg-gradient-to-r from-[#F0A58C] to-[#A78BFA] bg-clip-text text-transparent">
+              worth it
+            </span>{" "}
+            for you?
           </h1>
 
           <ChatInput onSend={sendMessage} disabled={isLoading} />
@@ -55,8 +57,6 @@ export default function ChatInterface() {
   }
 
   return (
-    // Same 672px column as the empty state so the layout doesn't shift
-    // sideways on the first message.
     <div className="mx-auto flex h-full w-full max-w-2xl flex-col px-4">
       <div className="flex items-center justify-end py-2">
         <button
@@ -75,11 +75,7 @@ export default function ChatInterface() {
 
           {isLoading && (
             <ThinkingIndicator
-              stage={
-                // The placeholder is empty until Claude's first token lands,
-                // which is exactly when retrieval finished.
-                messages[messages.length - 1]?.content ? "writing" : "retrieving"
-              }
+              stage={messages[messages.length - 1]?.content ? "writing" : "retrieving"}
             />
           )}
 

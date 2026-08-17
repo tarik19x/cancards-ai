@@ -10,18 +10,19 @@ import {
   Settings,
 } from "lucide-react"
 
-// Every destination in the app. Add new pages here.
+// Each destination owns a colour — wayfinding, not the product's voice.
+// The content area (chat, buttons, price) stays lavender regardless of
+// which section you're in.
 const LINKS = [
-  { href: "/", label: "Ask", icon: MessageSquare },
-  { href: "/cards", label: "Cards", icon: CreditCard },
-  { href: "/compare", label: "Compare", icon: Columns2 },
-  { href: "/coach", label: "Coach", icon: Compass },
+  { href: "/", label: "Ask", icon: MessageSquare, hex: "#A78BFA", tint: "rgba(167,139,250," },
+  { href: "/cards", label: "Cards", icon: CreditCard, hex: "#F0A58C", tint: "rgba(240,165,140," },
+  { href: "/compare", label: "Compare", icon: Columns2, hex: "#7DD3FC", tint: "rgba(125,211,252," },
+  { href: "/coach", label: "Coach", icon: Compass, hex: "#6EE7B7", tint: "rgba(110,231,183," },
 ]
 
 export default function SideRail() {
   const pathname = usePathname()
 
-  // "/" must match exactly, other links match their section.
   function isActive(href: string) {
     return href === "/" ? pathname === "/" : pathname.startsWith(href)
   }
@@ -29,18 +30,18 @@ export default function SideRail() {
   return (
     <aside
       data-testid="side-rail"
-      className="flex w-[70px] shrink-0 flex-col items-center gap-4 border-r border-stone-900 py-4"
+      className="flex w-[84px] shrink-0 flex-col items-center gap-3 py-5"
     >
-      {/* logo */}
-      <Link href="/" className="flex flex-col items-center gap-1 pb-1">
-        <span className="flex h-[19px] w-[19px] items-center justify-center rounded-[5px] border border-amber-500 text-[10px] text-amber-500">
+      <Link href="/" className="group mb-2 flex flex-col items-center gap-1.5">
+        <span className="flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-[#F0A58C] to-[#A78BFA] text-xs font-semibold text-black">
           C
         </span>
-        <span className="text-[11px] text-stone-400">CanCards</span>
+        <span className="text-[13px] text-stone-500 transition-colors group-hover:text-stone-300">
+          CanCards
+        </span>
       </Link>
 
-      {/* main links */}
-      {LINKS.map(({ href, label, icon: Icon }) => {
+      {LINKS.map(({ href, label, icon: Icon, hex, tint }) => {
         const active = isActive(href)
         return (
           <Link
@@ -48,39 +49,40 @@ export default function SideRail() {
             href={href}
             data-testid={`nav-${label.toLowerCase()}`}
             aria-current={active ? "page" : undefined}
-            className={[
-              "flex w-full flex-col items-center gap-1 border-l-2 py-1.5 transition-colors",
-              active
-                ? "border-l-amber-500"
-                : "border-l-transparent hover:border-l-stone-700",
-            ].join(" ")}
+            className="group flex w-16 flex-col items-center gap-1.5 rounded-xl py-2.5 transition-colors"
+            style={active ? { backgroundColor: `${tint}0.12)` } : undefined}
           >
             <Icon
-              className={active ? "h-[18px] w-[18px] text-amber-400" : "h-[18px] w-[18px] text-stone-500"}
-              strokeWidth={1.75}
+              className="h-[21px] w-[21px] transition-colors"
+              style={{ color: active ? hex : "#3f3b4d" }}
+              strokeWidth={1.6}
             />
-            <span className={active ? "text-[11px] text-stone-50" : "text-[11px] text-stone-400"}>
+            <span
+              className="text-[13px] transition-colors"
+              style={{ color: active ? "#f4f2fa" : "#5b5470" }}
+            >
               {label}
             </span>
           </Link>
         )
       })}
 
-      {/* settings sits at the bottom */}
       <Link
         href="/settings"
         data-testid="nav-settings"
-        className="mt-auto flex flex-col items-center gap-1"
+        className="mt-auto flex flex-col items-center gap-1.5"
       >
         <Settings
-          className={
-            pathname.startsWith("/settings")
-              ? "h-[18px] w-[18px] text-amber-400"
-              : "h-[18px] w-[18px] text-stone-600"
-          }
-          strokeWidth={1.75}
+          className="h-[21px] w-[21px]"
+          style={{ color: pathname.startsWith("/settings") ? "#A78BFA" : "#332e42" }}
+          strokeWidth={1.6}
         />
-        <span className="text-[11px] text-stone-600">Settings</span>
+        <span
+          className="text-[13px]"
+          style={{ color: pathname.startsWith("/settings") ? "#f4f2fa" : "#332e42" }}
+        >
+          Settings
+        </span>
       </Link>
     </aside>
   )

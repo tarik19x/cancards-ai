@@ -59,7 +59,7 @@ export default function CreditCardCard({ card }: Props) {
           </Badge>
         )}
         {card.insurance_detail.lounge_access && (
-          <Badge className="border-0 bg-amber-50 text-xs text-amber-700 hover:bg-amber-50">
+          <Badge className="border-0 bg-[#A78BFA]/10 text-xs text-[#C4B5FD] hover:bg-[#A78BFA]/10">
             Lounge access
           </Badge>
         )}

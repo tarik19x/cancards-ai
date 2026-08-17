@@ -41,7 +41,7 @@ export default function SpendForm({ onDone }: { onDone: () => void }) {
                 value={draft[key] || ""}
                 onChange={(e) => update(key, e.target.value)}
                 placeholder="0"
-                className="w-16 rounded border border-stone-800 bg-stone-900/60 px-2 py-1 text-right text-[11px] text-stone-100 outline-none focus:border-amber-500"
+                className="w-16 rounded border border-stone-800 bg-stone-900/60 px-2 py-1 text-right text-[11px] text-stone-100 outline-none focus:border-[#A78BFA]"
               />
             </span>
           </label>
@@ -49,7 +49,7 @@ export default function SpendForm({ onDone }: { onDone: () => void }) {
       </div>
 
       <div className="mt-4 flex gap-2">
-        <button onClick={save} className="rounded-md bg-amber-500 px-3 py-1.5 text-[11px] text-amber-950">
+        <button onClick={save} className="rounded-md bg-[#A78BFA] px-3 py-1.5 text-[11px] text-black">
           Save
         </button>
         <button onClick={onDone} className="rounded-md border border-stone-800 px-3 py-1.5 text-[11px] text-stone-400">
