@@ -129,11 +129,15 @@ async def stream_rag_response(question: str, chunks: list[dict]) -> AsyncIterato
         )
 
         # Final event with the complete response
+        # Final event with the complete response.
+        # chunks_used feeds the "Behind this answer" strip in the UI.
         response_dict = json.loads(response.model_dump_json())
-        yield f"data: {json.dumps({'type': 'done', 'response': response_dict})}\n\n"
-        log.info(
-            "stream_complete", question=question, chars=len(full_text), recs=len(recommended_cards)
-        )
+        done_event = {
+            "type": "done",
+            "response": response_dict,
+            "chunks_used": len(chunks),
+        }
+        yield f"data: {json.dumps(done_event)}\n\n"
 
     except Exception as e:
         log.error("stream_error", error=str(e), exc_info=True)
