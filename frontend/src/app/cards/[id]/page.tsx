@@ -72,7 +72,9 @@ export default function CardDetailPage() {
   const ins = card.insurance_detail
 
   return (
-    <div className="h-full overflow-y-auto">
+    // Same overflow-x-hidden fix as Compare — required alongside
+    // overflow-y-auto or the browser auto-promotes the x-axis too.
+    <div className="h-full overflow-x-hidden overflow-y-auto">
       <div className="mx-auto max-w-2xl space-y-6 px-4 py-8">
         {/* Back */}
         <Link href="/cards" className="text-sm text-stone-600 hover:text-[#A78BFA]">
@@ -92,8 +94,13 @@ export default function CardDetailPage() {
               </p>
             </div>
             
-<a href={card.official_url} target="_blank" rel="noopener noreferrer" className="shrink-0 rounded-lg bg-gradient-to-br from-[#F0A58C] to-[#A78BFA] px-4 py-2 text-sm font-medium text-black transition-opacity hover:opacity-90">Apply →</a>
-
+              <a href={card.official_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 rounded-lg bg-gradient-to-br from-[#F0A58C] to-[#A78BFA] px-4 py-2 text-sm font-medium text-black transition-opacity hover:opacity-90"
+            >
+              Apply →
+            </a>
           </div>
 
           <Separator className="my-4 bg-[#1e1e24]" />

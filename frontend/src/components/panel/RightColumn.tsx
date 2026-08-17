@@ -8,15 +8,16 @@ import InsightPanel from "@/components/panel/InsightPanel"
 export default function RightColumn() {
   const { answer, panelOpen, setPanelOpen } = usePanel()
 
-  // Open the panel by itself the first time an answer comes in.
   useEffect(() => {
     if (answer) setPanelOpen(true)
   }, [answer, setPanelOpen])
 
-  // Closed: a thin strip with one button to open it.
+  // Panel + rail is 404px of fixed chrome. Below 1280px that leaves the
+  // chat too little room, so the panel hides entirely rather than
+  // squeezing the conversation.
   if (!panelOpen) {
     return (
-      <div className="hidden w-14 shrink-0 flex-col items-center border-l border-stone-900 py-5 lg:flex">
+      <div className="hidden w-14 shrink-0 flex-col items-center border-l border-stone-900 py-5 xl:flex">
         <button
           onClick={() => setPanelOpen(true)}
           aria-label="Show the numbers"
@@ -24,8 +25,6 @@ export default function RightColumn() {
         >
           <PanelRight className="h-[22px] w-[22px]" strokeWidth={1.5} />
         </button>
-        {/* Amber dot signals there's something worth opening — the panel
-            holds real numbers once an answer lands. */}
         {answer && (
           <span className="mt-3 h-1.5 w-1.5 rounded-full bg-[#A78BFA]/70" />
         )}
@@ -33,10 +32,8 @@ export default function RightColumn() {
     )
   }
 
-  // Open: no border. Cards carry their own edges, so a divider on top of
-  // that reads as a double line. The gutter does the separating.
   return (
-    <div className="hidden w-[368px] shrink-0 animate-[panel-in_260ms_cubic-bezier(0.16,1,0.3,1)] flex-col pl-[22px] lg:flex">
+    <div className="hidden w-[368px] shrink-0 animate-[panel-in_260ms_cubic-bezier(0.16,1,0.3,1)] flex-col pl-[22px] xl:flex">
       <div className="min-h-0 flex-1">
         <InsightPanel />
       </div>

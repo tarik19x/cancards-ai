@@ -76,8 +76,11 @@ export default function ComparePage() {
   }
 
   return (
-    // AppShell's <main> clips overflow; this wrapper owns the scroll
-    <div className="h-full overflow-y-auto">
+    // AppShell's <main> clips overflow; this wrapper owns the scroll.
+    // overflow-x-hidden is required alongside overflow-y-auto — leaving
+    // the x-axis unset lets the browser auto-promote it to scrollable too,
+    // which is what caused the horizontal cutoff on the Cards page.
+    <div className="h-full overflow-x-hidden overflow-y-auto">
       <div className="mx-auto w-full max-w-3xl space-y-6 px-4 py-8">
         <div>
           <h1 className="font-display text-3xl text-stone-100">Compare cards</h1>
