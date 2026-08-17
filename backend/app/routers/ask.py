@@ -1,4 +1,4 @@
-﻿"""The /api/ask and /api/ask/stream endpoints."""
+"""The /api/ask and /api/ask/stream endpoints."""
 
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse

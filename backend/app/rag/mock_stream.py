@@ -2,6 +2,7 @@
 no Pinecone query, no Claude call. Same event shape as the real stream,
 so the frontend can't tell the difference.
 """
+
 import asyncio
 import json
 import random
