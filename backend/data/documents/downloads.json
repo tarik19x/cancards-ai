@@ -1,0 +1,772 @@
+[
+  {
+    "card_id": "scotia-passport-vi",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.scotiabank.com/content/dam/scotiabank/canada/common/documents/pdf/Passport-Infinite-plus-COI-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "311a2a287b09253e94cb25a8587ca5e8554ed31303279bc07688ea89c56425f8",
+    "bytes": 614249,
+    "recorded_at": "2026-09-14T03:22:51+00:00"
+  },
+  {
+    "card_id": "amex-cobalt",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50464109-50498176-0926-Cobalt-Online-CMA-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "408366af55cad506fc084fb67d8829a64e96dfe15a7728eb0099efe856b1ac2e",
+    "bytes": 407045,
+    "recorded_at": "2026-09-14T03:22:53+00:00"
+  },
+  {
+    "card_id": "amex-platinum",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50464111-50498176-0926-Platinum-Charge-Online-CMA-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "0b3ddfc674bed474211bbb67352a7d25407d7bbb02d3e2f4ce1d352c18d9e79c",
+    "bytes": 438704,
+    "recorded_at": "2026-09-14T03:22:55+00:00"
+  },
+  {
+    "card_id": "amex-gold-rewards",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50464109-50498176-0926-Gold-Lend-Online-CMA-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "b096faddceacad81c9ef0fc371bd47c9b3e319e27b6f1c93409d700fd5877eef",
+    "bytes": 407048,
+    "recorded_at": "2026-09-14T03:22:58+00:00"
+  },
+  {
+    "card_id": "amex-simplycash",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50464123-50498176-0926-Simplycash-Online-CMA-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "5476393100404a5c2de2803f131fda35bec78936bb63d33c119e3c8c1bb2e24b",
+    "bytes": 511675,
+    "recorded_at": "2026-09-14T03:23:00+00:00"
+  },
+  {
+    "card_id": "amex-simplycash-preferred",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50464123-50498176-0926-Simplycash-Preferred-Online-CMA-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "20f33a52b84e668785d7f517fb05c6cb1110e1852647fb0fd00f893049863e11",
+    "bytes": 511654,
+    "recorded_at": "2026-09-14T03:23:02+00:00"
+  },
+  {
+    "card_id": "amex-aeroplan-reserve",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50478734-50498176-0926-Aeroplan-Reserve-Lend-Online-CMA-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "3b33de14ede56a3309d841e747321ff0398f9d8b51c343305a1769aecd4d9e82",
+    "bytes": 1239443,
+    "recorded_at": "2026-09-14T03:23:04+00:00"
+  },
+  {
+    "card_id": "amex-marriott-bonvoy",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50464117-50498176-0926-Marriott-Bonvoy-Online-CMA-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "7865242b263392f59f8894431d8eefcabff1300063a8daff45dcdcc5bbebe4c9",
+    "bytes": 508153,
+    "recorded_at": "2026-09-14T03:23:06+00:00"
+  },
+  {
+    "card_id": "amex-cobalt",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.americanexpress.com/content/dam/amex/en-ca/insurance/pdfs/certificates-of-insurance/Cobalt-Card-COI-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "39e8469187c5606c4b82446533840dfcf0fe99ac7ba1ee2f07c16bca1c5d5dc6",
+    "bytes": 510463,
+    "recorded_at": "2026-09-14T03:23:08+00:00"
+  },
+  {
+    "card_id": "scotia-momentum-vi",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.scotiabank.com/content/dam/scotiabank/canada/common/documents/pdf/Momentum-Infinite-COI-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "fbb48c606249ddf250d1be3ccc931f207d76ffab0c08de55c94e8425b75d0d28",
+    "bytes": 429053,
+    "recorded_at": "2026-09-14T03:31:52+00:00"
+  },
+  {
+    "card_id": "scotia-platinum-amex",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.scotiabank.com/content/dam/scotiabank/canada/common/documents/pdf/credit_card/Platinum-American-Express-Insurance-Certificate-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "372e005518e3cca8ca02b831407acfb484cda90c7f38322a1802fc23eb9e6952",
+    "bytes": 238047,
+    "recorded_at": "2026-09-14T03:31:54+00:00"
+  },
+  {
+    "card_id": "td-aeroplan-vi",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.td.com/content/dam/tdct/document/pdf/personal-banking/aeroplanInfiniteagreement-533810-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "bca57afe6af508642a896b5c896222a0154dfb360313c0ec7a41b29540653ac4",
+    "bytes": 821570,
+    "recorded_at": "2026-09-14T03:31:56+00:00"
+  },
+  {
+    "card_id": "td-aeroplan-vi-privilege",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.td.com/content/dam/tdct/document/pdf/personal-banking/aeroplaninfiniteprivilegeagreement-533814-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "475cf69680844c34a41032e6ecd44b7a8f7e1ee43be0bfd71683f3d8765784f6",
+    "bytes": 816201,
+    "recorded_at": "2026-09-14T03:31:58+00:00"
+  },
+  {
+    "card_id": "td-first-class-vi",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.td.com/content/dam/tdct/document/pdf/personal-banking/tdct-tdvisa-firstclasstravel-528190-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "87a45ede1f83777510071b7d9536c7f20a366221004e12508bac641d7907979d",
+    "bytes": 490757,
+    "recorded_at": "2026-09-14T03:32:00+00:00"
+  },
+  {
+    "card_id": "td-cash-back-vi",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.td.com/content/dam/tdct/document/pdf/econsent/tdvisa/cash-back-534122-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "28ccd520b3ab47c33107fe8d29d55d725bac4a297273a044bec1403f1a00dbd5",
+    "bytes": 504285,
+    "recorded_at": "2026-09-14T03:32:03+00:00"
+  },
+  {
+    "card_id": "rbc-avion-vi",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cardholders/additional-documents/rbc-generic-credit-card-agreement.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "8e1f09505c7b50da600a0e1e89f5879d38899ba06ecc66b80ffe62455d3495eb",
+    "bytes": 493737,
+    "recorded_at": "2026-09-14T03:34:34+00:00"
+  },
+  {
+    "card_id": "rbc-avion-vi",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.rbcroyalbank.com/credit-cards/travel/rbc-visa-infinite-avion/rbc-visa-infinite-avion-certificate-of-insurance.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "df4205b14fd19832b24b255a0b2e4514fedcc2c5a830f89577e33aa2525d8139",
+    "bytes": 723161,
+    "recorded_at": "2026-09-14T03:32:07+00:00"
+  },
+  {
+    "card_id": "rbc-avion-vi-privilege",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cardholders/additional-documents/rbc-generic-credit-card-agreement.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "8e1f09505c7b50da600a0e1e89f5879d38899ba06ecc66b80ffe62455d3495eb",
+    "bytes": 493737,
+    "recorded_at": "2026-09-14T03:34:34+00:00"
+  },
+  {
+    "card_id": "rbc-avion-vi-privilege",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.rbcroyalbank.com/credit-cards/travel/rbc-avion-visa-infinite-privilege/rbc-visa-avion-infinite-privilege-certificate-of-insurance.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "1bfe2c68d602e5771522e860e4047af7bb80a76d710ec7f838a268bcb38ade84",
+    "bytes": 1230518,
+    "recorded_at": "2026-09-14T03:32:09+00:00"
+  },
+  {
+    "card_id": "rbc-westjet-world-elite",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cardholders/additional-documents/rbc-generic-credit-card-agreement.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "8e1f09505c7b50da600a0e1e89f5879d38899ba06ecc66b80ffe62455d3495eb",
+    "bytes": 493737,
+    "recorded_at": "2026-09-14T03:34:34+00:00"
+  },
+  {
+    "card_id": "rbc-westjet-world-elite",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.rbcroyalbank.com/credit-cards/travel/westjet-rbc-world-elite-mastercard/westjet-rbc-world-elite-mastercard-certificate-of-insurance.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "7c8853a52dd740aaa4f07a93562c96bdf9414325900a18a13f75dfe4715b78c3",
+    "bytes": 656895,
+    "recorded_at": "2026-09-14T03:32:12+00:00"
+  },
+  {
+    "card_id": "rbc-westjet-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cardholders/additional-documents/rbc-generic-credit-card-agreement.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "8e1f09505c7b50da600a0e1e89f5879d38899ba06ecc66b80ffe62455d3495eb",
+    "bytes": 493737,
+    "recorded_at": "2026-09-14T03:34:34+00:00"
+  },
+  {
+    "card_id": "rbc-westjet-mc",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.rbcroyalbank.com/credit-cards/travel/westjet-rbc-mastercard/westjet-rbc-mastercard-certificate-of-insurance.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "09de8fc1274f213c97ca8e8eb7688e630c1be6b729aa864c3b856068a7b7052c",
+    "bytes": 449665,
+    "recorded_at": "2026-09-14T03:32:14+00:00"
+  },
+  {
+    "card_id": "rbc-cashback-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cardholders/additional-documents/rbc-generic-credit-card-agreement.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "8e1f09505c7b50da600a0e1e89f5879d38899ba06ecc66b80ffe62455d3495eb",
+    "bytes": 493737,
+    "recorded_at": "2026-09-14T03:34:34+00:00"
+  },
+  {
+    "card_id": "rbc-cashback-mc",
+    "doc_type": "benefit_guide",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cash-back/rbc-cash-back-mastercard/rbc-cash-back-mastercard-benefits-guide.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "8bca802e825ee12555eed4c767520fc44b42fadc8a90a4e3ee585a57b324ab77",
+    "bytes": 443378,
+    "recorded_at": "2026-09-14T03:32:16+00:00"
+  },
+  {
+    "card_id": "rbc-ion-visa",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cardholders/additional-documents/rbc-generic-credit-card-agreement.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "8e1f09505c7b50da600a0e1e89f5879d38899ba06ecc66b80ffe62455d3495eb",
+    "bytes": 493737,
+    "recorded_at": "2026-09-14T03:34:34+00:00"
+  },
+  {
+    "card_id": "rbc-ion-visa",
+    "doc_type": "benefit_guide",
+    "url": "https://www.rbcroyalbank.com/credit-cards/rewards/rbc-ion-visa/rbc-ion-visa-benefits-guide.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "25c1f33099247a821dca162748767e7e2b6ab58ff18b0f3eff6cd758158ab686",
+    "bytes": 977980,
+    "recorded_at": "2026-09-14T03:32:18+00:00"
+  },
+  {
+    "card_id": "bmo-ascend-world-elite",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.bmo.com/pdf/Ascend_World_Elite_Insurance_Certificate.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "cf9c4adca023657263e50d2f6322f565ecfdaa055ec74d5e73e791d6a7080d76",
+    "bytes": 1061771,
+    "recorded_at": "2026-09-14T03:32:21+00:00"
+  },
+  {
+    "card_id": "bmo-ascend-world-elite",
+    "doc_type": "benefit_guide",
+    "url": "https://www.bmo.com/pdf/BMO%20World%20Elite%20Mastercard%20Benefits%20Guide%20EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "ae6766a7c3976a863e7cd688130316decfb0ee77e91e9c93fb7d46968d010472",
+    "bytes": 2263416,
+    "recorded_at": "2026-09-14T03:32:23+00:00"
+  },
+  {
+    "card_id": "bmo-cashback-world-elite",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.bmo.com/pdf/15-1163_CashBackAgreement_Ev1.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "bfdbb5b4b0ab8fc1df9580883f284478bb207fea8b159119a405344a7e71afd8",
+    "bytes": 591987,
+    "recorded_at": "2026-09-14T03:32:25+00:00"
+  },
+  {
+    "card_id": "bmo-cashback-world-elite",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.bmo.com/pdf/BMO%20CashBack%20World%20Elite%20Travel%20and%20Medical%20Protection%20Insurance%20Certificate.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "d464651afeccc66052db86cbbdc4b5d122127613da84e715d811e7cebd64d801",
+    "bytes": 516616,
+    "recorded_at": "2026-09-14T03:32:27+00:00"
+  },
+  {
+    "card_id": "bmo-eclipse-vi",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.bmo.com/pdf/eclipse-cardholder-agreement-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "20a95a96369149d7e41d8d371d1352235c93537830bb7e891efb00a3fc492fa1",
+    "bytes": 239428,
+    "recorded_at": "2026-09-14T03:32:30+00:00"
+  },
+  {
+    "card_id": "bmo-eclipse-vi",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.bmo.com/pdf/bmo-eclipse-visa-infinite-certificate-of-insurance-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "64d00fb2cffc7b1515abfff38c037ad4ed689e080d0c6f21a94eba56202fae3d",
+    "bytes": 579382,
+    "recorded_at": "2026-09-14T03:32:32+00:00"
+  },
+  {
+    "card_id": "bmo-eclipse-rise-vi",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.bmo.com/pdf/eclipse-cardholder-agreement-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "20a95a96369149d7e41d8d371d1352235c93537830bb7e891efb00a3fc492fa1",
+    "bytes": 239428,
+    "recorded_at": "2026-09-14T03:32:30+00:00"
+  },
+  {
+    "card_id": "bmo-eclipse-rise-vi",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.bmo.com/pdf/bmo-eclipse-visa-rise-certificate-of-insurance-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "48afc93865da708bf2178228fde75368073b3c4c2d35f49cab150c2875e326ae",
+    "bytes": 181000,
+    "recorded_at": "2026-09-14T03:32:34+00:00"
+  },
+  {
+    "card_id": "bmo-eclipse-rise-vi",
+    "doc_type": "benefit_guide",
+    "url": "https://www.bmo.com/pdf/bmo-eclipse-visa-rise-benefit-guide-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "54985e1db348b0cfb5ee60043e275947132d0c892eb7b0774d5dc637ffae9087",
+    "bytes": 11759433,
+    "recorded_at": "2026-09-14T03:32:37+00:00"
+  },
+  {
+    "card_id": "bmo-airmiles-world-elite",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.bmo.com/pdf/AM_WE_CHA_En.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "9688444da707f99eb55afb7164b0610af89c70447c3a67534e008797c2584116",
+    "bytes": 1028647,
+    "recorded_at": "2026-09-14T03:32:39+00:00"
+  },
+  {
+    "card_id": "cibc-aeroplan-vi",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/agreements-and-insurance/aeroplan-infinite-certificate-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "082707f927f24299dd3f827e27519667fd1b2b17133ab9b2bb563dd61be1d1ab",
+    "bytes": 462075,
+    "recorded_at": "2026-09-14T03:32:41+00:00"
+  },
+  {
+    "card_id": "cibc-aeroplan-vi",
+    "doc_type": "benefit_guide",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/agreements-and-insurance/aeroplan-visa-infinite-benefits-guide-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "551b49d1c76403e62f69f86f0f10ea714d6399cee625ef34f5a28f39e756c500",
+    "bytes": 3966205,
+    "recorded_at": "2026-09-14T03:32:43+00:00"
+  },
+  {
+    "card_id": "cibc-aeroplan-vi-privilege",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/agreements-and-insurance/aeroplan-infinite-privilege-certificate-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "99845b8ca1df8fc3d091c82e0bc521d8396a9744a6e3cb7989a285314e6c2947",
+    "bytes": 473666,
+    "recorded_at": "2026-09-14T03:32:46+00:00"
+  },
+  {
+    "card_id": "cibc-aeroplan-vi-privilege",
+    "doc_type": "benefit_guide",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/manage/agreements-and-insurance/pdfs/aeroplan-visa-infinite-privilege-benefits-guide-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "f0095f94950a6329128db44a6da8cc6be05f5ddc6bba725099f501131392946f",
+    "bytes": 11271557,
+    "recorded_at": "2026-09-14T03:32:48+00:00"
+  },
+  {
+    "card_id": "cibc-dividend-vi",
+    "doc_type": "benefit_guide",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/manage/agreements-and-insurance/pdfs/dividend-infinite-insurance-product-summary-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "778289aefd06c1d7f3cfaa758e7ab5ea59537c4c5f0589b95fc0af4609346b65",
+    "bytes": 1502750,
+    "recorded_at": "2026-09-14T03:32:50+00:00"
+  },
+  {
+    "card_id": "cibc-aventura-vi",
+    "doc_type": "benefit_guide",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/manage/agreements-and-insurance/pdfs/aventura-infinite-insurance-product-summary-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "2d6a2788eb1b8be70c1832ddda2b2ba3a0d51aca0b30c8973d83725c2e863e71",
+    "bytes": 1555255,
+    "recorded_at": "2026-09-14T03:32:52+00:00"
+  },
+  {
+    "card_id": "nb-world-elite-mc",
+    "doc_type": "benefit_guide",
+    "url": "https://www.nbc.ca/content/dam/shared/pdf/cc/30164-nbc-cardholder-guide-we.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "7d650c7f65242d518aba74005499fdd3f8bbe25f435739c2c75028d359b42406",
+    "bytes": 471889,
+    "recorded_at": "2026-09-14T03:32:55+00:00"
+  },
+  {
+    "card_id": "tangerine-money-back",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.tangerine.ca/content/dam/tangerine/en/pdfs/credit-card-cardholder-agreement/4_Your_Tangerine_Credit_Card_Holder_Agreement_FINAL.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "1a07ed5927c4547368de73c99227eaed953c42ab96ab9c546c671aa118d63096",
+    "bytes": 182353,
+    "recorded_at": "2026-09-14T03:32:58+00:00"
+  },
+  {
+    "card_id": "tangerine-world-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.tangerine.ca/content/dam/tangerine/en/pdfs/credit-card-cardholder-agreement/4_Your_Tangerine_Credit_Card_Holder_Agreement_FINAL.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "1a07ed5927c4547368de73c99227eaed953c42ab96ab9c546c671aa118d63096",
+    "bytes": 182353,
+    "recorded_at": "2026-09-14T03:32:58+00:00"
+  },
+  {
+    "card_id": "tangerine-world-mc",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.tangerine.ca/content/dam/tangerine/en/pdfs/credit-card-cardholder-agreement/2_Tangerine_World_Mastercard_Certificate_of_Insurance_FINAL.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "49aecd44b80fe81d9d8b2af98d0b112eed25011f552c47adde3d455db633145d",
+    "bytes": 203262,
+    "recorded_at": "2026-09-14T03:33:00+00:00"
+  },
+  {
+    "card_id": "rogers-red-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rogersbank.com/legaldocs/en/Cardholder_Agreement_1123.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "233c05c8dca1b19b8bb708aff7e453ffc5fa9c129025d3a98287bb9369889334",
+    "bytes": 157907,
+    "recorded_at": "2026-09-14T03:33:02+00:00"
+  },
+  {
+    "card_id": "rogers-red-mc",
+    "doc_type": "benefit_guide",
+    "url": "https://www.rogersbank.com/legaldocs/en/Rogers_Red_World_Mastercard_Benefits_Guide.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "cf49217fdfc45a8391e67a80c84e559a58448d19ceafb0132ec1a1b52dccd4a0",
+    "bytes": 189614,
+    "recorded_at": "2026-09-14T03:33:05+00:00"
+  },
+  {
+    "card_id": "pc-insiders-world-elite-mc",
+    "doc_type": "benefit_guide",
+    "url": "https://dis-prod.assetful.loblaw.ca/content/dam/loblaw-companies-limited/creative-assets/pc-financial/documents/insiders_benefitsguide.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "435a2baeb496692796bb4b65e272ee836a7321a688c1cd9b98ef7a6b6aa2b139",
+    "bytes": 617570,
+    "recorded_at": "2026-09-14T03:52:38+00:00"
+  },
+  {
+    "card_id": "pc-insiders-world-elite-mc",
+    "doc_type": "insurance_certificate",
+    "url": "https://dis-prod.assetful.loblaw.ca/content/dam/loblaw-companies-limited/creative-assets/pc-financial/documents/WFP-312051-WE-COI-EN-v8_Online_Version_oAG.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "6e5810e697bef672367e6227ea5318eeba60475945bacbf64d39cdd60c0d7bde",
+    "bytes": 750048,
+    "recorded_at": "2026-09-14T03:52:40+00:00"
+  },
+  {
+    "card_id": "pc-financial-world-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://dis-prod.assetful.loblaw.ca/content/dam/loblaw-companies-limited/creative-assets/pc-financial/documents/PCF-CHA-10-23-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "df3be266233530604fbe6c003e6548643e67328d629fa1d883f2dd48852411b3",
+    "bytes": 508455,
+    "recorded_at": "2026-09-14T03:33:07+00:00"
+  },
+  {
+    "card_id": "atb-world-elite-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.atb.com/siteassets/pdf/personal/credit-cards/world-elite-mastercard-agreement-insurance-booklet.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "0b6040e909a8f98207f81b412f3ab6181cfb5ab160daf41aa44908c3aece9b02",
+    "bytes": 7748540,
+    "recorded_at": "2026-09-14T03:33:11+00:00"
+  },
+  {
+    "card_id": "desjardins-odyssey-world-elite",
+    "doc_type": "benefit_guide",
+    "url": "https://www.desjardins.com/content/dam/pdf/en/personal/credit-cards/odyssey-world-elite-comprehensive-travel-insurance-summary.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "8793612592cd2bd892e1ccfba652e6c04ceace2d931f6c7b2af90efdc492c79d",
+    "bytes": 155427,
+    "recorded_at": "2026-09-14T03:33:13+00:00"
+  },
+  {
+    "card_id": "desjardins-odyssey-world-elite",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.desjardins.com/content/dam/pdf/en/personal/credit-cards/odyssey-world-elite-purchase-protection-insurance-certificate.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "5f8624979dbf3fb30bdf4731901b62c9f043d9a2742a6e80f4767f6a6f90991e",
+    "bytes": 281076,
+    "recorded_at": "2026-09-14T03:33:15+00:00"
+  },
+  {
+    "card_id": "mbna-rewards-world-elite",
+    "doc_type": "benefit_guide",
+    "url": "https://www.mbna.ca/content/dam/mbna/document/pdf/credit-cards/1215n-mbna-rewards-world-elite-mastercard-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "98859a45e990ae9578710440169b0ea6c0593187be5bf9eb7a9746a6a9255412",
+    "bytes": 241085,
+    "recorded_at": "2026-09-14T03:33:18+00:00"
+  },
+  {
+    "card_id": "mbna-rewards-world-elite",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.mbna.ca/content/dam/mbna/document/pdf/covid/mbna-choice-rewards-world-elite-mastercard-certificate-of-insurance-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "7f95efcf834f2ea75bc5f4044aceb42d53c2e6bba22fad8aa9b1413807548077",
+    "bytes": 519752,
+    "recorded_at": "2026-09-14T03:33:20+00:00"
+  },
+  {
+    "card_id": "brim-world-elite",
+    "doc_type": "cardholder_agreement",
+    "url": "https://brimfinancial.com/pdf_files/2024%20ROC%20Brim%20Cardmember%20Agreement%20EN-updated.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "a339c66c384f8b0d703713269be99223dc1da8d924d17765a2a3cb3fa373631c",
+    "bytes": 201760,
+    "recorded_at": "2026-09-14T03:33:23+00:00"
+  },
+  {
+    "card_id": "brim-world-elite",
+    "doc_type": "insurance_certificate",
+    "url": "https://static.brimfinancial.com/afklm/pdf_files/BRIM%20World%20Elite%20Certificate_English.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "1edca547fcaa167a77a3f8bfbec8a0966781345e758373fbae4aef28799cb628",
+    "bytes": 1123883,
+    "recorded_at": "2026-09-14T03:33:26+00:00"
+  },
+  {
+    "card_id": "brim-world-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://brimfinancial.com/pdf_files/2024%20ROC%20Brim%20Cardmember%20Agreement%20EN-updated.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "a339c66c384f8b0d703713269be99223dc1da8d924d17765a2a3cb3fa373631c",
+    "bytes": 201760,
+    "recorded_at": "2026-09-14T03:33:23+00:00"
+  },
+  {
+    "card_id": "home-trust-preferred-visa",
+    "doc_type": "cardholder_agreement",
+    "url": "https://visa.hometrust.ca/PDF/Augmened_Ts_and_Cs_Preferred.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "6a1d6e30991d5238b7724b81701f6ab1e391c091aef75419c754aaaddfc4520c",
+    "bytes": 125932,
+    "recorded_at": "2026-09-14T03:33:29+00:00"
+  },
+  {
+    "card_id": "neo-mastercard",
+    "doc_type": "cardholder_agreement",
+    "url": "https://static.production.neofinancial.com/marketing-web/legal/en-CA/Neo+Financial+Mastercard%C2%AE+Personal+Cardholder+Agreement.pdf",
+    "status": "failed",
+    "reason": "HTTP 403",
+    "sha256": null,
+    "bytes": null,
+    "recorded_at": "2026-09-14T04:39:15+00:00"
+  },
+  {
+    "card_id": "neo-mastercard",
+    "doc_type": "benefit_guide",
+    "url": "https://legal.neo.cc/rewards-policy",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "d753c0c1bef0ed96ee8dfe99bfea4bdc6139f9906d765d819d6600ce20a7ade3",
+    "bytes": 123911,
+    "recorded_at": "2026-09-14T04:39:17+00:00"
+  },
+  {
+    "card_id": "cibc-costco-mc",
+    "doc_type": "benefit_guide",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/all-credit-cards/costco/documents/summary-rates-and-fees-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "de837d2f088a902afeb8a6aabda47dd66c6823cea1572d44fc75ad726151a8b0",
+    "bytes": 106684,
+    "recorded_at": "2026-09-14T03:52:47+00:00"
+  },
+  {
+    "card_id": "cibc-costco-mc",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/all-credit-cards/costco/documents/cibc-costco-ins-cert-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "d8092f2ac23be7c6cf18c904db4467664ee5c84189af65f02c66c77136fbcdc4",
+    "bytes": 135078,
+    "recorded_at": "2026-09-14T03:52:49+00:00"
+  },
+  {
+    "card_id": "simplii-cash-back-visa",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.simplii.com/content/dam/simplii-public-assets/documents/pdf/credit-cards/simplii-cardholder-agreement-sf-001018v1lnt-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "06af1155028454ca14fb81757d813ba6afa3cb4cc2b53b6ba68c91666e964555",
+    "bytes": 689862,
+    "recorded_at": "2026-09-14T03:33:39+00:00"
+  },
+  {
+    "card_id": "simplii-cash-back-visa",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.simplii.com/content/dam/simplii-public-assets/documents/pdf/credit-cards/SF-0021018v1INT.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "14b99e8a9bd15df39b36a8ab53af472439e807537b8769177c364d2ecee03429",
+    "bytes": 108648,
+    "recorded_at": "2026-09-14T03:33:41+00:00"
+  },
+  {
+    "card_id": "simplii-cash-back-visa",
+    "doc_type": "benefit_guide",
+    "url": "https://www.simplii.com/content/dam/simplii-public-assets/documents/pdf/credit-cards/credit-card-online-benefits-guide.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "3e7beb77172c588aab2eff9b82daeceac1e129b0c1c1299ed841c387c21d30a0",
+    "bytes": 73198,
+    "recorded_at": "2026-09-14T03:33:43+00:00"
+  },
+  {
+    "card_id": "desjardins-cash-back-visa",
+    "doc_type": "benefit_guide",
+    "url": "https://www.desjardins.com/content/dam/pdf/en/personal/credit-cards/cash-back-visa-mastercard-purchase-protection-insurance-summary.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "5c165cd0446cc92afeb9869a1137a04648a3c386fae378b53fcf0e685b08d4fa",
+    "bytes": 110560,
+    "recorded_at": "2026-09-14T03:52:51+00:00"
+  },
+  {
+    "card_id": "desjardins-cash-back-visa",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.desjardins.com/content/dam/pdf/en/personal/credit-cards/EI-Form-Remises_A.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "2f52b70fd1d5e4bdeac74c13dbd436a60ddb8fa4da46f3a8765c79db3f4380a2",
+    "bytes": 28152,
+    "recorded_at": "2026-09-14T03:52:53+00:00"
+  },
+  {
+    "card_id": "mbna-true-line-mc",
+    "doc_type": "benefit_guide",
+    "url": "https://www.mbna.ca/content/dam/mbna/document/pdf/credit-cards/1215n-mbna-platinum-plus-or-true-line-mastercard-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "1b5eba96cef9e931f0ab7df04c5968636253c88eeea064779f24b7fab193eb90",
+    "bytes": 120412,
+    "recorded_at": "2026-09-14T03:52:56+00:00"
+  },
+  {
+    "card_id": "mbna-true-line-mc",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.mbna.ca/content/dam/mbna/document/pdf/credit-cards/mbnatruelineorplatinumplusguidetocoverage-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "30b15b8ad3dc1edbc339c6e385fc268454ce9aa4a884f6ced8da89212d62337b",
+    "bytes": 130082,
+    "recorded_at": "2026-09-14T03:52:58+00:00"
+  },
+  {
+    "card_id": "cibc-select-visa",
+    "doc_type": "benefit_guide",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/manage/agreements-and-insurance/pdfs/sl-benguide-en.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "33769f3ac37a8d2141fbcb4c2dfbbf31c14aa1478b99c969556271b7d6f4070e",
+    "bytes": 179855,
+    "recorded_at": "2026-09-14T03:53:00+00:00"
+  },
+  {
+    "card_id": "scotia-gold-amex",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.manulife.ca/content/dam/consumer-portal/documents/en/insurance/credit-card-insurance/scotiabank-credit-cards/gold-amex/scotiabank_gold_american_express_card_certificate.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "0cbb034c28f701585b68381d535648059d55b2c9873517b501722bd574ce6d3d",
+    "bytes": 438136,
+    "recorded_at": "2026-09-14T03:53:03+00:00"
+  },
+  {
+    "card_id": "nb-syncro-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.nbc.ca/content/dam/bnc/particuliers/pdf/tarification-carte/agreement-mastercard-personal.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "2215efe4260c52560e98602e6b0096a9603209c87c39c4d369075db135a90c75",
+    "bytes": 243012,
+    "recorded_at": "2026-09-14T03:53:06+00:00"
+  },
+  {
+    "card_id": "scotia-momentum-no-fee-visa",
+    "doc_type": "benefit_guide",
+    "url": "https://www.scotiabank.com/content/dam/scotiabank/canada/common/documents/pdf/SCOTIABANK-Momentum-RG-No-Fee-Visa-Eng-Ekit.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "663e7c0df2c7bb9edefae2a123c9f175a41e8635f419135b748f048fed6f2d8f",
+    "bytes": 421478,
+    "recorded_at": "2026-09-14T04:35:18+00:00"
+  },
+  {
+    "card_id": "scotia-momentum-no-fee-visa",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.gbm.scotiabank.com/content/dam/scotiabank/canada/common/documents/pdf/Momentum-Regular-COI-EN.pdf",
+    "status": "downloaded",
+    "reason": null,
+    "sha256": "4655aabb821ad249a49e80e4fdbd0c22aa46372947a159b7ceed3ee8ef96390a",
+    "bytes": 127759,
+    "recorded_at": "2026-09-14T04:35:21+00:00"
+  }
+]

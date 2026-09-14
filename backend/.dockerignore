@@ -23,6 +23,9 @@ tests/
 # Scripts (ingest is a one-time operation, not part of the server)
 scripts/
 
+# Source PDFs are only read at ingest time; the server queries Pinecone, never these
+data/documents/
+
 # Documentation
 *.md
 

@@ -74,6 +74,10 @@ coverage.xml
 backend/containers.json
 backend/endpoint.json
 
+# Bank PDFs are copyrighted and re-downloadable; manifest.json and downloads.json
+# record exactly what was fetched, so only those are committed.
+backend/data/documents/pdf/
+
 # =========================
 # AI Agent Instruction Files
 # =========================
