@@ -1,4 +1,4 @@
-﻿# Python virtual environment (large, not needed — Docker installs deps from requirements.txt)
+# Python virtual environment (large, not needed — Docker installs deps from requirements.txt)
 .venv/
 __pycache__/
 *.pyc

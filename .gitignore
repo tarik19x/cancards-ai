@@ -1,4 +1,4 @@
-﻿# =========================
+# =========================
 # Python
 # =========================
 __pycache__/
@@ -79,3 +79,8 @@ backend/endpoint.json
 # =========================
 **/CLAUDE.md
 **/AGENTS.md
+/LLM/
+
+# Playwright / test runner output
+test-results/
+playwright-report/

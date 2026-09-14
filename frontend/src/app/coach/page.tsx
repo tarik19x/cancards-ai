@@ -65,7 +65,10 @@ const CHOICE_STEPS: ChoiceStep[] = [
 // step 0 = card count, step 1 = credit limit, steps 2-5 = CHOICE_STEPS
 const TOTAL_STEPS = 2 + CHOICE_STEPS.length
 
-type Answers = Partial<CreditProfile>
+// The quiz collects one more field than the scorer uses — the combined limit
+// is shown back in the results summary, not fed into scoreCredit().
+type CoachAnswers = CreditProfile & { creditLimit: number }
+type Answers = Partial<CoachAnswers>
 
 export default function CoachPage() {
   const [stage, setStage] = useState<"intro" | "quiz" | "results">("intro")
@@ -88,7 +91,7 @@ export default function CoachPage() {
     setStage("intro")
   }
 
-  const complete = answers as CreditProfile
+  const complete = answers as CoachAnswers
   const result =
     stage === "results" &&
     typeof complete.cardCount === "number" &&

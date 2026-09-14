@@ -1,36 +1,22 @@
-﻿import type { Card, AnswerResponse } from "@/types"
+import type { Card } from "@/types"
 
 const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:8000"
 
+// Both readers run in client components, so Next's `next: { revalidate }` never
+// applied — it only works server-side. Dropped rather than left in place looking
+// like caching that isn't happening. Move a caller to a server component to get
+// it back.
+
 // ─── Cards ───────────────────────────────────────────────────────────────────
 
-export async function fetchCards(): Promise<Card[]> {
-  const res = await fetch(`${BACKEND}/api/cards`, {
-    next: { revalidate: 3600 }, // cache for 1 hour
-  })
+export async function fetchCards(signal?: AbortSignal): Promise<Card[]> {
+  const res = await fetch(`${BACKEND}/api/cards`, { signal })
   if (!res.ok) throw new Error(`Failed to fetch cards (${res.status})`)
   return res.json() as Promise<Card[]>
 }
 
-export async function fetchCard(cardId: string): Promise<Card> {
-  const res = await fetch(`${BACKEND}/api/cards/${cardId}`, {
-    next: { revalidate: 3600 },
-  })
+export async function fetchCard(cardId: string, signal?: AbortSignal): Promise<Card> {
+  const res = await fetch(`${BACKEND}/api/cards/${cardId}`, { signal })
   if (!res.ok) throw new Error(`Card "${cardId}" not found (${res.status})`)
   return res.json() as Promise<Card>
-}
-
-// ─── Ask ─────────────────────────────────────────────────────────────────────
-
-export async function askQuestion(question: string): Promise<AnswerResponse> {
-  const res = await fetch(`${BACKEND}/api/ask`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ question }),
-  })
-  if (!res.ok) {
-    const detail = await res.text()
-    throw new Error(`Ask failed (${res.status}): ${detail}`)
-  }
-  return res.json() as Promise<AnswerResponse>
 }

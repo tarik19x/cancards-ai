@@ -13,7 +13,7 @@ CARDS_PATH = Path(__file__).resolve().parents[2] / "data" / "cards.json"
 
 @pytest.fixture
 def sample_cards() -> list[Card]:
-    raw = json.loads(CARDS_PATH.read_text(encoding="utf-8"))
+    raw = json.loads(CARDS_PATH.read_text(encoding="utf-8-sig"))
     return [Card.model_validate(item) for item in raw]
 
 

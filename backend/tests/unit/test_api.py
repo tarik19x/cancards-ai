@@ -57,7 +57,7 @@ async def test_health_returns_ok():
 
 
 @pytest.mark.asyncio
-async def test_list_cards_returns_five():
+async def test_list_cards_returns_all_fifty():
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         response = await client.get("/api/cards")
     assert response.status_code == 200

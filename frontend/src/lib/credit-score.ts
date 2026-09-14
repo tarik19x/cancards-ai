@@ -9,9 +9,11 @@ export type Utilization = "under10" | "10to30" | "30to50" | "50to75" | "over75"
 export type HistoryLength = "under1" | "1to3" | "3to7" | "over7"
 export type MissedPayments = "never" | "rarely" | "sometimes" | "often"
 
+// creditLimit deliberately absent: the utilization band already carries what
+// the score needs, and listing an input the scorer never reads implies a
+// precision this estimate doesn't have.
 export type CreditProfile = {
   cardCount: number
-  creditLimit: number
   utilization: Utilization
   historyLength: HistoryLength
   missedPayments: MissedPayments

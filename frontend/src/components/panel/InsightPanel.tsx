@@ -21,27 +21,27 @@ export default function InsightPanel() {
   const [fee, setFee] = useState(0)
 
   useEffect(() => {
+    const controller = new AbortController()
+
     if (!answer?.topCardId) {
       queueMicrotask(() => {
+        if (controller.signal.aborted) return
         setRates([])
         setFee(0)
       })
-      return
+      return () => controller.abort()
     }
-    let cancelled = false
 
-    fetch(`${BACKEND}/api/cards/${answer.topCardId}`)
+    fetch(`${BACKEND}/api/cards/${answer.topCardId}`, { signal: controller.signal })
       .then((r) => (r.ok ? r.json() : null))
       .then((card) => {
-        if (cancelled || !card) return
+        if (!card) return
         setRates(parseEarnRates(card))
         setFee(Number(card.annual_fee_cad ?? 0))
       })
       .catch(() => {})
 
-    return () => {
-      cancelled = true
-    }
+    return () => controller.abort()
   }, [answer?.topCardId])
 
   const hasRates = rates.length > 0
@@ -197,7 +197,7 @@ export default function InsightPanel() {
                 Where it comes from
               </h3>
               <div className="mt-3.5">
-                <SpendBars rows={calc!.rows} amounts={spend} />
+                <SpendBars rows={calc!.rows} />
               </div>
             </div>
           </div>
@@ -207,8 +207,8 @@ export default function InsightPanel() {
               Get a sharper number
             </h3>
             <p className="mt-1.5 font-sans text-sm leading-relaxed text-stone-400">
-              Update what you spend and we&apos;ll recalculate against all 50
-              cards.
+              Update what you spend and we&apos;ll recalculate what this card
+              returns you.
             </p>
             <button
               onClick={() => setEditing(true)}
