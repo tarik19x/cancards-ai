@@ -1,4 +1,4 @@
-﻿# ─── Stage 1: Builder ───────────────────────────────────────────────────────
+# ─── Stage 1: Builder ───────────────────────────────────────────────────────
 # Install all Python dependencies.
 # This stage is discarded after the build — only the installed packages travel
 # to the runtime stage.

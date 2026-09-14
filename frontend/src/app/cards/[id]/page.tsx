@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useState, useEffect } from "react"
 import { useParams } from "next/navigation"
@@ -94,7 +94,7 @@ export default function CardDetailPage() {
               </p>
             </div>
             
-              <a href={card.official_url}
+            <a href={card.official_url}
               target="_blank"
               rel="noopener noreferrer"
               className="shrink-0 rounded-lg bg-gradient-to-br from-[#F0A58C] to-[#A78BFA] px-4 py-2 text-sm font-medium text-black transition-opacity hover:opacity-90"

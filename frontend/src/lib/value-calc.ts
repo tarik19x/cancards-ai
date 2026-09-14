@@ -1,13 +1,10 @@
 import type { SpendProfile } from "@/lib/panel-store"
 
-// One reward rate on a card.
-// percent 4 means "4% back".
-// cap fields are optional — some cards only pay the high rate up to a limit.
 export type EarnRate = {
   category: string
   percent: number
-  monthlyCap?: number // dollars per month at this rate
-  annualCap?: number  // dollars per year at this rate
+  monthlyCap?: number
+  annualCap?: number
 }
 
 export type ValueRow = {
@@ -17,14 +14,30 @@ export type ValueRow = {
   percent: number
 }
 
-// Words that might show up in a card's category names. All lowercase.
-// Matched with "contains", so "grocer" catches "grocery_stores" too.
+// Issuers name the same category a dozen different ways
+// (grocery_stores, eligible_grocery_stores, loblaws_banner_stores).
+// Substring match against these rather than maintaining an exact map.
+//
+// Every token here has to be checked against the real category list before it
+// goes in. "food" used to live under groceries and quietly handed Amex
+// Platinum's dining rate to grocery spend, on a card with no grocery bonus.
 const ALIASES: Record<keyof SpendProfile, string[]> = {
-  groceries: ["grocer", "supermarket", "loblaws", "food"],
+  groceries: ["grocer", "supermarket", "loblaws", "sobeys"],
   dining: ["dining", "restaurant", "eats", "eat", "drink", "bar", "coffee", "entertainment"],
   gas: ["gas", "fuel", "esso", "ev charging"],
-  travel: ["travel", "flight", "hotel", "airline", "westjet", "transit"],
-  other: ["everything", "other", "all other", "base", "general"],
+  travel: [
+    "travel",
+    "flight",
+    "hotel",
+    "airline",
+    "air canada",
+    "air miles",
+    "westjet",
+    "marriott",
+    "expedia",
+    "transit",
+  ],
+  other: ["everything", "no rewards"],
 }
 
 const LABELS: Record<keyof SpendProfile, string> = {
@@ -36,19 +49,14 @@ const LABELS: Record<keyof SpendProfile, string> = {
 }
 
 /**
- * Read reward rates out of a card object.
+ * Normalizes rewards_detail into comparable percentages.
  *
- * Cards store rewards like this:
- *   rewards_detail: {
- *     grocery_stores: { rate: 5, unit: "percent_cashback", monthly_cap_cad: 500 }
- *   }
+ * Points cards and cashback cards can't be compared directly — 5x points
+ * is only 5% if a point is worth a cent. estimated_point_value_cents is
+ * our own valuation, so treat the output as an estimate, not a quote.
  *
- * Two kinds of unit:
- *   "percent_cashback"  → rate is already a percent, use it as-is
- *   "points_per_dollar" → 5x points worth 1 cent each = 5% back
- *
- * Returns [] when a card has no structured rates. The panel then hides
- * the breakdown instead of showing made-up numbers.
+ * Returns [] for cards without structured rates; callers should hide the
+ * breakdown rather than fall back to a default.
  */
 export function parseEarnRates(card: unknown): EarnRate[] {
   if (!card || typeof card !== "object") return []
@@ -57,7 +65,6 @@ export function parseEarnRates(card: unknown): EarnRate[] {
   const detail = c.rewards_detail
   if (!detail || typeof detail !== "object") return []
 
-  // how many cents one point is worth. defaults to 1.
   const pointValue = Number(c.estimated_point_value_cents ?? 1) || 1
 
   const rates: EarnRate[] = []
@@ -69,50 +76,67 @@ export function parseEarnRates(card: unknown): EarnRate[] {
     if (isNaN(rate)) continue
 
     const unit = String(row.unit ?? "")
-    // points need converting to a real percent. cash back is already one.
     const percent = unit.includes("point") ? rate * pointValue : rate
 
-    const monthlyCap = Number(row.monthly_cap_cad)
-    const annualCap = Number(row.annual_cap_cad)
-
     rates.push({
-      // "eat_and_drink" → "eat and drink"
       category: category.replace(/_/g, " "),
-      percent,
-      monthlyCap: isNaN(monthlyCap) ? undefined : monthlyCap,
-      annualCap: isNaN(annualCap) ? undefined : annualCap,
+      // 3 points x 0.67c renders as 2.0100000000000002 if this isn't rounded,
+      // and the panel prints the raw number.
+      percent: Math.round(percent * 100) / 100,
+      monthlyCap: capOrUndefined(row.monthly_cap_cad),
+      annualCap: capOrUndefined(row.annual_cap_cad),
     })
   }
 
   return rates
 }
 
-/** The "everything else" rate a card falls back to. */
+// Caps come through as null when uncapped, and Number(null) is 0 — which reads
+// as "capped at $0" rather than "no cap". Check the value, not the coercion.
+function capOrUndefined(raw: unknown): number | undefined {
+  if (raw === null || raw === undefined) return undefined
+  const n = Number(raw)
+  return isNaN(n) || n <= 0 ? undefined : n
+}
+
+// Spend that doesn't hit a bonus category earns this instead.
+// Zero for the low-interest cards that carry no rewards at all.
+//
+// Anchored to "everything*" specifically. Matching the bare word "other" pulled
+// in Scotia Gold's `other_grocery_dining_delivery` — a 5% bonus category — and
+// applied it to every unmatched dollar, overstating the card by $336/yr.
 function baseRate(rates: EarnRate[]): number {
-  const base = rates.find((r) =>
-    ALIASES.other.some((w) => r.category.includes(w))
-  )
+  const base = bestMatch(rates, ALIASES.other)
   return base ? base.percent : 0
 }
 
+// Best rate wins, not first-in-object-order. Scotia Gold lists both
+// `sobeys_group_grocery` (6%) and `other_grocery_dining_delivery` (5%); which
+// one a grocery dollar earned used to depend on JSON key order.
+function bestMatch(rates: EarnRate[], words: string[]): EarnRate | undefined {
+  return rates
+    .filter((r) => words.some((w) => r.category.includes(w)))
+    .reduce<EarnRate | undefined>(
+      (best, r) => (best === undefined || r.percent > best.percent ? r : best),
+      undefined
+    )
+}
+
 /**
- * Dollars per year each spend category returns.
+ * Annual return per category.
  *
- * Respects spending caps. Example: a card pays 5% on groceries but only
- * on the first $500 a month. If you spend $850, you get 5% on $500 and
- * the base rate on the other $350.
+ * Caps are the reason this isn't a one-liner: BMO's 5% grocery rate stops
+ * at $500/month and drops to base after. Ignoring that overstates the card
+ * by roughly $200/yr at typical grocery spend.
  */
 export function annualRewards(spend: SpendProfile, rates: EarnRate[]) {
   const keys = Object.keys(spend) as (keyof SpendProfile)[]
   const fallback = baseRate(rates)
 
   const rows: ValueRow[] = keys.map((key) => {
-    const words = ALIASES[key]
-    const match = rates.find((r) => words.some((w) => r.category.includes(w)))
-
+    const match = bestMatch(rates, ALIASES[key])
     const yearlySpend = spend[key] * 12
 
-    // no matching category on this card — everything earns the base rate
     if (!match) {
       return {
         key,
@@ -122,12 +146,12 @@ export function annualRewards(spend: SpendProfile, rates: EarnRate[]) {
       }
     }
 
-    // how much of the spend gets the good rate
+    // Monthly caps annualize cleanly enough — assumes even spend across
+    // the year, which is wrong for seasonal spenders but close enough.
     let cappedSpend = yearlySpend
     if (match.monthlyCap) cappedSpend = Math.min(yearlySpend, match.monthlyCap * 12)
     if (match.annualCap) cappedSpend = Math.min(cappedSpend, match.annualCap)
 
-    // good rate up to the cap, base rate on whatever is left over
     const aboveCap = yearlySpend - cappedSpend
     const dollars =
       (cappedSpend * match.percent) / 100 + (aboveCap * fallback) / 100
@@ -139,23 +163,22 @@ export function annualRewards(spend: SpendProfile, rates: EarnRate[]) {
   return { rows, total }
 }
 
-/** Rewards earned minus the yearly fee. Can be negative. */
 export function netValue(totalEarned: number, annualFee: number) {
   return totalEarned - annualFee
 }
 
 /**
- * How much you must spend in a year, at the card's best rate, before
- * the rewards cover the fee. Returns null for free cards.
+ * Spend needed to cover the annual fee at the card's top rate.
+ * Optimistic by design — real spend is spread across categories, so
+ * treat this as a floor.
  */
 export function breakEvenSpend(annualFee: number, rates: EarnRate[]) {
   if (annualFee <= 0) return null
   const best = Math.max(...rates.map((r) => r.percent), 0)
   if (best <= 0) return null
-  return Math.round((annualFee / (best / 100)) / 100) * 100 // round to $100
+  return Math.round((annualFee / (best / 100)) / 100) * 100
 }
 
-/** $1,234 with no cents. */
 export function money(n: number) {
   return `$${Math.round(n).toLocaleString("en-CA")}`
 }

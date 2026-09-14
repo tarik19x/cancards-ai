@@ -1,7 +1,7 @@
 import type { ValueRow } from "@/lib/value-calc"
 import { money } from "@/lib/value-calc"
 
-type Props = { rows: ValueRow[]; amounts: Record<string, number> }
+type Props = { rows: ValueRow[] }
 
 export default function SpendBars({ rows }: Props) {
   const max = Math.max(...rows.map((r) => r.dollars), 1)

@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useEffect, useRef } from "react"
 import { useStreamingChat } from "@/hooks/useStreamingChat"
@@ -84,7 +84,7 @@ export default function ChatInterface() {
       </div>
 
       <div className="pb-4 pt-2">
-        <ChatInput onSend={sendMessage} disabled={isLoading} placeholder="Reply…" />
+        <ChatInput onSend={sendMessage} disabled={isLoading} placeholder="Ask another question" />
       </div>
     </div>
   )

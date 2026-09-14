@@ -1,9 +1,13 @@
 """Streaming RAG generation using Server-Sent Events."""
 
 import json
+import re
 import uuid
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime
+from typing import Any
+
+from pydantic import ValidationError
 
 from app.clients.anthropic_client import stream_answer
 from app.logging_config import get_logger
@@ -11,6 +15,11 @@ from app.models import AnswerResponse, CardRecommendation, Citation
 from app.rag.generate import build_user_prompt
 
 log = get_logger(__name__)
+
+# A trailing comma before a closing brace/bracket is the one malformation Claude
+# actually produces here. Losing every recommendation to it is a bad trade, so
+# retry once with them stripped rather than dropping the whole section.
+_TRAILING_COMMA = re.compile(r",(\s*[}\]])")
 
 CARDS_DELIMITER = "===CARDS==="
 CITES_DELIMITER = "===CITES==="
@@ -36,9 +45,9 @@ Format your response in EXACTLY this structure:
         "key_benefits": [
             "<benefit>",
             "<benefit>",
-            "<benefit>",
-        ],
-    }},
+            "<benefit>"
+        ]
+    }}
 ]
 
 4. On its own line, write exactly: {CITES_DELIMITER}
@@ -51,6 +60,24 @@ Rules:
 - If no cards match, write your answer then {CARDS_DELIMITER} [] {CITES_DELIMITER} []
 - Do not add any other delimiters or markers
 """
+
+
+def parse_json_section(raw: str, section: str) -> list[Any]:
+    """Parse one of the trailing JSON arrays. Returns [] if it can't be salvaged."""
+    text = raw.strip() or "[]"
+    try:
+        return list(json.loads(text))
+    except json.JSONDecodeError:
+        pass
+
+    try:
+        parsed = list(json.loads(_TRAILING_COMMA.sub(r"\1", text)))
+    except json.JSONDecodeError as e:
+        log.warning("section_parse_failed", section=section, error=str(e), raw=text[:200])
+        return []
+
+    log.info("section_recovered", section=section, reason="trailing_comma")
+    return parsed
 
 
 async def stream_rag_response(question: str, chunks: list[dict]) -> AsyncIterator[str]:
@@ -104,20 +131,21 @@ async def stream_rag_response(question: str, chunks: list[dict]) -> AsyncIterato
             cards_str = rest
             cites_str = "[]"
 
-        # Defensive parsing — LLMs occasionally produce malformed JSON
+        # A card that fails validation is dropped on its own — one bad entry
+        # shouldn't cost the user the other two.
         recommended_cards: list[CardRecommendation] = []
-        try:
-            cards_data = json.loads(cards_str.strip() or "[]")
-            recommended_cards = [CardRecommendation(**c) for c in cards_data]
-        except (json.JSONDecodeError, Exception) as e:
-            log.warning("cards_parse_failed", error=str(e), raw=cards_str[:100])
+        for item in parse_json_section(cards_str, "cards"):
+            try:
+                recommended_cards.append(CardRecommendation(**item))
+            except (TypeError, ValidationError) as e:
+                log.warning("card_dropped", error=str(e), raw=str(item)[:100])
 
         citations: list[Citation] = []
-        try:
-            cites_data = json.loads(cites_str.strip() or "[]")
-            citations = [Citation(**c) for c in cites_data]
-        except (json.JSONDecodeError, Exception) as e:
-            log.warning("cites_parse_failed", error=str(e), raw=cites_str[:100])
+        for item in parse_json_section(cites_str, "cites"):
+            try:
+                citations.append(Citation(**item))
+            except (TypeError, ValidationError) as e:
+                log.warning("citation_dropped", error=str(e), raw=str(item)[:100])
 
         response = AnswerResponse(
             answer_markdown=text_part.strip(),

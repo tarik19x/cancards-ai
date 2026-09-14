@@ -10,10 +10,18 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # ─── Gate ─────────────────────────────────────────────────────────────────
+  # Deploy used to race CI on the same push event, so a red test suite still
+  # shipped. Everything below now waits on these checks.
+  ci:
+    name: CI
+    uses: ./.github/workflows/ci.yml
+
   # ─── Build + Push Docker to Lightsail ─────────────────────────────────────
   build-and-deploy-backend:
     name: Build Docker Image → Lightsail
     runs-on: ubuntu-latest
+    needs: ci
 
     steps:
       - uses: actions/checkout@v4
@@ -40,10 +48,13 @@ jobs:
             .
 
       - name: Push image to Lightsail
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          SERVICE_NAME: ${{ secrets.LIGHTSAIL_SERVICE_NAME }}
         run: |
           aws lightsail push-container-image \
-            --region ${{ secrets.AWS_REGION }} \
-            --service-name ${{ secrets.LIGHTSAIL_SERVICE_NAME }} \
+            --region "$AWS_REGION" \
+            --service-name "$SERVICE_NAME" \
             --label app \
             --image cancards-backend:latest \
             2>&1 | tee /tmp/push_output.txt
@@ -54,10 +65,13 @@ jobs:
           echo "Pushed image reference: $IMAGE_REF"
 
       - name: Deploy to Lightsail
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          SERVICE_NAME: ${{ secrets.LIGHTSAIL_SERVICE_NAME }}
         run: |
           aws lightsail create-container-service-deployment \
-            --region ${{ secrets.AWS_REGION }} \
-            --service-name ${{ secrets.LIGHTSAIL_SERVICE_NAME }} \
+            --region "$AWS_REGION" \
+            --service-name "$SERVICE_NAME" \
             --containers "{
               \"app\": {
                 \"image\": \"$IMAGE_REF\",
@@ -89,11 +103,43 @@ jobs:
 
           echo "Lightsail deployment triggered for commit ${{ github.sha }}"
 
+      # create-container-service-deployment returns as soon as the request is
+      # accepted. Without this wait the frontend can go live against the
+      # previous backend build for the length of the rollout.
+      - name: Wait for Lightsail deployment to become ACTIVE
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          SERVICE_NAME: ${{ secrets.LIGHTSAIL_SERVICE_NAME }}
+        run: |
+          for attempt in $(seq 1 60); do
+            STATE=$(aws lightsail get-container-services \
+              --region "$AWS_REGION" \
+              --service-name "$SERVICE_NAME" \
+              --query 'containerServices[0].currentDeployment.state' \
+              --output text)
+            echo "[$attempt/60] deployment state: $STATE"
+
+            case "$STATE" in
+              ACTIVE)
+                echo "Deployment is live."
+                exit 0
+                ;;
+              FAILED|INACTIVE)
+                echo "::error::Lightsail deployment finished in state $STATE"
+                exit 1
+                ;;
+            esac
+            sleep 15
+          done
+
+          echo "::error::Timed out after 15 minutes waiting for the deployment to become ACTIVE"
+          exit 1
+
   # ─── Deploy Frontend to Vercel ────────────────────────────────────────────
   deploy-frontend:
     name: Deploy Frontend → Vercel
     runs-on: ubuntu-latest
-    needs: build-and-deploy-backend   # Only deploy frontend after backend image is pushed
+    needs: build-and-deploy-backend   # Backend is live before the frontend points at it
 
     steps:
       - uses: actions/checkout@v4

@@ -1,6 +1,6 @@
-﻿"use client"
+"use client"
 
-import { useState, useCallback } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import type { ChatMessage, AnswerResponse } from "@/types"
 import { usePanel } from "@/lib/panel-store"
 
@@ -14,9 +14,18 @@ export function useStreamingChat() {
 
   const { setAnswer, setIsStreaming } = usePanel()
 
+  // Generation keeps running server-side until the response is closed, so an
+  // unmount mid-stream leaks a reader and burns tokens for a UI nobody sees.
+  const abortRef = useRef<AbortController | null>(null)
+  useEffect(() => () => abortRef.current?.abort(), [])
+
   const sendMessage = useCallback(async (question: string) => {
     const trimmed = question.trim()
     if (!trimmed || isLoading) return
+
+    abortRef.current?.abort()
+    const controller = new AbortController()
+    abortRef.current = controller
 
     // Add user message
     const userMessage: ChatMessage = {
@@ -31,7 +40,6 @@ export function useStreamingChat() {
     const startedAt = performance.now()
     setError(null)
 
-    // Placeholder assistant message that we'll mutate as tokens arrive
     const assistantId = crypto.randomUUID()
     setMessages((prev) => [
       ...prev,
@@ -43,6 +51,7 @@ export function useStreamingChat() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: trimmed }),
+        signal: controller.signal,
       })
 
       if (!res.ok) throw new Error(`Request failed: ${res.status} ${res.statusText}`)
@@ -117,22 +126,32 @@ export function useStreamingChat() {
         }
       }
     } catch (err) {
+      // An abort is us replacing this request, not a failure to report.
+      if (err instanceof DOMException && err.name === "AbortError") return
+
       const msg = err instanceof Error ? err.message : "Something went wrong."
       setError(msg)
       setMessages((prev) =>
         prev.map((m) => (m.id === assistantId ? { ...m, content: `Error: ${msg}`, error: true } : m))
       )
     } finally {
-      setIsLoading(false)
-      setIsStreaming(false)
+      if (abortRef.current === controller) {
+        abortRef.current = null
+        setIsLoading(false)
+        setIsStreaming(false)
+      }
     }
   }, [isLoading, setAnswer, setIsStreaming])
 
   const clearMessages = useCallback(() => {
+    abortRef.current?.abort()
+    abortRef.current = null
+    setIsLoading(false)
+    setIsStreaming(false)
     setMessages([])
     setError(null)
     setAnswer(null)   // panel returns to its empty state with the thread
-  }, [setAnswer])
+  }, [setAnswer, setIsStreaming])
 
   return { messages, isLoading, error, sendMessage, clearMessages }
 }

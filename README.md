@@ -52,7 +52,7 @@ CanCards AI is a smart credit card recommendation system designed for Canadian u
 
 ---
 
-**CanCards-AI** is a **full-stack RAG application** where users ask plain-English questions about Canadian credit cards and receive streamed, cited answers backed by a semantically indexed database of 50+ cards. Each query is embedded, matched against a **Pinecone vector store**, and passed with the retrieved context to **Claude Sonnet 4.6**, which streams a structured response token-by-token to the browser via SSE. Alongside the serving pipeline, a RAGAS evaluation harness runs weekly in CI- **GPT-4o-mini** acts as an independent judge and scores every response against 30 hand-curated ground-truth pairs across faithfulness, context precision, and answer relevancy. A regression above 5% from baseline fails the build. The full system is containerised with Docker, deployed to AWS Lightsail, and ships automatically through GitHub Actions on every merge to main.
+**CanCards-AI** is a **full-stack RAG application** where users ask plain-English questions about Canadian credit cards and receive streamed, cited answers backed by a semantically indexed database of 50+ cards. Each query is embedded, matched against a **Pinecone vector store**, and passed with the retrieved context to **Claude Sonnet 4.6**, which streams a structured response token-by-token to the browser via SSE. Alongside the serving pipeline, a RAGAS evaluation harness runs weekly in CI — an independent judge LLM scores the streaming endpoint's own output against 30 hand-curated ground-truth pairs on **faithfulness** and **context precision**. A regression above 5% from baseline fails the build. The full system is containerised with Docker, deployed to AWS Lightsail, and ships automatically through GitHub Actions on every merge to main.
 
 ---
 
@@ -64,7 +64,11 @@ CanCards AI is a smart credit card recommendation system designed for Canadian u
 
 ## Evaluation Flow
 
-RAGAS runs in CI on a weekly schedule and on every manual trigger. GPT-4o-mini acts as an independent judge LLM, it has no knowledge of how the answer was generated, only the question, the retrieved context, and the answer. A score drop above 5% from baseline fails the build.
+RAGAS runs in CI on a weekly schedule and on every manual trigger. The judge LLM has no knowledge of how the answer was generated — only the question, the retrieved context, and the answer. A score drop above 5% from baseline fails the build.
+
+Two metrics are scored today: **faithfulness** and **context precision**. Answer relevancy is *not* currently measured (it times out on `embed_query` in ragas 0.4.x) and the judge model is whatever ragas defaults to rather than a pinned choice — the ragas version is recorded alongside every score so a default change is visible in the baseline diff.
+
+The runner evaluates the **streaming** path, the same prompt and parser `/api/ask/stream` serves. Scoring the non-streaming path instead would leave the prompt users actually hit ungraded.
 
 
 <img width="1536" height="1024" alt="ChatGPT Image May 12, 2026, 11_34_00 PM" src="https://res.cloudinary.com/dolt8nnzc/image/upload/v1778656645/CanCards-AI/Evaluation%20Flow.png" />
@@ -83,7 +87,7 @@ RAGAS runs in CI on a weekly schedule and on every manual trigger. GPT-4o-mini a
 | Generation | Anthropic Claude Sonnet 4.6 |
 | Vector store | Pinecone Serverless |
 | Orchestration | LangChain · LangSmith |
-| Evaluation | RAGAS · GPT-4o-mini judge |
+| Evaluation | RAGAS · LLM-as-judge (OpenAI) |
 | Container | Docker multi-stage (linux/amd64) |
 | Hosting | AWS Lightsail ca-central-1 · Vercel |
 | CI / CD | GitHub Actions |
@@ -119,14 +123,11 @@ cancards-ai/
 │   ├── scripts/
 │   │   └── ingest.py                   One-time Pinecone population
 │   ├── tests/
-│   │   ├── unit/                       20 tests — no external calls
-│   │   │   ├── test_ingest.py
-│   │   │   ├── test_generate.py
-│   │   │   └── test_api.py
-│   │   └── evals/
-│   │       ├── ground_truth.json       30 hand-curated Q&A pairs
-│   │       ├── run_evals.py            Eval runner + regression gate
-│   │       └── baseline.json          Reference scores
+│   │   └── unit/                       33 tests — no external calls
+│   │       ├── test_ingest.py
+│   │       ├── test_generate.py
+│   │       ├── test_stream.py          SSE parser + delimiter buffering
+│   │       └── test_api.py
 │   │
 │   ├── Dockerfile                      Multi-stage build
 │   ├── pyproject.toml
@@ -144,12 +145,20 @@ cancards-ai/
 │       │   └── layout/                Navbar
 │       ├── hooks/
 │       │   └── useStreamingChat.ts    SSE-driven chat state
-│       ├── lib/api.ts                 Typed backend client
+│       ├── lib/
+│       │   ├── api.ts                 Typed backend client
+│       │   ├── value-calc.ts          Earn-rate normalisation + net value
+│       │   └── credit-score.ts        Credit Coach scoring model
 │       └── types/index.ts            Shared TypeScript schemas
 │
+├── tests/evals/                       Eval harness — runs against the repo root
+│   ├── ground_truth.json              30 hand-curated Q&A pairs
+│   ├── run_evals.py                   Eval runner + regression gate
+│   └── baseline.json                  Reference scores
+│
 ├── .github/workflows/
-│   ├── ci.yml                         Every pull request
-│   ├── deploy.yml                     Merge to main
+│   ├── ci.yml                         Pull requests · called by deploy.yml
+│   ├── deploy.yml                     Merge to main — gated on ci.yml
 │   └── evals.yml                      Weekly + manual trigger
 │
 └── docker-compose.yml                 Local full-stack testing
@@ -202,8 +211,8 @@ pytest tests/unit/ -v
 
 | Trigger | Steps |
 |---|---|
-| Pull request | `ruff` · `mypy` · `pytest` · `tsc` · `eslint` — 5 jobs in parallel |
-| Merge to `main` | Build image → push to Lightsail → deploy to Vercel (~7 min) |
+| Pull request | `ruff` · `mypy` · `pytest` · `tsc` · `eslint` · dependency-drift check — 6 jobs in parallel |
+| Merge to `main` | Full CI suite → build image → push to Lightsail → wait for ACTIVE → deploy to Vercel (~7 min) |
 | Weekly + manual | RAGAS eval · fails on > 5% regression from baseline |
 
 ---

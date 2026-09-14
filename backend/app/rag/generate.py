@@ -52,11 +52,6 @@ Rules:
 """  # noqa: E501
 
 
-# Where The "sliding the brochure across" is build_user_prompt() in generate.py
-# it formats the retrieved chunks into a numbered CONTEXT block ([1] card_id=... text=...)
-# staples question to the bottom. That assembled string is what Claude actually sees.
-
-
 def build_user_prompt(question: str, chunks: list[dict]) -> str:
     """Build the user message with the retrieved context."""
     context_blocks = []
@@ -69,19 +64,6 @@ def build_user_prompt(question: str, chunks: list[dict]) -> str:
         )
     context_str = "\n".join(context_blocks)
     return f"CONTEXT:\n{context_str}\n\nUSER QUESTION:\n{question}"
-
-
-# ____________________________Output Simulation_____________________________________
-# CONTEXT:
-
-# [1] card_id=amex_gold | card_name=Amex Gold | issuer=Amex | section=rewards
-# Earn 5x points on groceries
-
-# [2] card_id=scotia_gold | card_name=Scotia Gold | issuer=Scotiabank | section=fees
-# Annual fee is $120
-
-# USER QUESTION:
-# What's the best grocery card?
 
 
 def parse_response(raw: str) -> AnswerResponse:
@@ -120,15 +102,3 @@ async def generate_response(question: str, chunks: list[dict]) -> AnswerResponse
             response_id=str(uuid.uuid4()),
             timestamp=datetime.now(UTC),
         )
-
-
-# _____________________________Overall Architecture___________________________
-# Retrieve relevant chunks
-#         â†“
-# Ground the LLM
-#         â†“
-# Generate structured answer
-#         â†“
-# Validate output
-#         â†“
-# Return typed response

@@ -54,13 +54,15 @@ jobs:
       - name: Run RAGAS evaluations
         working-directory: backend
         run: |
-          LIMIT="${{ github.event.inputs.limit }}"
-          SAVE="${{ github.event.inputs.save_baseline }}"
           CMD="uv run python ../tests/evals/run_evals.py"
           if [ -n "$LIMIT" ]; then CMD="$CMD --limit $LIMIT"; fi
           if [ "$SAVE" = "yes" ]; then CMD="$CMD --save-baseline"; fi
           $CMD
         env:
+          # Dispatch inputs come in via env, not inline interpolation — pasting
+          # them straight into the shell makes the run body user-controlled.
+          LIMIT: ${{ github.event.inputs.limit }}
+          SAVE: ${{ github.event.inputs.save_baseline }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
@@ -72,3 +74,14 @@ jobs:
           LLM_PROVIDER: anthropic
           LANGSMITH_API_KEY: ${{ secrets.LANGSMITH_API_KEY }}
           LANGSMITH_TRACING: "false"
+
+      # The runner is ephemeral, so writing baseline.json in the previous step
+      # is only half the job. Without this the "save baseline" run reported
+      # success and changed nothing.
+      - name: Upload baseline for committing
+        if: github.event.inputs.save_baseline == 'yes'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ragas-baseline
+          path: tests/evals/baseline.json
+          if-no-files-found: error

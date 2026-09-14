@@ -3,8 +3,10 @@ name: CI
 on:
   pull_request:
     branches: [main]
-  push:
-    branches: [main]
+  # Callable so deploy.yml can gate on these checks instead of racing them.
+  # No push trigger — deploy.yml calls this on every push to main, and having
+  # both would run the whole suite twice per merge.
+  workflow_call:
 
 jobs:
   # ─── Backend Lint ──────────────────────────────────────────────────────────
@@ -29,10 +31,47 @@ jobs:
         run: uv sync --dev
 
       - name: Lint with ruff
-        run: uv run ruff check app/ tests/
+        run: uv run ruff check app/ tests/ ../tests/
 
       - name: Format check with ruff
-        run: uv run ruff format --check app/ tests/
+        run: uv run ruff format --check app/ tests/ ../tests/
+
+  # ─── Dependency Drift ──────────────────────────────────────────────────────
+  # The Docker image installs from requirements.txt while CI installs from
+  # uv.lock. They drifted once already — two Pinecone distributions shipped to
+  # production. requirements.txt is a projection of the lockfile; this fails the
+  # build when it stops being one.
+  #
+  # Exported from uv.lock rather than recompiled from pyproject.toml on purpose:
+  # a recompile re-resolves against the index, so any upstream release would
+  # turn this red on a PR that changed nothing.
+  deps-in-sync:
+    name: Backend Deps (requirements.txt in sync)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v4
+        with:
+          version: "0.5.x"
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Export from lockfile and diff
+        run: |
+          uv export --format requirements-txt --no-dev --no-hashes --no-emit-project \
+            > /tmp/requirements.expected
+          if ! diff -u requirements.txt /tmp/requirements.expected; then
+            echo "::error::requirements.txt is out of sync with uv.lock. Run:"
+            echo "::error::  cd backend && uv export --format requirements-txt --no-dev \\"
+            echo "::error::    --no-hashes --no-emit-project > requirements.txt"
+            exit 1
+          fi
 
   # ─── Backend Type Check ────────────────────────────────────────────────────
   typecheck-backend:
@@ -131,5 +170,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # --ext is a no-op under flat config — the config's own globs decide scope.
       - name: ESLint
-        run: npx eslint src/ --ext .ts,.tsx --max-warnings 0
+        run: npx eslint src/ --max-warnings 0
