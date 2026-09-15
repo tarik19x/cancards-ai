@@ -15,6 +15,7 @@ dependencies = [
     "pinecone>=7.3.0",
     "pydantic>=2.13.3",
     "pydantic-settings>=2.14.0",
+    "pypdf>=6.18.1",
     "python-dotenv>=1.2.2",
     "rich>=13.7.0,<14.0.0",
     "slowapi>=0.1.9",

@@ -179,6 +179,8 @@ pydantic-settings==2.14.1
     # via cancards-backend
 pygments==2.20.0
     # via rich
+pypdf==6.18.1
+    # via cancards-backend
 python-dateutil==2.9.0.post0
     # via pinecone
 python-dotenv==1.2.2
