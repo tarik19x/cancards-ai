@@ -17,6 +17,7 @@ dependencies = [
     "pydantic-settings>=2.14.0",
     "pypdf>=6.18.1",
     "python-dotenv>=1.2.2",
+    "rank-bm25>=0.2.2",
     "rich>=13.7.0,<14.0.0",
     "slowapi>=0.1.9",
     "structlog>=25.5.0",
