@@ -84,8 +84,9 @@ def pdf_path(entry: ManifestEntry) -> Path:
     return PDF_DIR / entry["card_id"] / f"{entry['doc_type']}.pdf"
 
 
-def record(entry: ManifestEntry, status: Status, *, reason: str | None = None,
-           content: bytes | None = None) -> ReportEntry:
+def record(
+    entry: ManifestEntry, status: Status, *, reason: str | None = None, content: bytes | None = None
+) -> ReportEntry:
     return {
         "card_id": entry["card_id"],
         "doc_type": entry["doc_type"],
@@ -131,8 +132,9 @@ def load_previous_report() -> dict[tuple[str, str], ReportEntry]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--force", action="store_true",
-                        help="re-download files that already exist on disk")
+    parser.add_argument(
+        "--force", action="store_true", help="re-download files that already exist on disk"
+    )
     args = parser.parse_args()
 
     entries = load_manifest()
@@ -167,15 +169,21 @@ def main() -> None:
                 # Re-save under this card's own path so ingest can still find it
                 # by (card_id, doc_type), even though nothing was re-requested.
                 if shared["status"] == "downloaded":
-                    source = pdf_path({**entry, "card_id": shared["card_id"],
-                                        "doc_type": shared["doc_type"]})
+                    source = pdf_path(
+                        {**entry, "card_id": shared["card_id"], "doc_type": shared["doc_type"]}
+                    )
                     path.parent.mkdir(parents=True, exist_ok=True)
                     path.write_bytes(source.read_bytes())
-                copy: ReportEntry = {**shared, "card_id": entry["card_id"],
-                                      "doc_type": entry["doc_type"]}
+                copy: ReportEntry = {
+                    **shared,
+                    "card_id": entry["card_id"],
+                    "doc_type": entry["doc_type"],
+                }
                 report.append(copy)
-                print(f"{copy['status']:<10} {entry['card_id']}/{entry['doc_type']}"
-                      f"  (same file as {shared['card_id']}/{shared['doc_type']})")
+                print(
+                    f"{copy['status']:<10} {entry['card_id']}/{entry['doc_type']}"
+                    f"  (same file as {shared['card_id']}/{shared['doc_type']})"
+                )
                 continue
 
             if requests_made > 0:
@@ -184,8 +192,10 @@ def main() -> None:
             requests_made += 1
             fetched_by_url[entry["url"]] = result
             report.append(result)
-            print(f"{result['status']:<10} {entry['card_id']}/{entry['doc_type']}"
-                  + (f"  ({result['reason']})" if result["reason"] else ""))
+            print(
+                f"{result['status']:<10} {entry['card_id']}/{entry['doc_type']}"
+                + (f"  ({result['reason']})" if result["reason"] else "")
+            )
 
     REPORT_PATH.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
 
