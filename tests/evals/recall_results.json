@@ -1,0 +1,1362 @@
+{
+  "dense_only": {
+    "summary": {
+      "question_count": 71,
+      "recall_at_8": 0.9460093896713616,
+      "recall_at_50_diagnostic_only": 0.9577464788732394,
+      "by_question_type": {
+        "single_card": {
+          "count": 50,
+          "recall_at_8": 1.0
+        },
+        "comparison_2card": {
+          "count": 7,
+          "recall_at_8": 0.9285714285714286
+        },
+        "comparison_3card": {
+          "count": 3,
+          "recall_at_8": 0.8888888888888888
+        },
+        "pdf_grounded": {
+          "count": 11,
+          "recall_at_8": 0.7272727272727273
+        }
+      }
+    },
+    "per_question": [
+      {
+        "question": "What is the annual fee for the American Express Cobalt Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-cobalt::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the American Express Platinum Card, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-platinum::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the American Express Gold Rewards Card provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-gold-rewards::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the American Express SimplyCash Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-simplycash::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the American Express SimplyCash Preferred Card best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-simplycash-preferred::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the American Express Aeroplan Reserve Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-aeroplan-reserve::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the American Express Marriott Bonvoy Card, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-marriott-bonvoy::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the Scotiabank Passport Visa Infinite Card provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "scotia-passport-vi::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the Scotiabank Gold American Express Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "scotia-gold-amex::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the Scotiabank Momentum Visa Infinite Card best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "scotia-momentum-vi::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the Scotia Momentum No-Fee Visa Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "scotia-momentum-no-fee-visa::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the Scotiabank Platinum American Express Card, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "scotia-platinum-amex::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the TD First Class Travel Visa Infinite Card provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "td-first-class-vi::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the TD Aeroplan Visa Infinite Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "td-aeroplan-vi::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the TD Aeroplan Visa Infinite Privilege Card best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "td-aeroplan-vi-privilege::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the TD Cash Back Visa Infinite Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "td-cash-back-vi::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the RBC Avion Visa Infinite Card, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rbc-avion-vi::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the RBC Avion Visa Infinite Privilege Card provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rbc-avion-vi-privilege::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the WestJet RBC World Elite Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rbc-westjet-world-elite::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the WestJet RBC Mastercard best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rbc-westjet-mc::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the RBC Cash Back Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rbc-cashback-mc::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the BMO Ascend World Elite Mastercard, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "bmo-ascend-world-elite::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the BMO CashBack World Elite Mastercard provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "bmo-cashback-world-elite::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the BMO eclipse Visa Infinite Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "bmo-eclipse-vi::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the BMO Air Miles World Elite Mastercard best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "bmo-airmiles-world-elite::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the CIBC Aeroplan Visa Infinite Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "cibc-aeroplan-vi::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the CIBC Aeroplan Visa Infinite Privilege Card, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "cibc-aeroplan-vi-privilege::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the CIBC Dividend Visa Infinite Card provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "cibc-dividend-vi::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the CIBC Aventura Visa Infinite Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "cibc-aventura-vi::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the National Bank World Elite Mastercard best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "nb-world-elite-mc::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the National Bank Mastercard Syncro?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "nb-syncro-mc::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the Tangerine Money-Back Credit Card, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "tangerine-money-back::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the Tangerine World Mastercard provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "tangerine-world-mc::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the Rogers Red Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rogers-red-mc::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the PC Insiders World Elite Mastercard best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "pc-insiders-world-elite-mc::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the PC Financial World Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "pc-financial-world-mc::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the Desjardins Odyssey World Elite Mastercard, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "desjardins-odyssey-world-elite::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Does the Desjardins Cash Back Visa Card include purchase protection, and for how many days?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "desjardins-cash-back-visa::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the MBNA Rewards World Elite Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "mbna-rewards-world-elite::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the MBNA True Line Mastercard best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "mbna-true-line-mc::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the Brim World Elite Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "brim-world-elite::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the Brim World Mastercard, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "brim-world-mc::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Does the Home Trust Preferred Visa Card include purchase protection, and for how many days?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "home-trust-preferred-visa::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the Neo Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "neo-mastercard::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the CIBC Costco Mastercard best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "cibc-costco-mc::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the Simplii Financial Cash Back Visa Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "simplii-cash-back-visa::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the CIBC Select Visa Card best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "cibc-select-visa::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Does the RBC Ion Visa Card include purchase protection, and for how many days?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rbc-ion-visa::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the ATB World Elite Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "atb-world-elite-mc::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the BMO eclipse rise Visa Infinite Card best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "bmo-eclipse-rise-vi::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Which card has no foreign transaction fee: the American Express Cobalt Card or the Scotiabank Passport Visa Infinite Card?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "amex-cobalt::fees",
+          "scotia-passport-vi::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Which has a lower annual fee: the TD Cash Back Visa Infinite Card or the RBC Cash Back Mastercard?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "td-cash-back-vi::fees",
+          "rbc-cashback-mc::fees"
+        ],
+        "recall_at_8": 0.5,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How much cheaper is the Scotiabank Platinum American Express Card's annual fee compared to the American Express Platinum Card?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "amex-platinum::fees",
+          "scotia-platinum-amex::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Which WestJet RBC card earns a higher cashback rate on WestJet purchases, and what is the rate?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "rbc-westjet-world-elite::rewards",
+          "rbc-westjet-mc::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Which Brim Mastercard includes airport lounge access?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "brim-world-elite::insurance",
+          "brim-world-mc::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Which has a lower annual fee: the Desjardins Odyssey World Elite Mastercard or the National Bank World Elite Mastercard?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "desjardins-odyssey-world-elite::fees",
+          "nb-world-elite-mc::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Which of these two no-annual-fee cards has a true 0% foreign transaction fee: the Home Trust Preferred Visa Card or the Rogers Red Mastercard?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "home-trust-preferred-visa::fees",
+          "rogers-red-mc::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Of the American Express Cobalt Card, Scotiabank Gold American Express Card, and BMO eclipse Visa Infinite Card, which earns the highest points rate on groceries?",
+        "question_type": "comparison_3card",
+        "relevant_chunk_ids": [
+          "amex-cobalt::rewards",
+          "scotia-gold-amex::rewards",
+          "bmo-eclipse-vi::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Of the RBC Avion Visa Infinite Card, CIBC Aventura Visa Infinite Card, and TD First Class Travel Visa Infinite Card, which has the lowest annual fee?",
+        "question_type": "comparison_3card",
+        "relevant_chunk_ids": [
+          "rbc-avion-vi::fees",
+          "cibc-aventura-vi::fees",
+          "td-first-class-vi::fees"
+        ],
+        "recall_at_8": 0.6666666666666666,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Of the American Express Aeroplan Reserve Card, CIBC Aeroplan Visa Infinite Privilege Card, and TD Aeroplan Visa Infinite Privilege Card, which has the highest annual fee?",
+        "question_type": "comparison_3card",
+        "relevant_chunk_ids": [
+          "amex-aeroplan-reserve::fees",
+          "cibc-aeroplan-vi-privilege::fees",
+          "td-aeroplan-vi-privilege::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "According to its cardholder agreement, what is the standard payment grace period on the American Express Platinum Card, and how far can it extend if a payment isn't received in full by the due date?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "amex-platinum::cardholder_agreement::30"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the overlimit fee on the CIBC Costco Mastercard, according to its summary of interest rates and fees?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "cibc-costco-mc::benefit_guide::5"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the standard annual interest rate on purchases for the CIBC Costco Mastercard, according to its summary of interest rates and fees?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "cibc-costco-mc::benefit_guide::0"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the dishonoured payment fee on the RBC Avion Visa Infinite, according to its cardholder agreement?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "rbc-avion-vi::cardholder_agreement::33"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How much advance written notice must RBC give before increasing the standard interest rate on the RBC Avion Visa Infinite, according to its cardholder agreement?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "rbc-avion-vi::cardholder_agreement::28"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many mobile device insurance claims can a Brim World Elite Mastercard cardholder make in a 12-month period, and what's the cap over any 48-month period?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "brim-world-elite::insurance_certificate::44"
+        ],
+        "recall_at_8": 0.0,
+        "recall_at_50": 0.0
+      },
+      {
+        "question": "What is the overall emergency medical insurance coverage maximum on the Brim World Elite Mastercard, according to its certificate of insurance?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "brim-world-elite::insurance_certificate::97"
+        ],
+        "recall_at_8": 0.0,
+        "recall_at_50": 0.0
+      },
+      {
+        "question": "What is the maximum rental period for a car to be eligible under the Brim World Elite Mastercard's Car Rental Collision/Loss Damage Insurance?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "brim-world-elite::insurance_certificate::139"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the accidental dental coverage limit under the TD First Class Travel Visa Infinite's travel insurance, and what is the separate cap for emergency dental pain relief?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "td-first-class-vi::cardholder_agreement::117"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the maximum benefit for 'Return of Deceased' coverage under the Scotiabank Passport Visa Infinite's travel insurance?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "scotia-passport-vi::insurance_certificate::97"
+        ],
+        "recall_at_8": 0.0,
+        "recall_at_50": 0.0
+      },
+      {
+        "question": "For a mobile device insurance claim on the Desjardins Odyssey World Elite Mastercard, how many days does the cardholder have to call the insurer, and how many days to notify police in case of theft?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "desjardins-odyssey-world-elite::insurance_certificate::11"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      }
+    ],
+    "measured_at": "2026-09-15T09:09:36.516062+00:00"
+  },
+  "hybrid": {
+    "summary": {
+      "question_count": 71,
+      "recall_at_8": 0.903755868544601,
+      "recall_at_50_diagnostic_only": 0.971830985915493,
+      "by_question_type": {
+        "single_card": {
+          "count": 50,
+          "recall_at_8": 0.98
+        },
+        "comparison_2card": {
+          "count": 7,
+          "recall_at_8": 0.9285714285714286
+        },
+        "comparison_3card": {
+          "count": 3,
+          "recall_at_8": 0.8888888888888888
+        },
+        "pdf_grounded": {
+          "count": 11,
+          "recall_at_8": 0.5454545454545454
+        }
+      }
+    },
+    "per_question": [
+      {
+        "question": "What is the annual fee for the American Express Cobalt Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-cobalt::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the American Express Platinum Card, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-platinum::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the American Express Gold Rewards Card provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-gold-rewards::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the American Express SimplyCash Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-simplycash::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the American Express SimplyCash Preferred Card best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-simplycash-preferred::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the American Express Aeroplan Reserve Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-aeroplan-reserve::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the American Express Marriott Bonvoy Card, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "amex-marriott-bonvoy::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the Scotiabank Passport Visa Infinite Card provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "scotia-passport-vi::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the Scotiabank Gold American Express Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "scotia-gold-amex::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the Scotiabank Momentum Visa Infinite Card best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "scotia-momentum-vi::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the Scotia Momentum No-Fee Visa Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "scotia-momentum-no-fee-visa::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the Scotiabank Platinum American Express Card, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "scotia-platinum-amex::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the TD First Class Travel Visa Infinite Card provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "td-first-class-vi::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the TD Aeroplan Visa Infinite Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "td-aeroplan-vi::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the TD Aeroplan Visa Infinite Privilege Card best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "td-aeroplan-vi-privilege::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the TD Cash Back Visa Infinite Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "td-cash-back-vi::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the RBC Avion Visa Infinite Card, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rbc-avion-vi::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the RBC Avion Visa Infinite Privilege Card provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rbc-avion-vi-privilege::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the WestJet RBC World Elite Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rbc-westjet-world-elite::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the WestJet RBC Mastercard best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rbc-westjet-mc::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the RBC Cash Back Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rbc-cashback-mc::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the BMO Ascend World Elite Mastercard, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "bmo-ascend-world-elite::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the BMO CashBack World Elite Mastercard provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "bmo-cashback-world-elite::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the BMO eclipse Visa Infinite Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "bmo-eclipse-vi::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the BMO Air Miles World Elite Mastercard best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "bmo-airmiles-world-elite::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the CIBC Aeroplan Visa Infinite Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "cibc-aeroplan-vi::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the CIBC Aeroplan Visa Infinite Privilege Card, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "cibc-aeroplan-vi-privilege::rewards"
+        ],
+        "recall_at_8": 0.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the CIBC Dividend Visa Infinite Card provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "cibc-dividend-vi::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the CIBC Aventura Visa Infinite Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "cibc-aventura-vi::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the National Bank World Elite Mastercard best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "nb-world-elite-mc::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the National Bank Mastercard Syncro?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "nb-syncro-mc::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the Tangerine Money-Back Credit Card, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "tangerine-money-back::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many days of travel emergency medical coverage does the Tangerine World Mastercard provide?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "tangerine-world-mc::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the Rogers Red Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rogers-red-mc::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the PC Insiders World Elite Mastercard best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "pc-insiders-world-elite-mc::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the PC Financial World Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "pc-financial-world-mc::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the Desjardins Odyssey World Elite Mastercard, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "desjardins-odyssey-world-elite::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Does the Desjardins Cash Back Visa Card include purchase protection, and for how many days?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "desjardins-cash-back-visa::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the MBNA Rewards World Elite Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "mbna-rewards-world-elite::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the MBNA True Line Mastercard best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "mbna-true-line-mc::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the Brim World Elite Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "brim-world-elite::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the highest rewards rate on the Brim World Mastercard, and which category earns it?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "brim-world-mc::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Does the Home Trust Preferred Visa Card include purchase protection, and for how many days?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "home-trust-preferred-visa::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the Neo Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "neo-mastercard::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the CIBC Costco Mastercard best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "cibc-costco-mc::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the annual fee for the Simplii Financial Cash Back Visa Card?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "simplii-cash-back-visa::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the CIBC Select Visa Card best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "cibc-select-visa::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Does the RBC Ion Visa Card include purchase protection, and for how many days?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "rbc-ion-visa::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the minimum recommended credit score for the ATB World Elite Mastercard?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "atb-world-elite-mc::eligibility"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the BMO eclipse rise Visa Infinite Card best suited for?",
+        "question_type": "single_card",
+        "relevant_chunk_ids": [
+          "bmo-eclipse-rise-vi::overview"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Which card has no foreign transaction fee: the American Express Cobalt Card or the Scotiabank Passport Visa Infinite Card?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "amex-cobalt::fees",
+          "scotia-passport-vi::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Which has a lower annual fee: the TD Cash Back Visa Infinite Card or the RBC Cash Back Mastercard?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "td-cash-back-vi::fees",
+          "rbc-cashback-mc::fees"
+        ],
+        "recall_at_8": 0.5,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How much cheaper is the Scotiabank Platinum American Express Card's annual fee compared to the American Express Platinum Card?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "amex-platinum::fees",
+          "scotia-platinum-amex::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Which WestJet RBC card earns a higher cashback rate on WestJet purchases, and what is the rate?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "rbc-westjet-world-elite::rewards",
+          "rbc-westjet-mc::rewards"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Which Brim Mastercard includes airport lounge access?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "brim-world-elite::insurance",
+          "brim-world-mc::insurance"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Which has a lower annual fee: the Desjardins Odyssey World Elite Mastercard or the National Bank World Elite Mastercard?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "desjardins-odyssey-world-elite::fees",
+          "nb-world-elite-mc::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Which of these two no-annual-fee cards has a true 0% foreign transaction fee: the Home Trust Preferred Visa Card or the Rogers Red Mastercard?",
+        "question_type": "comparison_2card",
+        "relevant_chunk_ids": [
+          "home-trust-preferred-visa::fees",
+          "rogers-red-mc::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Of the American Express Cobalt Card, Scotiabank Gold American Express Card, and BMO eclipse Visa Infinite Card, which earns the highest points rate on groceries?",
+        "question_type": "comparison_3card",
+        "relevant_chunk_ids": [
+          "amex-cobalt::rewards",
+          "scotia-gold-amex::rewards",
+          "bmo-eclipse-vi::rewards"
+        ],
+        "recall_at_8": 0.6666666666666666,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Of the RBC Avion Visa Infinite Card, CIBC Aventura Visa Infinite Card, and TD First Class Travel Visa Infinite Card, which has the lowest annual fee?",
+        "question_type": "comparison_3card",
+        "relevant_chunk_ids": [
+          "rbc-avion-vi::fees",
+          "cibc-aventura-vi::fees",
+          "td-first-class-vi::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "Of the American Express Aeroplan Reserve Card, CIBC Aeroplan Visa Infinite Privilege Card, and TD Aeroplan Visa Infinite Privilege Card, which has the highest annual fee?",
+        "question_type": "comparison_3card",
+        "relevant_chunk_ids": [
+          "amex-aeroplan-reserve::fees",
+          "cibc-aeroplan-vi-privilege::fees",
+          "td-aeroplan-vi-privilege::fees"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "According to its cardholder agreement, what is the standard payment grace period on the American Express Platinum Card, and how far can it extend if a payment isn't received in full by the due date?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "amex-platinum::cardholder_agreement::30"
+        ],
+        "recall_at_8": 0.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the overlimit fee on the CIBC Costco Mastercard, according to its summary of interest rates and fees?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "cibc-costco-mc::benefit_guide::5"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the standard annual interest rate on purchases for the CIBC Costco Mastercard, according to its summary of interest rates and fees?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "cibc-costco-mc::benefit_guide::0"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the dishonoured payment fee on the RBC Avion Visa Infinite, according to its cardholder agreement?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "rbc-avion-vi::cardholder_agreement::33"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How much advance written notice must RBC give before increasing the standard interest rate on the RBC Avion Visa Infinite, according to its cardholder agreement?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "rbc-avion-vi::cardholder_agreement::28"
+        ],
+        "recall_at_8": 0.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "How many mobile device insurance claims can a Brim World Elite Mastercard cardholder make in a 12-month period, and what's the cap over any 48-month period?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "brim-world-elite::insurance_certificate::44"
+        ],
+        "recall_at_8": 0.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the overall emergency medical insurance coverage maximum on the Brim World Elite Mastercard, according to its certificate of insurance?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "brim-world-elite::insurance_certificate::97"
+        ],
+        "recall_at_8": 0.0,
+        "recall_at_50": 0.0
+      },
+      {
+        "question": "What is the maximum rental period for a car to be eligible under the Brim World Elite Mastercard's Car Rental Collision/Loss Damage Insurance?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "brim-world-elite::insurance_certificate::139"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the accidental dental coverage limit under the TD First Class Travel Visa Infinite's travel insurance, and what is the separate cap for emergency dental pain relief?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "td-first-class-vi::cardholder_agreement::117"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      },
+      {
+        "question": "What is the maximum benefit for 'Return of Deceased' coverage under the Scotiabank Passport Visa Infinite's travel insurance?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "scotia-passport-vi::insurance_certificate::97"
+        ],
+        "recall_at_8": 0.0,
+        "recall_at_50": 0.0
+      },
+      {
+        "question": "For a mobile device insurance claim on the Desjardins Odyssey World Elite Mastercard, how many days does the cardholder have to call the insurer, and how many days to notify police in case of theft?",
+        "question_type": "pdf_grounded",
+        "relevant_chunk_ids": [
+          "desjardins-odyssey-world-elite::insurance_certificate::11"
+        ],
+        "recall_at_8": 1.0,
+        "recall_at_50": 1.0
+      }
+    ],
+    "measured_at": "2026-09-15T09:11:49.020821+00:00"
+  }
+}

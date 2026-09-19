@@ -36,3 +36,6 @@ data/documents/
 # uv lockfiles (not needed; requirements.txt handles deps)
 uv.lock
 .python-version
+
+# Dev-script caches (corpus text, Claude responses)
+data/cache/

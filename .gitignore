@@ -88,3 +88,7 @@ backend/data/documents/pdf/
 # Playwright / test runner output
 test-results/
 playwright-report/
+
+# Dev-script caches of Pinecone corpus text and Claude responses (contain PDF text)
+backend/data/cache/
+tests/evals/hard_questions_review.json
