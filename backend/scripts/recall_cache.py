@@ -173,12 +173,13 @@ class RecallCache:
     def flush(self) -> None:
         if not self._unsaved:
             return
-        self._embeddings_path.parent.mkdir(parents=True, exist_ok=True)
         for path, payload in (
             (self._embeddings_path, self._embeddings),
             (self._queries_path, {"tag": self._tag, "results": self._queries}),
             (self._reranks_path, self._reranks),
         ):
+            # Each path separately: they are configurable and need not share a folder.
+            path.parent.mkdir(parents=True, exist_ok=True)
             tmp = path.with_suffix(".tmp")
             tmp.write_text(json.dumps(payload), encoding="utf-8")
             tmp.replace(path)

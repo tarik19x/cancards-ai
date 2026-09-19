@@ -23,6 +23,10 @@ class Fakes:
 
 
 def make(tmp_path, fakes, tag="tag1", **kwargs) -> RecallCache:
+    # Every path is redirected into tmp_path. The reranks path used to be left at its default,
+    # so any test that flushed rewrote the real data/cache/recall_reranks.json (paid results),
+    # and failed on a fresh checkout where that folder does not exist.
+    kwargs.setdefault("reranks_path", tmp_path / "r.json")
     return RecallCache(
         fakes.embed,
         fakes.query,
