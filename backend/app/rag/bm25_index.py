@@ -22,6 +22,7 @@ that was thrown away immediately after every read.
 
 import json
 import re
+import threading
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -30,6 +31,7 @@ from typing import Any
 from rank_bm25 import BM25Okapi
 
 from app.clients.pinecone_client import get_index
+from app.config import get_settings
 from app.logging_config import get_logger
 
 log = get_logger(__name__)
@@ -54,6 +56,9 @@ class Bm25Corpus:
 
 _corpus: Bm25Corpus | None = None
 _disk_cache_path: Path | None = None
+# The startup warm-up and an early request can both ask for the corpus; without this
+# both would download it (about 11 MB of Pinecone data each) and build it twice.
+_build_lock = threading.Lock()
 
 
 def enable_disk_cache(path: Path) -> None:
@@ -93,9 +98,13 @@ def _fetch_all_chunks() -> tuple[list[str], list[dict[str, Any]]]:
 
 def _fetch_all_chunks_from_pinecone() -> tuple[list[str], list[dict[str, Any]]]:
     index = get_index()
+    # The keyword index must be built from the same section of the index the vectors are
+    # searched in, or it would score different text than the dense side sees.
+    namespace = get_settings().pinecone_namespace or None
     stats = index.describe_index_stats()
     dimension = stats["dimension"]
-    total = stats["total_vector_count"]
+    in_namespace = stats.get("namespaces", {}).get(namespace or "", {}).get("vector_count")
+    total = in_namespace or stats["total_vector_count"]
 
     # A small non-zero constant, not a literal zero vector -- cosine
     # similarity is undefined for a zero-magnitude vector, and this query's
@@ -107,6 +116,7 @@ def _fetch_all_chunks_from_pinecone() -> tuple[list[str], list[dict[str, Any]]]:
         top_k=min(total, MAX_TOP_K) if total else MAX_TOP_K,
         include_values=False,
         include_metadata=True,
+        namespace=namespace,
     )
     ids = [match["id"] for match in response["matches"]]
     metadatas = [
@@ -115,18 +125,28 @@ def _fetch_all_chunks_from_pinecone() -> tuple[list[str], list[dict[str, Any]]]:
     return ids, metadatas
 
 
+def set_corpus(ids: list[str], metadatas: list[dict[str, Any]]) -> None:
+    """Install a corpus built elsewhere (dev scripts measuring a different
+    version of the text, without a Pinecone read). The server never calls this.
+    """
+    global _corpus
+    tokenized = [_tokenize(m.get("text", "")) for m in metadatas]
+    _corpus = Bm25Corpus(bm25=BM25Okapi(tokenized), ids=ids, metadatas=metadatas)
+
+
 def get_bm25_corpus() -> Bm25Corpus:
     """Build (once) and cache the BM25 index. The first call is slow -- it
     fetches the whole corpus from Pinecone; later calls reuse it.
     """
     global _corpus
-    if _corpus is None:
-        ids, metadatas = _fetch_all_chunks()
-        tokenized = [_tokenize(m.get("text", "")) for m in metadatas]
-        bm25 = BM25Okapi(tokenized)
-        _corpus = Bm25Corpus(bm25=bm25, ids=ids, metadatas=metadatas)
-        log.info("bm25_index_built", chunk_count=len(ids))
-    return _corpus
+    with _build_lock:
+        if _corpus is None:
+            ids, metadatas = _fetch_all_chunks()
+            tokenized = [_tokenize(m.get("text", "")) for m in metadatas]
+            bm25 = BM25Okapi(tokenized)
+            _corpus = Bm25Corpus(bm25=bm25, ids=ids, metadatas=metadatas)
+            log.info("bm25_index_built", chunk_count=len(ids))
+        return _corpus
 
 
 def bm25_search(query: str, top_k: int) -> list[dict[str, Any]]:

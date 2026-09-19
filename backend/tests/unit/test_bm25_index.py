@@ -21,8 +21,16 @@ class FakeIndex:
     the returned data.
     """
 
-    def __init__(self, dimension: int, total_vector_count: int, matches: list[dict]):
+    def __init__(
+        self,
+        dimension: int,
+        total_vector_count: int,
+        matches: list[dict],
+        namespaces: dict | None = None,
+    ):
         self._stats = {"dimension": dimension, "total_vector_count": total_vector_count}
+        if namespaces is not None:
+            self._stats["namespaces"] = namespaces
         self._matches = matches
         self.query_calls: list[dict] = []
 
@@ -163,3 +171,62 @@ def test_bm25_search_empty_corpus(monkeypatch):
         Bm25Corpus(bm25=None, ids=[], metadatas=[]),  # type: ignore[arg-type]
     )
     assert bm25_search("anything", top_k=5) == []
+
+
+def test_the_keyword_index_is_read_from_the_configured_namespace(monkeypatch):
+    fake_index = FakeIndex(
+        dimension=1536,
+        total_vector_count=16_852,  # two namespaces of 8,426
+        matches=[],
+        namespaces={"headers-v1": {"vector_count": 8426}, "": {"vector_count": 8426}},
+    )
+    monkeypatch.setattr(bm25_index, "get_index", lambda: fake_index)
+    monkeypatch.setattr(
+        bm25_index, "get_settings", lambda: type("S", (), {"pinecone_namespace": "headers-v1"})()
+    )
+
+    _fetch_all_chunks()
+
+    call = fake_index.query_calls[0]
+    assert call["namespace"] == "headers-v1"
+    assert call["top_k"] == 8426  # the namespace's own count, not the index-wide total
+
+
+def test_an_empty_namespace_setting_reads_the_default_section(monkeypatch):
+    fake_index = FakeIndex(
+        dimension=1536,
+        total_vector_count=16_852,
+        matches=[],
+        namespaces={"headers-v1": {"vector_count": 8426}, "": {"vector_count": 8000}},
+    )
+    monkeypatch.setattr(bm25_index, "get_index", lambda: fake_index)
+    monkeypatch.setattr(
+        bm25_index, "get_settings", lambda: type("S", (), {"pinecone_namespace": ""})()
+    )
+
+    _fetch_all_chunks()
+
+    call = fake_index.query_calls[0]
+    assert call["namespace"] is None and call["top_k"] == 8000
+
+
+def test_two_threads_asking_for_the_corpus_build_it_once(monkeypatch):
+    import threading
+    import time
+
+    monkeypatch.setattr(bm25_index, "_corpus", None)
+    builds: list[int] = []
+
+    def slow_fetch():
+        builds.append(1)
+        time.sleep(0.05)
+        return ["a::0"], [{"text": "alpha"}]
+
+    monkeypatch.setattr(bm25_index, "_fetch_all_chunks", slow_fetch)
+    threads = [threading.Thread(target=bm25_index.get_bm25_corpus) for _ in range(4)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    assert len(builds) == 1

@@ -29,14 +29,29 @@ once per method, so --split final also needs --confirm-final.
 import argparse
 import asyncio
 import json
+import os
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
 
+# retrieve_chunks is @traceable, so every search would post a trace to LangSmith. A
+# measurement run makes hundreds of them and gains nothing from it (and that account
+# already returned auth errors), so switch tracing off before the app modules load.
+os.environ["LANGSMITH_TRACING"] = "false"
+os.environ["LANGCHAIN_TRACING_V2"] = "false"
+
+from app.clients.openai_client import embed_text  # noqa: E402
+from app.clients.pinecone_client import RERANK_MODEL, query_vectors, rerank_documents  # noqa: E402
+from app.config import get_settings  # noqa: E402
 from app.logging_config import configure_logging  # noqa: E402
+from app.rag import retrieve as retrieve_module  # noqa: E402
+from app.rag.bm25_index import enable_disk_cache, get_bm25_corpus, set_corpus  # noqa: E402
 from app.rag.retrieve import retrieve_chunks  # noqa: E402
+from scripts.build_header_namespace import HEADER_NAMESPACE, build_header_corpus  # noqa: E402
+from scripts.llm_cache import BudgetExceeded  # noqa: E402
+from scripts.recall_cache import CACHE_DIR, RecallCache, corpus_tag  # noqa: E402
 
 configure_logging("WARNING")
 
@@ -119,9 +134,26 @@ async def main() -> None:
     )
     parser.add_argument(
         "--mode",
-        choices=["dense", "hybrid"],
+        choices=["dense", "hybrid", "hybrid_rerank"],
         default="dense",
         help="retrieve_chunks mode to measure (default: dense, matching retrieve_chunks' default)",
+    )
+    parser.add_argument(
+        "--index",
+        choices=["base", "headers"],
+        default="base",
+        help="base = the original chunks; headers = the card-name namespace (point 1m)",
+    )
+    parser.add_argument(
+        "--no-save",
+        action="store_true",
+        help="Print the results but do not write them to recall_results.json",
+    )
+    parser.add_argument(
+        "--max-rerank-calls",
+        type=int,
+        default=130,
+        help="Stop before more paid Pinecone rerank requests than this (500 a month are free)",
     )
     parser.add_argument(
         "--eval-set",
@@ -134,6 +166,12 @@ async def main() -> None:
         "--confirm-final",
         action="store_true",
         help="Required for --split final: the final 100 is run once per method",
+    )
+    parser.add_argument(
+        "--max-paid-calls",
+        type=int,
+        default=250,
+        help="Stop before more OpenAI + Pinecone calls than this (cached calls are free)",
     )
     args = parser.parse_args()
     if args.eval_set == "hard" and not args.split:
@@ -153,12 +191,66 @@ async def main() -> None:
         f"querying top_k={REPORTED_K} and top_k={DIAGNOSTIC_K}..."
     )
 
+    # Every OpenAI embedding and Pinecone query below goes through this cache, and the
+    # BM25 corpus comes from disk: dev shares Pinecone's monthly egress cap with the
+    # live site. See scripts/recall_cache.py.
+    corpus_path = CACHE_DIR / "corpus.json"
+    print(
+        "Corpus cache: hit, no Pinecone read"
+        if corpus_path.exists()
+        else "Corpus cache: miss, one Pinecone read (then saved)"
+    )
+    enable_disk_cache(corpus_path)
+    if args.index == "headers":
+        # The keyword index must see the same header text the vectors were built from.
+        # It comes from the local corpus copy, so this needs no Pinecone read.
+        base = get_bm25_corpus()
+        set_corpus(*build_header_corpus(base.ids, base.metadatas))
+        namespace: str | None = HEADER_NAMESPACE
+        tag = f"{corpus_tag(corpus_path)}:{HEADER_NAMESPACE}"
+        queries_path = CACHE_DIR / f"recall_queries_{HEADER_NAMESPACE}.json"
+    else:
+        get_bm25_corpus()
+        namespace, tag = None, corpus_tag(corpus_path)
+        queries_path = CACHE_DIR / "recall_queries.json"
+    print(f"Index: {args.index}" + (f" (namespace '{namespace}')" if namespace else ""))
+    # The app reads the namespace from its settings (retrieve_chunks and the keyword
+    # index both do), so point them at the index under test, not at the app's default.
+    get_settings().pinecone_namespace = namespace or ""
+    cache = RecallCache(
+        embed_text,
+        query_vectors,
+        tag=tag,
+        embedding_model=get_settings().embedding_model,
+        queries_path=queries_path,
+        max_paid_calls=args.max_paid_calls,
+        rerank=rerank_documents,
+        rerank_model=RERANK_MODEL,
+        max_rerank_calls=args.max_rerank_calls,
+    )
+    if cache.queries_were_reset:
+        print("The corpus changed since the saved Pinecone results, so they were discarded.")
+    retrieve_module.embed_text = cache.embed_text
+    retrieve_module.query_vectors = cache.query_vectors
+    retrieve_module.rerank_documents = cache.rerank_documents
+
     results = []
-    for i, item in enumerate(questions, 1):
-        result = await run_one(item, args.mode)
-        results.append(result)
-        recall = result[f"recall_at_{REPORTED_K}"]
-        print(f"  [{i}/{len(questions)}] recall@{REPORTED_K}={recall:.2f}  {item['question'][:60]}")
+    try:
+        for i, item in enumerate(questions, 1):
+            result = await run_one(item, args.mode)
+            results.append(result)
+            recall = result[f"recall_at_{REPORTED_K}"]
+            print(
+                f"  [{i}/{len(questions)}] recall@{REPORTED_K}={recall:.2f}  "
+                f"{item['question'][:60]}"
+            )
+    except BudgetExceeded as stop:
+        cache.flush()
+        raise SystemExit(
+            f"STOPPED EARLY: {stop}. Nothing saved; rerun to continue (paid calls kept)."
+        )
+    finally:
+        cache.flush()
 
     summary = summarize(results)
     print(f"\n{'=' * 50}")
@@ -174,16 +266,28 @@ async def main() -> None:
         )
     print(f"{'=' * 50}\n")
 
+    if args.no_save:
+        print("--no-save: results printed only.")
+    else:
+        save_results(args.save_as, summary, results)
+    print(
+        f"OpenAI embeddings: {cache.embeds_paid} paid, {cache.embeds_hit} cached | "
+        f"Pinecone queries: {cache.queries_paid} paid, {cache.queries_hit} cached | "
+        f"Pinecone rerank requests: {cache.reranks_paid} paid, {cache.reranks_hit} cached"
+    )
+
+
+def save_results(label: str, summary: dict, results: list[dict]) -> None:
     all_runs: dict = {}
     if RESULTS_PATH.exists():
         all_runs = json.loads(RESULTS_PATH.read_text(encoding="utf-8"))
-    all_runs[args.save_as] = {
+    all_runs[label] = {
         "summary": summary,
         "per_question": results,
         "measured_at": datetime.now(UTC).isoformat(),
     }
     RESULTS_PATH.write_text(json.dumps(all_runs, indent=2) + "\n", encoding="utf-8")
-    print(f"Saved under key '{args.save_as}' in {RESULTS_PATH}")
+    print(f"Saved under key '{label}' in {RESULTS_PATH}")
 
 
 if __name__ == "__main__":
