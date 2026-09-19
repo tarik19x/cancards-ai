@@ -107,11 +107,16 @@ langchain-pinecone==0.2.13
 langchain-protocol==0.0.15
     # via langchain-core
 langgraph==1.1.10
-    # via langchain
-langgraph-checkpoint==4.0.3
+    # via
+    #   cancards-backend
+    #   langchain
+langgraph-checkpoint==4.2.0
     # via
     #   langgraph
+    #   langgraph-checkpoint-postgres
     #   langgraph-prebuilt
+langgraph-checkpoint-postgres==3.1.2
+    # via cancards-backend
 langgraph-prebuilt==1.0.13
     # via langgraph
 langgraph-sdk==0.3.14
@@ -140,6 +145,7 @@ openai==2.36.0
     #   langchain-openai
 orjson==3.11.9
     # via
+    #   langgraph-checkpoint-postgres
     #   langgraph-sdk
     #   langsmith
 ormsgpack==1.12.2
@@ -162,6 +168,16 @@ propcache==0.5.2
     # via
     #   aiohttp
     #   yarl
+psycopg==3.3.6
+    # via
+    #   cancards-backend
+    #   langgraph-checkpoint-postgres
+psycopg-binary==3.3.6 ; implementation_name != 'pypy'
+    # via psycopg
+psycopg-pool==3.3.2
+    # via
+    #   langgraph-checkpoint-postgres
+    #   psycopg
 pydantic==2.13.4
     # via
     #   anthropic
@@ -241,6 +257,8 @@ typing-extensions==4.15.0
     #   limits
     #   openai
     #   pinecone
+    #   psycopg
+    #   psycopg-pool
     #   pydantic
     #   pydantic-core
     #   starlette
@@ -250,6 +268,8 @@ typing-inspection==0.4.2
     #   fastapi
     #   pydantic
     #   pydantic-settings
+tzdata==2026.2 ; sys_platform == 'win32'
+    # via psycopg
 urllib3==2.7.0
     # via
     #   pinecone

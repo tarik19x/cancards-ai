@@ -1,0 +1,2117 @@
+{
+  "measured_at": "2026-09-19T05:10:09.598456+00:00",
+  "scenario_count": 15,
+  "before": {
+    "summary": {
+      "scenarios": 15,
+      "premature_advice_rate": 0.9333333333333333,
+      "completion_rate": 0.6,
+      "median_turns_to_score": 5,
+      "field_extraction_accuracy": 0.95,
+      "fields_checked": 60,
+      "score_exact_match_rate": 0.8,
+      "scorable_scenarios": 10
+    },
+    "per_scenario": [
+      {
+        "id": "vague_opening",
+        "turns": [
+          {
+            "user": "how's my credit looking?",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          }
+        ],
+        "premature": true,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": null,
+          "utilization": null,
+          "history_length": null,
+          "missed_payments": null,
+          "recent_inquiries": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 0,
+        "fields_correct": 0,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "everything_at_once",
+        "turns": [
+          {
+            "user": "I have 4 cards, I keep about 15% utilization, my oldest is 9 years old, never missed a payment, and no applications in the last year. How am I doing?",
+            "gave_score": true,
+            "computed_score": 94,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 1,
+        "final_score": 94,
+        "final_profile": {
+          "card_count": 4,
+          "utilization": "10to30",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 94,
+        "score_matches": true
+      },
+      {
+        "id": "one_fact_at_a_time",
+        "turns": [
+          {
+            "user": "can you check my credit health?",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "2 cards",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "around 40% of my limit",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "about 4 years",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I was late twice last year",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "one application",
+            "gave_score": true,
+            "computed_score": 65,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 65,
+        "final_profile": {
+          "card_count": 2,
+          "utilization": "30to50",
+          "history_length": "3to7",
+          "missed_payments": "rarely",
+          "recent_inquiries": 1,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 65,
+        "score_matches": true
+      },
+      {
+        "id": "half_then_stops",
+        "turns": [
+          {
+            "user": "I've got 3 cards and use about 20% of my limit",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "so what's my score?",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          }
+        ],
+        "premature": true,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "10to30",
+          "history_length": null,
+          "missed_payments": null,
+          "recent_inquiries": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 2,
+        "fields_correct": 2,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "no_cards_at_all",
+        "turns": [
+          {
+            "user": "I don't have any credit cards yet",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "no limit, nothing open",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "never had one",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I've never missed a payment on anything",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I haven't applied for anything",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length"
+            ],
+            "premature": true
+          }
+        ],
+        "premature": true,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 0,
+          "utilization": null,
+          "history_length": null,
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 3,
+        "fields_correct": 3,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "balance_and_limit_arithmetic",
+        "turns": [
+          {
+            "user": "5 cards",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I carry about $6,000 against $8,000 of total limit",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "oldest is from 2015",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "no missed payments ever",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "three applications this year",
+            "gave_score": true,
+            "computed_score": 64,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 64,
+        "final_profile": {
+          "card_count": 5,
+          "utilization": "50to75",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 3,
+          "total_credit_limit_cad": 8000.0,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 64,
+        "score_matches": true
+      },
+      {
+        "id": "corrects_themselves",
+        "turns": [
+          {
+            "user": "I have 2 cards",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "sorry, 3 cards actually \u2014 I forgot the store one",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "under 10%",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "6 years",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "never missed",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "none",
+            "gave_score": true,
+            "computed_score": 96,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 96,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "under10",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 96,
+        "score_matches": true
+      },
+      {
+        "id": "deflects_one_question",
+        "turns": [
+          {
+            "user": "1 card",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I'd rather not say",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "fine \u2014 about 80% of the limit",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "under a year",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "missed a few",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "two",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          }
+        ],
+        "premature": true,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 1,
+          "utilization": "over75",
+          "history_length": "under1",
+          "missed_payments": "rarely",
+          "recent_inquiries": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 3,
+        "wrong_fields": {
+          "missed_payments": {
+            "expected": "sometimes",
+            "got": "rarely"
+          },
+          "recent_inquiries": {
+            "expected": 2,
+            "got": null
+          }
+        },
+        "score_expected": 25,
+        "score_matches": false
+      },
+      {
+        "id": "asks_for_advice_midway",
+        "turns": [
+          {
+            "user": "6 cards",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "maybe 25%",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "just tell me roughly what my score is, I'll fill in the rest later",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          }
+        ],
+        "premature": true,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 6,
+          "utilization": "10to30",
+          "history_length": null,
+          "missed_payments": null,
+          "recent_inquiries": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 2,
+        "fields_correct": 2,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "worst_case_profile",
+        "turns": [
+          {
+            "user": "I have 1 card",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "it's basically maxed out, like 90%",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "got it 8 months ago",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I've missed payments a lot",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I've applied for 4 things recently",
+            "gave_score": true,
+            "computed_score": 11,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 11,
+        "final_profile": {
+          "card_count": 1,
+          "utilization": "over75",
+          "history_length": "under1",
+          "missed_payments": "often",
+          "recent_inquiries": 4,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 11,
+        "score_matches": true
+      },
+      {
+        "id": "vague_then_specific",
+        "turns": [
+          {
+            "user": "a few cards",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "three of them",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I keep it low, maybe 5%",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "my oldest is about 2 years old",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "one late payment two years ago",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "zero applications",
+            "gave_score": true,
+            "computed_score": 79,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 79,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "under10",
+          "history_length": "1to3",
+          "missed_payments": "rarely",
+          "recent_inquiries": 0,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 79,
+        "score_matches": true
+      },
+      {
+        "id": "irrelevant_detail",
+        "turns": [
+          {
+            "user": "I'm a nurse making $85,000 a year, 3 cards",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "about 12% utilization",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "5 years",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "never missed",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "none this year",
+            "gave_score": true,
+            "computed_score": 90,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 90,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "10to30",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": 85000.0
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 90,
+        "score_matches": true
+      },
+      {
+        "id": "off_topic_opening",
+        "turns": [
+          {
+            "user": "what's the best travel card in Canada?",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "ok sure, I have 2 cards",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "about 35%",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "3 years",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "never missed a payment",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "one",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          }
+        ],
+        "premature": true,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 2,
+          "utilization": "30to50",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 4,
+        "wrong_fields": {
+          "recent_inquiries": {
+            "expected": 1,
+            "got": null
+          }
+        },
+        "score_expected": 78,
+        "score_matches": false
+      },
+      {
+        "id": "many_cards",
+        "turns": [
+          {
+            "user": "I've got 9 cards",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "maybe 8% across all of them",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "oldest is 12 years",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "clean record",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "none in years",
+            "gave_score": true,
+            "computed_score": 94,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 94,
+        "final_profile": {
+          "card_count": 9,
+          "utilization": "under10",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 94,
+        "score_matches": true
+      },
+      {
+        "id": "weekly_framing",
+        "turns": [
+          {
+            "user": "4 cards",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I spend about $500 a week and my limits add up to $12,000",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "7 years exactly",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "no missed payments",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "2 applications",
+            "gave_score": true,
+            "computed_score": 84,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 84,
+        "final_profile": {
+          "card_count": 4,
+          "utilization": "10to30",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 2,
+          "total_credit_limit_cad": 12000.0,
+          "annual_income_cad": null
+        },
+        "fields_checked": 3,
+        "fields_correct": 3,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      }
+    ]
+  },
+  "after": {
+    "summary": {
+      "scenarios": 15,
+      "premature_advice_rate": 0.0,
+      "completion_rate": 0.7333333333333333,
+      "median_turns_to_score": 5,
+      "field_extraction_accuracy": 0.9833333333333333,
+      "fields_checked": 60,
+      "score_exact_match_rate": 0.9,
+      "scorable_scenarios": 10
+    },
+    "per_scenario": [
+      {
+        "id": "vague_opening",
+        "turns": [
+          {
+            "user": "how's my credit looking?",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": null,
+          "utilization": null,
+          "history_length": null,
+          "missed_payments": null,
+          "recent_inquiries": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 0,
+        "fields_correct": 0,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "everything_at_once",
+        "turns": [
+          {
+            "user": "I have 4 cards, I keep about 15% utilization, my oldest is 9 years old, never missed a payment, and no applications in the last year. How am I doing?",
+            "gave_score": true,
+            "computed_score": 94,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 1,
+        "final_score": 94,
+        "final_profile": {
+          "card_count": 4,
+          "utilization": "10to30",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 94,
+        "score_matches": true
+      },
+      {
+        "id": "one_fact_at_a_time",
+        "turns": [
+          {
+            "user": "can you check my credit health?",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "2 cards",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "around 40% of my limit",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "about 4 years",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I was late twice last year",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "one application",
+            "gave_score": true,
+            "computed_score": 65,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 65,
+        "final_profile": {
+          "card_count": 2,
+          "utilization": "30to50",
+          "history_length": "3to7",
+          "missed_payments": "rarely",
+          "recent_inquiries": 1,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 65,
+        "score_matches": true
+      },
+      {
+        "id": "half_then_stops",
+        "turns": [
+          {
+            "user": "I've got 3 cards and use about 20% of my limit",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "so what's my score?",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "10to30",
+          "history_length": null,
+          "missed_payments": null,
+          "recent_inquiries": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 2,
+        "fields_correct": 2,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "no_cards_at_all",
+        "turns": [
+          {
+            "user": "I don't have any credit cards yet",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "no limit, nothing open",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "never had one",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I've never missed a payment on anything",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I haven't applied for anything",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length"
+            ],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 0,
+          "utilization": null,
+          "history_length": null,
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 3,
+        "fields_correct": 3,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "balance_and_limit_arithmetic",
+        "turns": [
+          {
+            "user": "5 cards",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I carry about $6,000 against $8,000 of total limit",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "oldest is from 2015",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "no missed payments ever",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "three applications this year",
+            "gave_score": true,
+            "computed_score": 64,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 64,
+        "final_profile": {
+          "card_count": 5,
+          "utilization": "50to75",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 3,
+          "total_credit_limit_cad": 8000.0,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 64,
+        "score_matches": true
+      },
+      {
+        "id": "corrects_themselves",
+        "turns": [
+          {
+            "user": "I have 2 cards",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "sorry, 3 cards actually \u2014 I forgot the store one",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "under 10%",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "6 years",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "never missed",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "none",
+            "gave_score": true,
+            "computed_score": 96,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 96,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "under10",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 96,
+        "score_matches": true
+      },
+      {
+        "id": "deflects_one_question",
+        "turns": [
+          {
+            "user": "1 card",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I'd rather not say",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "fine \u2014 about 80% of the limit",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "under a year",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "missed a few",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "two",
+            "gave_score": true,
+            "computed_score": 25,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 25,
+        "final_profile": {
+          "card_count": 1,
+          "utilization": "over75",
+          "history_length": "under1",
+          "missed_payments": "sometimes",
+          "recent_inquiries": 2,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 25,
+        "score_matches": true
+      },
+      {
+        "id": "asks_for_advice_midway",
+        "turns": [
+          {
+            "user": "6 cards",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "maybe 25%",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "just tell me roughly what my score is, I'll fill in the rest later",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 6,
+          "utilization": "10to30",
+          "history_length": null,
+          "missed_payments": null,
+          "recent_inquiries": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 2,
+        "fields_correct": 2,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "worst_case_profile",
+        "turns": [
+          {
+            "user": "I have 1 card",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "it's basically maxed out, like 90%",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "got it 8 months ago",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I've missed payments a lot",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I've applied for 4 things recently",
+            "gave_score": true,
+            "computed_score": 11,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 11,
+        "final_profile": {
+          "card_count": 1,
+          "utilization": "over75",
+          "history_length": "under1",
+          "missed_payments": "often",
+          "recent_inquiries": 4,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 11,
+        "score_matches": true
+      },
+      {
+        "id": "vague_then_specific",
+        "turns": [
+          {
+            "user": "a few cards",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "three of them",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I keep it low, maybe 5%",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "my oldest is about 2 years old",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "one late payment two years ago",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "zero applications",
+            "gave_score": true,
+            "computed_score": 79,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 79,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "under10",
+          "history_length": "1to3",
+          "missed_payments": "rarely",
+          "recent_inquiries": 0,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 79,
+        "score_matches": true
+      },
+      {
+        "id": "irrelevant_detail",
+        "turns": [
+          {
+            "user": "I'm a nurse making $85,000 a year, 3 cards",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "about 12% utilization",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "5 years",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "never missed",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "none this year",
+            "gave_score": true,
+            "computed_score": 90,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 90,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "10to30",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": 85000.0
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 90,
+        "score_matches": true
+      },
+      {
+        "id": "off_topic_opening",
+        "turns": [
+          {
+            "user": "what's the best travel card in Canada?",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "ok sure, I have 2 cards",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "about 35%",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "3 years",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "never missed a payment",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "one",
+            "gave_score": true,
+            "computed_score": 74,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 74,
+        "final_profile": {
+          "card_count": 2,
+          "utilization": "30to50",
+          "history_length": "1to3",
+          "missed_payments": "never",
+          "recent_inquiries": 1,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 4,
+        "wrong_fields": {
+          "history_length": {
+            "expected": "3to7",
+            "got": "1to3"
+          }
+        },
+        "score_expected": 78,
+        "score_matches": false
+      },
+      {
+        "id": "many_cards",
+        "turns": [
+          {
+            "user": "I've got 9 cards",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "maybe 8% across all of them",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "oldest is 12 years",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "clean record",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "none in years",
+            "gave_score": true,
+            "computed_score": 94,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 94,
+        "final_profile": {
+          "card_count": 9,
+          "utilization": "under10",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 94,
+        "score_matches": true
+      },
+      {
+        "id": "weekly_framing",
+        "turns": [
+          {
+            "user": "4 cards",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I spend about $500 a week and my limits add up to $12,000",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "7 years exactly",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "no missed payments",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "2 applications",
+            "gave_score": true,
+            "computed_score": 84,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 84,
+        "final_profile": {
+          "card_count": 4,
+          "utilization": "10to30",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 2,
+          "total_credit_limit_cad": 12000.0,
+          "annual_income_cad": null
+        },
+        "fields_checked": 3,
+        "fields_correct": 3,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      }
+    ]
+  }
+}

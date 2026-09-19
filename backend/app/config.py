@@ -37,6 +37,13 @@ class Settings(BaseSettings):
     langsmith_project: str = "cancards-ai"
     langsmith_tracing: bool = True
 
+    # Agent
+    # The decide_ready gate. Off means the agent advises on whatever it has, which
+    # is what the single-turn endpoint does and how the "before" rate is measured.
+    profile_validation: bool = True
+    # Empty means keep conversations in memory only (lost on restart).
+    database_url: str = ""
+
     # App
     app_env: str = "development"
     allowed_origins: str = "http://localhost:3000"
