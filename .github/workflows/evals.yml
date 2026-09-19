@@ -74,6 +74,12 @@ jobs:
           LLM_PROVIDER: anthropic
           LANGSMITH_API_KEY: ${{ secrets.LANGSMITH_API_KEY }}
           LANGSMITH_TRACING: "false"
+          # Pin this job to the retrieval it was calibrated on (dense search over the original
+          # chunks). The app's default is now hybrid + rerank, which spends one of Pinecone's
+          # 500 free monthly rerank requests per question and would starve the live app.
+          # Point 2 decides what RAGAS should run on.
+          RETRIEVAL_MODE: dense
+          PINECONE_NAMESPACE: ""
 
       # The runner is ephemeral, so writing baseline.json in the previous step
       # is only half the job. Without this the "save baseline" run reported

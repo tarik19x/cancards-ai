@@ -1,0 +1,16 @@
+{
+  "frozen_at": "2026-09-19T02:25:23.005760+00:00",
+  "fingerprint": "b9e25213201b057cab8e21178cb32d33c18dab31df5ee86592be1b5f14c26439",
+  "locked_fields": [
+    "question",
+    "answering_chunk_ids",
+    "relevant_card_ids",
+    "question_type",
+    "split"
+  ],
+  "counts": {
+    "practice": 100,
+    "final": 100
+  },
+  "note": "Never edit, add or drop a hard question because of how a method scored it."
+}

@@ -74,6 +74,10 @@ coverage.xml
 backend/containers.json
 backend/endpoint.json
 
+# Bank PDFs are copyrighted and re-downloadable; manifest.json and downloads.json
+# record exactly what was fetched, so only those are committed.
+backend/data/documents/pdf/
+
 # =========================
 # AI Agent Instruction Files
 # =========================
@@ -84,3 +88,21 @@ backend/endpoint.json
 # Playwright / test runner output
 test-results/
 playwright-report/
+
+# Dev-script caches of Pinecone corpus text and Claude responses (contain PDF text)
+backend/data/cache/
+tests/evals/hard_questions_review.json
+
+# No PDF ever belongs in this repo: the bank documents are copyrighted and
+# re-downloadable (backend/scripts/fetch_documents.py), and a stray copy in any
+# other folder would otherwise be committed. Extracted text is just as sensitive,
+# so the dev caches and the judge/review files that embed it are ignored too.
+*.pdf
+backend/data/cache/
+backend/data/documents/pdf/
+tests/evals/hard_questions_review.json
+LLM/hard_questions_full.json
+*.tmp
+
+# Local Postgres data and scratch files from the coach's conversation tests.
+pgdata/

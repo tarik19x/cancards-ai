@@ -1,6 +1,7 @@
 """Application configuration loaded from environment variables."""
 
 from functools import lru_cache
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -15,6 +16,14 @@ class Settings(BaseSettings):
     pinecone_index_name: str = "cancards-index"
     pinecone_cloud: str = "aws"
     pinecone_region: str = "us-east-1"
+    # Which named section of the index the app searches. "headers-v1" holds every PDF
+    # chunk with its card name written on top (point 1m); "" is the original chunks.
+    pinecone_namespace: str = "headers-v1"
+
+    # Retrieval (point 1, measured on the 100 held-out hard questions, recall@8):
+    # dense on the original chunks 0.321, hybrid + rerank on the card-name chunks 0.958.
+    # RETRIEVAL_MODE=dense with PINECONE_NAMESPACE= (empty) is the old behaviour.
+    retrieval_mode: Literal["dense", "hybrid", "hybrid_rerank"] = "hybrid_rerank"
 
     # Models
     embedding_model: str = "text-embedding-3-small"
@@ -27,6 +36,13 @@ class Settings(BaseSettings):
     langsmith_api_key: str | None = None
     langsmith_project: str = "cancards-ai"
     langsmith_tracing: bool = True
+
+    # Agent
+    # The decide_ready gate. Off means the agent advises on whatever it has, which
+    # is what the single-turn endpoint does and how the "before" rate is measured.
+    profile_validation: bool = True
+    # Empty means keep conversations in memory only (lost on restart).
+    database_url: str = ""
 
     # App
     app_env: str = "development"
