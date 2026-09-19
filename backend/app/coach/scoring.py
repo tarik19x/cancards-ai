@@ -40,7 +40,7 @@ class ScoreResult(BaseModel):
 
 
 _UTILIZATION: dict[str, tuple[int, str]] = {
-    "under10": (30, "Utilization is already low - this isn't costing you anything."),
+    "under10": (30, "You're using very little of your limit - this isn't costing you anything."),
     "10to30": (24, "Under 30% is the usual target. Pushing toward 10% would help further."),
     "30to50": (15, "Balances above 30% of your limit start pulling the score down noticeably."),
     "50to75": (
@@ -86,7 +86,7 @@ _MISSED: dict[str, tuple[int, str]] = {
 
 _INQUIRIES: dict[int, tuple[int, str]] = {
     0: (10, "No recent applications - nothing dragging you down here."),
-    1: (7, "One inquiry is minor and fades within a year."),
+    1: (7, "One recent application is minor and fades within a year."),
     2: (4, "A couple of recent applications add up. Space out any future ones."),
     3: (
         0,
@@ -166,7 +166,7 @@ def score_credit(
         ),
         Factor(
             key="utilization",
-            label="Credit utilization",
+            label="Balance vs. your credit limit",
             score=util_score,
             max=30,
             advice=util_advice,
@@ -191,3 +191,28 @@ def score_credit(
     total = sum(f.score for f in factors)
     factors.sort(key=lambda f: f.score / f.max)
     return ScoreResult(total=total, band=band_for(total), factors=factors)  # type: ignore[arg-type]
+
+
+# One-change-at-a-time options the follow-up chat can quote. Computed here so "what if I
+# pay my balance down?" is answered with a real number from the scorer, never one the
+# language model made up. History length is left out: only time changes it.
+_WHAT_IFS: list[tuple[str, str, object]] = [
+    ("Paying late never again", "missed_payments", "never"),
+    ("Keeping the balance under 10% of the credit limit", "utilization", "under10"),
+    ("Keeping the balance under 30% of the credit limit", "utilization", "10to30"),
+    ("Making no new credit applications for a year", "recent_inquiries", 0),
+    ("Having 3 open cards", "card_count", 3),
+]
+
+
+def what_if_totals(facts: dict[str, object]) -> list[tuple[str, int]]:
+    """Total score if each single change were made, best gain first. Gains of zero or less
+    are dropped, so a factor that is already at its best never shows up as advice.
+    """
+    base = score_credit(**facts).total  # type: ignore[arg-type]
+    options = []
+    for description, field, value in _WHAT_IFS:
+        total = score_credit(**{**facts, field: value}).total  # type: ignore[arg-type]
+        if total > base:
+            options.append((description, total))
+    return sorted(options, key=lambda option: -option[1])

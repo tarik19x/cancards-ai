@@ -1,0 +1,13 @@
+{
+  "note": "Floors for the gate-ON results, set a little below what was measured on 2026-09-19 (18 scenarios: premature 0%, repeated 0%, completion 78%, extraction 100%, exact score 100%). Raise them when the measured numbers rise; lowering one needs a reason in the commit message.",
+  "max": {
+    "premature_advice_rate": 0.0,
+    "repeated_question_rate": 0.0
+  },
+  "min": {
+    "scenarios": 18,
+    "completion_rate": 0.75,
+    "field_extraction_accuracy": 0.95,
+    "score_exact_match_rate": 0.95
+  }
+}

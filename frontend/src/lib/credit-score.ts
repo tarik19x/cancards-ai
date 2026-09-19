@@ -36,14 +36,14 @@ export type ScoreResult = {
 
 function scoreUtilization(u: Utilization): Factor {
   const table: Record<Utilization, [number, string]> = {
-    under10: [30, "Utilization is already low — this isn't costing you anything."],
+    under10: [30, "You're using very little of your limit — this isn't costing you anything."],
     "10to30": [24, "Under 30% is the usual target. Pushing toward 10% would help further."],
     "30to50": [15, "Balances above 30% of your limit start pulling the score down noticeably."],
     "50to75": [7, "This is a heavy load on your limit. Paying it down is the single fastest lever you have."],
     over75: [2, "Running this close to the limit is the biggest thing hurting you right now."],
   }
   const [score, advice] = table[u]
-  return { key: "utilization", label: "Credit utilization", score, max: 30, advice }
+  return { key: "utilization", label: "Balance vs. your credit limit", score, max: 30, advice }
 }
 
 function scoreHistory(h: HistoryLength): Factor {
@@ -71,7 +71,7 @@ function scoreMissed(m: MissedPayments): Factor {
 function scoreInquiries(n: 0 | 1 | 2 | 3): Factor {
   const table: Record<number, [number, string]> = {
     0: [10, "No recent applications — nothing dragging you down here."],
-    1: [7, "One inquiry is minor and fades within a year."],
+    1: [7, "One recent application is minor and fades within a year."],
     2: [4, "A couple of recent applications add up. Space out any future ones."],
     3: [0, "Several applications in a short window reads as risk to lenders. Hold off on new applications for a while."],
   }

@@ -242,18 +242,82 @@
   },
   {
     "id": "weekly_framing",
-    "description": "Frames utilization oddly. Tests the band mapping rather than a literal read.",
+    "description": "Frames spending oddly (a weekly figure, which is not a balance), then answers the coach's follow-up. Also tests an exact edge: 7 years is the top band.",
     "turns": [
       "4 cards",
       "I spend about $500 a week and my limits add up to $12,000",
+      "I usually owe around $1,000 on the statement",
       "7 years exactly",
       "no missed payments",
       "2 applications"
     ],
     "expected_profile": {
       "card_count": 4,
+      "utilization": "under10",
+      "history_length": "over7",
       "missed_payments": "never",
       "recent_inquiries": 2
-    }
+    },
+    "expect_score_total": 94
+  },
+  {
+    "id": "bare_dollar_amounts",
+    "description": "The bug found by using the chat: answers the balance question with a bare dollar amount, then a bare limit. The coach used to repeat the question forever.",
+    "turns": [
+      "I have 3 cards",
+      "800",
+      "2000",
+      "my first card was in 2016",
+      "never missed one",
+      "none"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "30to50",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 85
+  },
+  {
+    "id": "does_not_understand",
+    "description": "Says they do not understand a question. The coach must rephrase it, not repeat it, and still get the answer.",
+    "turns": [
+      "2 cards",
+      "not sure what you mean",
+      "maybe 25%",
+      "3 years",
+      "never",
+      "one"
+    ],
+    "expected_profile": {
+      "card_count": 2,
+      "utilization": "10to30",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 1
+    },
+    "expect_score_total": 87
+  },
+  {
+    "id": "balance_first_then_limit",
+    "description": "Gives the balance, then the limit, in dollars, phrased loosely.",
+    "turns": [
+      "4 cards",
+      "I usually owe around $1,500",
+      "my limits add up to about $20,000",
+      "10 years",
+      "no late payments",
+      "none"
+    ],
+    "expected_profile": {
+      "card_count": 4,
+      "utilization": "under10",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 100
   }
 ]

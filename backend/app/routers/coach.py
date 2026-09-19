@@ -2,12 +2,20 @@
 
 import uuid
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Path
 from starlette.requests import Request
 
+from app.coach.profile import missing_fields
 from app.coach.scoring import ScoreResult
 from app.logging_config import get_logger
-from app.models import ChatRequest, ChatResponse, CreditProfile
+from app.models import (
+    THREAD_ID_PATTERN,
+    ChatRequest,
+    ChatResponse,
+    CreditProfile,
+    ThreadMessage,
+    ThreadResponse,
+)
 from app.routers.ask import limiter
 
 log = get_logger(__name__)
@@ -56,5 +64,39 @@ async def chat(request: Request, body: ChatRequest) -> ChatResponse:
         missing_fields=state.get("missing_fields", []),
         gave_score=bool(state.get("gave_score")),
         score=ScoreResult.model_validate(score) if score else None,
+        score_message_index=state.get("score_message_index") if score else None,
         turn_count=state.get("turn_count", 0),
+    )
+
+
+@router.get("/thread/{thread_id}", response_model=ThreadResponse)
+@limiter.limit("60/minute")
+async def get_thread(
+    request: Request, thread_id: str = Path(pattern=THREAD_ID_PATTERN)
+) -> ThreadResponse:
+    """Reload a saved conversation, so a refreshed page picks up where it left off.
+
+    The history lives in the checkpointer (Postgres when DATABASE_URL is set), not in
+    the browser: the client keeps only the thread_id.
+    """
+    graph = getattr(request.app.state, "coach_graph", None)
+    if graph is None:
+        raise HTTPException(status_code=503, detail="Coach is unavailable.")
+
+    snapshot = await graph.aget_state({"configurable": {"thread_id": thread_id}})
+    values = snapshot.values
+    # An unknown id and an empty one look the same to the checkpointer; both are "no such thread".
+    if not values or not values.get("messages"):
+        raise HTTPException(status_code=404, detail="Conversation not found.")
+
+    profile = CreditProfile.model_validate(values.get("profile") or {})
+    score = values.get("score")
+    return ThreadResponse(
+        thread_id=thread_id,
+        messages=[ThreadMessage(**m) for m in values["messages"]],
+        profile=profile,
+        missing_fields=missing_fields(profile),
+        score=ScoreResult.model_validate(score) if score else None,
+        score_message_index=values.get("score_message_index") if score else None,
+        turn_count=values.get("turn_count", 0),
     )
