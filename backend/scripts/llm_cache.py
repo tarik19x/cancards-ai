@@ -15,6 +15,7 @@ import json
 from collections.abc import Awaitable, Callable
 from pathlib import Path
 
+from app.clients.usage import meter
 from app.config import get_settings
 
 CACHE_PATH = Path(__file__).resolve().parents[1] / "data" / "cache" / "llm_responses.json"
@@ -40,6 +41,9 @@ class CachedGenerator:
         # spends two calls per rejection) can otherwise run for thousands of
         # calls before anyone notices.
         self.max_paid_calls: int | None = None
+        # A dollar cap on top of the call cap: calls differ a lot in size, and an estimate of
+        # 'about N calls' was what underestimated the bill. The meter counts real tokens.
+        self.max_cost_usd: float | None = None
 
     @staticmethod
     def _key(model: str, system: str, user: str, max_tokens: int) -> str:
@@ -53,6 +57,8 @@ class CachedGenerator:
             return self._store[key]
         if self.max_paid_calls is not None and self.calls_made >= self.max_paid_calls:
             raise BudgetExceeded(f"stopped at {self.calls_made} paid calls")
+        if self.max_cost_usd is not None and meter.cost_usd >= self.max_cost_usd:
+            raise BudgetExceeded(f"stopped at ${meter.cost_usd:.2f} spent")
         raw = await self._generate(system, user, max_tokens=max_tokens)
         self.calls_made += 1
         self._store[key] = raw

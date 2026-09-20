@@ -41,9 +41,14 @@ async def chat(request: Request, body: ChatRequest) -> ChatResponse:
     thread_id = body.thread_id or str(uuid.uuid4())
 
     try:
+        # durability="exit": save the state once when the turn finishes, not after each of its
+        # 3-4 graph steps. The saver runs one database operation at a time, so with 15 users
+        # those extra writes queued behind each other (10 s a turn instead of 2 s, measured).
+        # A turn is all-or-nothing anyway: if the process dies mid-turn the user just resends.
         state = await graph.ainvoke(
             {"messages": [{"role": "user", "content": body.message}]},
             config={"configurable": {"thread_id": thread_id}},
+            durability="exit",
         )
     except Exception as exc:
         log.error("coach_turn_failed", thread_id=thread_id, error=str(exc), exc_info=True)

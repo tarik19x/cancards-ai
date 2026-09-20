@@ -152,3 +152,18 @@ def test_the_coach_is_a_503_when_the_graph_never_started():
     client = TestClient(app)
     assert client.post("/api/coach/chat", json={"message": "hi"}).status_code == 503
     assert client.get(f"/api/coach/thread/{UNKNOWN_ID}").status_code == 503
+
+
+NUL, BEL, DEL = chr(0), chr(7), chr(127)
+
+
+def test_control_characters_are_removed_before_the_message_reaches_the_graph(client):
+    # Postgres cannot store a NUL byte: against Neon this was a 500 (the in-memory store used
+    # by these tests accepts it, so the check is on what the graph is handed).
+    message = f"hel{NUL}lo{BEL} wor{DEL}ld\tok"
+    assert client.post("/api/coach/chat", json={"message": message}).status_code == 200
+    assert client.extract.call_args.args[0][0]["content"] == "hello world\tok"
+
+
+def test_a_message_of_only_control_characters_is_rejected(client):
+    assert client.post("/api/coach/chat", json={"message": NUL + BEL}).status_code == 422

@@ -21,7 +21,13 @@ from typing import Annotated, Any, Literal, TypedDict
 from langgraph.graph import END, START, StateGraph
 
 from app.clients.anthropic_client import generate_answer
-from app.coach.profile import QUESTION_ORDER, extract_profile, missing_fields, next_question
+from app.coach.profile import (
+    QUESTION_ORDER,
+    conversation_json,
+    extract_profile,
+    missing_fields,
+    next_question,
+)
 from app.coach.scoring import score_credit, what_if_totals
 from app.config import get_settings
 from app.logging_config import get_logger
@@ -105,7 +111,7 @@ def _profile_of(state: CoachState) -> CreditProfile:
 
 
 def _transcript(state: CoachState) -> str:
-    return "\n".join(f"{m['role']}: {m['content']}" for m in state.get("messages", []))
+    return conversation_json(state.get("messages", []))
 
 
 async def extract_profile_node(state: CoachState) -> CoachState:
@@ -168,6 +174,22 @@ async def score_node(state: CoachState) -> CoachState:
     return {"score": result.model_dump(), "scored_facts": _scoring_facts(profile)}
 
 
+# What the user sees when the model returns nothing. The API can end a turn with a refusal and
+# no text at all (a base64-wrapped jailbreak did exactly that), which used to reach the chat as
+# an empty bubble.
+DECLINED_REPLY = (
+    "I can't help with that one, but I'm happy to keep going on your credit. "
+    "What would you like to know?"
+)
+
+
+def _or_declined(reply: str) -> str:
+    if reply.strip():
+        return reply
+    log.warning("model_returned_no_text")
+    return DECLINED_REPLY
+
+
 def _follow_up_prompt(state: CoachState) -> str:
     profile = _profile_of(state)
     score = state["score"]  # follow_up is only routed to once a score exists
@@ -178,7 +200,7 @@ def _follow_up_prompt(state: CoachState) -> str:
         or "- None: every changeable factor is already at its best."
     )
     window = state["messages"][-FOLLOW_UP_WINDOW:]
-    recent = "\n".join(f"{m['role']}: {m['content']}" for m in window)
+    recent = conversation_json(window)
     return (
         f"What they told you:\n{profile.model_dump_json(exclude_none=True)}\n\n"
         f"Estimate: {score['total']}/100 ({score['band']})\nFactors:\n{factors}\n\n"
@@ -188,7 +210,9 @@ def _follow_up_prompt(state: CoachState) -> str:
 
 
 async def follow_up_node(state: CoachState) -> CoachState:
-    reply = await generate_answer(FOLLOW_UP_SYSTEM_PROMPT, _follow_up_prompt(state), max_tokens=500)
+    reply = _or_declined(
+        await generate_answer(FOLLOW_UP_SYSTEM_PROMPT, _follow_up_prompt(state), max_tokens=500)
+    )
     return {
         "messages": [{"role": "assistant", "content": reply}],
         "reply_markdown": reply,
@@ -199,7 +223,9 @@ async def follow_up_node(state: CoachState) -> CoachState:
 async def explain_node(state: CoachState) -> CoachState:
     score = state.get("score")
     if score is None:
-        reply = await generate_answer(GUESS_SYSTEM_PROMPT, _transcript(state), max_tokens=400)
+        reply = _or_declined(
+            await generate_answer(GUESS_SYSTEM_PROMPT, _transcript(state), max_tokens=400)
+        )
     else:
         factors = "\n".join(
             f"- {f['label']}: {f['score']}/{f['max']}. {f['advice']}" for f in score["factors"]
@@ -207,7 +233,9 @@ async def explain_node(state: CoachState) -> CoachState:
         user_prompt = (
             f"Total: {score['total']}/100 ({score['band']})\nFactors, weakest first:\n{factors}"
         )
-        reply = await generate_answer(EXPLAIN_SYSTEM_PROMPT, user_prompt, max_tokens=600)
+        reply = _or_declined(
+            await generate_answer(EXPLAIN_SYSTEM_PROMPT, user_prompt, max_tokens=600)
+        )
     return {
         "messages": [{"role": "assistant", "content": reply}],
         "reply_markdown": reply,

@@ -43,6 +43,7 @@ os.environ["LANGCHAIN_TRACING_V2"] = "false"
 from langgraph.checkpoint.memory import InMemorySaver  # noqa: E402
 
 from app.clients.anthropic_client import generate_answer as _uncached  # noqa: E402
+from app.clients.usage import meter  # noqa: E402
 from app.coach import graph as graph_module  # noqa: E402
 from app.coach import profile as profile_module  # noqa: E402
 from app.coach.profile import missing_fields  # noqa: E402
@@ -225,6 +226,12 @@ async def main() -> None:
         help="Stop before making more paid Claude calls than this (cached ones are free)",
     )
     parser.add_argument(
+        "--max-cost-usd",
+        type=float,
+        default=1.50,
+        help="Stop before spending more than this many US dollars (measured from token counts)",
+    )
+    parser.add_argument(
         "--replay",
         action="store_true",
         help="CI mode: answer from the committed recording, no API keys or network, "
@@ -256,6 +263,7 @@ async def main() -> None:
     else:
         cached = RecordingGenerator(_uncached, CACHE_PATH)
         cached.max_paid_calls = args.max_paid_calls
+        cached.max_cost_usd = args.max_cost_usd
         generator = cached
     profile_module.generate_answer = generator
     graph_module.generate_answer = generator
@@ -305,6 +313,8 @@ async def main() -> None:
         )
         print(f"\nSaved to {RESULTS_PATH}")
         print(f"Claude calls: {cached.calls_made} paid, {cached.cache_hits} cached")
+        print(meter.summary())
+        meter.append_to_log("coach scenarios")
 
     if args.export_replay:
         if args.only:

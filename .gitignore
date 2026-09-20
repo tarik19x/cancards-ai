@@ -106,3 +106,9 @@ LLM/hard_questions_full.json
 
 # Local Postgres data and scratch files from the coach's conversation tests.
 pgdata/
+
+# Local spend and load-test logs. usage_log.jsonl is a running record of what the Claude
+# calls cost (written by app/clients/usage.py); it is personal and should never be pushed.
+**/usage_log*.jsonl
+*.log
+*.bak

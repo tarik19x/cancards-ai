@@ -11,9 +11,15 @@ falls back to memory and says so loudly in the log, rather than refusing to star
 The coach is one feature of the app; a database problem must not take the card
 search and the ask page down with it.
 
-The saver is opened once for the application's lifetime rather than per request:
-its connection pool is the expensive part, and a new pool per message would be
-both slow and a good way to exhaust Postgres's connection limit.
+The saver is opened once for the application's lifetime rather than per request: a new
+connection per message would be slow and a good way to exhaust Postgres's connection limit.
+
+It holds ONE connection, and LangGraph's saver runs one database operation at a time on it
+(an asyncio lock around every cursor). Concurrent conversations therefore queue behind each
+other, so the number of database operations per turn is what sets the latency under load.
+The chat endpoint saves once per turn (durability="exit") for that reason. A connection pool
+was tried and made no measurable difference: the saver's lock, not the connection count,
+is the limit.
 """
 
 from collections.abc import AsyncIterator

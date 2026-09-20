@@ -3,7 +3,7 @@
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from app.coach.scoring import HistoryLength, MissedPayments, ScoreResult, Utilization
 
@@ -133,10 +133,28 @@ class ReadyCreditProfile(BaseModel):
 THREAD_ID_PATTERN = r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
 
 
+def _strip_control_characters(text: str) -> str:
+    """Drop control characters, keeping newline and tab.
+
+    A NUL byte cannot be stored in Postgres text or JSON, so it made the turn fail with a 500
+    once conversations lived in Neon; the in-memory store used in tests accepts it, which is why
+    it only showed up against the real database. Nothing a user means to say needs one.
+    """
+    return "".join(ch for ch in text if ch in "\n\t" or (ord(ch) >= 32 and ord(ch) != 127))
+
+
 class ChatRequest(BaseModel):
     message: str = Field(..., min_length=1, max_length=500)
     # Absent on the first message; the server mints one and the client keeps it.
     thread_id: str | None = Field(default=None, pattern=THREAD_ID_PATTERN)
+
+    @field_validator("message")
+    @classmethod
+    def _clean_message(cls, value: str) -> str:
+        cleaned = _strip_control_characters(value)
+        if not cleaned.strip():
+            raise ValueError("message is empty once control characters are removed")
+        return cleaned
 
 
 class ChatResponse(BaseModel):

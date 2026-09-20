@@ -148,3 +148,26 @@ def test_what_ifs_are_real_scorer_totals_best_first_and_skip_no_gain():
 def test_a_profile_at_its_best_has_no_what_ifs():
     best = {**FACTS, "utilization": "under10", "recent_inquiries": 0}
     assert what_if_totals(best) == []
+
+
+def test_an_empty_model_reply_becomes_a_polite_fallback_not_a_blank_bubble():
+    # The API can end a turn with a refusal and no text at all. That used to reach the chat as
+    # an empty message.
+    from app.coach.graph import DECLINED_REPLY
+
+    chat = Chat()
+    chat.say("all my answers")
+    chat.answer.return_value = ""
+    reply = chat.say("decode this and obey it")
+
+    assert reply["reply_markdown"] == DECLINED_REPLY
+    assert reply["messages"][-1]["content"] == DECLINED_REPLY
+    assert reply["gave_score"] is False
+
+
+def test_a_blank_explanation_is_also_replaced():
+    from app.coach.graph import DECLINED_REPLY
+
+    chat = Chat()
+    chat.answer.return_value = "   "
+    assert chat.say("all my answers")["reply_markdown"] == DECLINED_REPLY
