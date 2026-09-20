@@ -1,0 +1,2886 @@
+{
+  "measured_at": "2026-09-19T22:54:12.816787+00:00",
+  "scenario_count": 18,
+  "before": {
+    "summary": {
+      "scenarios": 18,
+      "premature_advice_rate": 0.9444444444444444,
+      "repeated_question_rate": 0.0,
+      "completion_rate": 0.6666666666666666,
+      "median_turns_to_score": 6.0,
+      "field_extraction_accuracy": 0.961038961038961,
+      "fields_checked": 77,
+      "score_exact_match_rate": 0.8571428571428571,
+      "scorable_scenarios": 14
+    },
+    "per_scenario": [
+      {
+        "id": "vague_opening",
+        "turns": [
+          {
+            "user": "how's my credit looking?",
+            "reply": "## I'd Love to Help! \ud83c\udfe6\n\nI don't have enough information yet to give you a good picture. To estimate how your credit might be looking, I'd need to know things like:\n\n- **Payment history** \u2013 Any late or missed payments?\n- **Credit utilization** \u2013 How much of your available credit are you using?\n- **Credit age** \u2013 How long have you had credit accounts?\n- **Credit mix** \u2013 Cards, loans, mortgage, etc.?\n- **Recent inquiries** \u2013 Applied for new credit lately?\n\n### Quick Rule of Thumb:\n| Factor | Weight |\n|--------|--------|\n| Payment History | 35% |\n| Utilization | 30% |\n| Credit Age | 15% |\n| Credit Mix | 10% |\n| New Inquiries | 10% |\n\nShare some details and I can give you a **rough estimate** and tips for improvement! \ud83d\ude0a\n\n> *Note: This is not a real credit score.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": null,
+          "utilization": null,
+          "history_length": null,
+          "missed_payments": null,
+          "recent_inquiries": null,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 0,
+        "fields_correct": 0,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "everything_at_once",
+        "turns": [
+          {
+            "user": "I have 4 cards, I keep about 15% utilization, my oldest is 9 years old, never missed a payment, and no applications in the last year. How am I doing?",
+            "reply": "Your estimate is 94 out of 100, which puts you in the **Excellent** band \u2014 a great result to see.\n\nYour weakest factor is the balance you're carrying compared to your credit limit \u2014 essentially, how much of your available credit you're using. You scored 24 out of 30 here, which is still solid, but pushing that balance closer to 10% of your limit (rather than the usual 30% target) could nudge your score even higher. This is the one area worth watching.\n\nEverything else is in great shape. Your payment history \u2014 whether you pay on time each month \u2014 is perfect at 35 out of 35, and your other factors are all maxed out too.\n\nJust a reminder: this is an **estimate based on your self-reported answers**, not an official credit score. For your actual score, you'd want to check with **Equifax or TransUnion**.\n\nKeep doing what you're doing \u2014 you're clearly managing credit responsibly, and a small adjustment to your balances could make an excellent score even stronger. \ud83c\udf1f",
+            "gave_score": true,
+            "computed_score": 94,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 1,
+        "final_score": 94,
+        "final_profile": {
+          "card_count": 4,
+          "utilization": "10to30",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 94,
+        "score_matches": true
+      },
+      {
+        "id": "one_fact_at_a_time",
+        "turns": [
+          {
+            "user": "can you check my credit health?",
+            "reply": "# Credit Health Check \ud83c\udfe6\n\nI'd love to help you assess your credit health! However, I need a bit more information to give you a useful estimate.\n\nCould you share some details about:\n\n- **Payment history** \u2013 Do you pay bills on time?\n- **Credit utilization** \u2013 How much of your credit limit are you using?\n- **Credit age** \u2013 How long have you had credit accounts?\n- **Account mix** \u2013 Do you have credit cards, loans, etc.?\n- **Recent inquiries** \u2013 Have you applied for new credit lately?\n- **Negative marks** \u2013 Any collections, bankruptcies, or late payments?\n\n---\n\n> \u26a0\ufe0f *Note: Any estimate I provide is purely educational and is **not** a real credit score. For your actual score, check services like **Credit Karma**, **Experian**, or your bank.*\n\nShare what you can and I'll do my best to help! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "2 cards",
+            "reply": "# Credit Health Check \ud83c\udfe6\n\nThanks for sharing! Two credit cards is a decent start, but I need more details to assess your credit health.\n\nCould you tell me:\n\n- **Payment history** \u2013 Do you pay on time, or have you missed payments?\n- **Credit utilization** \u2013 What are your card limits and current balances?\n- **Credit age** \u2013 How long have you had these cards?\n- **Other accounts** \u2013 Any loans (auto, student, mortgage)?\n- **Recent applications** \u2013 Applied for new credit lately?\n- **Negative marks** \u2013 Any collections or late payments?\n\n---\n\n**What I can say so far:**\nHaving **2 credit cards** can be positive \u2014 it shows some credit history and account variety. The *how you use them* is what matters most!\n\n> \u26a0\ufe0f *Any estimate I provide is educational only and is **not** a real credit score.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "around 40% of my limit",
+            "reply": "# Credit Health Check \ud83c\udfe6\n\nGood info! Here's where things stand so far:\n\n## What You've Shared\n- \u2705 **2 credit cards** \u2014 good account presence\n- \u26a0\ufe0f **~40% utilization** \u2014 this is a concern\n\n## Utilization Impact\n40% utilization is **above the recommended 30%** threshold, and ideally you'd want to be **under 10%** for the best scoring impact. This is likely **hurting your score**.\n\n---\n\n## Still Need to Know:\n- **Payment history** \u2013 Any missed/late payments?\n- **Credit age** \u2013 How old are your accounts?\n- **Other accounts** \u2013 Any loans?\n- **Recent inquiries** \u2013 New applications lately?\n- **Negative marks** \u2013 Collections or bankruptcies?\n\n---\n\n**Quick Tip:** Try to pay down balances to bring utilization **below 30%** \u2014 this could give your score a meaningful boost relatively quickly!\n\n> \u26a0\ufe0f *This is educational only and is **not** a real credit score.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "about 4 years",
+            "reply": "# Credit Health Check \ud83c\udfe6\n\nGreat, that helps! Here's your picture so far:\n\n## What You've Shared\n- \u2705 **2 credit cards** \u2014 solid account presence\n- \u26a0\ufe0f **~40% utilization** \u2014 above ideal threshold\n- \u2705 **~4 years credit age** \u2014 reasonably good history\n\n## Assessment So Far\n4 years is a **decent credit age** \u2014 not exceptional, but it works in your favor. Combined with 2 cards, your foundation is reasonable.\n\nThe **40% utilization** remains your most visible weak spot right now.\n\n---\n\n## Still Need to Know:\n- **Payment history** \u2013 Any missed or late payments?\n- **Other accounts** \u2013 Any loans?\n- **Recent inquiries** \u2013 New credit applications?\n- **Negative marks** \u2013 Collections or bankruptcies?\n\n---\n\n**Quick Tip:** Paying down balances to **under 30%** (ideally under 10%) could noticeably improve your credit health fairly quickly!\n\n> \u26a0\ufe0f *This is educational only and is **not** a real credit score.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I was late twice last year",
+            "reply": "# Credit Health Check \ud83c\udfe6\n\nUpdated picture:\n\n## What You've Shared\n- \u2705 **2 credit cards** \u2014 solid account presence\n- \u26a0\ufe0f **~40% utilization** \u2014 above ideal threshold\n- \u2705 **~4 years credit age** \u2014 reasonably good history\n- \u274c **2 late payments last year** \u2014 this hurts\n\n## Assessment So Far\nThose **2 late payments** are concerning \u2014 payment history is the **biggest factor** in credit scoring (~35%). Recent late payments can significantly drag your score down, especially within the last 12 months.\n\nCombined with high utilization, these are **two meaningful negatives** working against you.\n\n---\n\n## Still Need to Know:\n- **Other accounts** \u2013 Any loans?\n- **Recent inquiries** \u2013 New credit applications?\n- **Negative marks** \u2013 Collections or bankruptcies?\n\n---\n\n**Priority Actions:**\n1. \ud83c\udfaf Pay down balances below **30%**\n2. \ud83d\udcc5 Set up **autopay** to prevent future late payments\n3. \u23f3 Time will gradually reduce the late payment impact\n\n> \u26a0\ufe0f *This is educational only and is **not** a real credit score.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "one application",
+            "reply": "Your credit estimate is 65 out of 100, which falls in the **Good** band \u2014 a solid foundation to build from.\n\nThe area needing the most attention is your **balance compared to your credit limit**. Right now your balances are above 30% of your available limit, which starts pulling the score down noticeably. Try to pay balances down so you're using less of what's available to you. Even a partial paydown can help.\n\nYour **payment history** is the second area to focus on. It carries the most weight of any factor, and occasional late payments do real damage over time. Setting up automatic minimum payments is a simple way to protect yourself going forward \u2014 on-time payments, month after month, will gradually push this score higher.\n\nThe good news: your number of cards is perfect, your credit history is a healthy length, and that recent application is a minor blip that fades within a year.\n\nYou're in a genuinely good position \u2014 a few steady habits and you'll see this number climb. \ud83d\udcaa",
+            "gave_score": true,
+            "computed_score": 65,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 65,
+        "final_profile": {
+          "card_count": 2,
+          "utilization": "30to50",
+          "history_length": "3to7",
+          "missed_payments": "rarely",
+          "recent_inquiries": 1,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 65,
+        "score_matches": true
+      },
+      {
+        "id": "half_then_stops",
+        "turns": [
+          {
+            "user": "I've got 3 cards and use about 20% of my limit",
+            "reply": "# Your Credit Snapshot \ud83d\udcb3\n\nBased on what you've shared, things look **promising**!\n\n## What's Working For You\n- **3 credit cards** = good mix of revolving accounts\n- **~20% utilization** = excellent! (Experts recommend staying under 30%)\n\n## What I Still Need to Know\nTo give you a better estimate, tell me:\n- How **long** have you had these cards?\n- Do you **pay on time** consistently?\n- Any **missed payments, collections, or bankruptcies**?\n- Have you applied for **new credit recently**?\n- Any **loans** (auto, mortgage, student)?\n\n## Rough Estimate\nWith what you've shared, your utilization alone suggests you could be in a **good-to-excellent range**, but payment history makes up **35% of your score** \u2014 so that detail matters most!\n\n> \u26a0\ufe0f *This is a general coaching estimate, not an actual credit score.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "so what's my score?",
+            "reply": "# I Can't Give You an Exact Number Yet\n\nI don't have enough information to estimate your score reliably. Utilization is just **one piece of the puzzle**.\n\n## The 5 Factors I Need:\n\n| Factor | Weight | Your Info |\n|--------|--------|-----------|\n| Payment history | **35%** | \u2753 Unknown |\n| Utilization | **30%** | \u2705 ~20% |\n| Credit age | **15%** | \u2753 Unknown |\n| Credit mix | **10%** | Partial \u2705 |\n| New inquiries | **10%** | \u2753 Unknown |\n\n## To Move Forward, Tell Me:\n- Have you **ever missed a payment**?\n- How **old** is your oldest card?\n- Any **recent applications** for credit?\n\nYour 20% utilization is a solid foundation, but **one missed payment** could mean the difference between a 650 and a 750!\n\n> \u26a0\ufe0f *This is general coaching guidance, not an actual credit score.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "10to30",
+          "history_length": null,
+          "missed_payments": null,
+          "recent_inquiries": null,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 2,
+        "fields_correct": 2,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "no_cards_at_all",
+        "turns": [
+          {
+            "user": "I don't have any credit cards yet",
+            "reply": "# Starting Your Credit Journey\n\nSince you don't have any credit cards yet, your credit profile is likely **thin or nonexistent**, which can make it harder to get approved for loans or housing.\n\n## Good First Steps:\n\n- **Secured credit card** \u2013 You deposit money as collateral; great for beginners\n- **Credit-builder loan** \u2013 Offered by many credit unions specifically to build history\n- **Become an authorized user** \u2013 Ask a trusted family member to add you to their card\n\n## Key Habits to Build:\n- \u2705 Pay **on time, every time**\n- \u2705 Keep balances **below 30%** of your limit\n- \u2705 Don't apply for too many cards at once\n\n> \u26a0\ufe0f *This is general guidance, not an actual credit score estimate. For your real score, check **AnnualCreditReport.com** or apps like Credit Karma.*\n\nWhat other details can you share? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "no limit, nothing open",
+            "reply": "# Your Current Credit Picture\n\nSince you have **no open accounts and no credit limit**, your credit profile is essentially **\"unscorable\"** \u2014 most scoring models (like FICO) require at least one account open for **6+ months** to generate a score at all.\n\n## What This Means:\n- You likely have **no credit score yet** (not a bad score \u2014 just no score)\n- Lenders see this as **higher risk** due to lack of history\n\n## Your Best First Move:\n1. **Secured credit card** \u2014 easiest approval with no existing credit\n   - Start with a $200\u2013$500 deposit\n   - Use it for small purchases only\n   - Pay the **full balance monthly**\n\n2. After **6 months**, you'll likely have a scoreable profile\n\n> \u26a0\ufe0f *This is coaching guidance only, not a real credit score. Check **AnnualCreditReport.com** to confirm your file status.*\n\nWant tips on choosing a secured card? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "never had one",
+            "reply": "# Confirmed: No Credit History Yet\n\nSince you've **never had any credit accounts**, you have a **\"credit invisible\"** profile \u2014 the Consumer Financial Protection Bureau estimates ~26 million Americans are in the same boat. You're not alone!\n\n## Your Estimated Profile:\n| Factor | Status |\n|--------|--------|\n| Credit Score | \u274c None yet |\n| Payment History | \u274c None |\n| Credit Age | \u274c None |\n| Accounts | \u274c None |\n\n## Fastest Path Forward:\n1. **Apply for a secured card** *(Capital One, Discover it Secured, or your local credit union)*\n2. Make **1\u20132 small purchases/month**\n3. Pay in **full before the due date**\n4. Wait **6 months** \u2192 your first score appears!\n\nYou could realistically see a **670\u2013700+ score** within 12 months of responsible use.\n\n> \u26a0\ufe0f *Coaching estimate only \u2014 not a real credit score.*\n\nReady to pick a secured card? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I've never missed a payment on anything",
+            "reply": "# Great News \u2014 This Matters!\n\nEven without credit cards, **on-time payments can still help** if they're being reported.\n\n## Quick Question: What have you been paying on time?\n- \ud83c\udfe0 Rent?\n- \ud83d\udcf1 Phone bill?\n- \ud83d\ude97 Auto loan?\n- \ud83c\udf93 Student loans?\n\n## Why It Matters:\n| Payment Type | Reported to Credit Bureaus? |\n|---|---|\n| Auto/Student loans | \u2705 Usually yes |\n| Rent | \u26a0\ufe0f Only if enrolled in reporting |\n| Phone/Utilities | \u274c Usually no (unless late) |\n\n## What You Can Do **Now:**\n- **Experian Boost** \u2014 adds phone/utility payments to your Experian report *for free*\n- **Rental Kite / Rent Reporters** \u2014 report rent payments to bureaus\n\nYour responsible payment behavior is a **great foundation** \u2014 you just need accounts that *show* it!\n\n> \u26a0\ufe0f *Coaching guidance only \u2014 not a real credit score.*\n\nWhat types of payments have you been making? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I haven't applied for anything",
+            "reply": "# Still Building the Full Picture\n\nSo to summarize what I know about you:\n\n| Factor | Status |\n|--------|--------|\n| Credit Cards | \u274c Never had one |\n| Open Accounts | \u274c None |\n| Applications | \u274c None |\n| Late Payments | \u2705 Never missed one |\n\n## Most Likely Situation:\nYou're probably **credit invisible** \u2014 no score exists yet, but your clean payment behavior shows **great financial habits!**\n\n## One Key Question:\nDo you have **any** of these?\n- \ud83d\ude97 Car loan (past or present)\n- \ud83c\udf93 Student loans\n- \ud83c\udfe0 Mortgage\n\nThese would be **reported to credit bureaus** and could mean you *do* have a starting score already.\n\n## If truly no accounts exist:\nA secured card today could realistically get you to a **670\u2013720+ score within 12 months.**\n\n> \u26a0\ufe0f *Coaching guidance only \u2014 not a real credit score. Visit **AnnualCreditReport.com** to check your file.*\n\nAny loans ever? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length"
+            ],
+            "premature": true
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 0,
+          "utilization": null,
+          "history_length": null,
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 3,
+        "fields_correct": 3,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "balance_and_limit_arithmetic",
+        "turns": [
+          {
+            "user": "5 cards",
+            "reply": "# Credit Score Estimate\n\nThanks for sharing! Unfortunately, **5 cards alone** isn't enough for me to give you a meaningful estimate. I'd need a few more details:\n\n## Key Factors I Need:\n- \ud83d\udcb3 **Payment history** \u2013 Any late or missed payments?\n- \ud83d\udcca **Credit utilization** \u2013 What % of your total limit are you using?\n- \ud83d\udcc5 **Age of accounts** \u2013 How old is your oldest/newest card?\n- \ud83d\udd0d **Recent inquiries** \u2013 Any new applications lately?\n- \ud83d\udcb0 **Other debt** \u2013 Loans, collections, etc.?\n\n## What I Can Say:\nHaving **5 cards** can be a *positive sign* \u2014 it suggests a diverse credit mix and potentially a high total credit limit (which helps utilization). However, **how you manage them matters far more** than the number.\n\nShare more details and I can give you a better estimate! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I carry about $6,000 against $8,000 of total limit",
+            "reply": "# Credit Score Estimate (So Far)\n\nYour **utilization rate is 75%** ($6,000 \u00f7 $8,000) \u2014 that's quite high.\n\n## \u26a0\ufe0f Utilization Impact\n- **Ideal:** Below 30% (under ~$2,400 for you)\n- **75% is considered high** and likely **dragging your score down significantly**\n- This factor alone could cost you **50\u2013100+ points**\n\n## What I Still Need:\n- \ud83d\udcc5 **Payment history** \u2013 Any late/missed payments?\n- \ud83d\uddd3\ufe0f **Account age** \u2013 How old are your cards?\n- \ud83d\udd0d **Recent hard inquiries?**\n- \ud83d\udcb0 **Any loans or collections?**\n\n## Quick Tip:\nPaying down even **$2,400** would drop you to ~45% utilization and could noticeably improve your score relatively quickly \u2014 utilization updates every billing cycle.\n\nShare more details and I can refine the estimate further! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "oldest is from 2015",
+            "reply": "# Credit Score Estimate (So Far)\n\nYour oldest account from **2015** gives you ~10 years of history \u2014 that's a **positive factor!**\n\n## What We Know:\n| Factor | Status | Impact |\n|--------|--------|--------|\n| Credit mix (5 cards) | \u2705 Good | Positive |\n| Account age (2015) | \u2705 ~10 years | Positive |\n| Utilization (75%) | \u26a0\ufe0f High | Negative |\n\n## Still Missing:\n- \ud83d\udccb **Payment history** \u2013 Any late or missed payments? *(biggest factor \u2014 35% of score)*\n- \ud83d\udd0d **Recent hard inquiries?**\n- \ud83d\udcb0 **Collections or loans?**\n\n## Rough Range So Far:\nWith good payment history, you might be in the **620\u2013680** range \u2014 but that high utilization is likely holding you back from the 700s.\n\n**Payment history is the single biggest factor** \u2014 share that and I can sharpen the estimate considerably! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "no missed payments ever",
+            "reply": "# Credit Score Estimate (So Far)\n\nExcellent \u2014 a **perfect payment history** is the most valuable credit asset you can have! \ud83c\udf89\n\n## What We Know:\n| Factor | Status | Impact |\n|--------|--------|--------|\n| Payment history | \u2705 Perfect | Strong Positive |\n| Account age (2015) | \u2705 ~10 years | Positive |\n| Credit mix (5 cards) | \u2705 Good | Positive |\n| Utilization (75%) | \u26a0\ufe0f High | Significant Negative |\n\n## Rough Estimate: **665\u2013705**\nYour strong history and account age are working hard *against* that utilization drag.\n\n## Biggest Opportunity:\nPaying down to **~30% utilization (~$2,400 balance)** could potentially push you into the **720\u2013750+** range relatively quickly.\n\n## Still Could Refine With:\n- \ud83d\udd0d Any recent hard inquiries?\n- \ud83d\udcb0 Any loans or collections?\n\nYou're in solid shape \u2014 **utilization is your main lever to pull!** \ud83d\udcaa",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "three applications this year",
+            "reply": "Your credit estimate is **64 out of 100**, which falls in the **Good** band \u2014 a solid foundation to build on.\n\nThe two areas pulling your score down the most are worth tackling right away. First, your **balance compared to your credit limit** scored only 7 out of 30. In plain terms, you're using a large chunk of the credit available to you, and lenders see that as a strain. Paying down those balances is the single fastest way to improve your estimate. Second, your **recent applications** scored 0 out of 10. Applying for several credit products in a short period signals risk to lenders \u2014 so the best move right now is simply to pause any new applications and give that window some time to pass.\n\nThe great news is that your **payment history** \u2014 whether you pay on time \u2014 is a perfect 35 out of 35, and your **length of credit history** is also maxed out. These are the heaviest factors, and you're nailing both of them.\n\nKeep up those on-time payments and chip away at your balances \u2014 you're closer to excellent than you might think! \ud83c\udfaf",
+            "gave_score": true,
+            "computed_score": 64,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 64,
+        "final_profile": {
+          "card_count": 5,
+          "utilization": "50to75",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 3,
+          "typical_balance_cad": 6000.0,
+          "total_credit_limit_cad": 8000.0,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 64,
+        "score_matches": true
+      },
+      {
+        "id": "corrects_themselves",
+        "turns": [
+          {
+            "user": "I have 2 cards",
+            "reply": "# Credit Card Quick Insights \ud83d\udcb3\n\nThanks for sharing! Having **2 credit cards** is a good start, but I'd need a few more details to give you a useful estimate:\n\n**Key factors I'm missing:**\n- \ud83d\udcb0 What are your **balances vs. credit limits**? (utilization rate)\n- \u23f0 How **long** have you had each card?\n- \ud83d\udcc5 Do you **pay on time** consistently?\n- \ud83d\udd0d Any **late payments or collections** in your history?\n- \ud83c\udfe6 Do you have other credit types (loans, mortgage)?\n\n---\n\n**What I can say now:**\n- Having 2 cards *can be positive* for your credit mix\n- Managing both responsibly helps build history\n- Keeping balances **below 30%** of your limits is ideal\n\nShare more details and I can give you much better guidance! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "sorry, 3 cards actually \u2014 I forgot the store one",
+            "reply": "# Updated: 3 Credit Cards \ud83d\udcb3\ud83d\udcb3\ud83d\udcb3\n\nNo worries! **3 cards** (including a store card) is actually a reasonable profile.\n\n**Quick notes on store cards:**\n- They typically have **lower credit limits**, which can hurt utilization if you carry a balance\n- They can **help diversify** your credit mix slightly\n\n---\n\nI still need more details to estimate your situation:\n\n- \ud83d\udcca **Balances vs. limits** on each card?\n- \ud83d\udcc5 **Payment history** \u2014 always on time?\n- \u23f0 **Age** of each account?\n- \ud83d\udd0d Any **negative marks** (late payments, collections)?\n- \ud83c\udfe6 **Other credit** (auto loan, student loan, etc.)?\n\n---\n\n**General tip:** With 3 cards, keep your **total utilization under 30%** (ideally under 10%) for the best impact.\n\nShare more and I can dig deeper! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "under 10%",
+            "reply": "# Great News on Utilization! \ud83c\udf89\n\n**Under 10% utilization** across your 3 cards is **excellent** \u2014 this is the sweet spot that scoring models love!\n\n---\n\n**What this likely means for you:**\n- \u2705 Utilization is probably **helping** your score, not hurting it\n- \u2705 You're not over-relying on credit\n\n---\n\n**I still need these key pieces:**\n\n- \ud83d\udcc5 **Payment history** \u2014 any late payments ever?\n- \u23f0 **Age of accounts** \u2014 how long have you had each card?\n- \ud83d\udd0d **Negative marks** \u2014 collections, bankruptcies?\n- \ud83c\udfe6 **Other credit types** (loans, mortgage)?\n- \ud83d\udd0e **Recent hard inquiries**?\n\n---\n\n**Current picture:** Low utilization + 3 cards = a solid foundation. Payment history (35% of your score) is the biggest missing piece \u2014 how's that looking? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "6 years",
+            "reply": "# 6 Years of Credit History \ud83d\udcc5\n\nNice! **6 years** is a solid credit age \u2014 here's where you stand so far:\n\n---\n\n**Your profile building up:**\n- \u2705 **3 cards** \u2014 good mix including store card\n- \u2705 **Under 10% utilization** \u2014 excellent\n- \u2705 **6 years history** \u2014 above average (longer is better, but this is solid)\n\n---\n\n**Still missing the big ones:**\n\n- \ud83d\udcc5 **Payment history** \u2014 any late payments? *(this is 35% of your score!)*\n- \ud83d\udd0d **Negative marks** \u2014 collections, bankruptcies?\n- \ud83c\udfe6 **Other credit types** \u2014 loans, mortgage?\n- \ud83d\udd0e **Recent hard inquiries**?\n\n---\n\n**Where you might stand so far:**\nWith good utilization and 6 years of history, you have a strong base. **Payment history will make or break your estimate** \u2014 have you always paid on time? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "never missed",
+            "reply": "# Looking Strong! \ud83c\udf1f\n\n**Your profile so far:**\n- \u2705 **3 cards** \u2014 good mix\n- \u2705 **Under 10% utilization** \u2014 excellent\n- \u2705 **6 years of history** \u2014 solid\n- \u2705 **Perfect payment history** \u2014 this is huge!\n\n---\n\n**This combination typically suggests a score in the good-to-excellent range**, but I still have a couple of gaps:\n\n- \ud83c\udfe6 **Other credit types** \u2014 any loans, auto, mortgage? (boosts credit mix)\n- \ud83d\udd0e **Recent hard inquiries** \u2014 applied for anything lately?\n- \ud83d\udd0d **Any collections or negative marks** from older accounts?\n\n---\n\n**What I can say:** Clean payment history + low utilization + 6 years = a very healthy credit foundation. Most people with this profile land in the **700s or higher.**\n\n*Remember: this is an informal estimate, not an actual credit score.*\n\nWhat about loans or recent applications? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "none",
+            "reply": "Your credit estimate comes in at an impressive 96 out of 100, placing you in the **Excellent** band.\n\nThe only factor holding you back from a perfect score is your **length of credit history**, which scored 11 out of 15. This simply means how long your accounts have been open \u2014 and older accounts carry more weight. The best thing you can do is avoid closing your oldest account, since it's the one doing the most work to support your score.\n\nEverything else is outstanding. Your payment history \u2014 whether you pay on time \u2014 is a perfect 35 out of 35, which matters more than any other single factor.\n\nKeep doing what you're doing, protect that oldest account, and time will take care of the rest \u2014 you're in a truly strong position! \ud83c\udf1f\n\n---\n*Remember, this is only an estimate based on your self-reported answers. For your actual credit score, contact Equifax or TransUnion directly.*",
+            "gave_score": true,
+            "computed_score": 96,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 96,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "under10",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 96,
+        "score_matches": true
+      },
+      {
+        "id": "deflects_one_question",
+        "turns": [
+          {
+            "user": "1 card",
+            "reply": "# Credit Snapshot \ud83d\udd0d\n\nWith just **1 credit card**, here's what I can tell you:\n\n## What Likely Helps \u2705\n- Having a card establishes a **credit history**\n- On-time payments build a positive track record\n\n## What I Still Need to Know\nTo give you a better picture, tell me:\n- **Payment history** \u2013 any missed payments?\n- **Balance vs. limit** \u2013 how much do you owe? (aim for **under 30%**)\n- **Age of account** \u2013 how long have you had it?\n- **Any other credit** \u2013 loans, collections, etc.?\n\n## Quick Tips \ud83d\udca1\n- One card is a **solid start**, but a thin credit file can limit your estimated score\n- Consider a second card over time to diversify\n\nShare more details and I can give you a much clearer picture! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I'd rather not say",
+            "reply": "# No Problem! \ud83d\ude0a\n\nI completely respect that \u2014 your financial details are personal.\n\n## What I Can Say Generally\n\nWith **1 credit card** and limited info:\n\n- Your score could range anywhere from **very poor to excellent** \u2014 it truly depends on the factors I mentioned\n- A single card **can** support a strong credit profile if managed well\n\n## Universal Tips \ud83d\udca1\n\n- Keep your balance **below 30%** of your limit\n- **Never miss a payment** \u2014 this is the #1 factor\n- Keep the card **open and active**\n- Avoid applying for lots of new credit at once\n\n---\n\n> \u26a0\ufe0f *Remember, this is general credit coaching \u2014 not an official credit score estimate.*\n\nIf you ever want a **real score**, check:\n- **AnnualCreditReport.com** (free reports)\n- Your bank's free credit score tool\n\nHappy to answer any general questions! \ud83d\ude4c",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "fine \u2014 about 80% of the limit",
+            "reply": "# Thanks for Sharing! \ud83d\udcca\n\n## Utilization Check \u26a0\ufe0f\n\nAt **80% of your limit**, your credit utilization is quite high. This is the **2nd most important** factor in your score.\n\n| Utilization | Impact |\n|-------------|--------|\n| Under 10% | Excellent |\n| 10\u201330% | Good |\n| 30\u201350% | Fair |\n| **50\u2013100%** | **Hurts your score** |\n\n## What This Means\n- High utilization **likely drags your score down noticeably** \u2014 potentially by **50\u2013100+ points**\n- The good news: **this can improve quickly** once you pay it down\n\n## Quick Wins \ud83d\udca1\n- Pay down the balance toward **30% or below**\n- Ask your card issuer for a **credit limit increase**\n- Consider making **mid-month payments** to keep the balance low\n\n---\n\n> \u26a0\ufe0f *This is general coaching, not an official credit score estimate.*\n\nWant to share your payment history? That would complete the picture! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "under a year",
+            "reply": "# Good to Know! \ud83d\udcc5\n\n## Account Age \u2014 Under 1 Year\n\nA newer account means a **short credit history**, which is another factor that can limit your score.\n\n| History Length | Impact |\n|----------------|--------|\n| 7+ years | Excellent |\n| 2\u20137 years | Good |\n| **Under 1 year** | **Thin file** |\n\n## Putting It Together So Far\n\n| Factor | Status |\n|--------|--------|\n| Utilization (80%) | \u26a0\ufe0f High |\n| Credit history | \u26a0\ufe0f Short |\n| Number of accounts | \u26a0\ufe0f Limited |\n\n## What This Suggests\nYour profile has **multiple limiting factors** right now \u2014 but the great news is **these all improve naturally over time!**\n\n## Priority Actions \ud83d\udca1\n1. **Pay down that balance** \u2014 biggest immediate impact\n2. **Never miss a payment** \u2014 critical this early\n3. **Be patient** \u2014 time builds history automatically\n\n---\n\n> \u26a0\ufe0f *General coaching only \u2014 not an official credit score estimate.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "missed a few",
+            "reply": "# Full Picture Now \ud83d\udcca\n\n## Your Profile Summary\n\n| Factor | Status |\n|--------|--------|\n| Utilization (80%) | \ud83d\udd34 High |\n| Credit history (<1 yr) | \ud83d\udfe1 Short |\n| Missed payments | \ud83d\udd34 Serious concern |\n\n## What This Means\nMissed payments are the **#1 most damaging** factor \u2014 they can:\n- Drop your score significantly (**90\u2013110+ points**)\n- Stay on your report for **7 years**\n\nCombined with high utilization and a thin file, your score is likely in a **challenging range right now.**\n\n## Recovery Plan \ud83d\udca1\n1. **Pay on time from here on** \u2014 every single payment\n2. **Pay down that 80% balance** ASAP\n3. Set up **autopay** to avoid future misses\n4. Time and consistency will heal this\n\n## Encouragement \ud83d\ude4c\nYou're early in your credit journey \u2014 **recovery is absolutely possible!**\n\n---\n> \u26a0\ufe0f *General coaching only \u2014 not an official credit score estimate.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "two",
+            "reply": "# Updated Picture \ud83d\udcca\n\n## Missed Payments: **2**\n\nTwo missed payments early in your credit journey is notable, but **not unrecoverable.**\n\n## Your Full Profile\n\n| Factor | Status |\n|--------|--------|\n| Utilization (80%) | \ud83d\udd34 High |\n| Credit history (<1 yr) | \ud83d\udfe1 Short |\n| Missed payments (2) | \ud83d\udd34 Damaging |\n\n## What This Suggests\nYour score is likely in a **poor to fair range** right now. Two missed payments on a thin, young file with high utilization stack up against you \u2014 but **none of this is permanent.**\n\n## Your Recovery Priorities \ud83d\udca1\n1. **Never miss another payment** \u2014 stop the bleeding first\n2. **Set up autopay today**\n3. **Pay down that balance** toward 30% or below\n4. Let time do the rest\n\n> \u26a0\ufe0f *General coaching only \u2014 not an official credit score estimate.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 1,
+          "utilization": "over75",
+          "history_length": "under1",
+          "missed_payments": "rarely",
+          "recent_inquiries": null,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 3,
+        "wrong_fields": {
+          "missed_payments": {
+            "expected": "sometimes",
+            "got": "rarely"
+          },
+          "recent_inquiries": {
+            "expected": 2,
+            "got": null
+          }
+        },
+        "score_expected": 25,
+        "score_matches": false
+      },
+      {
+        "id": "asks_for_advice_midway",
+        "turns": [
+          {
+            "user": "6 cards",
+            "reply": "# Credit Score Estimate\n\nThanks for sharing! Unfortunately, **6 cards alone** isn't enough for me to give you a meaningful estimate. I need a few more details:\n\n## Key Questions:\n- \ud83d\udcb0 **Balances** \u2013 What do you owe across those 6 cards?\n- \ud83d\udcca **Credit limits** \u2013 What are the total limits?\n- \ud83d\udcc5 **Payment history** \u2013 Any late payments?\n- \ud83d\udd50 **Age of accounts** \u2013 How old are the oldest/newest cards?\n- \ud83d\udd0d **Recent inquiries** \u2013 Any new applications lately?\n- \ud83c\udfe6 **Other accounts** \u2013 Loans, mortgage, etc.?\n\n## What 6 Cards *Could* Mean:\n- \u2705 Good: Diverse credit, high available limit\n- \u26a0\ufe0f Risky: If balances are high or accounts are new\n\n**The most important factor is your payment history and utilization rate.** Share more and I can give you a better picture!",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "maybe 25%",
+            "reply": "# Updated Picture\n\nThanks! **25% utilization** across 6 cards is a decent sign.\n\n## What This Suggests:\n- \u2705 **25% utilization** is moderate \u2014 under 30% is generally considered acceptable\n- \ud83c\udfaf **Under 10%** is where scores tend to shine brightest\n\n## Still Missing:\nTo refine this further:\n- \ud83d\udcc5 **Payment history** \u2013 Any late/missed payments?\n- \ud83d\udd50 **Account age** \u2013 How long have you had these cards?\n- \ud83d\udd0d **Recent hard inquiries?**\n- \ud83c\udfe6 **Any loans or other accounts?**\n\n## Rough Ballpark:\nIf your payment history is **clean** and accounts are **reasonably aged**, you might be looking somewhere in the **670\u2013720 range** \u2014 but this is a very rough guess based on limited info.\n\n> \u26a0\ufe0f *This is not a real credit score \u2014 just an educational estimate based on what you've shared.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "just tell me roughly what my score is, I'll fill in the rest later",
+            "reply": "# Rough Estimate\n\nBased on **6 cards + ~25% utilization**, my best guess is:\n\n## \ud83c\udfaf ~670\u2013710\n\nThis assumes:\n- No major late payments\n- Accounts have some age\n- No recent hard inquiries\n\n> \u26a0\ufe0f *This is not a real credit score \u2014 just an educational estimate based on very limited information.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 6,
+          "utilization": "10to30",
+          "history_length": null,
+          "missed_payments": null,
+          "recent_inquiries": null,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 2,
+        "fields_correct": 2,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "worst_case_profile",
+        "turns": [
+          {
+            "user": "I have 1 card",
+            "reply": "# Credit Score Estimate\n\nThanks for sharing! Unfortunately, **one credit card alone isn't enough** for me to give you a meaningful estimate. I'd need to know more, such as:\n\n- \ud83d\udcb3 **Credit limit** on the card\n- \ud83d\udcca **Current balance** (utilization rate)\n- \u23f3 **Age of the account**\n- \u2705 **Payment history** (any late payments?)\n- \ud83c\udfe6 **Other accounts** (loans, mortgage, etc.)\n- \ud83d\udd0d **Recent hard inquiries**\n\n### What I *can* say:\nHaving **1 credit card** is a start, but a thin credit profile may limit your score. Key tips:\n- Keep utilization **below 30%**\n- **Never miss a payment**\n- Consider a second card to diversify\n\n**Tell me more and I can give you a better picture!** \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "it's basically maxed out, like 90%",
+            "reply": "# Credit Score Update\n\nOuch \u2014 **90% utilization is a major red flag** for lenders. This single factor could be **significantly dragging your score down**.\n\n### What This Means:\n- \ud83d\udcc9 High utilization (ideal is **<30%**, excellent is **<10%**) can **drop your score by 50\u2013150+ points**\n- With only one card, there's no other card to \"balance out\" your utilization\n\n### Still Need to Know:\n- \u23f3 How old is the account?\n- \u2705 Any missed/late payments?\n- \ud83c\udfe6 Any loans or other accounts?\n- \ud83d\udd0d Recent hard inquiries?\n\n### Quick Wins to Improve:\n1. **Pay down the balance** \u2014 even getting to 50% helps\n2. **Don't close the card**\n3. Consider a **credit-builder loan** to diversify\n\nBased on what you've shared so far, your score is likely in a **challenged range**, but more details would help me refine that picture.",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "got it 8 months ago",
+            "reply": "# Credit Score Update\n\nThanks! Here's what I can piece together now:\n\n### Your Profile So Far:\n- \ud83d\udcb3 **1 credit card** \u2014 8 months old\n- \ud83d\udcca **~90% utilization** \u2014 very high\n- \u23f3 **Short credit history** \u2014 8 months is quite thin\n\n### What This Likely Means:\nBoth **high utilization** AND **short history** are working against you. These are two of the biggest scoring factors. Your score is likely in the **poor to fair range (roughly 500s\u2013600s)**, but that's a rough guess.\n\n### Still Missing:\n- \u2705 Any **late/missed payments?**\n- \ud83c\udfe6 Any **loans or other accounts?**\n- \ud83d\udd0d Any **recent hard inquiries?**\n\n### Good News:\n- 8 months isn't permanent \u2014 **history grows over time**\n- Paying down that balance is your **#1 priority right now**\n\nTell me more to sharpen the picture! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I've missed payments a lot",
+            "reply": "# Credit Score Update\n\nThat's an important detail \u2014 **missed payments are the single most damaging factor** to your score.\n\n### Your Profile So Far:\n- \ud83d\udcb3 **1 credit card**, 8 months old\n- \ud83d\udcca **~90% utilization**\n- \u274c **Multiple missed payments**\n- \u23f3 **Short credit history**\n\n### What This Likely Means:\nWith all three major negatives combined, your score is likely in the **poor range (roughly 400s\u2013550s)**. This is a rough estimate only.\n\n### Your Priorities Right Now:\n1. **Stop missing payments immediately** \u2014 set up autopay for at least the minimum\n2. **Pay down the balance** toward 30% or lower\n3. **Don't close the card** \u2014 you need the history\n\n### Silver Lining:\n- Recent positive behavior can start improving your score within **1\u20133 months**\n- Nothing here is permanent!\n\nAny **loans, other accounts, or hard inquiries** to add to the picture?",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I've applied for 4 things recently",
+            "reply": "Your credit estimate is 11 out of 100, which places you in the **Needs Work** band \u2014 but that's exactly what this kind of checkup is for.\n\nThe two most urgent things to focus on are your payment history and your balances. Right now, payment history is scoring 0 out of 35 \u2014 it's the single biggest factor in any credit picture, and everything else matters less until payments are consistently on time. Set up autopay or reminders so nothing slips through. Your balances are also very close to your credit limits (scoring just 2 out of 30) \u2014 think of this like a bucket that's nearly full. Lenders prefer to see it much less full, so paying down what you owe is the biggest practical step you can take right now.\n\nYou've also applied for credit several times recently (0 out of 10), which can signal risk to lenders. Give it some breathing room and avoid new applications for now.\n\nRemember, this is only an **estimate based on your self-reported answers** \u2014 your official score comes from Equifax or TransUnion \u2014 but small, steady changes really do add up. You've got this! \ud83d\udcaa",
+            "gave_score": true,
+            "computed_score": 11,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 11,
+        "final_profile": {
+          "card_count": 1,
+          "utilization": "over75",
+          "history_length": "under1",
+          "missed_payments": "often",
+          "recent_inquiries": 4,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 11,
+        "score_matches": true
+      },
+      {
+        "id": "vague_then_specific",
+        "turns": [
+          {
+            "user": "a few cards",
+            "reply": "# Credit Score Estimate\n\nThanks for sharing! Unfortunately, \"a few cards\" alone doesn't give me enough to work with. To give you a better estimate, I'd need to know:\n\n- **Payment history** \u2013 Any late or missed payments?\n- **Credit utilization** \u2013 How much of your credit limits are you using? (ideally under 30%)\n- **Account age** \u2013 How long have you had the cards?\n- **Any negative marks** \u2013 Collections, bankruptcies, etc.?\n- **Other credit** \u2013 Any loans or mortgages?\n\n### What I *can* say:\nHaving **multiple cards** can be positive \u2014 it may boost your available credit and diversify your profile \u2014 *if* you're paying on time and keeping balances low.\n\n> \u26a0\ufe0f *This is not a real credit score. For your actual score, check a free service like Credit Karma or your bank's app.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "three of them",
+            "reply": "# Credit Score Estimate\n\nThanks! Having **three credit cards** is a solid foundation, but I still need more details to estimate where you stand:\n\n- **Payment history** \u2013 Any late or missed payments?\n- **Credit utilization** \u2013 What % of your total limits are you carrying as balances?\n- **Account age** \u2013 How old are these cards?\n- **Any negative marks** \u2013 Collections, bankruptcies, defaults?\n\n### What I *can* say:\nThree cards is actually a **good number** for most people. It can:\n- \u2705 Increase your total available credit\n- \u2705 Lower your overall utilization (if balances are low)\n- \u2705 Show lenders you can manage multiple accounts\n\nWithout payment history and utilization details though, scores could realistically range anywhere from **poor to excellent**.\n\n> \u26a0\ufe0f *This is not a real credit score. Check Credit Karma or your bank's app for your actual score.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I keep it low, maybe 5%",
+            "reply": "# Credit Score Estimate\n\nGreat news \u2014 **5% utilization** is excellent! That's well below the recommended 30% threshold and is a strong positive signal.\n\n### What this likely means:\n- \u2705 **Utilization factor**: Very strong \u2014 this alone could contribute positively to your score\n\n### Still missing pieces:\n- **Payment history** \u2013 Any late or missed payments? *(This is the biggest factor \u2014 35% of your score)*\n- **Account age** \u2013 How long have you had the cards?\n- **Any negative marks** \u2013 Collections, bankruptcies?\n- **Other credit** \u2013 Any loans?\n\n### Rough estimate so far:\nWith 3 cards and 5% utilization, **if your payment history is clean**, you're likely in a **good to excellent** range \u2014 potentially **700+** \u2014 but I can't confirm without the full picture.\n\n> \u26a0\ufe0f *This is not a real credit score. Check Credit Karma or your bank's app for your actual score.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "my oldest is about 2 years old",
+            "reply": "# Credit Score Estimate\n\nGood to know! **2 years** as your oldest account is relatively young \u2014 account age is a meaningful factor.\n\n### Updated Picture:\n- \u2705 **Utilization**: Excellent (5%)\n- \u2705 **Number of cards**: Good (3)\n- \u26a0\ufe0f **Credit age**: Moderate \u2014 2 years is decent but not strong yet; scores improve as accounts age\n\n### Still missing:\n- **Payment history** \u2013 Any late or missed payments? *(biggest factor at 35%)*\n- **Any negative marks** \u2013 Collections, bankruptcies?\n- **Other credit** \u2013 Any loans?\n\n### Rough Estimate So Far:\nWith great utilization but a relatively **young credit history**, you're likely somewhere in the **650\u2013720** range \u2014 *assuming a clean payment history*. Aging your accounts and maintaining good habits will push this higher over time.\n\n> \u26a0\ufe0f *This is not a real credit score. Check Credit Karma or your bank's app for your actual score.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "one late payment two years ago",
+            "reply": "# Credit Score Estimate\n\nThanks for sharing that! Here's the updated picture:\n\n### What You've Told Me:\n- \u2705 **Utilization**: Excellent (5%)\n- \u2705 **Number of cards**: Good (3)\n- \u26a0\ufe0f **Credit age**: Moderate (~2 years oldest)\n- \u26a0\ufe0f **Payment history**: One late payment, 2 years ago\n\n### On the Late Payment:\nOne late payment **hurts**, but the good news is:\n- It's **2 years old** \u2014 its impact fades over time\n- It will **fall off your report in ~5 more years**\n- One isolated incident is far better than a pattern\n\n### Rough Estimate:\nYou're likely in the **640\u2013700** range. The late payment and young credit age are holding you back from higher tiers, but excellent utilization is helping significantly.\n\n### To improve:\n- Keep utilization low \u2705\n- Never miss another payment\n- Let your accounts age naturally\n\n> \u26a0\ufe0f *This is not a real credit score. Check Credit Karma or your bank's app for your actual score.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "zero applications",
+            "reply": "Your credit estimate is 79 out of 100, which puts you in the **Very Good** band \u2014 a solid place to be.\n\nYour two weakest areas are length of credit history and payment history. For history length, the simplest move is to keep your oldest card open, even if it just sits in a drawer \u2014 closing it would shorten your track record and likely lower your score. For payment history, which carries the most weight of any factor, even one or two late payments can pull things down meaningfully. Setting up automatic minimum payments is an easy way to make sure nothing slips through the cracks going forward.\n\nThe good news: you're doing everything else really well. You're using only a small portion of your available credit limit, you haven't applied for new credit recently, and you have a healthy number of cards \u2014 all three of those are perfect scores.\n\nKeep your oldest card open, stay on top of due dates, and your score has every reason to keep climbing. You're already in great shape! \ud83c\udf89\n\n> *Remember, this is an estimate based on your self-reported answers \u2014 your official credit score comes from Equifax or TransUnion.*",
+            "gave_score": true,
+            "computed_score": 79,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 79,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "under10",
+          "history_length": "1to3",
+          "missed_payments": "rarely",
+          "recent_inquiries": 0,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 79,
+        "score_matches": true
+      },
+      {
+        "id": "irrelevant_detail",
+        "turns": [
+          {
+            "user": "I'm a nurse making $85,000 a year, 3 cards",
+            "reply": "# Your Credit Snapshot \ud83d\udcb3\n\nThanks for sharing! To give you a better picture, I'd need a few more details:\n\n- **Payment history** \u2013 Any late payments?\n- **Credit utilization** \u2013 What are your card balances vs. limits?\n- **Credit age** \u2013 How long have you had these accounts?\n- **Other debt** \u2013 Student loans, mortgage, car payments?\n- **Hard inquiries** \u2013 Any recent applications for credit?\n\n## What I Can Say:\n- **Income alone doesn't affect your credit score** \u2014 it's not factored in\n- Having **3 cards is generally positive** for your credit mix\n- As a nurse, you likely have **stable employment**, which helps with *loan approvals* (not scores directly)\n\n## Next Step:\nCheck your free score at **AnnualCreditReport.com** and share more details so I can coach you better! \ud83c\udfaf\n\n> *This is not an official credit score estimate.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "about 12% utilization",
+            "reply": "# Great News on Utilization! \ud83c\udf89\n\n**12% utilization is excellent** \u2014 the sweet spot is under 30%, and under 10% is ideal, so you're doing very well here!\n\n## What This Suggests So Far:\n| Factor | Status |\n|--------|--------|\n| Utilization (12%) | \u2705 Very Good |\n| 3 cards | \u2705 Positive mix |\n| Income ($85K) | \u2796 Not scored |\n\n## Still Missing Pieces:\nTo sharpen the picture, I'd love to know:\n- **Payment history** \u2013 Any missed/late payments? *(35% of your score)*\n- **Credit age** \u2013 How old are your oldest/newest accounts?\n- **Other loans** \u2013 Auto, student, mortgage?\n- **Recent hard inquiries** \u2013 New credit applications?\n\n## Rough Estimate:\nBased on what you've shared, you're showing **habits consistent with a good-to-excellent range** \u2014 but payment history is the biggest wildcard.\n\n> *This is not a real credit score estimate.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "5 years",
+            "reply": "# Credit Age Update \ud83d\udcc5\n\n**5 years of credit history is solid** \u2014 it's considered \"good\" (though 7+ years is ideal for top scores).\n\n## Your Picture So Far:\n| Factor | Status |\n|--------|--------|\n| Utilization (12%) | \u2705 Very Good |\n| 3 cards | \u2705 Positive mix |\n| Credit age (5 yrs) | \u2705 Good |\n| Income ($85K) | \u2796 Not scored |\n\n## Still Need to Know:\n- **Payment history** \u2013 Any late/missed payments? *(biggest factor at 35%)*\n- **Other loans** \u2013 Auto, student, mortgage?\n- **Recent hard inquiries** \u2013 New applications?\n\n## Estimated Range So Far:\nYour habits suggest somewhere in the **680\u2013750+ range** \u2014 but **payment history could move this significantly** in either direction.\n\nOne late payment can drop scores 60\u2013110 points, so this detail really matters!\n\n> *This is not a real credit score estimate.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "never missed",
+            "reply": "# Looking Strong! \ud83c\udf1f\n\n**No missed payments is HUGE** \u2014 it's the single most important factor at 35% of your score!\n\n## Your Full Picture So Far:\n| Factor | Status |\n|--------|--------|\n| Payment history | \u2705 Excellent |\n| Utilization (12%) | \u2705 Very Good |\n| 3 cards | \u2705 Positive mix |\n| Credit age (5 yrs) | \u2705 Good |\n| Income ($85K) | \u2796 Not scored |\n\n## Estimated Range:\nBased on what you've shared, your habits are consistent with a **720\u2013760+ range** \u2014 solidly in the \"good to very good\" territory!\n\n## To Push Even Higher, Consider:\n- **Keep utilization under 10%** for a potential small boost\n- **Avoid new hard inquiries** unless necessary\n- **Time is your friend** \u2014 score naturally improves as accounts age\n\nAny student loans, car payments, or recent credit applications could shift this estimate.\n\n> *This is not a real credit score estimate.*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "none this year",
+            "reply": "Your credit estimate comes in at 90 out of 100, which puts you in the **Excellent** band \u2014 a great place to be.\n\nYour two weakest areas are still solid, but here's how to squeeze out a bit more. On **length of credit history** (11/15), the age of your accounts matters \u2014 older is better \u2014 so resist the urge to close your oldest card, even if you rarely use it. For your **balance vs. credit limit** (24/30), this looks at how much of your available credit you're actually using. You're already in a healthy spot, but bringing that balance closer to 10% of your limit could nudge your score higher.\n\nThe real star here is your **payment history** \u2014 a perfect 35/35. Paying on time is the single biggest factor in any credit score, and you're nailing it.\n\nRemember, this is only an estimate based on your self-reported answers. For your official score, check with Equifax or TransUnion. Keep up those on-time payments and you're on a fantastic track! \ud83c\udf1f",
+            "gave_score": true,
+            "computed_score": 90,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 90,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "10to30",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": 85000.0
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 90,
+        "score_matches": true
+      },
+      {
+        "id": "off_topic_opening",
+        "turns": [
+          {
+            "user": "what's the best travel card in Canada?",
+            "reply": "## Best Travel Credit Cards in Canada \ud83c\udde8\ud83c\udde6\n\nThis isn't really a credit question, but here are top picks:\n\n| Card | Best For |\n|------|----------|\n| **Amex Cobalt** | Flexible points, high earn rate |\n| **TD Aeroplan Visa Infinite** | Air Canada flyers |\n| **Scotiabank Passport Visa Infinite** | No foreign transaction fees |\n| **RBC Avion Visa Infinite** | Flexible redemptions |\n\n### Key factors to consider:\n- **Your credit score** (most require **Good-Excellent**, ~680+)\n- Annual fee vs. rewards value\n- Which airline/hotel you prefer\n- Whether you travel internationally often\n\n> \u26a0\ufe0f **To help you pick the right card, I'd need to know:**\n> - Your approximate credit score range\n> - Do you carry a balance or pay in full?\n> - Preferred airline or travel style?\n\nWant personalized guidance? Share more details! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "ok sure, I have 2 cards",
+            "reply": "## Got It! Good Start \ud83d\udc4d\n\nHaving **2 credit cards** is useful context \u2014 it can actually help your credit profile by showing you can manage multiple accounts.\n\n> \u26a0\ufe0f **To give you better guidance, I still need a few more details:**\n> - What are your **approximate credit scores**? (if known)\n> - How **long** have you had these cards?\n> - Do you **pay in full** each month or carry a balance?\n> - What's your **annual income**? (many premium travel cards have minimums, e.g., $60K+)\n> - Do you have any **missed payments** on record?\n\n### Why this matters:\nCards like the **Amex Cobalt** or **Scotiabank Passport Visa Infinite** have different approval requirements \u2014 knowing your credit situation helps me point you toward cards you're **likely to be approved for**.\n\nShare what you can and I'll narrow it down! \u2708\ufe0f",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "about 35%",
+            "reply": "## Thanks for Sharing! \ud83d\udcca\n\nI'll take that as your **credit utilization rate of ~35%**.\n\n### What This Tells Me:\n- **35% utilization** is *slightly above* the recommended **<30%** threshold\n- It's not alarming, but **lowering it toward 10-30%** could give your credit score a modest boost before applying for a new card\n\n### Quick Tips to Improve Before Applying:\n- Pay down balances a bit more if possible\n- **Don't close** your existing 2 cards\n\n> \u26a0\ufe0f **I still need a few more details to estimate your approval odds:**\n> - Do you know your **credit score range**? (e.g., 650, 720+)\n> - Do you **pay in full** monthly?\n> - Any **missed payments** in recent years?\n> - **Annual income**? (premium cards often require $60K+)\n\nBringing utilization under 30% is a great first step toward qualifying for top travel cards! \u2708\ufe0f",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "3 years",
+            "reply": "## Great Info! \ud83d\udcc5\n\nI'll take that as your **credit history length of ~3 years**.\n\n### What This Tells Me So Far:\n| Factor | Status |\n|--------|--------|\n| Credit cards | 2 accounts |\n| Utilization | ~35% (slightly high) |\n| Credit history | 3 years (moderate) |\n\n### Assessment:\n- **3 years** is decent but not long \u2014 lenders generally prefer **5+ years**\n- Combined with 35% utilization, your estimated profile is likely **fair-to-good**\n\n### Travel Card Recommendations at This Stage:\n- **Scotiabank Scene+ Visa** \u2014 easier approval\n- **TD Rewards Visa** \u2014 lower income requirements\n- Premium cards (Cobalt, Passport Infinite) may be a stretch **right now**\n\n> \u26a0\ufe0f **Still helpful to know:**\n> - Any **missed payments**?\n> - **Annual income**?\n> - Approximate **credit score** if known?\n\nBuilding 6-12 more months of clean history could unlock better travel cards! \u2708\ufe0f",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "never missed a payment",
+            "reply": "## Excellent! \ud83c\udf1f\n\nPerfect payment history is the **most important credit factor!**\n\n### Your Profile So Far:\n| Factor | Status | Impact |\n|--------|--------|--------|\n| Credit cards | 2 accounts | \u2705 Good |\n| Utilization | ~35% | \u26a0\ufe0f Slightly high |\n| Credit history | 3 years | \ud83d\udfe1 Moderate |\n| Missed payments | None | \u2705 Excellent |\n\n### Estimated Profile: **Good** (likely ~680-720 range)\n\n### Travel Card Recommendations:\n- **Scotiabank Passport Visa Infinite** \u2014 strong fit \u2705\n- **Amex Cobalt** \u2014 likely approvable \u2705\n- **TD Aeroplan Visa Infinite** \u2014 possible, check income req.\n\n### To Strengthen Further:\n- Lower utilization to **<30%** for a quick boost\n- Keep history growing cleanly\n\n> \u26a0\ufe0f **Last helpful details:**\n> - **Annual income?** (many cards require $60K+)\n> - Any idea of your **actual credit score?**\n\nYou're in solid shape \u2014 a top travel card looks realistic! \u2708\ufe0f",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "one",
+            "reply": "## Could You Clarify? \ud83e\udd14\n\nDid you mean:\n- **One missed payment**? or\n- **One** of something else (income, card, year)?\n\n### If You Mean **One Missed Payment:**\n| Factor | Status | Impact |\n|--------|--------|--------|\n| Credit cards | 2 accounts | \u2705 Good |\n| Utilization | ~35% | \u26a0\ufe0f Slightly high |\n| Credit history | 3 years | \ud83d\udfe1 Moderate |\n| Missed payments | 1 | \u26a0\ufe0f Minor impact |\n\n- **One missed payment** isn't catastrophic, especially if it was **older than 1-2 years**\n- Recent missed payments hurt more than older ones\n- You're likely still in **fair-to-good** range\n\n> \u26a0\ufe0f **Still helpful to know:**\n> - How **recent** was the missed payment?\n> - Your **annual income?**\n\nCould you clarify what you meant by \"one\"? I want to make sure I give you accurate guidance! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 2,
+          "utilization": "30to50",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": null,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 4,
+        "wrong_fields": {
+          "recent_inquiries": {
+            "expected": 1,
+            "got": null
+          }
+        },
+        "score_expected": 78,
+        "score_matches": false
+      },
+      {
+        "id": "many_cards",
+        "turns": [
+          {
+            "user": "I've got 9 cards",
+            "reply": "# Credit Card Count: What It Means for Your Score\n\nHaving **9 credit cards** can actually work in your favor \u2014 but it depends on how you manage them!\n\n## Potential Positives \u2705\n- **Higher total credit limit** \u2192 lower overall utilization ratio\n- **Longer average credit history** (if cards are older)\n- **Credit mix** diversity\n\n## Potential Concerns \u26a0\ufe0f\n- High **utilization on individual cards** can hurt you\n- Too many recent applications = hard inquiries\n- Missed payments on any card = significant damage\n\n## To Better Estimate Your Credit Health, I'd Need:\n- Your **payment history** (any late payments?)\n- **Balances vs. limits** (utilization %)\n- **Age of your oldest/newest accounts**\n- Any **loans or derogatory marks**?\n\n9 cards alone isn't good or bad \u2014 **how you use them is everything!** Want to share more details? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "maybe 8% across all of them",
+            "reply": "# Utilization: 8% \u2014 That's Great! \ud83c\udf89\n\nAn **8% overall utilization** is excellent! Most scoring models reward keeping utilization **below 10%**, so you're in a strong position there.\n\n## What This Suggests \u2705\n- **Significant positive impact** on your estimated score\n- You're well under the \"good\" threshold of 30%\n- Spreading balances across 9 cards helps keep individual card utilization low too\n\n## Still Missing Pieces \ud83e\udde9\nTo give you a fuller picture, I'd still need:\n\n| Factor | Why It Matters |\n|--------|---------------|\n| **Payment history** | Biggest scoring factor (~35%) |\n| **Account ages** | Older = better |\n| **Recent hard inquiries** | New applications can ding you |\n| **Derogatory marks** | Collections, bankruptcies, etc. |\n\n## Bottom Line\nLow utilization + 9 cards = **solid foundation**, but payment history can make or break everything else.\n\nAny late payments in your history? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "oldest is 12 years",
+            "reply": "# Account Age: 12 Years \u2014 Another Win! \ud83c\udfc6\n\nA **12-year-old oldest account** is excellent for your credit history length!\n\n## Running Picture So Far \u2705\n\n| Factor | Status |\n|--------|--------|\n| **# of Cards** | 9 \u2014 good mix |\n| **Utilization** | 8% \u2014 excellent |\n| **Oldest Account** | 12 years \u2014 very strong |\n\n## What This Suggests\nYour credit age factor is likely scoring **very well** \u2014 lenders love seeing long, established history.\n\n## Still Need to Know \ud83e\udde9\n- **Payment history** \u2014 any late or missed payments? *(35% of your score!)*\n- **Recent hard inquiries** \u2014 applied for credit lately?\n- **Any collections or derogatory marks?**\n\n## Rough Estimate So Far\nBased on what you've shared, you appear to have **strong fundamentals** \u2014 potentially pointing toward a **good-to-excellent** range, but payment history could shift this significantly either way.\n\nAny late payments? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "clean record",
+            "reply": "# Payment History: Clean! \ud83c\udf1f\n\nThat's the **biggest factor** \u2014 and you've nailed it!\n\n## Your Full Picture So Far \u2705\n\n| Factor | Status | Impact |\n|--------|--------|--------|\n| **# of Cards** | 9 | Positive |\n| **Utilization** | 8% | Excellent |\n| **Oldest Account** | 12 years | Very Strong |\n| **Payment History** | Perfect | Excellent |\n\n## Rough Estimate \ud83c\udfaf\nBased on what you've shared, your fundamentals are **exceptionally strong** \u2014 this profile is consistent with what you'd typically see in the **740\u2013800+** range.\n\n## Still Could Affect You \u26a0\ufe0f\n- **Recent hard inquiries** \u2014 any new applications?\n- **Average age of all accounts** \u2014 not just oldest\n- **Any collections/derogatory marks?**\n\n## Bottom Line\nYou're checking nearly every box for an excellent credit profile! The remaining unknowns are unlikely to dramatically change the picture.\n\nHave you applied for any new credit recently? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "none in years",
+            "reply": "Your estimate is 94 out of 100, which falls in the **Excellent** band \u2014 a really strong result.\n\nThe one area pulling your score down slightly is the **number of open cards** (4 out of 10). Having many open accounts can signal risk to lenders, even when you're managing them well. It's worth asking yourself whether each card is still useful \u2014 if some are sitting unused, closing one or two could help tidy things up.\n\nEverything else is working beautifully in your favour. You have a spotless **payment history** \u2014 meaning you've consistently paid on time, which is the single most important factor. Your balances are low relative to your limits, your credit history is long, and you haven't applied for new credit recently.\n\nRemember, this is just an estimate based on your self-reported answers \u2014 your official score comes from a credit bureau like Equifax or TransUnion \u2014 but these results suggest you're in great financial shape. Keep doing what you're doing!",
+            "gave_score": true,
+            "computed_score": 94,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 94,
+        "final_profile": {
+          "card_count": 9,
+          "utilization": "under10",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 94,
+        "score_matches": true
+      },
+      {
+        "id": "weekly_framing",
+        "turns": [
+          {
+            "user": "4 cards",
+            "reply": "# Credit Score Estimate\n\nThanks for sharing! Unfortunately, **4 cards alone** isn't enough for me to give you a meaningful estimate. I'd need a few more details:\n\n## Key Factors I'm Missing:\n- \ud83d\udcb3 **Balances** on each card (vs. credit limits)\n- \ud83d\udcc5 **Payment history** \u2014 any late payments?\n- \ud83d\uddd3\ufe0f **Age of accounts** \u2014 how long have you had them?\n- \ud83d\udd0d **Recent hard inquiries** \u2014 any new applications?\n- \ud83c\udfe6 **Other accounts** \u2014 loans, mortgage, etc.?\n\n## What I Can Say:\nHaving **4 cards can be positive** \u2014 it shows credit diversity and can help your **utilization ratio** if balances are low.\n\nCould you share more details like your balances, credit limits, or payment history? That'll help me give you a much better estimate! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I spend about $500 a week and my limits add up to $12,000",
+            "reply": "# Credit Score Estimate\n\nGreat detail! Let's break this down:\n\n## Your Utilization\n- **Monthly spending:** ~$2,000/month\n- **Total credit limit:** $12,000\n- **Utilization rate:** ~17%\n\n\u2705 **17% is solid!** The sweet spot is generally **under 30%**, with under 10% being ideal.\n\n## What This Suggests\nYour utilization alone points toward a **potentially good score** \u2014 but I still need more to estimate accurately:\n\n### Missing Pieces:\n- \ud83d\udcc5 **Payment history** \u2014 any missed or late payments?\n- \ud83d\uddd3\ufe0f **Age of accounts** \u2014 how old are your cards?\n- \ud83d\udd0d **Hard inquiries** \u2014 recent credit applications?\n- \ud83c\udfe6 **Other debt** \u2014 loans, collections, etc.?\n\n## Key Tip\nIf you **pay in full monthly**, your utilization stays low and interest-free \u2014 a big score booster!\n\nCan you share your payment history or account age? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I usually owe around $1,000 on the statement",
+            "reply": "# Credit Score Estimate\n\nGood clarification! Your **statement balance** is what really matters for utilization.\n\n## Updated Utilization\n- **Reported balance:** ~$1,000\n- **Total credit limit:** $12,000\n- **Utilization rate:** ~8%\n\n\u2705 **8% is excellent!** This is in the ideal range and should positively impact your score.\n\n## What This Suggests So Far\nYour credit utilization alone points toward a **potentially very good score** in the upper range \u2014 but I still need:\n\n### Missing Pieces:\n- \ud83d\udcc5 **Payment history** \u2014 any late or missed payments?\n- \ud83d\uddd3\ufe0f **Account age** \u2014 how long have you had your cards?\n- \ud83d\udd0d **Hard inquiries** \u2014 applied for credit recently?\n- \ud83c\udfe6 **Other debt** \u2014 loans, collections, etc.?\n\n## Quick Tip\nKeep that statement balance **under 10% of your limit** \u2014 you're already doing this great! \ud83c\udf89\n\nCan you share your payment history? That's the **biggest factor** in any score! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "7 years exactly",
+            "reply": "# Credit Score Estimate\n\nGreat info! Assuming you mean your **oldest account is 7 years old** \u2014 that's helpful!\n\n## What You've Shared So Far:\n| Factor | Detail | Impact |\n|--------|--------|--------|\n| \ud83d\udcb3 Cards | 4 cards | \u2705 Positive |\n| \ud83d\udcca Utilization | ~8% | \u2705 Excellent |\n| \ud83d\uddd3\ufe0f Account Age | 7 years | \u2705 Good |\n\n## Rough Picture\nSeven years is a **solid credit history** \u2014 not exceptional, but well above average. Combined with your great utilization, things are looking promising!\n\n## Still Missing:\n- \ud83d\udcc5 **Payment history** \u2014 any late/missed payments? *(biggest factor \u2014 35% of score!)*\n- \ud83d\udd0d **Hard inquiries** \u2014 recent credit applications?\n- \ud83c\udfe6 **Collections or other debt?**\n\n## Current Estimate Range\nBased on what you've shared: possibly **680\u2013750+**, but payment history could shift this significantly.\n\n**Any late payments on record?** \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "no missed payments",
+            "reply": "# Credit Score Estimate\n\nExcellent \u2014 that's the most important factor! \ud83c\udf89\n\n## What You've Shared:\n| Factor | Detail | Impact |\n|--------|--------|--------|\n| \ud83d\udcb3 Cards | 4 cards | \u2705 Positive |\n| \ud83d\udcca Utilization | ~8% | \u2705 Excellent |\n| \ud83d\uddd3\ufe0f Account Age | 7 years | \u2705 Good |\n| \ud83d\udcc5 Payment History | Perfect | \u2705 Outstanding |\n\n## Current Estimate Range\nBased on everything shared: **720\u2013770+**\n\nThis puts you in **\"Good\" to \"Very Good\"** territory!\n\n## Still Could Affect Your Score:\n- \ud83d\udd0d **Hard inquiries** \u2014 recent applications could lower this\n- \ud83c\udfe6 **Other debt** \u2014 loans or collections?\n- \ud83d\udcca **Average account age** \u2014 7 years oldest, but how new are your other cards?\n\n## Quick Wins to Push Higher:\n- Keep utilization under 10% \u2705 *(already doing it!)*\n- Avoid unnecessary credit applications\n- Consider a small installment loan for credit mix\n\n**Any recent hard inquiries or other loans?** \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "2 applications",
+            "reply": "Your credit estimate comes in at 94 out of 100, which falls in the **Excellent** band \u2014 a really strong result to be proud of.\n\nThe only area dragging things down slightly is **recent applications**, which scored 4 out of 10. Each time you apply for new credit, lenders do a quick check on your file, and several of these in a short period can signal financial stress to lenders. The fix is simple: try to space out any future credit applications rather than bunching them together, and this score should recover on its own over time.\n\nEverything else is working beautifully in your favour \u2014 your **payment history** (whether you pay on time) is a perfect 35 out of 35, and you're keeping your balances well below your credit limits, which is exactly what lenders like to see.\n\nOne small adjustment to your application habits and you'd be very close to a perfect estimate. Keep up the great habits you already have!\n\n*Remember, this is only an estimate based on self-reported answers \u2014 your official credit score comes from Equifax or TransUnion.*",
+            "gave_score": true,
+            "computed_score": 94,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 94,
+        "final_profile": {
+          "card_count": 4,
+          "utilization": "under10",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 2,
+          "typical_balance_cad": 1000.0,
+          "total_credit_limit_cad": 12000.0,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 94,
+        "score_matches": true
+      },
+      {
+        "id": "bare_dollar_amounts",
+        "turns": [
+          {
+            "user": "I have 3 cards",
+            "reply": "# Credit Card Quick Insights\n\nThanks for sharing! Having **3 credit cards** is a good start, but I need a few more details to give you a meaningful estimate:\n\n## Key Questions for You:\n- \ud83d\udcb3 **Utilization** \u2013 What % of your combined credit limits are you using?\n- \u23f0 **Payment history** \u2013 Any late payments?\n- \ud83d\udcc5 **Account age** \u2013 How old are your accounts?\n- \ud83d\udd0d **Recent inquiries** \u2013 Any new credit applications lately?\n- \ud83d\udccb **Other debt** \u2013 Loans, collections, etc.?\n\n## What I Can Say Now:\nHaving 3 cards **can be positive** because:\n- It may give you a **higher total credit limit**\n- It shows **credit diversity**\n\nHowever, it all depends on *how* you manage them.\n\n> Share more details and I can give you a much better picture! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "800",
+            "reply": "# Great News \u2014 That Sounds Excellent! \ud83c\udf89\n\nAn **800** (if that's your current score) puts you in the **exceptional range** (typically 800\u2013850).\n\n## What This Likely Means:\n- \u2705 **Best interest rates** available\n- \u2705 Easy approval for loans & premium cards\n- \u2705 Strong negotiating power with lenders\n\n## To *Keep* It There:\n- Keep utilization **below 10%**\n- **Never miss payments**\n- Avoid unnecessary hard inquiries\n- Keep old accounts **open**\n\n## A Few Questions:\n- Is **800** your actual score, or an estimate?\n- Which bureau reported it? *(Equifax, Experian, TransUnion)*\n\n> \u26a0\ufe0f *Remember, this is general credit coaching \u2014 not an official credit assessment. Scores vary by bureau and scoring model.*\n\nYou're doing great \u2014 the goal now is **maintenance and protection!** \ud83d\udcaa",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "2000",
+            "reply": "# Clarification Needed \ud83e\udd14\n\nI'm not quite sure what **2000** refers to! Could you clarify?\n\n## Are You Referring To:\n- \ud83d\udcb3 **Credit limit?** \u2014 e.g., $2,000 total across your 3 cards?\n- \ud83d\udcb8 **Balance owed?** \u2014 $2,000 in debt?\n- \ud83d\udcca **Something else?**\n\n## If It's Your **Total Limit ($2,000):**\nThat's relatively low across 3 cards. Your utilization will be **very sensitive** \u2014 even small balances can spike your usage %.\n\n## If It's Your **Balance ($2,000):**\n- On a $2,000 limit \u2192 **100% utilization** \u26a0\ufe0f Very harmful\n- On a $10,000 limit \u2192 **20% utilization** \u2705 Manageable\n\n> \u26a0\ufe0f *This is general credit coaching, not an official credit score or assessment.*\n\nShare what **2000** means and I can give you much better guidance! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "my first card was in 2016",
+            "reply": "# Credit History Update \ud83d\udcc5\n\n**2016** gives you roughly **9 years of credit history** \u2014 that's excellent!\n\n## What This Means:\n- \u2705 **Length of history** is a strong positive factor\n- \u2705 9 years shows lenders you're an **experienced borrower**\n- \u2705 This likely **boosts your score** meaningfully\n\n## Your Profile So Far:\n| Factor | Details |\n|--------|---------|\n| \ud83d\udccb Cards | 3 cards |\n| \ud83d\udcc5 Oldest account | ~9 years (2016) |\n| \ud83c\udfaf Previous score mentioned | 800 |\n\n## Still Need to Know:\n- \ud83d\udcb3 What's your **total credit limit**?\n- \ud83d\udcb8 What's your **current balance** (~$2,000?)\n- \u23f0 Any **late payments** ever?\n\n> \u26a0\ufe0f *This is general credit coaching only \u2014 not an official score or financial assessment.*\n\nYour history length is working **in your favor!** \ud83d\udcaa",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "never missed one",
+            "reply": "# Strong Payment History! \ud83c\udf1f\n\n**Never missing a payment** is the single most important credit factor \u2014 great discipline!\n\n## Your Profile So Far:\n| Factor | Details | Impact |\n|--------|---------|--------|\n| \ud83d\udccb Cards | 3 cards | \u2705 Positive |\n| \ud83d\udcc5 Credit history | ~9 years | \u2705 Strong |\n| \u23f0 Payment history | Perfect | \u2705 Excellent |\n| \ud83c\udfaf Score mentioned | 800 | \u2705 Exceptional |\n\n## You're Hitting the Big Ones! \u2705\nPayment history = **35% of your score** \u2014 you're nailing the biggest factor.\n\n## Still Helpful to Know:\n- \ud83d\udcb3 **Total credit limit** across all 3 cards?\n- \ud83d\udcb8 **Current balance** (was $2,000 your balance or limit?)\n- \ud83d\udd0d Any **recent hard inquiries**?\n\n> \u26a0\ufe0f *This is general credit coaching only \u2014 not an official score or financial assessment.*\n\nBased on what you've shared, your habits look **excellent!** \ud83c\udf89",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "none",
+            "reply": "Your credit estimate comes in at **85 out of 100**, placing you in the **Very Good** band \u2014 a strong result to build on.\n\nYour one area to focus on is **balance vs. your credit limit** (15 out of 30). This measures how much of your available credit you're currently using. Right now your balances are above 30% of your limit, which starts to pull the score down noticeably. The fix is straightforward: work on paying your balances down until they sit below that 30% threshold, and your score should respond positively.\n\nThe great news is that everything else is firing on all cylinders. Your **payment history** \u2014 whether you pay on time \u2014 is a perfect 35 out of 35, and that's the single heaviest factor in any credit assessment.\n\nRemember, this is only an **estimate based on your self-reported answers** \u2014 your official credit score comes from Equifax or TransUnion. That said, you're clearly doing a lot right, and one small adjustment could push you even higher! \ud83c\udfaf",
+            "gave_score": true,
+            "computed_score": 85,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 85,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "30to50",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": 800.0,
+          "total_credit_limit_cad": 2000.0,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 85,
+        "score_matches": true
+      },
+      {
+        "id": "does_not_understand",
+        "turns": [
+          {
+            "user": "2 cards",
+            "reply": "# Credit Score Estimate\n\nThanks for sharing! Unfortunately, **2 cards alone** isn't enough for me to give you a meaningful estimate. I'd need more details like:\n\n- \ud83d\udcb3 **Credit limits** on each card\n- \ud83d\udcca **Current balances** (utilization rate)\n- \ud83d\udcc5 **Age of accounts** (how long you've had them)\n- \u23f0 **Payment history** (any late payments?)\n- \ud83d\udd0d **Recent hard inquiries**\n- \ud83c\udfe6 **Other accounts** (loans, mortgage, etc.)\n\n## What I Can Say\nHaving **2 credit cards** is generally a positive sign \u2014 it shows some credit diversity. The most important factors will be:\n\n1. Whether you **pay on time**\n2. How much of your limit you're **using** (keep it under 30%)\n\nCan you share more details? I'd love to give you a better picture! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "not sure what you mean",
+            "reply": "# Let Me Simplify! \ud83d\ude0a\n\nNo worries! Here are a few easy questions:\n\n**1. Balances \u2014 how much do you owe?**\n> Example: \"I owe $500 total\"\n\n**2. Limits \u2014 what's your max spending allowed?**\n> Example: \"My cards allow up to $2,000 total\"\n\n**3. Payments \u2014 do you pay on time?**\n> Example: \"Yes, always\" or \"I missed one last year\"\n\n**4. How old are your cards?**\n> Example: \"I've had them for 2 years\"\n\n---\n\nJust answer whichever ones you know \u2014 even a couple of answers help me give you a much better picture of where your credit might stand! \ud83c\udfaf",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "maybe 25%",
+            "reply": "# Good News on Utilization! \ud83c\udf89\n\nA **25% utilization rate** is pretty solid \u2014 that means you're using about 25% of your available credit limit, which is right at the edge of the \"good\" zone (under 30% is generally recommended).\n\n## What This Suggests\n- \u2705 You're **not maxing out** your cards \u2014 that's a positive signal\n- \ud83d\udcc8 If you can get it **under 10%**, it could boost your score further\n\n## Still Need More Info\nTo give a better estimate, it would help to know:\n- \ud83d\udcc5 **How old** are your cards?\n- \u23f0 **Any missed payments?**\n- \ud83d\udd0d **Any recent loan applications?**\n\n---\n\n**In general**, someone with 2 cards and 25% utilization could be anywhere from the **600s to 750s+** depending on payment history and account age. Can you share more? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "3 years",
+            "reply": "# Thanks for Sharing! \ud83d\udcc5\n\n**3 years** of credit history is a helpful detail!\n\n## What You've Told Me So Far:\n| Factor | Detail | Impact |\n|--------|--------|--------|\n| Cards | 2 cards | \u2705 Positive |\n| Utilization | ~25% | \u2705 Good |\n| Account Age | 3 years | \ud83d\udfe1 Fair |\n\n## What This Suggests\nThree years is **decent but not long** \u2014 credit scoring models reward longer histories. You're past the \"new credit\" danger zone though!\n\n**Rough ballpark:** You could be sitting somewhere in the **650\u2013730 range**, but this really depends on:\n- \u23f0 **Payment history** \u2014 any missed or late payments?\n- \ud83d\udd0d **Recent applications** for new credit?\n\n---\n\nPayment history is the **#1 factor** in your score (35%!). If you've never missed a payment, your estimate could be at the **higher end**. Have you had any late payments? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "never",
+            "reply": "# Great News! \ud83c\udf1f\n\nA clean payment history is **huge** \u2014 it's the single biggest factor in your credit score!\n\n## Your Credit Snapshot:\n| Factor | Detail | Impact |\n|--------|--------|--------|\n| Cards | 2 cards | \u2705 Positive |\n| Utilization | ~25% | \u2705 Good |\n| Account Age | 3 years | \ud83d\udfe1 Fair |\n| Payment History | Perfect | \u2705 Excellent |\n\n## Rough Ballpark Estimate\nBased on what you've shared, you're likely somewhere in the **700\u2013740 range** \u2014 a solid \"good\" credit tier!\n\n## How to Push Higher \ud83d\udcc8\n- Lower utilization **below 10%** for a potential boost\n- **Keep paying on time** \u2014 every month counts\n- Let your accounts **age naturally** over time\n\n---\n\n*Remember, this is just an educational estimate \u2014 not a real credit score. For your actual score, check a free service like Credit Karma or your bank's app!* \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "one",
+            "reply": "Your credit estimate comes in at **87 out of 100**, which puts you in the **Very Good** band \u2014 something to feel genuinely proud of.\n\nYour two weakest areas are worth a quick look. First, **recent applications**: applying for new credit triggers a small check on your file, which can nudge your score down slightly. The good news is that one recent application is minor and will fade on its own within a year \u2014 no action needed beyond patience. Second, **length of credit history**, which measures how long your accounts have been open: you scored 11 out of 15 here. The simplest way to protect this is to keep your oldest account open, even if you rarely use it, because it's carrying the most weight in this category.\n\nOn the bright side, your **payment history** \u2014 whether bills are paid on time \u2014 is a perfect 35 out of 35. That's the single most important factor in any credit assessment, and you're nailing it.\n\nKeep up those on-time payments and your score will only get stronger from here! \ud83c\udf89",
+            "gave_score": true,
+            "computed_score": 87,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 87,
+        "final_profile": {
+          "card_count": 2,
+          "utilization": "10to30",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 1,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 87,
+        "score_matches": true
+      },
+      {
+        "id": "balance_first_then_limit",
+        "turns": [
+          {
+            "user": "4 cards",
+            "reply": "# Credit Score Estimate\n\nThanks for sharing! Unfortunately, **4 cards alone** isn't enough for me to give you a meaningful estimate. I'd need a few more details:\n\n## Key Factors I'm Missing:\n- \ud83d\udcb3 **Balances** on each card (vs. credit limits)\n- \ud83d\udcc5 **Payment history** \u2014 any late payments?\n- \ud83d\uddd3\ufe0f **Age of accounts** \u2014 how long have you had them?\n- \ud83d\udd0d **Recent hard inquiries** \u2014 any new applications?\n- \ud83c\udfe6 **Other accounts** \u2014 loans, mortgage, etc.?\n\n## What I Can Say:\nHaving **4 cards can be positive** \u2014 it shows credit diversity and can help your **utilization ratio** if balances are low.\n\nCould you share more details like your balances, credit limits, or payment history? That'll help me give you a much better estimate! \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "I usually owe around $1,500",
+            "reply": "# Credit Score Estimate\n\nGood info! So you have **4 cards with ~$1,500 total balance**. I still need a bit more:\n\n## Still Missing:\n- \ud83d\udcb3 **Total credit limits** across all 4 cards (to calculate your utilization %)\n- \ud83d\udcc5 **Payment history** \u2014 any missed or late payments?\n- \ud83d\uddd3\ufe0f **Account age** \u2014 how long have you had these cards?\n- \ud83c\udfe6 **Other debt** \u2014 loans, collections, etc.?\n\n## What I Can Say So Far:\nYour utilization depends heavily on your **total limits**:\n- If limits = **$15,000+** \u2192 utilization ~10% \u2705 Excellent\n- If limits = **$6,000** \u2192 utilization ~25% \ud83d\udfe1 Fair\n- If limits = **$3,000** \u2192 utilization ~50% \u26a0\ufe0f Hurting your score\n\n**Lower utilization = higher score**, so knowing your limits is crucial!\n\nCan you share your approximate credit limits or total available credit? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "my limits add up to about $20,000",
+            "reply": "# Credit Score Estimate\n\nGreat news! Here's what I can see so far:\n\n## What You've Shared:\n- \ud83d\udcb3 **4 credit cards**\n- \ud83d\udcb0 **Balance: ~$1,500**\n- \ud83c\udfe6 **Total limit: ~$20,000**\n- \u2705 **Utilization: ~7.5%** \u2014 Excellent!\n\n## What This Suggests:\nYour **credit utilization is very healthy** \u2014 under 10% is ideal and likely boosting your score significantly.\n\n## Still Missing:\n- \ud83d\udcc5 **Payment history** \u2014 any late or missed payments?\n- \ud83d\uddd3\ufe0f **Account age** \u2014 how long have you had these cards?\n- \ud83d\udd0d **Hard inquiries** \u2014 recent applications for credit?\n- \ud83c\udfe6 **Other accounts** \u2014 loans, collections?\n\n## Rough Estimate So Far:\nBased on utilization alone, you could be in the **680\u2013780+ range** \u2014 but payment history is the **biggest factor (35%)** and could significantly change this.\n\nCan you share your payment history? \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "10 years",
+            "reply": "# Credit Score Estimate\n\nGreat detail! Here's where we stand:\n\n## What You've Shared:\n- \ud83d\udcb3 **4 credit cards**\n- \ud83d\udcb0 **Balance: ~$1,500**\n- \ud83c\udfe6 **Total limit: ~$20,000**\n- \u2705 **Utilization: ~7.5%** \u2014 Excellent!\n- \ud83d\uddd3\ufe0f **Account age: ~10 years** \u2014 Very strong!\n\n## Still Missing:\n- \ud83d\udcc5 **Payment history** \u2014 any late or missed payments?\n- \ud83d\udd0d **Hard inquiries** \u2014 recent credit applications?\n- \ud83c\udfe6 **Other accounts** \u2014 loans, collections?\n\n## Rough Estimate So Far:\nThings are looking **very positive**! Long account history + low utilization is a strong combination. You could reasonably be in the **720\u2013780+ range** \u2014 assuming a clean payment history.\n\nEven **one or two late payments** could pull this down significantly.\n\nCan you share your payment history \u2014 any missed or late payments ever? That's the **#1 scoring factor!** \ud83d\ude0a",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "no late payments",
+            "reply": "# Credit Score Estimate\n\nExcellent! Here's your full picture:\n\n## What You've Shared:\n- \ud83d\udcb3 **4 credit cards**\n- \ud83d\udcb0 **Balance: ~$1,500**\n- \ud83c\udfe6 **Total limit: ~$20,000**\n- \u2705 **Utilization: ~7.5%** \u2014 Excellent!\n- \ud83d\uddd3\ufe0f **Account age: ~10 years** \u2014 Very strong!\n- \u2705 **Payment history: Perfect** \u2014 Best possible!\n\n## Rough Estimate:\nYou're likely in the **750\u2013800+** range! \ud83c\udf1f\n\n## What Could Refine This Further:\n- \ud83d\udd0d **Hard inquiries** \u2014 recent credit applications?\n- \ud83c\udfe6 **Other accounts** \u2014 loans, collections, or public records?\n\n## Summary:\nYour profile shows **three of the strongest credit signals** possible \u2014 low utilization, long history, and perfect payments. Without any negative factors, you're likely in **excellent credit territory**.\n\n> \u26a0\ufe0f *This is an informal estimate only, not a real credit score. Check [AnnualCreditReport.com](https://www.annualcreditreport.com) for your actual report!*",
+            "gave_score": true,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": true
+          },
+          {
+            "user": "none",
+            "reply": "You received a perfect estimate of 100 out of 100, placing you in the **Excellent** band \u2014 the best possible result.\n\nSince every factor came back with a full score, there is genuinely nothing weak to flag. Your payments are spotless, you are carrying very little debt relative to your limits, your credit history is long, you have not applied for new credit recently, and you have a healthy mix of accounts.\n\nRemember, this is only an estimate based on your self-reported answers \u2014 not an official credit score. Your real score comes from a credit bureau like Equifax or TransUnion, but these results suggest you are in a very strong position heading into that check.\n\nKeep doing exactly what you are doing! \ud83c\udf89",
+            "gave_score": true,
+            "computed_score": 100,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": true,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 100,
+        "final_profile": {
+          "card_count": 4,
+          "utilization": "under10",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": 1500.0,
+          "total_credit_limit_cad": 20000.0,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 100,
+        "score_matches": true
+      }
+    ]
+  },
+  "after": {
+    "summary": {
+      "scenarios": 18,
+      "premature_advice_rate": 0.0,
+      "repeated_question_rate": 0.0,
+      "completion_rate": 0.7777777777777778,
+      "median_turns_to_score": 6.0,
+      "field_extraction_accuracy": 1.0,
+      "fields_checked": 77,
+      "score_exact_match_rate": 1.0,
+      "scorable_scenarios": 14
+    },
+    "per_scenario": [
+      {
+        "id": "vague_opening",
+        "turns": [
+          {
+            "user": "how's my credit looking?",
+            "reply": "**How many credit cards do you have open right now?**\n\nCount every card, even ones you hardly ever use.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": null,
+          "utilization": null,
+          "history_length": null,
+          "missed_payments": null,
+          "recent_inquiries": null,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 0,
+        "fields_correct": 0,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "everything_at_once",
+        "turns": [
+          {
+            "user": "I have 4 cards, I keep about 15% utilization, my oldest is 9 years old, never missed a payment, and no applications in the last year. How am I doing?",
+            "reply": "Your estimate is 94 out of 100, which puts you in the **Excellent** band \u2014 a great result to see.\n\nYour weakest factor is the balance you're carrying compared to your credit limit \u2014 essentially, how much of your available credit you're using. You scored 24 out of 30 here, which is still solid, but pushing that balance closer to 10% of your limit (rather than the usual 30% target) could nudge your score even higher. This is the one area worth watching.\n\nEverything else is in great shape. Your payment history \u2014 whether you pay on time each month \u2014 is perfect at 35 out of 35, and your other factors are all maxed out too.\n\nJust a reminder: this is an **estimate based on your self-reported answers**, not an official credit score. For your actual score, you'd want to check with **Equifax or TransUnion**.\n\nKeep doing what you're doing \u2014 you're clearly managing credit responsibly, and a small adjustment to your balances could make an excellent score even stronger. \ud83c\udf1f",
+            "gave_score": true,
+            "computed_score": 94,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 1,
+        "final_score": 94,
+        "final_profile": {
+          "card_count": 4,
+          "utilization": "10to30",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 94,
+        "score_matches": true
+      },
+      {
+        "id": "one_fact_at_a_time",
+        "turns": [
+          {
+            "user": "can you check my credit health?",
+            "reply": "**How many credit cards do you have open right now?**\n\nCount every card, even ones you hardly ever use.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "2 cards",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "around 40% of my limit",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "about 4 years",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I was late twice last year",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "one application",
+            "reply": "Your credit estimate is 65 out of 100, which falls in the **Good** band \u2014 a solid foundation to build from.\n\nThe area needing the most attention is your **balance compared to your credit limit**. Right now your balances are above 30% of your available limit, which starts pulling the score down noticeably. Try to pay balances down so you're using less of what's available to you. Even a partial paydown can help.\n\nYour **payment history** is the second area to focus on. It carries the most weight of any factor, and occasional late payments do real damage over time. Setting up automatic minimum payments is a simple way to protect yourself going forward \u2014 on-time payments, month after month, will gradually push this score higher.\n\nThe good news: your number of cards is perfect, your credit history is a healthy length, and that recent application is a minor blip that fades within a year.\n\nYou're in a genuinely good position \u2014 a few steady habits and you'll see this number climb. \ud83d\udcaa",
+            "gave_score": true,
+            "computed_score": 65,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 65,
+        "final_profile": {
+          "card_count": 2,
+          "utilization": "30to50",
+          "history_length": "3to7",
+          "missed_payments": "rarely",
+          "recent_inquiries": 1,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 65,
+        "score_matches": true
+      },
+      {
+        "id": "half_then_stops",
+        "turns": [
+          {
+            "user": "I've got 3 cards and use about 20% of my limit",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "so what's my score?",
+            "reply": "**Sorry, I didn't catch that. About how many years ago did you open your first credit card?**\n\nA rough guess is fine, like \"3 years\" or \"since 2018\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "10to30",
+          "history_length": null,
+          "missed_payments": null,
+          "recent_inquiries": null,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 2,
+        "fields_correct": 2,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "no_cards_at_all",
+        "turns": [
+          {
+            "user": "I don't have any credit cards yet",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "no limit, nothing open",
+            "reply": "**Sorry, I couldn't work that out. Let's try it another way.**\n\nRoughly what percent of your credit limit do you use? Or tell me your usual balance and your total limit, like \"$2,000 out of $10,000\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "never had one",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I've never missed a payment on anything",
+            "reply": "**Sorry, I couldn't work that out. Let's try it another way.**\n\nRoughly what percent of your credit limit do you use? Or tell me your usual balance and your total limit, like \"$2,000 out of $10,000\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I haven't applied for anything",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length"
+            ],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 0,
+          "utilization": null,
+          "history_length": null,
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 3,
+        "fields_correct": 3,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "balance_and_limit_arithmetic",
+        "turns": [
+          {
+            "user": "5 cards",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I carry about $6,000 against $8,000 of total limit",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "oldest is from 2015",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "no missed payments ever",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "three applications this year",
+            "reply": "Your credit estimate is **64 out of 100**, which falls in the **Good** band \u2014 a solid foundation to build on.\n\nThe two areas pulling your score down the most are worth tackling right away. First, your **balance compared to your credit limit** scored only 7 out of 30. In plain terms, you're using a large chunk of the credit available to you, and lenders see that as a strain. Paying down those balances is the single fastest way to improve your estimate. Second, your **recent applications** scored 0 out of 10. Applying for several credit products in a short period signals risk to lenders \u2014 so the best move right now is simply to pause any new applications and give that window some time to pass.\n\nThe great news is that your **payment history** \u2014 whether you pay on time \u2014 is a perfect 35 out of 35, and your **length of credit history** is also maxed out. These are the heaviest factors, and you're nailing both of them.\n\nKeep up those on-time payments and chip away at your balances \u2014 you're closer to excellent than you might think! \ud83c\udfaf",
+            "gave_score": true,
+            "computed_score": 64,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 64,
+        "final_profile": {
+          "card_count": 5,
+          "utilization": "50to75",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 3,
+          "typical_balance_cad": 6000.0,
+          "total_credit_limit_cad": 8000.0,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 64,
+        "score_matches": true
+      },
+      {
+        "id": "corrects_themselves",
+        "turns": [
+          {
+            "user": "I have 2 cards",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "sorry, 3 cards actually \u2014 I forgot the store one",
+            "reply": "**Sorry, I couldn't work that out. Let's try it another way.**\n\nRoughly what percent of your credit limit do you use? Or tell me your usual balance and your total limit, like \"$2,000 out of $10,000\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "under 10%",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "6 years",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "never missed",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "none",
+            "reply": "Your credit estimate comes in at an impressive 96 out of 100, placing you in the **Excellent** band.\n\nThe only factor holding you back from a perfect score is your **length of credit history**, which scored 11 out of 15. This simply means how long your accounts have been open \u2014 and older accounts carry more weight. The best thing you can do is avoid closing your oldest account, since it's the one doing the most work to support your score.\n\nEverything else is outstanding. Your payment history \u2014 whether you pay on time \u2014 is a perfect 35 out of 35, which matters more than any other single factor.\n\nKeep doing what you're doing, protect that oldest account, and time will take care of the rest \u2014 you're in a truly strong position! \ud83c\udf1f\n\n---\n*Remember, this is only an estimate based on your self-reported answers. For your actual credit score, contact Equifax or TransUnion directly.*",
+            "gave_score": true,
+            "computed_score": 96,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 96,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "under10",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 96,
+        "score_matches": true
+      },
+      {
+        "id": "deflects_one_question",
+        "turns": [
+          {
+            "user": "1 card",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I'd rather not say",
+            "reply": "**Sorry, I couldn't work that out. Let's try it another way.**\n\nRoughly what percent of your credit limit do you use? Or tell me your usual balance and your total limit, like \"$2,000 out of $10,000\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "fine \u2014 about 80% of the limit",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "under a year",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "missed a few",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "two",
+            "reply": "Your credit estimate is **25 out of 100**, which falls in the **\"Needs work\"** band \u2014 but the good news is that the biggest issues are fixable.\n\nThe area hurting you most is how much of your credit limit you're currently spending. Think of your credit limit like a bucket \u2014 right now it's nearly full, and lenders prefer to see it less than a third full. Paying down that balance as much as you can is the single most impactful move you can make right now.\n\nClose behind that is payment history, which makes up the largest share of this estimate. Missing or late payments weighs heavily. Setting up autopay \u2014 even just for the minimum amount due \u2014 means you never accidentally miss a due date again.\n\nYour credit history length scored 3 out of 15, but there's nothing to do there except let time pass, which it will.\n\nRemember, this is only an **estimate based on your self-reported answers** \u2014 your real credit score comes from Equifax or TransUnion. You're already taking a great first step by looking into this! \ud83d\udcaa",
+            "gave_score": true,
+            "computed_score": 25,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 25,
+        "final_profile": {
+          "card_count": 1,
+          "utilization": "over75",
+          "history_length": "under1",
+          "missed_payments": "sometimes",
+          "recent_inquiries": 2,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 25,
+        "score_matches": true
+      },
+      {
+        "id": "asks_for_advice_midway",
+        "turns": [
+          {
+            "user": "6 cards",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "maybe 25%",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "just tell me roughly what my score is, I'll fill in the rest later",
+            "reply": "**Sorry, I didn't catch that. About how many years ago did you open your first credit card?**\n\nA rough guess is fine, like \"3 years\" or \"since 2018\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": false,
+        "turns_to_score": null,
+        "final_score": null,
+        "final_profile": {
+          "card_count": 6,
+          "utilization": "10to30",
+          "history_length": null,
+          "missed_payments": null,
+          "recent_inquiries": null,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 2,
+        "fields_correct": 2,
+        "wrong_fields": {},
+        "score_expected": null,
+        "score_matches": true
+      },
+      {
+        "id": "worst_case_profile",
+        "turns": [
+          {
+            "user": "I have 1 card",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "it's basically maxed out, like 90%",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "got it 8 months ago",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I've missed payments a lot",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I've applied for 4 things recently",
+            "reply": "Your credit estimate is 11 out of 100, which places you in the **Needs Work** band \u2014 but that's exactly what this kind of checkup is for.\n\nThe two most urgent things to focus on are your payment history and your balances. Right now, payment history is scoring 0 out of 35 \u2014 it's the single biggest factor in any credit picture, and everything else matters less until payments are consistently on time. Set up autopay or reminders so nothing slips through. Your balances are also very close to your credit limits (scoring just 2 out of 30) \u2014 think of this like a bucket that's nearly full. Lenders prefer to see it much less full, so paying down what you owe is the biggest practical step you can take right now.\n\nYou've also applied for credit several times recently (0 out of 10), which can signal risk to lenders. Give it some breathing room and avoid new applications for now.\n\nRemember, this is only an **estimate based on your self-reported answers** \u2014 your official score comes from Equifax or TransUnion \u2014 but small, steady changes really do add up. You've got this! \ud83d\udcaa",
+            "gave_score": true,
+            "computed_score": 11,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 11,
+        "final_profile": {
+          "card_count": 1,
+          "utilization": "over75",
+          "history_length": "under1",
+          "missed_payments": "often",
+          "recent_inquiries": 4,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 11,
+        "score_matches": true
+      },
+      {
+        "id": "vague_then_specific",
+        "turns": [
+          {
+            "user": "a few cards",
+            "reply": "**How many credit cards do you have open right now?**\n\nCount every card, even ones you hardly ever use.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "three of them",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I keep it low, maybe 5%",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "my oldest is about 2 years old",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "one late payment two years ago",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "zero applications",
+            "reply": "Your credit estimate is 79 out of 100, which puts you in the **Very Good** band \u2014 a solid place to be.\n\nYour two weakest areas are length of credit history and payment history. For history length, the simplest move is to keep your oldest card open, even if it just sits in a drawer \u2014 closing it would shorten your track record and likely lower your score. For payment history, which carries the most weight of any factor, even one or two late payments can pull things down meaningfully. Setting up automatic minimum payments is an easy way to make sure nothing slips through the cracks going forward.\n\nThe good news: you're doing everything else really well. You're using only a small portion of your available credit limit, you haven't applied for new credit recently, and you have a healthy number of cards \u2014 all three of those are perfect scores.\n\nKeep your oldest card open, stay on top of due dates, and your score has every reason to keep climbing. You're already in great shape! \ud83c\udf89\n\n> *Remember, this is an estimate based on your self-reported answers \u2014 your official credit score comes from Equifax or TransUnion.*",
+            "gave_score": true,
+            "computed_score": 79,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 79,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "under10",
+          "history_length": "1to3",
+          "missed_payments": "rarely",
+          "recent_inquiries": 0,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 79,
+        "score_matches": true
+      },
+      {
+        "id": "irrelevant_detail",
+        "turns": [
+          {
+            "user": "I'm a nurse making $85,000 a year, 3 cards",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "about 12% utilization",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "5 years",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "never missed",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "none this year",
+            "reply": "Your credit estimate comes in at 90 out of 100, which puts you in the **Excellent** band \u2014 a great place to be.\n\nYour two weakest areas are still solid, but here's how to squeeze out a bit more. On **length of credit history** (11/15), the age of your accounts matters \u2014 older is better \u2014 so resist the urge to close your oldest card, even if you rarely use it. For your **balance vs. credit limit** (24/30), this looks at how much of your available credit you're actually using. You're already in a healthy spot, but bringing that balance closer to 10% of your limit could nudge your score higher.\n\nThe real star here is your **payment history** \u2014 a perfect 35/35. Paying on time is the single biggest factor in any credit score, and you're nailing it.\n\nRemember, this is only an estimate based on your self-reported answers. For your official score, check with Equifax or TransUnion. Keep up those on-time payments and you're on a fantastic track! \ud83c\udf1f",
+            "gave_score": true,
+            "computed_score": 90,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 90,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "10to30",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": 85000.0
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 90,
+        "score_matches": true
+      },
+      {
+        "id": "off_topic_opening",
+        "turns": [
+          {
+            "user": "what's the best travel card in Canada?",
+            "reply": "**How many credit cards do you have open right now?**\n\nCount every card, even ones you hardly ever use.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "card_count",
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "ok sure, I have 2 cards",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "about 35%",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "3 years",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "never missed a payment",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "one",
+            "reply": "Your credit estimate comes in at **78 out of 100**, which puts you in the **Very Good** band \u2014 a strong result overall.\n\nThe area with the most room to grow is how much of your available credit you're carrying as a balance. Right now that factor scored **15 out of 30**. Think of it this way: if your credit card limit is $1,000, try to keep what you owe below $300. Paying down balances is the single most impactful move you can make right now.\n\nYour second weakest factor is recent applications at **7 out of 10**. This is minor \u2014 every time you apply for new credit, lenders do a quick check that can nudge your score down slightly. The good news is this effect naturally fades within a year, so no action needed.\n\nRemember, your payment history is a perfect **35 out of 35** \u2014 paying on time, every time, is the heaviest factor in any credit score, and you're nailing it. Keep that up and chip away at your balances, and you'll be in great shape. \ud83c\udf89",
+            "gave_score": true,
+            "computed_score": 78,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 78,
+        "final_profile": {
+          "card_count": 2,
+          "utilization": "30to50",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 1,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 78,
+        "score_matches": true
+      },
+      {
+        "id": "many_cards",
+        "turns": [
+          {
+            "user": "I've got 9 cards",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "maybe 8% across all of them",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "oldest is 12 years",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "clean record",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "none in years",
+            "reply": "Your estimate is 94 out of 100, which falls in the **Excellent** band \u2014 a really strong result.\n\nThe one area pulling your score down slightly is the **number of open cards** (4 out of 10). Having many open accounts can signal risk to lenders, even when you're managing them well. It's worth asking yourself whether each card is still useful \u2014 if some are sitting unused, closing one or two could help tidy things up.\n\nEverything else is working beautifully in your favour. You have a spotless **payment history** \u2014 meaning you've consistently paid on time, which is the single most important factor. Your balances are low relative to your limits, your credit history is long, and you haven't applied for new credit recently.\n\nRemember, this is just an estimate based on your self-reported answers \u2014 your official score comes from a credit bureau like Equifax or TransUnion \u2014 but these results suggest you're in great financial shape. Keep doing what you're doing!",
+            "gave_score": true,
+            "computed_score": 94,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 5,
+        "final_score": 94,
+        "final_profile": {
+          "card_count": 9,
+          "utilization": "under10",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 94,
+        "score_matches": true
+      },
+      {
+        "id": "weekly_framing",
+        "turns": [
+          {
+            "user": "4 cards",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I spend about $500 a week and my limits add up to $12,000",
+            "reply": "**Thanks. About how much do you usually owe on your statement?**\n\nUse the balance shown on your monthly statement. A rough number is fine.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I usually owe around $1,000 on the statement",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "7 years exactly",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "no missed payments",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "2 applications",
+            "reply": "Your credit estimate comes in at 94 out of 100, which falls in the **Excellent** band \u2014 a really strong result to be proud of.\n\nThe only area dragging things down slightly is **recent applications**, which scored 4 out of 10. Each time you apply for new credit, lenders do a quick check on your file, and several of these in a short period can signal financial stress to lenders. The fix is simple: try to space out any future credit applications rather than bunching them together, and this score should recover on its own over time.\n\nEverything else is working beautifully in your favour \u2014 your **payment history** (whether you pay on time) is a perfect 35 out of 35, and you're keeping your balances well below your credit limits, which is exactly what lenders like to see.\n\nOne small adjustment to your application habits and you'd be very close to a perfect estimate. Keep up the great habits you already have!\n\n*Remember, this is only an estimate based on self-reported answers \u2014 your official credit score comes from Equifax or TransUnion.*",
+            "gave_score": true,
+            "computed_score": 94,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 94,
+        "final_profile": {
+          "card_count": 4,
+          "utilization": "under10",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 2,
+          "typical_balance_cad": 1000.0,
+          "total_credit_limit_cad": 12000.0,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 94,
+        "score_matches": true
+      },
+      {
+        "id": "bare_dollar_amounts",
+        "turns": [
+          {
+            "user": "I have 3 cards",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "800",
+            "reply": "**Thanks. What's the total credit limit across your cards?**\n\nThat's the most your cards let you spend in total. You can find it on your statements. A rough number is fine.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "2000",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "my first card was in 2016",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "never missed one",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "none",
+            "reply": "Your credit estimate comes in at **85 out of 100**, placing you in the **Very Good** band \u2014 a strong result to build on.\n\nYour one area to focus on is **balance vs. your credit limit** (15 out of 30). This measures how much of your available credit you're currently using. Right now your balances are above 30% of your limit, which starts to pull the score down noticeably. The fix is straightforward: work on paying your balances down until they sit below that 30% threshold, and your score should respond positively.\n\nThe great news is that everything else is firing on all cylinders. Your **payment history** \u2014 whether you pay on time \u2014 is a perfect 35 out of 35, and that's the single heaviest factor in any credit assessment.\n\nRemember, this is only an **estimate based on your self-reported answers** \u2014 your official credit score comes from Equifax or TransUnion. That said, you're clearly doing a lot right, and one small adjustment could push you even higher! \ud83c\udfaf",
+            "gave_score": true,
+            "computed_score": 85,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 85,
+        "final_profile": {
+          "card_count": 3,
+          "utilization": "30to50",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": 800.0,
+          "total_credit_limit_cad": 2000.0,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 85,
+        "score_matches": true
+      },
+      {
+        "id": "does_not_understand",
+        "turns": [
+          {
+            "user": "2 cards",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "not sure what you mean",
+            "reply": "**Sorry, I couldn't work that out. Let's try it another way.**\n\nRoughly what percent of your credit limit do you use? Or tell me your usual balance and your total limit, like \"$2,000 out of $10,000\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "maybe 25%",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "3 years",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "never",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "one",
+            "reply": "Your credit estimate comes in at **87 out of 100**, which puts you in the **Very Good** band \u2014 something to feel genuinely proud of.\n\nYour two weakest areas are worth a quick look. First, **recent applications**: applying for new credit triggers a small check on your file, which can nudge your score down slightly. The good news is that one recent application is minor and will fade on its own within a year \u2014 no action needed beyond patience. Second, **length of credit history**, which measures how long your accounts have been open: you scored 11 out of 15 here. The simplest way to protect this is to keep your oldest account open, even if you rarely use it, because it's carrying the most weight in this category.\n\nOn the bright side, your **payment history** \u2014 whether bills are paid on time \u2014 is a perfect 35 out of 35. That's the single most important factor in any credit assessment, and you're nailing it.\n\nKeep up those on-time payments and your score will only get stronger from here! \ud83c\udf89",
+            "gave_score": true,
+            "computed_score": 87,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 87,
+        "final_profile": {
+          "card_count": 2,
+          "utilization": "10to30",
+          "history_length": "3to7",
+          "missed_payments": "never",
+          "recent_inquiries": 1,
+          "typical_balance_cad": null,
+          "total_credit_limit_cad": null,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 87,
+        "score_matches": true
+      },
+      {
+        "id": "balance_first_then_limit",
+        "turns": [
+          {
+            "user": "4 cards",
+            "reply": "**How much of your credit limit do you usually use?**\n\nYour credit limit is the most your cards let you spend in total. Look at the balance on your monthly statement. For example, a $3,000 balance on a $10,000 limit is 30%. A rough guess is fine, like \"about 20%\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "I usually owe around $1,500",
+            "reply": "**Thanks. What's the total credit limit across your cards?**\n\nThat's the most your cards let you spend in total. You can find it on your statements. A rough number is fine.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "utilization",
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "my limits add up to about $20,000",
+            "reply": "**How long ago did you open your oldest credit card?**\n\nThat's the first card you ever got, even if you don't use it anymore. A rough answer is fine, like \"about 5 years\" or \"since 2019\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "history_length",
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "10 years",
+            "reply": "**In the last 2 years, have you paid a credit card bill late or missed a payment?**\n\nEven one late payment counts. Be honest, it helps me give you better advice. You can say \"never\", \"once or twice\", \"a few times\", or \"often\".",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "missed_payments",
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "no late payments",
+            "reply": "**In the last 12 months, how many times did you apply for a new credit card or loan?**\n\nEvery application leaves a small mark on your credit report, even if you were turned down. \"None\" is a perfectly good answer.",
+            "gave_score": false,
+            "computed_score": null,
+            "actually_missing": [
+              "recent_inquiries"
+            ],
+            "premature": false
+          },
+          {
+            "user": "none",
+            "reply": "You received a perfect estimate of 100 out of 100, placing you in the **Excellent** band \u2014 the best possible result.\n\nSince every factor came back with a full score, there is genuinely nothing weak to flag. Your payments are spotless, you are carrying very little debt relative to your limits, your credit history is long, you have not applied for new credit recently, and you have a healthy mix of accounts.\n\nRemember, this is only an estimate based on your self-reported answers \u2014 not an official credit score. Your real score comes from a credit bureau like Equifax or TransUnion, but these results suggest you are in a very strong position heading into that check.\n\nKeep doing exactly what you are doing! \ud83c\udf89",
+            "gave_score": true,
+            "computed_score": 100,
+            "actually_missing": [],
+            "premature": false
+          }
+        ],
+        "repeated_question": false,
+        "premature": false,
+        "completed": true,
+        "turns_to_score": 6,
+        "final_score": 100,
+        "final_profile": {
+          "card_count": 4,
+          "utilization": "under10",
+          "history_length": "over7",
+          "missed_payments": "never",
+          "recent_inquiries": 0,
+          "typical_balance_cad": 1500.0,
+          "total_credit_limit_cad": 20000.0,
+          "annual_income_cad": null
+        },
+        "fields_checked": 5,
+        "fields_correct": 5,
+        "wrong_fields": {},
+        "score_expected": 100,
+        "score_matches": true
+      }
+    ]
+  }
+}

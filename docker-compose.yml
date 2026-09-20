@@ -1,0 +1,29 @@
+# Postgres for local development of the Credit Coach's conversation memory.
+#
+#   docker compose up -d db
+#   DATABASE_URL=postgresql://cancards:cancards@localhost:5432/cancards
+#
+# The container is for development only. Nothing in the deployed stack reads this
+# file, and the database it creates holds conversation checkpoints, not card data
+# (which lives in Pinecone).
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: cancards
+      POSTGRES_PASSWORD: cancards
+      POSTGRES_DB: cancards
+    ports:
+      - "5432:5432"
+    volumes:
+      - cancards-pgdata:/var/lib/postgresql/data
+    # The app calls setup() on start, so it must not connect before Postgres is
+    # accepting connections -- the image is up well before the server is ready.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cancards -d cancards"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  cancards-pgdata:

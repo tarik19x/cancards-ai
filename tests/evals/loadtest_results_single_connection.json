@@ -1,0 +1,91 @@
+{
+  "measured_at": "2026-09-19T22:01:22.337768+00:00",
+  "target_seconds": 3.8,
+  "machine_note": "client and server on one Windows laptop; real Neon and Claude; rate limit off",
+  "baseline": {
+    "users": 1,
+    "wall_seconds": 30.148215200024424,
+    "overall": {
+      "requests": 7,
+      "errors": 0,
+      "under_target": 0.7142857142857143,
+      "median": 2.795427600009134,
+      "p95": 8.940880000009201,
+      "p99": 8.940880000009201,
+      "max": 8.940880000009201
+    },
+    "by_kind": {
+      "question": {
+        "requests": 5,
+        "errors": 0,
+        "under_target": 1.0,
+        "median": 2.2278099000104703,
+        "p95": 3.0803599000209942,
+        "p99": 3.0803599000209942,
+        "max": 3.0803599000209942
+      },
+      "score": {
+        "requests": 1,
+        "errors": 0,
+        "under_target": 0.0,
+        "median": 8.940880000009201,
+        "p95": 8.940880000009201,
+        "p99": 8.940880000009201,
+        "max": 8.940880000009201
+      },
+      "follow-up": {
+        "requests": 1,
+        "errors": 0,
+        "under_target": 0.0,
+        "median": 8.89113509998424,
+        "p95": 8.89113509998424,
+        "p99": 8.89113509998424,
+        "max": 8.89113509998424
+      }
+    },
+    "error_statuses": []
+  },
+  "loaded": {
+    "users": 15,
+    "wall_seconds": 76.72917050000979,
+    "overall": {
+      "requests": 105,
+      "errors": 0,
+      "under_target": 0.0,
+      "median": 10.556735699996352,
+      "p95": 13.030030199995963,
+      "p99": 13.051169499987736,
+      "max": 13.165155900001992
+    },
+    "by_kind": {
+      "question": {
+        "requests": 75,
+        "errors": 0,
+        "under_target": 0.0,
+        "median": 10.549270800023805,
+        "p95": 10.680916600016644,
+        "p99": 10.684424300008686,
+        "max": 10.684424300008686
+      },
+      "score": {
+        "requests": 15,
+        "errors": 0,
+        "under_target": 0.0,
+        "median": 13.028264900000067,
+        "p95": 13.165155900001992,
+        "p99": 13.165155900001992,
+        "max": 13.165155900001992
+      },
+      "follow-up": {
+        "requests": 15,
+        "errors": 0,
+        "under_target": 0.0,
+        "median": 10.790788200014504,
+        "p95": 11.389043800008949,
+        "p99": 11.389043800008949,
+        "max": 11.389043800008949
+      }
+    },
+    "error_statuses": []
+  }
+}

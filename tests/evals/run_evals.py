@@ -195,6 +195,10 @@ async def main() -> None:
     args = parser.parse_args()
 
     ground_truth = json.loads(GROUND_TRUTH_PATH.read_text(encoding="utf-8"))
+    # The hard set (200 questions) is for retrieval measurement. Running RAGAS on it would
+    # roughly quadruple every eval run's Claude and OpenAI calls; which set RAGAS uses is
+    # point 2's decision, so until then it runs on the questions it always did.
+    ground_truth = [q for q in ground_truth if q.get("eval_set") != "hard"]
     print(f"Loaded {len(ground_truth)} ground truth questions")
 
     results = await run_eval(ground_truth, limit=args.limit)

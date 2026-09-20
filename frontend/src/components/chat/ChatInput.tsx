@@ -39,6 +39,9 @@ export default function ChatInput({ onSend, disabled, placeholder }: Props) {
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={handleKeyDown}
         disabled={disabled}
+        // The backend rejects anything longer (AskRequest / ChatRequest); stopping here
+        // avoids a confusing error after the user has typed a long message.
+        maxLength={500}
         rows={2}
         placeholder={placeholder ?? "How can I help with your cards today?"}
         className="min-h-[3.25rem] w-full resize-none bg-transparent pl-1.5 pt-1.5

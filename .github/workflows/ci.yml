@@ -127,6 +127,31 @@ jobs:
           PINECONE_API_KEY: test
           LANGSMITH_API_KEY: test
 
+      # The 18 multi-turn coach conversations, played through the real graph against
+      # recorded Claude replies: no network, no cost. Fails the build if premature advice,
+      # repeated questions, completion, extraction or score accuracy fall past the floors
+      # in tests/evals/coach_thresholds.json. It catches logic regressions, and a changed
+      # prompt fails it until the recording is refreshed; it cannot see model drift.
+      - name: Coach scenario gate (replayed)
+        run: uv run python ../tests/evals/run_coach_scenarios.py --replay
+        env:
+          OPENAI_API_KEY: sk-test
+          ANTHROPIC_API_KEY: sk-test
+          PINECONE_API_KEY: test
+          LANGSMITH_API_KEY: test
+
+      # 50 adversarial messages (prompt injection, prompt and secret extraction, score
+      # manipulation, forged conversation turns, cross-conversation reads, hostile input),
+      # graded by code against recorded replies. All 50 must stay blocked. Same limits as
+      # the step above: it guards the app's logic, and a changed prompt needs a re-record.
+      - name: Coach attack suite (replayed)
+        run: uv run python ../tests/evals/run_coach_attacks.py --replay
+        env:
+          OPENAI_API_KEY: sk-test
+          ANTHROPIC_API_KEY: sk-test
+          PINECONE_API_KEY: test
+          LANGSMITH_API_KEY: test
+
   # ─── Frontend Type Check ───────────────────────────────────────────────────
   typecheck-frontend:
     name: Frontend Types (tsc)

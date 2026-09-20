@@ -1,8 +1,16 @@
 "use client"
 
-export default function ThinkingIndicator({ stage }: { stage: "retrieving" | "writing" }) {
+export default function ThinkingIndicator({
+  stage,
+  label: customLabel,
+}: {
+  stage?: "retrieving" | "writing"
+  // The coach has no retrieval stage, so it passes its own wording instead.
+  label?: string
+}) {
   // Both stages are real: retrieval runs before the first token, generation after.
-  const label = stage === "retrieving" ? "Searching relevant cards" : "Writing the answer"
+  const label =
+    customLabel ?? (stage === "retrieving" ? "Searching relevant cards" : "Writing the answer")
 
   return (
     <div className="flex items-center gap-2.5 py-1">

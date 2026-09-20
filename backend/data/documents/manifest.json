@@ -1,0 +1,387 @@
+[
+  {
+    "card_id": "scotia-passport-vi",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.scotiabank.com/content/dam/scotiabank/canada/common/documents/pdf/Passport-Infinite-plus-COI-EN.pdf"
+  },
+  {
+    "card_id": "amex-cobalt",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50464109-50498176-0926-Cobalt-Online-CMA-EN.pdf"
+  },
+  {
+    "card_id": "amex-platinum",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50464111-50498176-0926-Platinum-Charge-Online-CMA-EN.pdf"
+  },
+  {
+    "card_id": "amex-gold-rewards",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50464109-50498176-0926-Gold-Lend-Online-CMA-EN.pdf"
+  },
+  {
+    "card_id": "amex-simplycash",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50464123-50498176-0926-Simplycash-Online-CMA-EN.pdf"
+  },
+  {
+    "card_id": "amex-simplycash-preferred",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50464123-50498176-0926-Simplycash-Preferred-Online-CMA-EN.pdf"
+  },
+  {
+    "card_id": "amex-aeroplan-reserve",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50478734-50498176-0926-Aeroplan-Reserve-Lend-Online-CMA-EN.pdf"
+  },
+  {
+    "card_id": "amex-marriott-bonvoy",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.americanexpress.com/content/dam/amex/ca/en/legal/cardmember-agreement/pdf/Sep-2026-CMA-FCAC-Buckslip/50464117-50498176-0926-Marriott-Bonvoy-Online-CMA-EN.pdf"
+  },
+  {
+    "card_id": "amex-cobalt",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.americanexpress.com/content/dam/amex/en-ca/insurance/pdfs/certificates-of-insurance/Cobalt-Card-COI-EN.pdf"
+  },
+  {
+    "card_id": "scotia-momentum-vi",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.scotiabank.com/content/dam/scotiabank/canada/common/documents/pdf/Momentum-Infinite-COI-EN.pdf"
+  },
+  {
+    "card_id": "scotia-platinum-amex",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.scotiabank.com/content/dam/scotiabank/canada/common/documents/pdf/credit_card/Platinum-American-Express-Insurance-Certificate-EN.pdf"
+  },
+  {
+    "card_id": "td-aeroplan-vi",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.td.com/content/dam/tdct/document/pdf/personal-banking/aeroplanInfiniteagreement-533810-en.pdf"
+  },
+  {
+    "card_id": "td-aeroplan-vi-privilege",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.td.com/content/dam/tdct/document/pdf/personal-banking/aeroplaninfiniteprivilegeagreement-533814-en.pdf"
+  },
+  {
+    "card_id": "td-first-class-vi",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.td.com/content/dam/tdct/document/pdf/personal-banking/tdct-tdvisa-firstclasstravel-528190-en.pdf"
+  },
+  {
+    "card_id": "td-cash-back-vi",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.td.com/content/dam/tdct/document/pdf/econsent/tdvisa/cash-back-534122-en.pdf"
+  },
+  {
+    "card_id": "rbc-avion-vi",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cardholders/additional-documents/rbc-generic-credit-card-agreement.pdf"
+  },
+  {
+    "card_id": "rbc-avion-vi",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.rbcroyalbank.com/credit-cards/travel/rbc-visa-infinite-avion/rbc-visa-infinite-avion-certificate-of-insurance.pdf"
+  },
+  {
+    "card_id": "rbc-avion-vi-privilege",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cardholders/additional-documents/rbc-generic-credit-card-agreement.pdf"
+  },
+  {
+    "card_id": "rbc-avion-vi-privilege",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.rbcroyalbank.com/credit-cards/travel/rbc-avion-visa-infinite-privilege/rbc-visa-avion-infinite-privilege-certificate-of-insurance.pdf"
+  },
+  {
+    "card_id": "rbc-westjet-world-elite",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cardholders/additional-documents/rbc-generic-credit-card-agreement.pdf"
+  },
+  {
+    "card_id": "rbc-westjet-world-elite",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.rbcroyalbank.com/credit-cards/travel/westjet-rbc-world-elite-mastercard/westjet-rbc-world-elite-mastercard-certificate-of-insurance.pdf"
+  },
+  {
+    "card_id": "rbc-westjet-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cardholders/additional-documents/rbc-generic-credit-card-agreement.pdf"
+  },
+  {
+    "card_id": "rbc-westjet-mc",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.rbcroyalbank.com/credit-cards/travel/westjet-rbc-mastercard/westjet-rbc-mastercard-certificate-of-insurance.pdf"
+  },
+  {
+    "card_id": "rbc-cashback-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cardholders/additional-documents/rbc-generic-credit-card-agreement.pdf"
+  },
+  {
+    "card_id": "rbc-cashback-mc",
+    "doc_type": "benefit_guide",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cash-back/rbc-cash-back-mastercard/rbc-cash-back-mastercard-benefits-guide.pdf"
+  },
+  {
+    "card_id": "rbc-ion-visa",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rbcroyalbank.com/credit-cards/cardholders/additional-documents/rbc-generic-credit-card-agreement.pdf"
+  },
+  {
+    "card_id": "rbc-ion-visa",
+    "doc_type": "benefit_guide",
+    "url": "https://www.rbcroyalbank.com/credit-cards/rewards/rbc-ion-visa/rbc-ion-visa-benefits-guide.pdf"
+  },
+  {
+    "card_id": "bmo-ascend-world-elite",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.bmo.com/pdf/Ascend_World_Elite_Insurance_Certificate.pdf"
+  },
+  {
+    "card_id": "bmo-ascend-world-elite",
+    "doc_type": "benefit_guide",
+    "url": "https://www.bmo.com/pdf/BMO%20World%20Elite%20Mastercard%20Benefits%20Guide%20EN.pdf"
+  },
+  {
+    "card_id": "bmo-cashback-world-elite",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.bmo.com/pdf/15-1163_CashBackAgreement_Ev1.pdf"
+  },
+  {
+    "card_id": "bmo-cashback-world-elite",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.bmo.com/pdf/BMO%20CashBack%20World%20Elite%20Travel%20and%20Medical%20Protection%20Insurance%20Certificate.pdf"
+  },
+  {
+    "card_id": "bmo-eclipse-vi",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.bmo.com/pdf/eclipse-cardholder-agreement-en.pdf"
+  },
+  {
+    "card_id": "bmo-eclipse-vi",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.bmo.com/pdf/bmo-eclipse-visa-infinite-certificate-of-insurance-en.pdf"
+  },
+  {
+    "card_id": "bmo-eclipse-rise-vi",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.bmo.com/pdf/eclipse-cardholder-agreement-en.pdf"
+  },
+  {
+    "card_id": "bmo-eclipse-rise-vi",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.bmo.com/pdf/bmo-eclipse-visa-rise-certificate-of-insurance-en.pdf"
+  },
+  {
+    "card_id": "bmo-eclipse-rise-vi",
+    "doc_type": "benefit_guide",
+    "url": "https://www.bmo.com/pdf/bmo-eclipse-visa-rise-benefit-guide-en.pdf"
+  },
+  {
+    "card_id": "bmo-airmiles-world-elite",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.bmo.com/pdf/AM_WE_CHA_En.pdf"
+  },
+  {
+    "card_id": "cibc-aeroplan-vi",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/agreements-and-insurance/aeroplan-infinite-certificate-en.pdf"
+  },
+  {
+    "card_id": "cibc-aeroplan-vi",
+    "doc_type": "benefit_guide",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/agreements-and-insurance/aeroplan-visa-infinite-benefits-guide-en.pdf"
+  },
+  {
+    "card_id": "cibc-aeroplan-vi-privilege",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/agreements-and-insurance/aeroplan-infinite-privilege-certificate-en.pdf"
+  },
+  {
+    "card_id": "cibc-aeroplan-vi-privilege",
+    "doc_type": "benefit_guide",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/manage/agreements-and-insurance/pdfs/aeroplan-visa-infinite-privilege-benefits-guide-en.pdf"
+  },
+  {
+    "card_id": "cibc-dividend-vi",
+    "doc_type": "benefit_guide",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/manage/agreements-and-insurance/pdfs/dividend-infinite-insurance-product-summary-en.pdf"
+  },
+  {
+    "card_id": "cibc-aventura-vi",
+    "doc_type": "benefit_guide",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/manage/agreements-and-insurance/pdfs/aventura-infinite-insurance-product-summary-en.pdf"
+  },
+  {
+    "card_id": "nb-world-elite-mc",
+    "doc_type": "benefit_guide",
+    "url": "https://www.nbc.ca/content/dam/shared/pdf/cc/30164-nbc-cardholder-guide-we.pdf"
+  },
+  {
+    "card_id": "tangerine-money-back",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.tangerine.ca/content/dam/tangerine/en/pdfs/credit-card-cardholder-agreement/4_Your_Tangerine_Credit_Card_Holder_Agreement_FINAL.pdf"
+  },
+  {
+    "card_id": "tangerine-world-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.tangerine.ca/content/dam/tangerine/en/pdfs/credit-card-cardholder-agreement/4_Your_Tangerine_Credit_Card_Holder_Agreement_FINAL.pdf"
+  },
+  {
+    "card_id": "tangerine-world-mc",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.tangerine.ca/content/dam/tangerine/en/pdfs/credit-card-cardholder-agreement/2_Tangerine_World_Mastercard_Certificate_of_Insurance_FINAL.pdf"
+  },
+  {
+    "card_id": "rogers-red-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.rogersbank.com/legaldocs/en/Cardholder_Agreement_1123.pdf"
+  },
+  {
+    "card_id": "rogers-red-mc",
+    "doc_type": "benefit_guide",
+    "url": "https://www.rogersbank.com/legaldocs/en/Rogers_Red_World_Mastercard_Benefits_Guide.pdf"
+  },
+  {
+    "card_id": "pc-insiders-world-elite-mc",
+    "doc_type": "benefit_guide",
+    "url": "https://dis-prod.assetful.loblaw.ca/content/dam/loblaw-companies-limited/creative-assets/pc-financial/documents/insiders_benefitsguide.pdf"
+  },
+  {
+    "card_id": "pc-insiders-world-elite-mc",
+    "doc_type": "insurance_certificate",
+    "url": "https://dis-prod.assetful.loblaw.ca/content/dam/loblaw-companies-limited/creative-assets/pc-financial/documents/WFP-312051-WE-COI-EN-v8_Online_Version_oAG.pdf"
+  },
+  {
+    "card_id": "pc-financial-world-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://dis-prod.assetful.loblaw.ca/content/dam/loblaw-companies-limited/creative-assets/pc-financial/documents/PCF-CHA-10-23-EN.pdf"
+  },
+  {
+    "card_id": "atb-world-elite-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.atb.com/siteassets/pdf/personal/credit-cards/world-elite-mastercard-agreement-insurance-booklet.pdf"
+  },
+  {
+    "card_id": "desjardins-odyssey-world-elite",
+    "doc_type": "benefit_guide",
+    "url": "https://www.desjardins.com/content/dam/pdf/en/personal/credit-cards/odyssey-world-elite-comprehensive-travel-insurance-summary.pdf"
+  },
+  {
+    "card_id": "desjardins-odyssey-world-elite",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.desjardins.com/content/dam/pdf/en/personal/credit-cards/odyssey-world-elite-purchase-protection-insurance-certificate.pdf"
+  },
+  {
+    "card_id": "mbna-rewards-world-elite",
+    "doc_type": "benefit_guide",
+    "url": "https://www.mbna.ca/content/dam/mbna/document/pdf/credit-cards/1215n-mbna-rewards-world-elite-mastercard-en.pdf"
+  },
+  {
+    "card_id": "mbna-rewards-world-elite",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.mbna.ca/content/dam/mbna/document/pdf/covid/mbna-choice-rewards-world-elite-mastercard-certificate-of-insurance-en.pdf"
+  },
+  {
+    "card_id": "brim-world-elite",
+    "doc_type": "cardholder_agreement",
+    "url": "https://brimfinancial.com/pdf_files/2024%20ROC%20Brim%20Cardmember%20Agreement%20EN-updated.pdf"
+  },
+  {
+    "card_id": "brim-world-elite",
+    "doc_type": "insurance_certificate",
+    "url": "https://static.brimfinancial.com/afklm/pdf_files/BRIM%20World%20Elite%20Certificate_English.pdf"
+  },
+  {
+    "card_id": "brim-world-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://brimfinancial.com/pdf_files/2024%20ROC%20Brim%20Cardmember%20Agreement%20EN-updated.pdf"
+  },
+  {
+    "card_id": "home-trust-preferred-visa",
+    "doc_type": "cardholder_agreement",
+    "url": "https://visa.hometrust.ca/PDF/Augmened_Ts_and_Cs_Preferred.pdf"
+  },
+  {
+    "card_id": "neo-mastercard",
+    "doc_type": "cardholder_agreement",
+    "url": "https://static.production.neofinancial.com/marketing-web/legal/en-CA/Neo+Financial+Mastercard%C2%AE+Personal+Cardholder+Agreement.pdf"
+  },
+  {
+    "card_id": "neo-mastercard",
+    "doc_type": "benefit_guide",
+    "url": "https://legal.neo.cc/rewards-policy"
+  },
+  {
+    "card_id": "cibc-costco-mc",
+    "doc_type": "benefit_guide",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/all-credit-cards/costco/documents/summary-rates-and-fees-en.pdf"
+  },
+  {
+    "card_id": "cibc-costco-mc",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/all-credit-cards/costco/documents/cibc-costco-ins-cert-en.pdf"
+  },
+  {
+    "card_id": "simplii-cash-back-visa",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.simplii.com/content/dam/simplii-public-assets/documents/pdf/credit-cards/simplii-cardholder-agreement-sf-001018v1lnt-en.pdf"
+  },
+  {
+    "card_id": "simplii-cash-back-visa",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.simplii.com/content/dam/simplii-public-assets/documents/pdf/credit-cards/SF-0021018v1INT.pdf"
+  },
+  {
+    "card_id": "simplii-cash-back-visa",
+    "doc_type": "benefit_guide",
+    "url": "https://www.simplii.com/content/dam/simplii-public-assets/documents/pdf/credit-cards/credit-card-online-benefits-guide.pdf"
+  },
+  {
+    "card_id": "desjardins-cash-back-visa",
+    "doc_type": "benefit_guide",
+    "url": "https://www.desjardins.com/content/dam/pdf/en/personal/credit-cards/cash-back-visa-mastercard-purchase-protection-insurance-summary.pdf"
+  },
+  {
+    "card_id": "desjardins-cash-back-visa",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.desjardins.com/content/dam/pdf/en/personal/credit-cards/EI-Form-Remises_A.pdf"
+  },
+  {
+    "card_id": "mbna-true-line-mc",
+    "doc_type": "benefit_guide",
+    "url": "https://www.mbna.ca/content/dam/mbna/document/pdf/credit-cards/1215n-mbna-platinum-plus-or-true-line-mastercard-en.pdf"
+  },
+  {
+    "card_id": "mbna-true-line-mc",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.mbna.ca/content/dam/mbna/document/pdf/credit-cards/mbnatruelineorplatinumplusguidetocoverage-en.pdf"
+  },
+  {
+    "card_id": "cibc-select-visa",
+    "doc_type": "benefit_guide",
+    "url": "https://www.cibc.com/content/dam/cibc-public-assets/personal-banking/credit-cards/manage/agreements-and-insurance/pdfs/sl-benguide-en.pdf"
+  },
+  {
+    "card_id": "scotia-gold-amex",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.manulife.ca/content/dam/consumer-portal/documents/en/insurance/credit-card-insurance/scotiabank-credit-cards/gold-amex/scotiabank_gold_american_express_card_certificate.pdf"
+  },
+  {
+    "card_id": "nb-syncro-mc",
+    "doc_type": "cardholder_agreement",
+    "url": "https://www.nbc.ca/content/dam/bnc/particuliers/pdf/tarification-carte/agreement-mastercard-personal.pdf"
+  },
+  {
+    "card_id": "scotia-momentum-no-fee-visa",
+    "doc_type": "benefit_guide",
+    "url": "https://www.scotiabank.com/content/dam/scotiabank/canada/common/documents/pdf/SCOTIABANK-Momentum-RG-No-Fee-Visa-Eng-Ekit.pdf"
+  },
+  {
+    "card_id": "scotia-momentum-no-fee-visa",
+    "doc_type": "insurance_certificate",
+    "url": "https://www.gbm.scotiabank.com/content/dam/scotiabank/canada/common/documents/pdf/Momentum-Regular-COI-EN.pdf"
+  }
+]
