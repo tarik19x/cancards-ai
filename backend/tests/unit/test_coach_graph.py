@@ -10,7 +10,7 @@ from unittest.mock import AsyncMock, patch
 import pytest
 from langgraph.checkpoint.memory import InMemorySaver
 
-from app.coach.graph import build_graph
+from app.coach.graph import build_graph, resolve_pending_reply
 from app.coach.scoring import score_credit
 from app.models import CreditProfile
 
@@ -49,12 +49,13 @@ def _run(profile: CreditProfile, message: str = "how is my credit?", reply: str 
         graph = build_graph(InMemorySaver())
         import asyncio
 
+        config = {"configurable": {"thread_id": "t1"}}
         state = asyncio.run(
-            graph.ainvoke(
-                {"messages": [{"role": "user", "content": message}]},
-                config={"configurable": {"thread_id": "t1"}},
-            )
+            graph.ainvoke({"messages": [{"role": "user", "content": message}]}, config=config)
         )
+        # The graph only prepares an explanation or follow-up; this writes the text (one call,
+        # no streaming), which is what the plain JSON endpoint and the eval harnesses do.
+        state = asyncio.run(resolve_pending_reply(graph, config, state))
         return state, mock_answer
 
 
@@ -143,6 +144,7 @@ def test_a_thread_remembers_earlier_turns(validation_on):
         second = asyncio.run(
             graph.ainvoke({"messages": [{"role": "user", "content": "3 to 7 years"}]}, config)
         )
+        second = asyncio.run(resolve_pending_reply(graph, config, second))
 
         # Both user turns and the question asked in between are still there.
         assert [m["role"] for m in second["messages"]] == [

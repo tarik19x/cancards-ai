@@ -57,19 +57,57 @@ export const REQUIRED_FACTS: { key: keyof CoachProfile; label: string }[] = [
   { key: "recent_inquiries", label: "Applications" },
 ]
 
-export async function sendCoachMessage(
+type StreamEvent =
+  | { type: "token"; content: string }
+  | ({ type: "done" } & CoachTurn)
+  | { type: "error"; message?: string }
+
+// Sends one message and reads the reply as it is written. onToken gets each chunk of the reply
+// text the moment it arrives; the returned turn is the final structured result (facts, score).
+// Same event shape as the Ask page's stream, read the same way: a line that is not a complete
+// event is kept for the next chunk, because an event can be split across two network reads.
+export async function streamCoachMessage(
   message: string,
   threadId: string | null,
+  onToken: (chunk: string) => void,
   signal?: AbortSignal,
 ): Promise<CoachTurn> {
-  const res = await fetch(`${BACKEND}/api/coach/chat`, {
+  const res = await fetch(`${BACKEND}/api/coach/chat/stream`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message, thread_id: threadId }),
     signal,
   })
   if (!res.ok) throw new Error(`The coach could not answer (${res.status})`)
-  return res.json() as Promise<CoachTurn>
+  if (!res.body) throw new Error("The coach could not answer (streaming is not supported here)")
+
+  const reader = res.body.getReader()
+  const decoder = new TextDecoder()
+  let pending = ""
+  let finished: CoachTurn | null = null
+
+  while (true) {
+    const { done, value } = await reader.read()
+    if (done) break
+    pending += decoder.decode(value, { stream: true })
+    const lines = pending.split("\n")
+    pending = lines.pop() ?? ""
+
+    for (const line of lines) {
+      if (!line.startsWith("data: ")) continue
+      let event: StreamEvent
+      try {
+        event = JSON.parse(line.slice("data: ".length)) as StreamEvent
+      } catch {
+        continue // a malformed line is skippable; an "error" event below must not be
+      }
+      if (event.type === "token") onToken(event.content)
+      else if (event.type === "done") finished = event
+      else if (event.type === "error") throw new Error(event.message ?? "The coach hit an error")
+    }
+  }
+  if (!finished) throw new Error("The reply ended early")
+  return finished
 }
 
 // Returns null for an unknown thread, so a stale id in the browser starts fresh

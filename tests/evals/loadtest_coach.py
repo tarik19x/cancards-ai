@@ -58,6 +58,61 @@ def percentile(values: list[float], pct: float) -> float:
     return ordered[rank - 1]
 
 
+async def one_user_streaming(
+    client: httpx.AsyncClient, user: int, threads: list[str]
+) -> list[dict]:
+    """Same script against /api/coach/chat/stream.
+
+    `seconds` is the time until the FIRST word arrives, which is how latency is reported for a
+    streaming chat (what the user waits through before anything happens); `total_seconds` is
+    the time until the whole reply is there. A fixed question arrives as one chunk, so for
+    those turns the two are nearly the same.
+    """
+    rows: list[dict] = []
+    thread_id: str | None = None
+    for kind, message in TURNS:
+        body = {"message": message, **({"thread_id": thread_id} if thread_id else {})}
+        started = time.perf_counter()
+        first_word: float | None = None
+        tokens = 0
+        done: dict | None = None
+        try:
+            async with client.stream("POST", "/api/coach/chat/stream", json=body) as response:
+                if response.status_code != 200:
+                    rows.append({"user": user, "kind": kind, "ok": False,
+                                 "seconds": time.perf_counter() - started,
+                                 "status": response.status_code})  # fmt: skip
+                    break
+                async for line in response.aiter_lines():
+                    if not line.startswith("data: "):
+                        continue
+                    event = json.loads(line[len("data: ") :])
+                    if event["type"] == "token":
+                        tokens += 1
+                        if first_word is None:
+                            first_word = time.perf_counter() - started
+                    elif event["type"] == "done":
+                        done = event
+                    elif event["type"] == "error":
+                        break
+            total = time.perf_counter() - started
+            ok = done is not None and first_word is not None
+            if ok:
+                thread_id = done["thread_id"]
+                if thread_id not in threads:
+                    threads.append(thread_id)
+                if kind == "score" and not done.get("gave_score"):
+                    ok = False
+            rows.append({"user": user, "kind": kind, "seconds": first_word or total,
+                         "total_seconds": total, "chunks": tokens, "ok": ok,
+                         "status": 200 if ok else "bad_stream"})  # fmt: skip
+        except httpx.HTTPError as exc:
+            rows.append({"user": user, "kind": kind, "seconds": time.perf_counter() - started,
+                         "ok": False, "status": type(exc).__name__})  # fmt: skip
+            break
+    return rows
+
+
 async def one_user(client: httpx.AsyncClient, user: int, threads: list[str]) -> list[dict]:
     rows: list[dict] = []
     thread_id: str | None = None
@@ -95,14 +150,21 @@ def summarize(rows: list[dict], target: float) -> dict:
     if good:
         out |= {"median": percentile(good, 50), "p95": percentile(good, 95),
                 "p99": percentile(good, 99), "max": max(good)}  # fmt: skip
+    totals = [r["total_seconds"] for r in rows if r["ok"] and "total_seconds" in r]
+    if totals:
+        out |= {"total_median": percentile(totals, 50), "total_p95": percentile(totals, 95)}
+        out["avg_chunks"] = sum(r["chunks"] for r in rows if r["ok"]) / len(totals)
     return out
 
 
-async def run_load(base_url: str, users: int, target: float, threads: list[str]) -> dict:
+async def run_load(
+    base_url: str, users: int, target: float, threads: list[str], stream: bool = False
+) -> dict:
+    user_fn = one_user_streaming if stream else one_user
     limits = httpx.Limits(max_connections=users + 5)
     async with httpx.AsyncClient(base_url=base_url, timeout=120, limits=limits) as client:
         started = time.perf_counter()
-        per_user = await asyncio.gather(*(one_user(client, i, threads) for i in range(users)))
+        per_user = await asyncio.gather(*(user_fn(client, i, threads) for i in range(users)))
         wall = time.perf_counter() - started
     rows = [row for user_rows in per_user for row in user_rows]
     by_kind = {
@@ -173,6 +235,10 @@ def show(label: str, result: dict, target: float) -> None:
             print(f"  {kind:<10}median {k['median']:.2f}s  p95 {k['p95']:.2f}s  "
                   f"max {k['max']:.2f}s  under {target}s: {k['under_target']:.0%}  "
                   f"(n={k['requests']})")  # fmt: skip
+            if "total_median" in k:
+                print(f"  {'':<10}whole reply done: median {k['total_median']:.2f}s  "
+                      f"p95 {k['total_p95']:.2f}s  "
+                      f"({k['avg_chunks']:.0f} chunks on average)")  # fmt: skip
     if result["error_statuses"]:
         print("  error statuses:", ", ".join(result["error_statuses"]))
 
@@ -192,6 +258,11 @@ def main() -> None:
         metavar="SECONDS",
         help="diagnostic: stub the model (it answers after SECONDS) to measure the app alone; free",
     )
+    parser.add_argument(
+        "--stream",
+        action="store_true",
+        help="use /api/coach/chat/stream and report the time to the FIRST word (plus to the end)",
+    )
     parser.add_argument("--keep-threads", action="store_true", help="do not delete test chats")
     args = parser.parse_args()
 
@@ -201,8 +272,8 @@ def main() -> None:
     try:
         # One warm-up conversation first: the first request pays for connection setup and cold
         # imports, which is real but not what "concurrent users" measures.
-        asyncio.run(run_load(base, 1, args.target, threads))
-        alone = asyncio.run(run_load(base, 1, args.target, threads))
+        asyncio.run(run_load(base, 1, args.target, threads, args.stream))
+        alone = asyncio.run(run_load(base, 1, args.target, threads, args.stream))
         if alone["overall"]["errors"]:
             # A broken baseline (no API credit, a bad deploy) would turn 15 users into 100+
             # failed requests, each leaving an empty conversation behind in the database.
@@ -210,7 +281,7 @@ def main() -> None:
                 f"the 1-user baseline already failed ({', '.join(alone['error_statuses'])}); "
                 f"not starting the concurrent run. Server log: {SERVER_LOG}"
             )
-        loaded = asyncio.run(run_load(base, args.users, args.target, threads))
+        loaded = asyncio.run(run_load(base, args.users, args.target, threads, args.stream))
         try:
             spent = httpx.get(f"{base}/_usage", timeout=5).json()
             print(
@@ -235,9 +306,16 @@ def main() -> None:
         out_path = RESULTS_PATH.with_name("loadtest_results_memory.json")
     if args.fake_model_delay is not None:
         out_path = RESULTS_PATH.with_name("loadtest_results_stub_model.json")
+    if args.stream:
+        stem = (
+            "loadtest_results_stub_streaming"
+            if args.fake_model_delay is not None
+            else "loadtest_results_streaming"
+        )
+        out_path = RESULTS_PATH.with_name(stem + ".json")
     out_path.write_text(
         json.dumps({"measured_at": datetime.now(UTC).isoformat(), "target_seconds": args.target,
-                    "machine_note": MACHINE_NOTE,
+                    "machine_note": MACHINE_NOTE, "streaming": args.stream,
                     "baseline": alone, "loaded": loaded}, indent=2) + "\n",
         encoding="utf-8",
     )  # fmt: skip

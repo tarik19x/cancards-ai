@@ -319,5 +319,524 @@
       "recent_inquiries": 0
     },
     "expect_score_total": 100
+  },
+  {
+    "id": "follow_up_how_to_improve",
+    "description": "After the score, asks a plain improvement question. Must answer from the saved facts, not re-ask.",
+    "turns": [
+      "3 cards",
+      "under 10%",
+      "over 7 years",
+      "never",
+      "0",
+      "how can I improve it fastest?"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 100
+  },
+  {
+    "id": "follow_up_what_if_precise",
+    "description": "Asks for an exact number if they changed one thing. The number must be a real what-if total, not invented.",
+    "turns": [
+      "3 cards",
+      "under 10%",
+      "over 7 years",
+      "never",
+      "0",
+      "what would my score be if I applied for one more card?"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 100
+  },
+  {
+    "id": "follow_up_multiple_in_a_row",
+    "description": "Three follow-up questions back to back. The score and facts must not drift or re-ask.",
+    "turns": [
+      "3 cards",
+      "under 10%",
+      "over 7 years",
+      "never",
+      "0",
+      "what's my weakest area?",
+      "how do I fix that?",
+      "anything else?"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 100
+  },
+  {
+    "id": "follow_up_off_topic_redirect",
+    "description": "A genuinely curious off-topic question after the score (not an attack). Should redirect politely, not answer it.",
+    "turns": [
+      "3 cards",
+      "under 10%",
+      "over 7 years",
+      "never",
+      "0",
+      "by the way what's a good tv show to watch tonight?"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 100
+  },
+  {
+    "id": "follow_up_should_i_close_a_card",
+    "description": "Advice-seeking follow-up about a specific action. Must reason from the real factors, e.g. closing lowers total limit.",
+    "turns": [
+      "3 cards",
+      "under 10%",
+      "over 7 years",
+      "never",
+      "0",
+      "should I close my oldest card to simplify things?"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 100
+  },
+  {
+    "id": "follow_up_mentions_income_no_rescore",
+    "description": "An optional fact (income) surfaces in a follow-up. It must be recorded but must NOT trigger a re-score.",
+    "turns": [
+      "3 cards",
+      "under 10%",
+      "over 7 years",
+      "never",
+      "0",
+      "I make about 70k a year, does that help my score?"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 100
+  },
+  {
+    "id": "correction_after_score_dollar",
+    "description": "After a score, the user corrects their balance in dollars. Must re-score with the new band, not just append advice.",
+    "turns": [
+      "2 cards",
+      "I owe about $4000 on a $10000 limit",
+      "5 years",
+      "never",
+      "1",
+      "actually I paid it down, it's only about $500 now"
+    ],
+    "expected_profile": {
+      "card_count": 2,
+      "utilization": "under10",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 1
+    },
+    "expect_score_total": 93
+  },
+  {
+    "id": "correction_after_score_percentage",
+    "description": "After a score, the user corrects their utilization as a plain percentage, not dollars. Must re-score.",
+    "turns": [
+      "1 card",
+      "around 60%",
+      "2 years",
+      "missed one payment",
+      "2 applications",
+      "wait sorry that is wrong, it is actually more like 20% now"
+    ],
+    "expected_profile": {
+      "card_count": 1,
+      "utilization": "10to30",
+      "history_length": "1to3",
+      "missed_payments": "rarely",
+      "recent_inquiries": 2
+    },
+    "expect_score_total": 63
+  },
+  {
+    "id": "teenager_history",
+    "description": "History given as a relative age with two anchor numbers, not a year or a plain count of years. Genuinely computable (24 - 16 = 8), unlike a bare 'since I was a teenager' with nothing to compute from.",
+    "turns": [
+      "4 cards",
+      "about 15%",
+      "I've had a credit card since I was 16, and I'm 24 now",
+      "never",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 4,
+      "utilization": "10to30",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 94
+  },
+  {
+    "id": "couple_of_cards",
+    "description": "'A couple' as a card count, not a number.",
+    "turns": [
+      "I have a couple of cards",
+      "under 10%",
+      "4 years",
+      "never",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 2,
+      "utilization": "under10",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 96
+  },
+  {
+    "id": "many_more_cards",
+    "description": "A high card count, well past the quiz's top band.",
+    "turns": [
+      "8 cards",
+      "under 10%",
+      "over 7 years",
+      "never",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 8,
+      "utilization": "under10",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 94
+  },
+  {
+    "id": "two_named_applications",
+    "description": "Two applications named by purpose, not counted by the user.",
+    "turns": [
+      "3 cards",
+      "under 10%",
+      "5 years",
+      "never",
+      "I applied for a mortgage and a new credit card this year"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 2
+    },
+    "expect_score_total": 90
+  },
+  {
+    "id": "missed_payment_outside_window",
+    "description": "A missed payment mentioned as long past. The question only covers the last 2 years, so this should read as never.",
+    "turns": [
+      "2 cards",
+      "under 10%",
+      "8 years",
+      "I missed one once but that was years and years ago, nothing since",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 2,
+      "utilization": "under10",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 100
+  },
+  {
+    "id": "utilization_range_given",
+    "description": "A range instead of one number. Tests what the extractor does when the user is not precise.",
+    "turns": [
+      "3 cards",
+      "somewhere between 20 and 30 percent I would guess",
+      "4 years",
+      "never",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "10to30",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 90
+  },
+  {
+    "id": "combined_balance_across_cards",
+    "description": "The user does the addition themselves and gives one combined balance and limit.",
+    "turns": [
+      "3 cards",
+      "across all my cards combined I owe about $2,000 on $8,000 total limit",
+      "6 years",
+      "never",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "10to30",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 90
+  },
+  {
+    "id": "spelled_out_numbers",
+    "description": "Numbers written as words, not digits.",
+    "turns": [
+      "three cards",
+      "under ten percent",
+      "about seven years",
+      "never",
+      "zero"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 100
+  },
+  {
+    "id": "uncertain_hedging_card_count",
+    "description": "Heavy hedging on the count. The extractor has to commit to the number the user actually lands on.",
+    "turns": [
+      "I think maybe like 2 or 3, not totally sure, let us say 3",
+      "under 10%",
+      "5 years",
+      "never",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 96
+  },
+  {
+    "id": "one_word_nonanswer_reprompt",
+    "description": "Four real answers, then a non-answer to the fifth. The coach must ask again, never invent a number.",
+    "turns": [
+      "3 cards",
+      "under 10%",
+      "5 years",
+      "never",
+      "dunno"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "3to7",
+      "missed_payments": "never"
+    }
+  },
+  {
+    "id": "currency_word_variants",
+    "description": "Balance and limit written in casual shorthand (3k, 10 grand). 3000/10000 = exactly 30%, which lands in 30to50 per the app's own edge rule.",
+    "turns": [
+      "3 cards",
+      "I owe like 3k on a 10 grand limit",
+      "5 years",
+      "never",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "30to50",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 81
+  },
+  {
+    "id": "never_missed_casual_phrasing",
+    "description": "Casual negation for never, not the word itself.",
+    "turns": [
+      "3 cards",
+      "under 10%",
+      "5 years",
+      "nope, never messed up on a payment",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 96
+  },
+  {
+    "id": "paragraph_mid_conversation_dump",
+    "description": "Answers one question directly, then later dumps three more facts in one unprompted paragraph.",
+    "turns": [
+      "3 cards",
+      "oh also I should mention, my utilization is under 10%, I have had credit for 6 years, and I have never missed a payment",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 96
+  },
+  {
+    "id": "history_answered_before_asked",
+    "description": "Leads with the history fact in the very first message, before the coach has asked for it.",
+    "turns": [
+      "I have had credit since 2015, anyway how many cards do I have. 3",
+      "under 10%",
+      "never",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "over7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 100
+  },
+  {
+    "id": "unrelated_personal_detail_ignored",
+    "description": "An unrelated personal detail mixed into a real answer. Must not become a fact and must not derail the flow.",
+    "turns": [
+      "3 cards, by the way I just got a new puppy",
+      "under 10%",
+      "5 years",
+      "never",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 96
+  },
+  {
+    "id": "changes_mind_on_inquiries",
+    "description": "States a number then immediately revises it down in the same message.",
+    "turns": [
+      "3 cards",
+      "under 10%",
+      "5 years",
+      "never",
+      "2 apps, oh wait no, just 1"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 1
+    },
+    "expect_score_total": 93
+  },
+  {
+    "id": "mixed_units_balance_then_percent",
+    "description": "Gives dollars, then restates as a rough percent in the same message. The stated percent should win.",
+    "turns": [
+      "3 cards",
+      "I owe $4000 on a $10000 limit, so about 40%",
+      "5 years",
+      "never",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "30to50",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 81
+  },
+  {
+    "id": "very_short_answers_throughout",
+    "description": "Minimal one-or-two-word answers to every question.",
+    "turns": [
+      "2",
+      "10%",
+      "5y",
+      "no",
+      "1"
+    ],
+    "expected_profile": {
+      "card_count": 2,
+      "utilization": "10to30",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 1
+    },
+    "expect_score_total": 87
+  },
+  {
+    "id": "politely_pushes_back_then_answers",
+    "description": "Mild pushback on one question, then answers on the next turn. Not an attack, just a hesitant user.",
+    "turns": [
+      "3 cards",
+      "why do you need to know that?",
+      "ok fine, under 10%",
+      "5 years",
+      "never",
+      "0"
+    ],
+    "expected_profile": {
+      "card_count": 3,
+      "utilization": "under10",
+      "history_length": "3to7",
+      "missed_payments": "never",
+      "recent_inquiries": 0
+    },
+    "expect_score_total": 96
   }
 ]

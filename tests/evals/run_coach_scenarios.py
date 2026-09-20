@@ -73,6 +73,9 @@ async def run_scenario(scenario: dict, thread_id: str) -> dict:
     state: dict = {}
     for message in scenario["turns"]:
         state = await graph.ainvoke({"messages": [{"role": "user", "content": message}]}, config)
+        # The graph prepares an explanation or follow-up; this writes the text with the same
+        # generate_answer call (and so the same cache and recordings) it always used.
+        state = await graph_module.resolve_pending_reply(graph, config, state)
         profile = CreditProfile.model_validate(state.get("profile") or {})
         still_missing = missing_fields(profile)
         turns.append(
