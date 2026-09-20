@@ -80,6 +80,7 @@ jobs:
                   \"OPENAI_API_KEY\": \"${{ secrets.OPENAI_API_KEY }}\",
                   \"ANTHROPIC_API_KEY\": \"${{ secrets.ANTHROPIC_API_KEY }}\",
                   \"PINECONE_API_KEY\": \"${{ secrets.PINECONE_API_KEY }}\",
+                  \"DATABASE_URL\": \"${{ secrets.DATABASE_URL }}\",
                   \"PINECONE_INDEX_NAME\": \"cancards-index\",
                   \"PINECONE_CLOUD\": \"aws\",
                   \"PINECONE_REGION\": \"us-east-1\",
