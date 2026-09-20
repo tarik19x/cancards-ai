@@ -75,8 +75,18 @@ def _install_fake_model(delay: float) -> None:
             facts["recent_inquiries"] = 0
         return json.dumps(facts)
 
+    async def fake_stream(system: str, user: str, max_tokens: int = 2000):
+        # Slow to start (the model's time to first word), then quick words, like the real thing.
+        await asyncio.sleep(delay)
+        for word in ("This ", "is ", "a ", "stubbed ", "streamed ", "answer."):
+            yield word
+            await asyncio.sleep(0.05)
+
     profile_module.generate_answer = fake
     graph_module.generate_answer = fake
+    from app.coach import stream as stream_module
+
+    stream_module.stream_answer = fake_stream
 
 
 if "FAKE_MODEL_DELAY" in os.environ:

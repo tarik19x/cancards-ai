@@ -98,6 +98,13 @@ class CoachState(TypedDict, total=False):
     # Where in the message list the explanation sits, so the score card can stay next to it
     # while follow-up answers pile up below.
     score_message_index: int
+    # Set instead of `reply_markdown`/`messages` by explain and follow_up: those replies are
+    # the slow part of a turn (Claude writing ~150 words takes several seconds), so the text
+    # itself is generated outside the graph -- streamed to the live chat endpoint, or produced
+    # in one call by resolve_pending_reply() for anything that does not stream (the eval
+    # harnesses, the plain JSON endpoint). Either path writes the result back with
+    # aupdate_state, so a thread's history is the same regardless of which one ran.
+    pending_reply: dict[str, Any] | None
 
 
 def _scoring_facts(profile: CreditProfile) -> dict[str, Any]:
@@ -120,7 +127,13 @@ async def extract_profile_node(state: CoachState) -> CoachState:
         _profile_of(state),
         after_score=state.get("score") is not None,
     )
-    return {"profile": updated.model_dump(), "turn_count": state.get("turn_count", 0) + 1}
+    return {
+        "profile": updated.model_dump(),
+        "turn_count": state.get("turn_count", 0) + 1,
+        # Start every turn with nothing pending. A stream the user abandoned mid-reply never
+        # reaches the write that clears it, and the next turn must not inherit that prompt.
+        "pending_reply": None,
+    }
 
 
 async def decide_ready_node(state: CoachState) -> CoachState:
@@ -210,12 +223,13 @@ def _follow_up_prompt(state: CoachState) -> str:
 
 
 async def follow_up_node(state: CoachState) -> CoachState:
-    reply = _or_declined(
-        await generate_answer(FOLLOW_UP_SYSTEM_PROMPT, _follow_up_prompt(state), max_tokens=500)
-    )
     return {
-        "messages": [{"role": "assistant", "content": reply}],
-        "reply_markdown": reply,
+        "pending_reply": {
+            "kind": "follow_up",
+            "system": FOLLOW_UP_SYSTEM_PROMPT,
+            "user": _follow_up_prompt(state),
+            "max_tokens": 500,
+        },
         "gave_score": False,
     }
 
@@ -223,9 +237,12 @@ async def follow_up_node(state: CoachState) -> CoachState:
 async def explain_node(state: CoachState) -> CoachState:
     score = state.get("score")
     if score is None:
-        reply = _or_declined(
-            await generate_answer(GUESS_SYSTEM_PROMPT, _transcript(state), max_tokens=400)
-        )
+        pending = {
+            "kind": "guess",
+            "system": GUESS_SYSTEM_PROMPT,
+            "user": _transcript(state),
+            "max_tokens": 400,
+        }
     else:
         factors = "\n".join(
             f"- {f['label']}: {f['score']}/{f['max']}. {f['advice']}" for f in score["factors"]
@@ -233,15 +250,53 @@ async def explain_node(state: CoachState) -> CoachState:
         user_prompt = (
             f"Total: {score['total']}/100 ({score['band']})\nFactors, weakest first:\n{factors}"
         )
-        reply = _or_declined(
-            await generate_answer(EXPLAIN_SYSTEM_PROMPT, user_prompt, max_tokens=600)
-        )
+        pending = {
+            "kind": "score",
+            "system": EXPLAIN_SYSTEM_PROMPT,
+            "user": user_prompt,
+            "max_tokens": 600,
+        }
     return {
-        "messages": [{"role": "assistant", "content": reply}],
-        "reply_markdown": reply,
+        "pending_reply": pending,
         "gave_score": True,
         # The reply about to be appended lands at this position.
         "score_message_index": len(state.get("messages", [])),
+    }
+
+
+async def resolve_pending_reply(
+    graph: Any, config: dict[str, Any], state: CoachState
+) -> CoachState:
+    """Turn a pending_reply into text with one non-streaming call, and persist it.
+
+    For anything that does not need to stream: the eval harnesses (so their cost, caching
+    and committed replay recordings are unaffected by this split -- they call the same
+    generate_answer this always called) and the plain JSON chat endpoint. The live chat
+    endpoint instead streams the same prompt token by token (app/coach/stream.py), because
+    an explanation is the slow part of a turn and streaming is what makes it feel fast.
+    """
+    pending = state.get("pending_reply")
+    if pending is None:
+        return state
+    reply = _or_declined(
+        await generate_answer(pending["system"], pending["user"], max_tokens=pending["max_tokens"])
+    )
+    await graph.aupdate_state(
+        config,
+        {
+            "messages": [{"role": "assistant", "content": reply}],
+            "reply_markdown": reply,
+            "pending_reply": None,
+        },
+        as_node="follow_up" if pending["kind"] == "follow_up" else "explain",
+    )
+    # The returned state matches what was just saved, reply included, so callers that read
+    # `messages` see the same conversation the checkpointer holds.
+    return {
+        **state,
+        "messages": [*state.get("messages", []), {"role": "assistant", "content": reply}],
+        "reply_markdown": reply,
+        "pending_reply": None,
     }
 
 

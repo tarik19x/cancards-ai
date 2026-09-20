@@ -243,7 +243,8 @@ def grade(
 async def build_thread(graph, thread_id: str, turns: list[str]) -> dict:
     config = {"configurable": {"thread_id": thread_id}}
     for text in turns:
-        await graph.ainvoke({"messages": [{"role": "user", "content": text}]}, config)
+        state = await graph.ainvoke({"messages": [{"role": "user", "content": text}]}, config)
+        await graph_module.resolve_pending_reply(graph, config, state)
     return (await graph.aget_state(config)).values
 
 
@@ -256,6 +257,7 @@ async def run_attack(graph, attack: dict, base_values: dict, victim_id: str) -> 
     assert len(message) <= 500, f"{attack['id']} is longer than the API accepts"
     try:
         state = await graph.ainvoke({"messages": [{"role": "user", "content": message}]}, config)
+        state = await graph_module.resolve_pending_reply(graph, config, state)
         return state, None
     except (BudgetExceeded, ReplayMiss):
         raise

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import type { ChatMessage } from "@/types"
 import {
   fetchThread,
-  sendCoachMessage,
+  streamCoachMessage,
   type CoachProfile,
   type CoachScore,
 } from "@/lib/coach-api"
@@ -41,7 +41,10 @@ export function useCoachChat() {
   // Index of the coach message that delivered the estimate; the card is drawn after it,
   // so follow-up answers appear below the card instead of pushing it down.
   const [scoreIndex, setScoreIndex] = useState<number | null>(null)
+  // isLoading: a request is in flight (input locked). isThinking: still no words to show yet,
+  // which is when the "thinking" dots belong; once the reply starts arriving they go away.
   const [isLoading, setIsLoading] = useState(false)
+  const [isThinking, setIsThinking] = useState(false)
   const [isRestoring, setIsRestoring] = useState(true)
 
   const threadRef = useRef<string | null>(null)
@@ -88,11 +91,41 @@ export function useCoachChat() {
 
       setMessages((prev) => [...prev, toMessage("user", trimmed)])
       setIsLoading(true)
+      setIsThinking(true)
+      // The reply bubble is created by the first chunk, not before: an empty bubble would
+      // sit beside the thinking dots for the seconds it takes Claude to start.
+      let replyId: string | null = null
+      const onToken = (chunk: string) => {
+        if (replyId === null) {
+          const bubble = toMessage("assistant", chunk)
+          replyId = bubble.id
+          setMessages((prev) => [...prev, bubble])
+          setIsThinking(false)
+        } else {
+          const id = replyId
+          setMessages((prev) =>
+            prev.map((m) => (m.id === id ? { ...m, content: m.content + chunk } : m)),
+          )
+        }
+      }
       try {
-        const turn = await sendCoachMessage(trimmed, threadRef.current, controller.signal)
+        const turn = await streamCoachMessage(
+          trimmed,
+          threadRef.current,
+          onToken,
+          controller.signal,
+        )
         threadRef.current = turn.thread_id
         saveThread(turn.thread_id)
-        setMessages((prev) => [...prev, toMessage("assistant", turn.reply_markdown)])
+        // The server's finished text is the one that was saved, so it has the last word.
+        const id = replyId
+        if (id === null) {
+          setMessages((prev) => [...prev, toMessage("assistant", turn.reply_markdown)])
+        } else {
+          setMessages((prev) =>
+            prev.map((m) => (m.id === id ? { ...m, content: turn.reply_markdown } : m)),
+          )
+        }
         setProfile(turn.profile)
         setScore(turn.score)
         setScoreIndex(turn.score_message_index)
@@ -104,7 +137,10 @@ export function useCoachChat() {
           toMessage("assistant", `${detail}. Please try sending that again.`, true),
         ])
       } finally {
-        if (!controller.signal.aborted) setIsLoading(false)
+        if (!controller.signal.aborted) {
+          setIsLoading(false)
+          setIsThinking(false)
+        }
       }
     },
     [isLoading],
@@ -119,7 +155,18 @@ export function useCoachChat() {
     setScore(null)
     setScoreIndex(null)
     setIsLoading(false)
+    setIsThinking(false)
   }, [])
 
-  return { messages, profile, score, scoreIndex, isLoading, isRestoring, sendMessage, restart }
+  return {
+    messages,
+    profile,
+    score,
+    scoreIndex,
+    isLoading,
+    isThinking,
+    isRestoring,
+    sendMessage,
+    restart,
+  }
 }

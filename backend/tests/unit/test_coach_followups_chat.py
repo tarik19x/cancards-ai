@@ -11,7 +11,7 @@ from unittest.mock import AsyncMock, patch
 import pytest
 from langgraph.checkpoint.memory import InMemorySaver
 
-from app.coach.graph import build_graph
+from app.coach.graph import build_graph, resolve_pending_reply
 from app.coach.scoring import score_credit, what_if_totals
 from app.models import CreditProfile
 
@@ -54,9 +54,10 @@ class Chat:
             patch("app.coach.graph.extract_profile", self.extract),
             patch("app.coach.graph.generate_answer", self.answer),
         ):
-            return asyncio.run(
+            state = asyncio.run(
                 self.graph.ainvoke({"messages": [{"role": "user", "content": text}]}, self.config)
             )
+            return asyncio.run(resolve_pending_reply(self.graph, self.config, state))
 
 
 def test_a_message_after_the_score_is_a_follow_up_not_a_second_score():

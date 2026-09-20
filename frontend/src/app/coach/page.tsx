@@ -14,16 +14,32 @@ import CoachScoreCard from "@/components/coach/CoachScoreCard"
 const OPENING_MESSAGE = "Hi, I'd like to check my credit health."
 
 export default function CoachPage() {
-  const { messages, profile, score, scoreIndex, isLoading, isRestoring, sendMessage, restart } = useCoachChat()
+  const {
+    messages,
+    profile,
+    score,
+    scoreIndex,
+    isLoading,
+    isThinking,
+    isRestoring,
+    sendMessage,
+    restart,
+  } = useCoachChat()
   const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" })
+    // Smooth scrolling on every arriving word would lag behind the text; follow it instantly
+    // while a reply is being written and glide only once it is done.
+    bottomRef.current?.scrollIntoView({ behavior: isLoading ? "auto" : "smooth" })
   }, [messages, isLoading, score])
 
   // Conversations saved before the card position was recorded have no index; their score
   // came from the last coach message, so the card goes there.
-  const cardAfter = scoreIndex ?? messages.length - 1
+  // Saved conversations from before the index existed have none, and a reply the user
+  // walked away from mid-stream was never saved, so its index points past the end.
+  // Either way the card goes after the last message rather than disappearing.
+  const cardAfter =
+    scoreIndex !== null && scoreIndex < messages.length ? scoreIndex : messages.length - 1
 
   // Blank rather than a flash of the intro while a saved conversation loads.
   if (isRestoring) return <div className="h-full" />
@@ -83,7 +99,7 @@ export default function CoachPage() {
             </Fragment>
           ))}
 
-          {isLoading && <ThinkingIndicator label="The coach is thinking" />}
+          {isThinking && <ThinkingIndicator label="The coach is thinking" />}
 
           <div ref={bottomRef} />
         </div>

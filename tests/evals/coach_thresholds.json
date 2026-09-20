@@ -1,13 +1,13 @@
 {
-  "note": "Floors for the gate-ON results, set a little below what was measured on 2026-09-19 (18 scenarios: premature 0%, repeated 0%, completion 78%, extraction 100%, exact score 100%). Raise them when the measured numbers rise; lowering one needs a reason in the commit message.",
+  "note": "Floors for the gate-ON results, set a little below what was measured on the 45-scenario set on 2026-09-20 (premature 0%, repeated 0%, completion 89%, extraction 100%, exact score 98% -- one scenario, weekly_framing, had a non-deterministic extraction miss on a re-run of byte-identical input; see LLM/TODO.md). score_exact_match_rate floor is kept at 95%, not 98%, to leave room for that kind of sampling variance without failing CI on an unlucky run. Raise a floor when the measured number rises for a real reason; lowering one needs a reason in the commit message.",
   "max": {
     "premature_advice_rate": 0.0,
     "repeated_question_rate": 0.0
   },
   "min": {
-    "scenarios": 18,
-    "completion_rate": 0.75,
-    "field_extraction_accuracy": 0.95,
+    "scenarios": 45,
+    "completion_rate": 0.85,
+    "field_extraction_accuracy": 0.98,
     "score_exact_match_rate": 0.95
   }
 }
