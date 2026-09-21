@@ -14,12 +14,17 @@ search and the ask page down with it.
 The saver is opened once for the application's lifetime rather than per request: a new
 connection per message would be slow and a good way to exhaust Postgres's connection limit.
 
-It holds ONE connection, and LangGraph's saver runs one database operation at a time on it
-(an asyncio lock around every cursor). Concurrent conversations therefore queue behind each
-other, so the number of database operations per turn is what sets the latency under load.
-The chat endpoint saves once per turn (durability="exit") for that reason. A connection pool
-was tried and made no measurable difference: the saver's lock, not the connection count,
-is the limit.
+It runs on a small pool, not one long-lived connection, and the pool tests each connection
+before handing it out. Neon suspends an idle database and drops its connections; a bare
+connection opened at startup was then dead for good, and every coach message failed with
+"the connection is closed" until the container restarted. The pool replaces a dead
+connection instead. The check costs one round trip per database operation.
+
+LangGraph's saver still runs one database operation at a time (an asyncio lock around every
+cursor), so concurrent conversations queue behind each other and the number of database
+operations per turn is what sets the latency under load. The chat endpoint saves once per
+turn (durability="exit") for that reason. A second pooled connection would not help; the
+saver's lock, not the connection count, is the limit.
 """
 
 from collections.abc import AsyncIterator
@@ -28,6 +33,8 @@ from typing import Any
 
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
+from psycopg.rows import dict_row
+from psycopg_pool import AsyncConnectionPool
 
 from app.config import get_settings
 from app.logging_config import get_logger
@@ -49,9 +56,18 @@ async def open_checkpointer() -> AsyncIterator[Any]:
         yield InMemorySaver()
         return
 
-    connection = AsyncPostgresSaver.from_conn_string(url)
+    # The saver requires autocommit, no prepared statements and dict rows on every connection.
+    pool = AsyncConnectionPool(
+        url,
+        min_size=1,
+        max_size=2,
+        kwargs={"autocommit": True, "prepare_threshold": 0, "row_factory": dict_row},
+        check=AsyncConnectionPool.check_connection,
+        open=False,
+    )
     try:
-        saver = await connection.__aenter__()
+        await pool.open(wait=True, timeout=15)
+        saver = AsyncPostgresSaver(pool)
         await saver.setup()
     except Exception as exc:
         # Deliberately broad: whatever went wrong, the answer is the same. The message
@@ -62,6 +78,7 @@ async def open_checkpointer() -> AsyncIterator[Any]:
             detail=str(exc)[:200],
             effect="conversations will be lost on restart",
         )
+        await pool.close()
         yield InMemorySaver()
         return
 
@@ -69,4 +86,4 @@ async def open_checkpointer() -> AsyncIterator[Any]:
     try:
         yield saver
     finally:
-        await connection.__aexit__(None, None, None)
+        await pool.close()
