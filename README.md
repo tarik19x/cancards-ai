@@ -172,22 +172,6 @@ Adding the card name to every piece was the biggest gain, because most bank PDFs
 
 ---
 
-## Known limits
-
-I would rather you read these here than find them yourself.
-
-- The credit estimate rests on self-reported answers and illustrative weights. It is not a bureau score.
-- The 45 conversations, 50 attacks and search questions are ones I wrote, not an independent test set.
-- I measured search quality, not the quality of the written answers. A weekly RAGAS check exists, but its baseline is from May 2026, before the search rebuild.
-- Attack testing covers the coach only. Ask has not been attack-tested.
-- The replayed CI checks catch changes to my code and prompts. They cannot notice the AI model itself changing behaviour.
-- The live site runs on one small server (AWS Lightsail Micro, 1 GB) with one worker. Fine for a demo, and a single point of failure.
-- The hosted reranker has a free monthly allowance. If it runs out, Ask still works with less precise search.
-- There are no user accounts. A conversation is found by a random ID stored in your browser, so clearing the browser starts a new chat.
-- After a quiet spell the database is asleep, so the first message can be slower.
-
----
-
 ## Tech stack
 
 | Layer | Technology |
