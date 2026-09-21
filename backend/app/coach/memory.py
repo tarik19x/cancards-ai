@@ -33,6 +33,7 @@ from typing import Any
 
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
+from psycopg import AsyncConnection
 from psycopg.rows import dict_row
 from psycopg_pool import AsyncConnectionPool
 
@@ -57,7 +58,7 @@ async def open_checkpointer() -> AsyncIterator[Any]:
         return
 
     # The saver requires autocommit, no prepared statements and dict rows on every connection.
-    pool = AsyncConnectionPool(
+    pool: AsyncConnectionPool[AsyncConnection[dict[str, Any]]] = AsyncConnectionPool(
         url,
         min_size=1,
         max_size=2,
